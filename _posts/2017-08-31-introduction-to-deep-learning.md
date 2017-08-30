@@ -17,17 +17,22 @@ categories:
 
 // 하지만 2000년대까지 연구가 지지부진함, 이유: 학습이 너무 느려서?
 
-## 급작스러운 Deep Learning은 어떻게 발전했는가
+## Deep Learning 연구의 기폭제: AlexNet의 ImageNet Challenge 우승
 
 // 2010년 이후 딥러닝이 발전한 이유: 성과가 있었기 때문 (vs 타 머신 러닝 알고리즘)
 
 // Deep learning 발전의 전환점이 된 두 사건: (1) Automatic speech recognition (TIMIT dataset, 2010), (2) Image recognition (ImageNet challenge, 2012)
 
-// 발전의 이유는 세 가지: (1) 컴퓨팅 능력 향상, (2) 이론적 한계를 차근차근 극복해나감, (3) 데이터 셋 확보가 용이해짐
+// 그 후 계속 발전. 발전의 이유는 세 가지: (1) 컴퓨팅 능력 향상, (2) 이론적 한계를 차근차근 극복해나감, (3) 데이터 셋 확보가 용이해짐, + 돈이 됨?, 가능성 있음?
 
-// 이후 계속 발전:
+// 이제 가장 기본적인 NN 구조에 대해 간단히 알아보겠습니다. 두 개.
 
-## 기초 이론
+## Deep Neural Network
+
+
+## Convolutional Neural Network
+
+
 
 
 
