@@ -1,7 +1,7 @@
 ---
-layout: page
+layout: post
 title: Deep Learning에 대한 기본적인 소개
-categories: Test
+categories: Deep Learning Theory
 ---
 
 본 포스트는 deep learning 분야에 새롭게 진입하는 학생들과 연구원들이 알아야 하는 배경과 기초 지식들을 쉽게 설명하기 위해 작성되었습니다.
