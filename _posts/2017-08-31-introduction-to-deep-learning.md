@@ -11,7 +11,7 @@ title: Deep Learning에 대한 기본적인 소개
 
 // Machine learning의 분류와 deep learning의 positioning
 
-// jkh
+//
 
 ## Deep Learning의 기폭제
 
