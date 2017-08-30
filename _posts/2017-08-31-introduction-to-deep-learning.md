@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: page
 title: Deep Learning에 대한 기본적인 소개
 ---
 
