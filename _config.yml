@@ -7,9 +7,9 @@ permalink:        pretty
 relative_permalinks: false
 
 # Setup
-title:            Tech for Deep Learning Platform
+title:            Deep Learning Platform
 tagline:          'A Jekyll theme'
-description:      'Deep Learning에 대한 포스팅을 하는 블로그입니다.'
+#description:      '.'
 url:              https://nsh3389.github.io
 baseurl:          /
 
