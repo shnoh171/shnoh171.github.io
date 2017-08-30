@@ -8,7 +8,7 @@ title: Deep Learning에 대한 기본적인 소개
 -- 작성 중 --
 
 ## Deep Learning의 정의
-sdff
+test
 
 ## 어떻게 발전하여 왔는가?
 
