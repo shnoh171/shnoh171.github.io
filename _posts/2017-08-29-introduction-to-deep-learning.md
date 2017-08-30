@@ -15,3 +15,7 @@ test
 ## Deep Learning 시대의 기폭제
 
 ## 기초 이론
+
+
+
+// git add -A; git commit -m "test"; git push
