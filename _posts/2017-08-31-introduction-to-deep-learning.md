@@ -16,7 +16,10 @@ categories:
 
 ## Deep Learning이란 무엇인가
 
-// Deep learning의 정의 [^test]* Item 1* Item 2  + Item 2a
+// Deep learning의 정의 [^test]
+* Item 1
+* Item 2
+  + Item 2a
 
 // Machine learning의 분류와 deep learning의 positioning
 
