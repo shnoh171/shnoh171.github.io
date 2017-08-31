@@ -16,8 +16,9 @@ categories:
 
 ## Deep Learning이란 무엇인가
 
-// Deep learning의 정의
-* Item 1
+* Deep learning의 정의
+  +
+  + Neuron과 layer
 * Item 2
   + Item 2a
 
@@ -39,7 +40,11 @@ categories:
 
 ## Deep Neural Network
 
+
 ## Convolutional Neural Network
+
+
+
 
 
 // git add -A; git commit -m "test"; git push
