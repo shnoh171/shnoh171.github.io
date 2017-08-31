@@ -16,7 +16,7 @@ categories:
 
 ## Deep Learning이란 무엇인가
 
-// Deep learning의 정의 [^test]
+// Deep learning의 정의
 * Item 1
 * Item 2
   + Item 2a
@@ -43,4 +43,3 @@ categories:
 
 
 // git add -A; git commit -m "test"; git push
-[^test]: Testsdf
