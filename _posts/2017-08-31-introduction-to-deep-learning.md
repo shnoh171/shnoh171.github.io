@@ -4,12 +4,19 @@ title: Deep Learning에 대한 기본적인 소개
 categories:
 - test
 ---
+// 아직 작성 중인 문서입니다.
 
-본 포스트는 deep learning 분야에 새롭게 진입하는 학생들과 연구원들이 알아야 하는 배경과 기초 지식들을 공유하기 위해 작성되었습니다. 관련 분야 전공자가 아니더라도 쉽게 이해할 수 있는 글을 쓰는데 초점을 맞췄습니다. 혹시 부정확하거나 편향된 내용을 찾으신다면 알려주시면 감사하겠습니다.
+// Step 1. 개요 작성 (x)
 
-// 현재 작성 중...
+// Step 2. 개조식으로 세부 내용 작성 (x)
+
+// Step 3. 글쓰기 (x)
+
+본 포스트는 deep learning 분야에 새롭게 진입하는 학생들과 연구원들이 알아야 하는 배경과 기초 지식들을 공유하기 위해 작성되었습니다. Deep learning의 정의와 역사를 간단하게 짚은 후, 기본적인 neural network들을 간단하게 설명하겠습니다.
 
 ## Deep Learning이란 무엇인가
+
+// Deep learning의 정의 [^test]* Item 1* Item 2  + Item 2a
 
 // Machine learning의 분류와 deep learning의 positioning
 
@@ -29,11 +36,8 @@ categories:
 
 ## Deep Neural Network
 
-
 ## Convolutional Neural Network
 
 
-
-
-
 // git add -A; git commit -m "test"; git push
+[^test]: Testsdf
