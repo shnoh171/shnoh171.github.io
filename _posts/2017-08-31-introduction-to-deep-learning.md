@@ -4,7 +4,7 @@ title: Deep Learning에 대한 기본적인 소개
 categories:
 - test
 ---
-// 아직 작성 중인 문서입니다.gg
+// 아직 작성 중인 문서입니다.
 
 // Step 1. 개요 작성 (x)
 
@@ -17,31 +17,38 @@ categories:
 ## Deep Learning이란 무엇인가
 
 * Deep learning의 정의
-  + s
-  + Neuron과 layer
-* Item 2
-  + Item 2a
-
-// Machine learning의 분류와 deep learning의 positioning
-
-// Artifical neural network 개념은 과거부터(1990?, 조사 필요) 존재함
-
-// 하지만 2000년대까지 연구가 지지부진함, 이유: 학습이 너무 느려서?
+  + Deep learning is a class of techniques which allows computational models that are composed of multiple processing layers to learn representations of data with multiple levels of abstraction
+  + 결국은 neural network를 꾸미는 advertise term
+* Neural network
+  + Neuron
+  + Network
+* History and Achievement
+  + 1940년대부터 연구되었지만 2010년 이후에서야 만개함
+  + 특히, supervised learning에 큰 성과를 거둠(하지만 다른 분야에도 적용 중)
 
 ## Deep Learning 연구의 기폭제: AlexNet의 ImageNet Challenge 우승
 
-// 2010년 이후 딥러닝이 발전한 이유: 성과가 있었기 때문 (vs 타 머신 러닝 알고리즘)
+* Deep learning이 발전한 이유는 결국 다른 기술들에 유의미한 성과가 있었기 때문임
+* Deep learning 발전의 전환점이 된 두 사건
+  1. Automatic speech recognition (TIMIT dataset, 2010)
+  2. Image recognition (ImageNet challenge, 2012)
+* 지속적인 발전의 이유
+  1. 컴퓨팅 능력 향상
+  2. 이론적 한계를 차근차근 극복해나감
+  3. 데이터 셋 확보가 용이해짐
+  4. 돈이 됨?, 가능성 있음?
+* 이제 간단히 이론에 대해 알아보겠음
 
-// Deep learning 발전의 전환점이 된 두 사건: (1) Automatic speech recognition (TIMIT dataset, 2010), (2) Image recognition (ImageNet challenge, 2012)
+## Classficiation에 대한 간략한 소개
 
-// 그 후 계속 발전. 발전의 이유는 세 가지: (1) 컴퓨팅 능력 향상, (2) 이론적 한계를 차근차근 극복해나감, (3) 데이터 셋 확보가 용이해짐, + 돈이 됨?, 가능성 있음?
+* 이론에 앞서 supervised learning의 한 분야인 classification에 대해 알아보자.
 
-// 이제 가장 기본적인 NN 구조에 대해 간단히 알아보겠습니다. 두 개.
-
-## Deep Neural Network
+## Neuron과 Classification을 위한 단순한 Neural Network 구성
 
 
-## Convolutional Neural Network
+
+
+## Convolutional Neural Network (CNN)
 
 
 
