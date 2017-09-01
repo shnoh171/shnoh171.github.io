@@ -31,7 +31,7 @@ SW 플랫폼 - 춘추 전국 시대, TensorFlow가 약간 앞서 가는 중
 
 ## TensorFlow 프로그램 구조
 
-{% highlight py linenos%}
+{% highlight py %}
 # mnist_softmax.py
 from __future__ import absolute_import
 from __future__ import division
@@ -136,7 +136,7 @@ Executor: Device들에게 graph 상의 operation의 kernel 수행을 명령
 Device: 해당 operation의 kernel 수행
 
 
-{% highlight c++ linenos %}
+{% highlight c++ %}
 // tensorflow/core/kernels/matmul_op.cc
 template <typename Device, typename T, bool USE_CUBLAS> class MatMulOp : public OpKernel {
   public:
@@ -147,7 +147,7 @@ template <typename Device, typename T, bool USE_CUBLAS> class MatMulOp : public 
 };
 {% endhighlight %}
 
-{% highlight c++ linenos %}
+{% highlight c++ %}
 // tensorflow/core/kernels/matmul_op.cc
 template <typename T>
 struct LaunchMatMul<GPUDevice, T, true /* USE_CUBLAS */> {
