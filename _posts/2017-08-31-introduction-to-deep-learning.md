@@ -4,7 +4,7 @@ title: Deep Learning에 대한 기본적인 소개
 categories:
 - test
 ---
-// 아직 작성 중인 문서입니다.
+// 아직 작성 중인 문서입니다.gg
 
 // Step 1. 개요 작성 (x)
 
