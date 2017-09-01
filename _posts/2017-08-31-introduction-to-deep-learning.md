@@ -42,6 +42,8 @@ categories:
 ## Classficiation에 대한 간략한 소개
 
 * 이론에 앞서 supervised learning의 한 분야인 classification에 대해 알아보자.
+* Problem of identifying to which of a set of categories a new observation belongs, on the basis of a training set of data containing observations (or instances) whose category membership is known
+
 
 ## Neuron과 Classification을 위한 단순한 Neural Network 구성
 
