@@ -6,13 +6,13 @@ categories:
 ---
 // 아직 작성 중인 문서입니다.
 
-// Step 1. 개요 작성 (x)
+// Step 1. 개요 작성 (o)
 
 // Step 2. 개조식으로 세부 내용 작성 (x)
 
 // Step 3. 글쓰기 (x)
 
-본 포스트는 deep learning 분야에 새롭게 진입하는 학생들과 연구원들이 알아야 하는 배경과 기초 지식들을 공유하기 위해 작성되었습니다. Deep learning의 정의와 역사를 간단하게 짚은 후, 기본적인 neural network들을 간단하게 설명하겠습니다.
+본 포스트는 deep learning을 처음 접하는 학생들과 연구원들이 알아야 하는 배경과 기초 지식들을 공유하기 위해 작성되었습니다. Machine learning에 대한 기반 지식은 필요하지 않으나, 대학 학부 수준의 수학 지식은 가지고 있다고 가정하고 썼습니다. 지금  부터 Deep learning의 정의와 역사를 간단하게 짚은 후, 기본적인 neural network 이론들에 대해 알아 보겠습니다.
 
 ## Deep Learning이란 무엇인가
 
@@ -22,6 +22,7 @@ categories:
 * Neural network
   + Neuron
   + Network
+  + 무엇이 좋은가? - 복잡한 함수를 만들 수 있다.
 * History and Achievement
   + 1940년대부터 연구되었지만 2010년 이후에서야 만개함
   + 특히, supervised learning에 큰 성과를 거둠(하지만 다른 분야에도 적용 중)
@@ -43,15 +44,22 @@ categories:
 
 * 이론에 앞서 supervised learning의 한 분야인 classification에 대해 알아보자.
 * Problem of identifying to which of a set of categories a new observation belongs, on the basis of a training set of data containing observations (or instances) whose category membership is known
+* 간단한 설명 - hyperplane
+* Neural network가 classification 문제를 잘 풀 수 있는 이유: 고차원, 복잡한 분포의 데이터에서도 적절한 hyperplane을 구성할 '표현력'이 있다. (신의 입장에서는 좋은 classifier를 만들 수 있다)
+* 하지만, 여전히 weight들의
+* CIFAR-10을 사용하여 three-layer neural network를 만들어서 설명해보도록 하겠다.
 
+## Neural Network의 학습법: Backpropagation
 
-## Neuron과 Classification을 위한 단순한 Neural Network 구성
-
-
-
+* Loss 함수
+* Gradient Descent
+* Neural network에 gradient를 계산할 방법이 필요함 -> Backpropagation
+* Backpropagation 설명
 
 ## Convolutional Neural Network (CNN)
 
+* 필요성: 연산량이 너무 많음
+* 
 
 
 
