@@ -26,3 +26,5 @@ github:
   repo:           https://github.com/poole/hyde
 
 plugins: [jekyll-paginate]
+
+# // git add -A; git commit -m "test"; git push

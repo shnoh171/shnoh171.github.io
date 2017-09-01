@@ -6,11 +6,8 @@ categories:
 ---
 // 아직 작성 중인 문서입니다.
 
-// Step 1. 개요 작성 (o)
-
-// Step 2. 개조식으로 세부 내용 작성 (x)
-
-// Step 3. 글쓰기 (x)
+* Step 1. 개요 작성 (o)
+* Step 2. 글쓰기 (x)
 
 본 포스트는 deep learning을 처음 접하는 학생들과 연구원들이 알아야 하는 배경과 기초 지식들을 공유하기 위해 작성되었습니다. Machine learning에 대한 기반 지식은 필요하지 않으나, 대학 학부 수준의 수학 지식은 가지고 있다고 가정하고 썼습니다. 지금  부터 Deep learning의 정의와 역사를 간단하게 짚은 후, 기본적인 neural network 이론들에 대해 알아 보겠습니다.
 
@@ -59,9 +56,8 @@ categories:
 ## Convolutional Neural Network (CNN)
 
 * 필요성: 연산량이 너무 많음
-* 
-
-
+* Motivation: 지역적 정보 활용?
+* Architecture 설명
 
 
 // git add -A; git commit -m "test"; git push

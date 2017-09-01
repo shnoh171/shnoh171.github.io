@@ -1,26 +1,23 @@
 ---
 layout: post
 title: TensorFlow 구조와 내부 동작에 대한 간단한 소개
-published: false
 ---
 Google의 TensorFlow는
 
 // 아직 작성 중인 문서입니다.dfgd
 
-// Step 1. 개요 작성 (x)
+* Step 1. 개요 작성 (x)
+* Step 2. 글쓰기 (x)
 
-// Step 2. 개조식으로 세부 내용 작성 (x)
-
-// Step 3. 글쓰기 (x)
-
-## Deep Learning을 위한 HW 플랫폼과 SW 플랫폼
+## Deep Learning 시장 선점을 위한 플랫폼 경쟁
 
 HW 플랫폼 - NVIDA가 선두, 나머지 따라가는 중
 
 SW 플랫폼 - 춘추 전국 시대, TensorFlow가 약간 앞서 가는 중
 
-## TensorFlow 책임자
+## Google TensorFlow의 철학
 
+*
 * Jeff Dean
   - Map Reduce 논문의 1저자
 
@@ -32,7 +29,7 @@ SW 플랫폼 - 춘추 전국 시대, TensorFlow가 약간 앞서 가는 중
 
 ## TensorFlow 프로그램 구조
 
-{% highlight js %}
+{% highlight py %}
 # mnist_softmax.py
 from __future__ import absolute_import
 from __future__ import division
@@ -137,7 +134,7 @@ Executor: Device들에게 graph 상의 operation의 kernel 수행을 명령
 Device: 해당 operation의 kernel 수행
 
 
-{% highlight js %}
+{% highlight c++ %}
 // tensorflow/core/kernels/matmul_op.cc
 template <typename Device, typename T, bool USE_CUBLAS> class MatMulOp : public OpKernel {
   public:
@@ -148,7 +145,7 @@ template <typename Device, typename T, bool USE_CUBLAS> class MatMulOp : public 
 };
 {% endhighlight %}
 
-{% highlight js %}
+{% highlight c++ %}
 // tensorflow/core/kernels/matmul_op.cc
 template <typename T>
 struct LaunchMatMul<GPUDevice, T, true /* USE_CUBLAS */> {
