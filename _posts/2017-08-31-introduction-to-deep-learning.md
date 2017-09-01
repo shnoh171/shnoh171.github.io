@@ -17,7 +17,7 @@ categories:
 ## Deep Learning이란 무엇인가
 
 * Deep learning의 정의
-  +
+  + s
   + Neuron과 layer
 * Item 2
   + Item 2a
