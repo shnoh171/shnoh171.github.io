@@ -18,16 +18,10 @@ categories:
 3. Multiple processing layers
     + Deep learning은 이런 학습 과정을 한번에 해내는 것이 아니라, 여러 개의 layer를 사용하여 학습을 진행합니다.
 
-[Imgur](https://i.imgur.com/ahRk6zc.png)
 ![placeholder](https://i.imgur.com/ahRk6zc.png "Figure 1")
 
-위의 그림은 Stanford 대학의 CS231n 강좌에서 가져온 간단한 deep learning의 동작 그림입니다[^CS231n17].
+위의 그림은 Stanford 대학의 CS231n 강좌에서 가져온 간단한 deep learning의 동작 그림입니다[^CS231n17]. 사람이 말을 타고 있는 사진이 왼쪽에서 오른쪽으로 layer를 거칠 때마다 10개의 이미지의 형태로 데이터를 가공하여 표현합니다. 마지막 layer를 거치고 오른쪽 끝에 도착했을 때, 말을 나타내는 이미지에 가장 높은 값이 나타나게 되어 이 이미지를 말이라고 인식하게 됩니다.
 
-
-
- layer를 사용하여 raw data를 다른 형태로 가공하여 표현하는
-
-// class of techniques, computational models, multiple processing layers, learn representations of data, multiple levels of abstrction
 
 ---
 * Deep learning은 neural network를 사용하는 machine learning 기술의 집합이다.
