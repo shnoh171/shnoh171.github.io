@@ -1,14 +1,15 @@
 ---
 layout: post
 title: Deep Learning에 대한 기본적인 소개
-comments: true
+categories:
+  - Basic Theory
 ---
 // 아직 작성 중인 문서입니다.
 
 * Step 1. 개요 작성 (o)
 * Step 2. 글쓰기 (x)
 
-본 포스트는 deep learning을 처음 접하는 학생들과 연구원들이 알아야 하는 배경과 기초 지식들을 공유하기 위해 작성되었습니다. Machine learning에 대한 기반 지식은 필요하지 않으나, 대학 학부 수준의 수학 지식은 가지고 있다고 가정하고 썼습니다. 지금  부터 Deep learning의 정의와 역사를 간단하게 짚은 후, 기본적인 neural network 이론들에 대해 알아 보겠습니다.
+본 포스트는 deep learning을 처음 접하는 학생들과 연구원들이 알아야 하는 배경과 기초 지식들을 공유하기 위해 작성되었습니다. Machine learning에 대한 기반 지식은 필요하지 않으나, 기본적인 수학(고등학교 ~ 대학교 1학년 수준)은 이해하고 있다고 가정하고 썼습니다. 지금부터 deep learning 무엇인지, 그리고 왜 폭발적인 인기를 끌게 되었는지 알아보겠습니다.
 
 ## Deep Learning이란 무엇인가
 * Deep learning의 정의
