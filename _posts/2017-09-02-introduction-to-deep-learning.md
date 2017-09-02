@@ -7,7 +7,14 @@ categories:
 **아직 미완성인 포스트입니다.** 본 포스트는 deep learning을 처음 접하는 학생들과 연구원들이 알아야 하는 배경과 기초 지식들을 공유하기 위해 작성되었습니다.
 
 ### Deep Learning이란 무엇인가
-* Deep learning은 neural network를 사용하는 machine learning 기술의 집합이다. [^test]
+2015년, deep learning을 이야기할 때 절대 빠질 수 없는 대가 세 사람이 Nature에 deep learning에 관한 소개 논문을 게재하였습니다. 이 논문의 첫 문장을 읽어 보면 deep learning이 무엇인지 어느정도 파악할 수 있습니다.
+
+>Deep learning allows computational models that are composed of multiple processing layers to learn representations of data with multiple levels of abstraction [^LeCun15].
+
+
+
+---
+* Deep learning은 neural network를 사용하는 machine learning 기술의 집합이다.
   + Deep learning is a class of techniques which allows computational models that are composed of multiple processing layers to learn representations of data with multiple levels of abstraction
   + 결국은 neural network를 꾸미는 advertise term
   + 특히 supervised learning에 큰 성과를 거둠(하지만 다른 분야에도 적용 중)
@@ -48,7 +55,7 @@ categories:
   4. 돈이 됨?, 가능성 있음?
 * 이제 간단히 이론에 대해 알아보겠음
 
-[^test]: tsetsdfs
+[^LeCun15]: Yann Lecun, Yoshua Bengio, and Geoffrey Hinton, "Deep learning," Nature, 2015.
 
 
 
