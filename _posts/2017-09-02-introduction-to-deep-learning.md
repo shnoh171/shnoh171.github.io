@@ -6,18 +6,20 @@ categories: Basic Theory
 **아직 미완성인 포스트입니다.** 본 포스트는 deep learning을 처음 접하는 학생들과 연구원들이 알아야 하는 배경과 기초 지식들을 공유하기 위해 작성되었습니다.
 
 ## Deep Learning이란 무엇인가
-* Deep learning의 정의
+* Deep learning은 neural network를 사용하는 machine learning 기술의 집합이다.
   + Deep learning is a class of techniques which allows computational models that are composed of multiple processing layers to learn representations of data with multiple levels of abstraction
   + 결국은 neural network를 꾸미는 advertise term
-  + (TODO: 누가 deep learning이라는 단어를 유행시켰는지 조사)
-* Neural network
-  + Neuron
-  + Network
+  + 특히 supervised learning에 큰 성과를 거둠(하지만 다른 분야에도 적용 중)
+  + TODO: 누가 deep learning이라는 단어를 유행시켰는지 조사
+* Neural network는 neuron들을 모아 layer를 구성한 network이다.
+  + Neuron은 사람의 neuron의 동작을 매우 단순화시킨 것
+  + Neuron에 대한 수식적 설명
+  + Neuron이 모여 layer를 구성하고 layer를 모아 neural network를 구성
   + 무엇이 좋은가? - 복잡한 함수를 만들 수 있다.
-  + (Classification을 이용한 복잡한 함수를 만들 수 있다는 증거)
-* History and Achievement
-  + 1940년대부터 연구되었지만 2010년 이후에서야 만개함
-  + 특히, supervised learning에 큰 성과를 거둠(하지만 다른 분야에도 적용 중)
+  + 예: Classification을 이용한 복잡한 함수를 만들 수 있다는 증거
+    - Problem of identifying to which of a set of categories a new observation belongs, on the basis of a training set of data containing observations (or instances) whose category membership is known
+    - 아무리 차원이 높아지고, 분포가 복잡해줘도 이를 분류할 수 있는 hyperplane을 '표현'할 수 있다. (신의 입장에서는 가능함)
+    - TODO: 설명 그림 자료 추가
 
 ## Deep Learning 연구의 기폭제: AlexNet의 ImageNet Challenge 우승
 
@@ -35,7 +37,7 @@ categories: Basic Theory
 ## Classficiation에 대한 간략한 소개
 
 * 이론에 앞서 supervised learning의 한 분야인 classification에 대해 알아보자.
-* Problem of identifying to which of a set of categories a new observation belongs, on the basis of a training set of data containing observations (or instances) whose category membership is known
+
 * 간단한 설명 - hyperplane
 * Neural network가 classification 문제를 잘 풀 수 있는 이유: 고차원, 복잡한 분포의 데이터에서도 적절한 hyperplane을 구성할 '표현력'이 있다. (신의 입장에서는 좋은 classifier를 만들 수 있다)
 * 하지만, 여전히 weight들의
