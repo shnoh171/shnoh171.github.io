@@ -7,11 +7,11 @@ categories:
 **아직 미완성인 포스트입니다.** 본 포스트는 deep learning을 처음 접하는 학생들과 연구원들이 알아야 하는 배경과 기초 지식들을 공유하기 위해 작성되었습니다.
 
 ### Deep Learning이란 무엇인가
-2015년, deep learning을 이야기할 때 절대 빠질 수 없는 대가 세 사람(Yann Lecun, Yoshua Bengio, Geoffrey Hinton)이 Nature에 "Deep Learning"이라는 제목의 논문을 게재하였습니다. 이 논문에서 저자들은 deep learning이 무엇인지 명확하게 정의하며 글을 시작합니다.
+2015년, deep learning을 이야기할 때 절대 빠질 수 없는 대가 세 사람(Yann Lecun, Yoshua Bengio, Geoffrey Hinton)이 Nature에 "Deep Learning"이라는 제목의 논문을 게재하였습니다[^LeCun15]. 이들은 논문에서 deep learning이 무엇인지 정의하는데, 정리해보면 아래의 한 문장으로 요약할 수 있습니다.
 
->Deep learning allows computational models that are composed of multiple processing layers to learn representations of data with multiple levels of abstraction [^LeCun15].
+>Deep learning is a class of techniques that allows computational models that are composed of multiple processing layers to learn representations of data with multiple levels of abstraction .
 
-
+// class of techniques, computational models, multiple processing layers, learn representations of data, multiple levels of abstrction
 
 ---
 * Deep learning은 neural network를 사용하는 machine learning 기술의 집합이다.
