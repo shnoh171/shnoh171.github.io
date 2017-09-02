@@ -3,15 +3,15 @@ markdown:         kramdown
 highlighter:      rouge
 
 # Setup
-title:            Hydeout
+title:            Deep Learning Platform
 tagline:          'A Jekyll theme'
-description:      'The <a href="http://hyde.getpoole.com" target="_blank">Hyde</a> theme for <a href="http://jekyllrb.com" target="_blank">Jekyll</a>, refreshed.'
-url:              https://fongandrew.github.io/hydeout
+description:      'abc 가나다'
+url:              https://nsh3389.github.io
 baseurl:          # the optional subpath of your site, e.g. "/blog"
 
 author:
-  name:           'Andrew Fong'
-  url:            https://twitter.com/fongandrewc
+  name:           'Soonhyun Noh'
+  url:            https://nsh3389.github.io
 
 paginate:         5
 
