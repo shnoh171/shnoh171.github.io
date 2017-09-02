@@ -1,11 +1,12 @@
 ---
 layout: post
 title: Deep Learning에 대한 기본적인 소개
-categories: Basic Theory
+categories:
+  - Basic Theory
 ---
 **아직 미완성인 포스트입니다.** 본 포스트는 deep learning을 처음 접하는 학생들과 연구원들이 알아야 하는 배경과 기초 지식들을 공유하기 위해 작성되었습니다.
 
-## Deep Learning이란 무엇인가
+### Deep Learning이란 무엇인가
 * Deep learning은 neural network를 사용하는 machine learning 기술의 집합이다.
   + Deep learning is a class of techniques which allows computational models that are composed of multiple processing layers to learn representations of data with multiple levels of abstraction
   + 결국은 neural network를 꾸미는 advertise term
@@ -21,7 +22,20 @@ categories: Basic Theory
     - 아무리 차원이 높아지고, 분포가 복잡해줘도 이를 분류할 수 있는 hyperplane을 '표현'할 수 있다. (신의 입장에서는 가능함)
     - TODO: 설명 그림 자료 추가
 
-## Deep Learning 연구의 기폭제: AlexNet의 ImageNet Challenge 우승
+### 어떻게 학습할 것인가?
+
+* 학습의 필요성
+  + 이제 당연히 해결되어야 하는 문제는 '학습'을 어떻게 하느냐이다. Weight와 bias 값들을 '잘' 잡는 방법이 있어야 한다.
+  + Deep learning의 기본적인 아이디어는 50년대에 나왔지만, 학습을 효율적으로 하는 방법을 찾지 못해 빙하기가 찾아왔다.
+* Gradient descent에 대한 설명
+  + NN의 학습 방법에 대해 이해하기에 앞서, machine learning의 가장 기본적인 학습법인 gradient descent에 대해 이해하여야 한다.
+  + Loss function에 대한 설명
+  + Gradient descent는 산에서 내려가는 방법에 비유할 수 있음
+  + 2개의 parameter를 가지는 경우의 gradient descent
+* Neural network에 이를 가능하게 하는 방법이 제안되었으니, 이는 backpropagation이다.
+  + TODO: backpropagation 조사하고 정리하여 설명
+
+### Deep Learning 연구의 기폭제: AlexNet의 ImageNet Challenge 우승
 
 * Deep learning이 발전한 이유는 결국 다른 기술들에 유의미한 성과가 있었기 때문임
 * Deep learning 발전의 전환점이 된 두 사건
@@ -34,23 +48,9 @@ categories: Basic Theory
   4. 돈이 됨?, 가능성 있음?
 * 이제 간단히 이론에 대해 알아보겠음
 
-## Classficiation에 대한 간략한 소개
 
-* 이론에 앞서 supervised learning의 한 분야인 classification에 대해 알아보자.
 
-* 간단한 설명 - hyperplane
-* Neural network가 classification 문제를 잘 풀 수 있는 이유: 고차원, 복잡한 분포의 데이터에서도 적절한 hyperplane을 구성할 '표현력'이 있다. (신의 입장에서는 좋은 classifier를 만들 수 있다)
-* 하지만, 여전히 weight들의
-* CIFAR-10을 사용하여 three-layer neural network를 만들어서 설명해보도록 하겠다.
-
-## Neural Network의 학습법: Backpropagation
-
-* Loss 함수
-* Gradient Descent
-* Neural network에 gradient를 계산할 방법이 필요함 -> Backpropagation
-* Backpropagation 설명
-
-## Convolutional Neural Network (CNN)
+### Convolutional Neural Network (CNN)
 
 * 필요성: 연산량이 너무 많음
 * Motivation: 지역적 정보 활용?
