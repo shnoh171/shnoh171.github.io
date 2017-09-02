@@ -11,6 +11,13 @@ categories:
 
 >Deep learning is a class of techniques that allows computational models that are composed of multiple processing layers to learn representations of data with multiple levels of abstraction .
 
+1. Class of techniques
+    + Deep learning은 machine learning에 사용되는 기술 중 하나입니다.
+2. Representations of data
+  + sdf
+3. Multiple processing layers:
+
+
 // class of techniques, computational models, multiple processing layers, learn representations of data, multiple levels of abstrction
 
 ---
