@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Deep Learning에 대한 기본적인 소개
-published: false
 ---
 // 아직 작성 중인 문서입니다.
 
