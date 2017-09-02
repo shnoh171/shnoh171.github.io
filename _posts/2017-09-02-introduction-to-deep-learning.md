@@ -13,10 +13,19 @@ categories:
 
 1. Class of techniques
     + Deep learning은 machine learning에 사용되는 기술 중 하나입니다.
-2. Representations of data
-  + sdf
-3. Multiple processing layers:
+2. Learn representations of data
+    + Deep learning은 주어진 raw data를 목적에 맞게 스스로 학습하여 다른 형태로 표현하는 기술입니다.
+3. Multiple processing layers
+    + Deep learning은 이런 학습 과정을 한번에 해내는 것이 아니라, 여러 개의 layer를 사용하여 학습을 진행합니다.
 
+[Imgur](https://i.imgur.com/ahRk6zc.png)
+![placeholder](https://i.imgur.com/ahRk6zc.png "Figure 1")
+
+위의 그림은 Stanford 대학의 CS231n 강좌에서 가져온 간단한 deep learning의 동작 그림입니다[^CS231n17].
+
+
+
+ layer를 사용하여 raw data를 다른 형태로 가공하여 표현하는
 
 // class of techniques, computational models, multiple processing layers, learn representations of data, multiple levels of abstrction
 
@@ -63,7 +72,7 @@ categories:
 * 이제 간단히 이론에 대해 알아보겠음
 
 [^LeCun15]: Yann Lecun, Yoshua Bengio, and Geoffrey Hinton, "Deep learning," Nature, 2015.
-
+[^CS231n17]: http://cs231n.stanford.edu
 
 
 ### Convolutional Neural Network (CNN)
