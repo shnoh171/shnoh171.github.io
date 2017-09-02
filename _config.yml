@@ -5,7 +5,7 @@ highlighter:      rouge
 # Setup
 title:            Deep Learning Platform
 tagline:          'A Jekyll theme'
-description:      'abc 가나다'
+description:      'Deep Learning 응용과 이를 위한 플랫폼에 대한 블로그입니다.'
 url:              https://nsh3389.github.io
 baseurl:          # the optional subpath of your site, e.g. "/blog"
 
@@ -25,3 +25,6 @@ version:            3.4.1
 sidebar_home_link:  true
 github:
   repo:             https://github.com/fongandrew/hydeout
+
+disqus:
+  shortname: shnoh
