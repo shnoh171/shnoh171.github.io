@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Deep Learning에 대한 기본적인 소개
+published: false
 ---
 // 아직 작성 중인 문서입니다.
 
@@ -10,15 +11,15 @@ title: Deep Learning에 대한 기본적인 소개
 본 포스트는 deep learning을 처음 접하는 학생들과 연구원들이 알아야 하는 배경과 기초 지식들을 공유하기 위해 작성되었습니다. Machine learning에 대한 기반 지식은 필요하지 않으나, 대학 학부 수준의 수학 지식은 가지고 있다고 가정하고 썼습니다. 지금  부터 Deep learning의 정의와 역사를 간단하게 짚은 후, 기본적인 neural network 이론들에 대해 알아 보겠습니다.
 
 ## Deep Learning이란 무엇인가
-
 * Deep learning의 정의
   + Deep learning is a class of techniques which allows computational models that are composed of multiple processing layers to learn representations of data with multiple levels of abstraction
   + 결국은 neural network를 꾸미는 advertise term
-  + (조사: 누가 deep learning이라는 단어를 유행시켰는가?)
+  + (TODO: 누가 deep learning이라는 단어를 유행시켰는지 조사)
 * Neural network
   + Neuron
   + Network
   + 무엇이 좋은가? - 복잡한 함수를 만들 수 있다.
+  + (Classification을 이용한 복잡한 함수를 만들 수 있다는 증거)
 * History and Achievement
   + 1940년대부터 연구되었지만 2010년 이후에서야 만개함
   + 특히, supervised learning에 큰 성과를 거둠(하지만 다른 분야에도 적용 중)
