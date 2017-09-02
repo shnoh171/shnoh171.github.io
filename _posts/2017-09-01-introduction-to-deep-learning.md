@@ -15,6 +15,7 @@ published: false
 * Deep learning의 정의
   + Deep learning is a class of techniques which allows computational models that are composed of multiple processing layers to learn representations of data with multiple levels of abstraction
   + 결국은 neural network를 꾸미는 advertise term
+  + (조사: 누가 deep learning이라는 단어를 유행시켰는가?)
 * Neural network
   + Neuron
   + Network
