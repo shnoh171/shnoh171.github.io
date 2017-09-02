@@ -1,13 +1,13 @@
 ---
 layout: post
-title: Deep Learning에 대한 기본적인 소개
+title: Deep Learning에 대한 간단한 소개
 categories:
   - Basic Theory
 ---
 **아직 미완성인 포스트입니다.** 본 포스트는 deep learning을 처음 접하는 학생들과 연구원들이 알아야 하는 배경과 기초 지식들을 공유하기 위해 작성되었습니다.
 
 ### Deep Learning이란 무엇인가
-* Deep learning은 neural network를 사용하는 machine learning 기술의 집합이다.
+* Deep learning은 neural network를 사용하는 machine learning 기술의 집합이다. [^test]
   + Deep learning is a class of techniques which allows computational models that are composed of multiple processing layers to learn representations of data with multiple levels of abstraction
   + 결국은 neural network를 꾸미는 advertise term
   + 특히 supervised learning에 큰 성과를 거둠(하지만 다른 분야에도 적용 중)
@@ -47,6 +47,8 @@ categories:
   3. 데이터 셋 확보가 용이해짐
   4. 돈이 됨?, 가능성 있음?
 * 이제 간단히 이론에 대해 알아보겠음
+
+[^test]: tsetsdfs
 
 
 
