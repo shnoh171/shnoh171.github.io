@@ -27,4 +27,5 @@ github:
 
 plugins: [jekyll-paginate]
 
+disqus_shortname: shnoh
 # // git add -A; git commit -m "test"; git push
