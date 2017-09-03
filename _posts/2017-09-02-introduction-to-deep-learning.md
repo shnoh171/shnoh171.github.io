@@ -4,7 +4,7 @@ title: Deep Learning에 대한 간단한 소개
 categories:
   - Basic Theory
 ---
-**아직 미완성인 포스트입니다......** 본 포스트는 deep learning을 처음 접하는 학생들과 연구원들이 알아야 하는 배경과 기초 지식들을 공유하기 위해 작성되었습니다. 이 글에서 사용하는 그림들은 대부분 Stanford의 CS231n 강좌에서 가져왔습니다. 글을 읽고 deep learning에 대해 계속 공부하시려면 이 강의를 들어 보시는 것을 추천합니다[^CS231n16_YouTube].
+**아직 미완성인 포스트입니다** 본 포스트는 deep learning을 처음 접하는 학생들과 연구원들이 알아야 하는 배경과 기초 지식들을 공유하기 위해 작성되었습니다. 이 글에서 사용하는 그림들은 대부분 Stanford의 CS231n 강좌에서 가져왔습니다. 글을 읽고 deep learning에 대해 계속 공부하시려면 이 강의를 들어 보시는 것을 추천합니다[^CS231n16_YouTube].
 
 ### Deep Learning이란 무엇인가
 2015년, deep learning의 대가 세 사람(Yann Lecun, Yoshua Bengio, Geoffrey Hinton)이 Nature에 deep learning의 발전을 정리하는 논문을 게재하였습니다[^LeCun15]. 이 논문에서 정의하는 deep learning은 아래의 한 문장으로 요약할 수 있습니다.
@@ -39,7 +39,7 @@ ANN이 왜 좋은지를 설명하기 위해서, supervised learning의 한 갈�
 ![placeholder](https://i.imgur.com/0uJ5UUD.png "Figure 4")
 *Figure 4. Simple Classification [^MongoDB]*
 
-하지만 이미지를 보고 이미지에 찍힌 물체의 정체를 파악하는 image recognition의 경우 문제가 복잡해집니다. 우선 입력 데이터가 방대합니다. 가로 세로의 픽셀 수가 512인 저해상도 칼라 이미지만 하더라도 한 이미지의 입력 차원의 수는 \[512\times512\times3\]입니다(마지막 3을 곱하는 이유는 RGB 세 색상이 한 픽셀에 들어있기 때문임). 게다가 파악해야 하는 물체의 종류(class)가 많아질수록 \(512\times512\times3\) 차원 공간 속에 데이터의 분포가 매우 복잡해집니다. 이 공간 속에서 위의 간단한 예제에서 선을 그은 것과 같이 hyperplane을 결정해야 하는데, 이를 위해서는 매우 복잡한 함수를 사용하여야 합니다.
+하지만 이미지를 보고 이미지에 찍힌 물체의 정체를 파악하는 image recognition의 경우 문제가 복잡해집니다. 우선 입력 데이터가 방대합니다. 가로 세로의 픽셀 수가 512인 저해상도 칼라 이미지만 하더라도 한 이미지의 입력 차원의 수는 \\[512\times512\times3\\]입니다(마지막 3을 곱하는 이유는 RGB 세 색상이 한 픽셀에 들어있기 때문임). 게다가 파악해야 하는 물체의 종류(class)가 많아질수록 \(512\times512\times3\) 차원 공간 속에 데이터의 분포가 매우 복잡해집니다. 이 공간 속에서 위의 간단한 예제에서 선을 그은 것과 같이 hyperplane을 결정해야 하는데, 이를 위해서는 매우 복잡한 함수를 사용하여야 합니다.
 
 기존의 machine learning 기법들은 이런 접근 방식이 불가능했기 때문에, 해당 분야(여기서는 이미지 처리)의 전문가들이 적절한 representation을 추출해냄으로서 문제를 단순화시켰습니다. SIFT feature, HOG feature, SURF feature 등이 이에 해당합니다. 하지만 ANN을 사용할 경우, 굳이 그런 번거로운 작업을 거칠 필요 없이 layer의 수와 layer 안의 neuron 수를 충분히 늘려서 복잡한 hyperplane을 정할 수 있습니다. 물론 정확한 hyperplane을 얻기 위해서는 각 neuron의 weight와 bias들을 잘 조절해야 합니다. 정답이 존재하는 학습 시스템은 구축했지만, 그 정답까지 어떻게 찾아갈 수 있을지는 또 다른 문제인 것이죠. 1940년 대에 제안되었던 ANN은 이에 대한 해답을 내놓지 못하였고 빙하기를 맞게 됩니다. 그 후 1970년대에 ANN의 weight와 bias들을 자동적으로 학습할 수 있는 backpropagation이라는 방법이 제안됩니다.
 
@@ -53,7 +53,7 @@ Backpropagation을 이해하기 위해서는 gradient descent를 이해하고 �
 Gradient descent는 안개가 끼어있는 산에서 사람에 내려오는 방법에 비유할 수 있습니다. 지도나 스마트폰이 없다면 우리가 취할 수 있는 유일한 방법은 경사가 낮은 방향으로 한 걸음씩 반복적으로 움직이는 것입니다. 위의 그림은 두 개의 파라미터 $\theta_0$와 $\theta_1$에 대한 loss function $J(\theta_0,\theta_1)$의 값을 표시한 그래프입니다. 그래프 상의 검은 선을 보면 좌측 상단에서 우측 하단으로 loss function의 결과 값이 줄어드는 방향으로(기울기가 가장 가파른 방향으로) 한 걸음씩 내려오는 것을 확인할 수 있습니다.
 
 즉, gradient descent는 주어진 파라미터 $\theta_0$과 $\theta_1$에 대해 gradient of $J$, 즉 $\nabla J(\theta_0,\theta_1)$를 계산한 후 step size $\gamma$만큼씩 각 parameter를 변경하는 것이라고 이야기할 수 있습니다. 이를 수식으로 표현하면 다음과 같습니다.
-\[\theta_0 := \theta_0 - \gamma \frac{\partial}{\partial \theta_0} J(\theta_0,\theta_1)\]
+\\[\theta_0 := \theta_0 - \gamma \frac{\partial}{\partial \theta_0} J(\theta_0,\theta_1)\\]
 \\[\theta_1 := \theta_1 - \gamma \frac{\partial}{\partial \theta_1} J(\theta_0,\theta_1)\\]
 
 ### Backpropagation: Deep Learning을 위한 Gradient Descent 적용
