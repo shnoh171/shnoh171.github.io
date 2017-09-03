@@ -22,13 +22,18 @@ Deep learning은 이런 representation 추출 알고리즘을 스스로 학습�
 
 ### Artificial Neural Network의 기본 구조
 
+Neuron은 ANN의 가장 작은 연산 단위입니다. 한 neuron은 이전 neuron들로부터 값들을 전달받아 일련의 연산을 처리한 후 다음 neuron에게 결과를 전달합니다. 이 방식은 우리 뇌 속의 neuron의 동작을 매우 단순화시켜 흉내내는 것입니다. 아래의 그림에서 보듯이, 이전 neuron으로 받은 값들은 각각 weight $w_i$를 곱한 후 bias $b$를 더하는 선형 결합으로 합쳐집니다. 그 후 이 값을 바로 다음 neuron에게 전달하는 것이 아니라, activation function이라고 불리는 함수 $f$를 거친 값을 전달합니다. Activation function이 필요한 이유는 nonlinear function을 사용하여 ANN이 표현할 수 있는 함수의 자유도를 높여주기 위해서인데, 이에 대해서는 조금 뒤에 더 설명하도록 하겠습니다.
+
 ![placeholder](https://i.imgur.com/5H9IqY4.jpg "Figure 2")
-*Figure 2. Neuron [^CS231n17]*
+*Figure 2. Neuron [^CS231n17_2]*
 
-Neuron은 ANN의 가장 작은 연산 단위입니다.
+Layer는 neuron들의 집합입니다. ANN은 아래의 그림과 같이 여러 개의 layer로 구성되며, 각 layer는 직전 layer의 neuron들로부터 값을 입력으로 전달받아 다음 layer의 neuron들에게 출력값을 전달합니다. Raw data를 직접 입력으로 받는 첫번째 layer를 input layer라고 부르고, 최종 출력을 담당하는 마지막 layer를 output layer라고 부릅니다. 나머지 layer는 hidden layer입니다. 일반적으로 hidden layer가 하나 이상이면 deep learning이라고 부르는데, 어차피 deep learning이라는 단어가 광고성 단어이기 때문에 이런 구분이 크게 중요하지는 않습니다.
 
-![placeholder](https://i.imgur.com/WYV1zUu.jpg "Figure 2")
-*Figure 2. Neural Network [^CS231n17]*
+![placeholder](https://i.imgur.com/WYV1zUu.jpg "Figure 3")
+*Figure 3. Neural Network [^CS231n17_2]*
+
+### 그래서 ANN이 왜 좋나요?
+
 
 ---
 * Neural network는 neuron들을 모아 layer를 구성한 network이다.
@@ -71,7 +76,7 @@ Neuron은 ANN의 가장 작은 연산 단위입니다.
 [^LeCun15]: Y. Lecun, Y. Bengio, and G. Hinton, "Deep learning," Nature, 2015.
 [^Bengio13]: Y. Bengio, A. Courville, and P. Vincent, "Representation Learning: A Review and New Perspectives," IEEE Transactions on Pattern Analysis and Machine Intelligence, 2013.
 [^CS231n17]: http://cs231n.stanford.edu
-
+[^CS231n17_2]: http://cs231n.github.io/neural-networks-1/
 
 ### Convolutional Neural Network (CNN)
 
