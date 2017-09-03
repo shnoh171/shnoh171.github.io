@@ -22,7 +22,13 @@ Deep learning은 이런 representation 추출 알고리즘을 스스로 학습�
 
 ### Artificial Neural Network의 기본 구조
 
+![placeholder](https://i.imgur.com/5H9IqY4.jpg "Figure 2")
+*Figure 2. Neuron [^CS231n17]*
+
 Neuron은 ANN의 가장 작은 연산 단위입니다.
+
+![placeholder](https://i.imgur.com/WYV1zUu.jpg "Figure 2")
+*Figure 2. Neural Network [^CS231n17]*
 
 ---
 * Neural network는 neuron들을 모아 layer를 구성한 network이다.
@@ -59,7 +65,7 @@ Neuron은 ANN의 가장 작은 연산 단위입니다.
   2. 이론적 한계를 차근차근 극복해나감
   3. 데이터 셋 확보가 용이해짐
   4. 돈이 됨?, 가능성 있음?
-* 이제 간단히 이론에 대해 알아보겠음
+
 
 [^CS231n16_YouTube]: https://www.youtube.com/playlist?list=PLkt2uSq6rBVctENoVBg1TpCC7OQi31AlC
 [^LeCun15]: Y. Lecun, Y. Bengio, and G. Hinton, "Deep learning," Nature, 2015.
