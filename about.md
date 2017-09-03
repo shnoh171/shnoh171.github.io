@@ -3,11 +3,14 @@ layout: page
 title: About
 sidebar_link: true
 ---
+Soonhyun Noh
 
-<p class="message">
-  Hey there! This page is included as an example. Feel free to customize it
-  for your own use upon downloading. Carry on!
-</p>
+Ph.D. Candidate at Real-Time Operating Systems Laboratory, Department of Electrical and Computer Engineering, Seoul National University
 
-To make pages show up in the sidebar, add `sidebar_link: true` to the front
-matter.
+**Publications**
+
+Myungsun Kim, Soonhyun Noh, Sungju Huh and Seongsoo Hong, "Fair-share scheduling for performance-asymmetric multicore architecture via scaled virtual runtime," IEEE International Conference on Embedded and Real-Time Computing Systems and Applications (RTCSA), 2015.
+
+Yongshik Moon*, Soonhyun Noh*, Daedong Park*, Chen Luo*, Anshumail Shirivastava, Seongsoo Hong, and Krishna Palem, "CaPSuLe: A camera-based positioning system using learning," IEEE International System-on Chip Conference (SOCC), 2016. (* indicate equal contribution)
+
+Soonhyun Noh, Myungsun Kim and Seongsoo Hong, "Enhancing AUTOSAR safety mechanisms for ISO 26262 functional safety requirements," FISITA World Automotive Congress, 2016.
