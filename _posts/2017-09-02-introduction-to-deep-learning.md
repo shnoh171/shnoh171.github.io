@@ -43,21 +43,26 @@ ANN이 왜 좋은지를 설명하기 위해서, supervised learning의 한 갈�
 
 기존의 machine learning 기법들은 이런 접근 방식이 불가능했기 때문에, 해당 분야(여기서는 이미지 처리)의 전문가들이 적절한 representation을 추출해냄으로서 문제를 단순화시켰습니다. SIFT feature, HOG feature, SURF feature 등이 이에 해당합니다. 하지만 ANN을 사용할 경우, 굳이 그런 번거로운 작업을 거칠 필요 없이 layer의 수와 layer 안의 neuron 수를 충분히 늘려서 복잡한 hyperplane을 정할 수 있습니다. 물론 정확한 hyperplane을 얻기 위해서는 각 neuron의 weight와 bias들을 잘 조절해야 합니다. 정답이 존재하는 학습 시스템은 구축했지만, 그 정답까지 어떻게 찾아갈 수 있을지는 또 다른 문제인 것이죠. 1940년 대에 제안되었던 ANN은 이에 대한 해답을 내놓지 못하였고 빙하기를 맞게 됩니다. 그 후 1970년대에 ANN의 weight와 bias들을 자동적으로 학습할 수 있는 backpropagation이라는 방법이 제안됩니다.
 
-### Backpropagation 설명에 앞서: Gradient Descent
+### Backpropagation 설명에 앞서: Gradient Descent 이해 하기
 
-Backpropagation을 이해하기 위해서는 기초적인 gradient descent를 이해하고 있어야 합니다. Gradient descent는 machine learning algorithm들이 사용하는 가장 기본적인 파라미터 최적화 기법입니다.
+Backpropagation을 이해하기 위해서는 gradient descent를 이해하고 있어야 합니다. Gradient descent는 machine learning algorithm들이 training 단계에서 사용하는 가장 기본적인 파라미터 최적화 기법입니다. 주어진 training set과 파라미터에 대해 학습이 얼마나 잘 되었는지를 판단하기 위한 loss function(또는 cost function)을 정의하고, 이 함수가 충분히 줄어들 때까지 파라미터를 변경하고 loss function을 계산하는 과정을 반복합니다. Loss function을 어떻게 정할지는 machine learning engineer의 몫인데, 원하는 값과 실제 값 사이에 얼마나 차이가 있는지를 수식으로 표현하여 사용합니다.
+
+![placeholder](https://i.imgur.com/hNpPZWv.png "Figure 5")
+*Figure 5. Gradient Descent [^AndrewNg]*
+
+Gradient descent는 안개가 끼어있는 산에서 사람에 내려오는 방법에 비유할 수 있습니다. 지도나 스마트폰이 없다면 우리가 취할 수 있는 유일한 방법은 경사가 낮은 방향으로 한 걸음씩 반복적으로 움직이는 것입니다. 위의 그림은 두 개의 파라미터 $\theta_0$와 $\theta_1$에 대한 loss function $J(\theta_0,\theta_1)$의 값을 표시한 그래프입니다. 그래프 상의 검은 선을 보면 좌측 상단에서 우측 하단으로 loss function의 결과 값이 줄어드는 방향으로(기울기가 가장 가파른 방향으로) 한 걸음씩 내려오는 것을 확인할 수 있습니다.
+
+## Backpropagation: Deep Learning을 위한 Gradient Descent 적용
+
+
+
 
 ---
 
 
 ### 어떻게 학습할 것인가?
 
-* 학습의 필요성
-  + 이제 당연히 해결되어야 하는 문제는 '학습'을 어떻게 하느냐이다. Weight와 bias 값들을 '잘' 잡는 방법이 있어야 한다.
-  + Deep learning의 기본적인 아이디어는 50년대에 나왔지만, 학습을 효율적으로 하는 방법을 찾지 못해 빙하기가 찾아왔다.
-* Gradient descent에 대한 설명
-  + NN의 학습 방법에 대해 이해하기에 앞서, machine learning의 가장 기본적인 학습법인 gradient descent에 대해 이해하여야 한다.
-  + Loss function에 대한 설명
+*
   + Gradient descent는 산에서 내려가는 방법에 비유할 수 있음
   + 2개의 parameter를 가지는 경우의 gradient descent
 * Neural network에 이를 가능하게 하는 방법이 제안되었으니, 이는 backpropagation이다.
@@ -75,19 +80,16 @@ Backpropagation을 이해하기 위해서는 기초적인 gradient descent를 �
   3. 데이터 셋 확보가 용이해짐
   4. 돈이 됨?, 가능성 있음?
 
+### Convolutional Neural Network (CNN)
+
+  * 필요성: 연산량이 너무 많음
+  * Motivation: 지역적 정보 활용?
+  * Architecture 설명
 
 [^CS231n16_YouTube]: https://www.youtube.com/playlist?list=PLkt2uSq6rBVctENoVBg1TpCC7OQi31AlC
 [^LeCun15]: Y. Lecun, Y. Bengio, and G. Hinton, "Deep learning," Nature, 2015.
-[^Bengio13]: Y. Bengio, A. Courville, and P. Vincent, "Representation Learning: A Review and New Perspectives," IEEE Transactions on Pattern Analysis and Machine Intelligence, 2013.
+[^Bengio13]: Y. Bengio, A. Courville, and P. Vincent, "Representation learning: A review and new perspectives," IEEE Transactions on Pattern Analysis and Machine Intelligence, 2013.
 [^CS231n17]: http://cs231n.stanford.edu
 [^CS231n17_2]: http://cs231n.github.io/neural-networks-1/
 [^MongoDB]: https://www.mongodb.com/blog/post/deep-learning-and-the-artificial-intelligence-revolution-part-2
-
-### Convolutional Neural Network (CNN)
-
-* 필요성: 연산량이 너무 많음
-* Motivation: 지역적 정보 활용?
-* Architecture 설명
-
-
-// git add -A; git commit -m "test"; git push
+[^AndrewNg]: AndrewNg, "Machine learning," Coursera.
