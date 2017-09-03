@@ -58,7 +58,15 @@ $$\theta_1 := \theta_1 - \gamma \frac{\partial}{\partial \theta_1} J(\theta_0,\t
 
 ### Backpropagation: Deep Learning을 위한 Gradient Descent 적용
 
-ANN에 gradient descent를 적용하기 힘든 이유는 weight와 bias값이 너무 많기 때문입니다. Loss function을 $J$라고 하면 모든 weight $w$와 bias $b$에 대해 $\frac{\partial J}{\partial w}$와 $\frac{\partial J}{\partial b}$를 계산해야 하는데 이것이 보통 일이 아닙니다. Backpropagation은 이 gradient들을 빠르게 계산해주는 방법입니다.
+ANN에 gradient descent를 적용하기 힘든 이유는 weight와 bias값이 너무 많기 때문입니다. Loss function을 $J$라고 하면 각 neuron의 모든 weight $w$와 bias $b$에 대해 $\frac{\partial J}{\partial w}$와 $\frac{\partial J}{\partial b}$를 계산해야 하는데 이것이 보통 일이 아닙니다. 아래의 그림은 2014년 ImageNet Large Scale Visual Recognition Competition(ILSVRC)에서 우승한 GoogleNet의 구조인데 굉장히 복잡하게 layer를 구성했다는 것을 알 수 있습니다. 각 layer에는 다수의 neuron들이 있고, 각 neuron에는 다수의 weight와 bias 파라미터들이 존재합니다.
+
+![placeholder](https://i.imgur.com/K7QjClh.png "Figure 5")
+*Figure 6. GoogleNet's Architecture [^Deshpande16]*
+
+Backpropagation은 이런 복잡한 neural network에 대해 gradient를 빠르게 계산할 수 있는 기법입니다.
+
+
+
 
 
 ### Deep Learning 연구의 기폭제: AlexNet의 ImageNet Challenge 우승
@@ -96,3 +104,4 @@ ANN에 gradient descent를 적용하기 힘든 이유는 weight와 bias값이 �
 [^CS231n17_2]: http://cs231n.github.io/neural-networks-1/
 [^MongoDB]: https://www.mongodb.com/blog/post/deep-learning-and-the-artificial-intelligence-revolution-part-2
 [^AndrewNg]: AndrewNg, "Machine learning," Coursera.
+[^Deshpande16]: https://adeshpande3.github.io/adeshpande3.github.io/The-9-Deep-Learning-Papers-You-Need-To-Know-About.html
