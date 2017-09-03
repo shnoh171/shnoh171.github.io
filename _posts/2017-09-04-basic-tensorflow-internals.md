@@ -4,12 +4,9 @@ title: TensorFlow 구조와 내부 동작에 대한 간단한 소개
 categories:
   - TensorFlow
 ---
+**아직 작성 중인 글입니다.**
+
 Google의 TensorFlow는
-
-// 아직 작성 중인 문서입니다.dfgd
-
-* Step 1. 개요 작성 (x)
-* Step 2. 글쓰기 (x)
 
 ## Deep Learning 시장 선점을 위한 플랫폼 경쟁
 
