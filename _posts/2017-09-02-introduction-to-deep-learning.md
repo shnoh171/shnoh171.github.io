@@ -43,7 +43,7 @@ ANN이 왜 좋은지를 설명하기 위해서, supervised learning의 한 갈�
 
 기존의 machine learning 기법들은 이런 접근 방식이 불가능했기 때문에, 해당 분야(여기서는 이미지 처리)의 전문가들이 적절한 representation을 추출해냄으로서 문제를 단순화시켰습니다. SIFT feature, HOG feature, SURF feature 등이 이에 해당합니다. 하지만 ANN을 사용할 경우, 굳이 그런 번거로운 작업을 거칠 필요 없이 layer의 수와 layer 안의 neuron 수를 충분히 늘려서 복잡한 hyperplane을 정할 수 있습니다. 물론 정확한 hyperplane을 얻기 위해서는 각 neuron의 weight와 bias들을 잘 조절해야 합니다. 정답이 존재하는 학습 시스템은 구축했지만, 그 정답까지 어떻게 찾아갈 수 있을지는 또 다른 문제인 것이죠. 1940년 대에 제안되었던 ANN은 이에 대한 해답을 내놓지 못하였고 빙하기를 맞게 됩니다. 그 후 1970년대에 ANN의 weight와 bias들을 자동적으로 학습할 수 있는 backpropagation이라는 방법이 제안됩니다.
 
-### Backpropagation 설명에 앞서: Gradient Descent 이해 하기
+### Backpropagation 설명에 앞서 Gradient Descent 이해하기
 
 Backpropagation을 이해하기 위해서는 gradient descent를 이해하고 있어야 합니다. Gradient descent는 machine learning algorithm들이 training 단계에서 사용하는 가장 기본적인 파라미터 최적화 기법입니다. 주어진 training set과 파라미터에 대해 학습이 얼마나 잘 되었는지를 판단하기 위한 loss function(또는 cost function)을 정의하고, 이 함수가 충분히 줄어들 때까지 파라미터를 변경하고 loss function을 계산하는 과정을 반복합니다. Loss function을 어떻게 정할지는 machine learning engineer의 몫인데, 원하는 값과 실제 값 사이에 얼마나 차이가 있는지를 수식으로 표현하여 사용합니다.
 
@@ -58,16 +58,28 @@ Gradient descent는 안개가 끼어있는 산에서 사람에 내려오는 방�
 
 ### Backpropagation: Deep Learning을 위한 Gradient Descent 적용
 
-ANN에 gradient descent를 적용하기 힘든 이유는 weight와 bias값이 너무 많기 때문입니다. Loss function을 \\(J\\)라고 하면 각 neuron의 모든 weight \\(w\\)와 bias \\(b\\)에 대해 \\(\frac{\partial J}{\partial w}\\)와 \\(\frac{\partial J}{\partial b}\\)를 계산해야 하는데 이것이 보통 일이 아닙니다. 아래의 그림은 2014년 ImageNet Large Scale Visual Recognition Competition(ILSVRC)에서 우승한 GoogleNet의 구조인데 굉장히 복잡하게 layer를 구성했다는 것을 알 수 있습니다. 각 layer에는 다수의 neuron들이 있고, 각 neuron에는 다수의 weight와 bias 파라미터들이 존재합니다.
+ANN에 gradient descent를 적용하기 힘든 이유는 weight와 bias값이 너무 많기 때문입니다. Loss function을 \\(J\\)라고 하면 각 neuron의 모든 weight \\(w\\)와 bias \\(b\\)에 대해 \\(\frac{\partial J}{\partial w}\\)와 \\(\frac{\partial J}{\partial b}\\)를 계산해야 하는데 이것이 보통 일이 아닙니다. 아래 그림에 표시한 2014년 ILSVRC에서 우승한 GoogleNet만 봐도 굉장히 복잡하게 layer를 구성했다는 것을 알 수 있습니다. 각 layer마다 존재하는 다수의 neuron들의 파라미터들에 대해 모두 gradient를 계산할 수 있어야 gradient descent를 적용할 수 있습니다.
 
-![placeholder](https://i.imgur.com/K7QjClh.png "Figure 5")
+![placeholder](https://i.imgur.com/K7QjClh.png "Figure 6")
 *Figure 6. GoogleNet's Architecture [^Deshpande16]*
 
-Backpropagation은 이런 복잡한 neural network에 대해 gradient를 빠르게 계산할 수 있는 기법입니다.
+Backpropagation은 이런 복잡한 neural network에 대해 gradient를 빠르게 계산할 수 있는 기법입니다. 아래의 그림은 CS231n 강좌에 나와 있는 간단한 backpropagation 예제입니다. \\(w_0\\), \\(x_0\\), \\(w_1\\), \\(x_1\\), \\(w_2\\)의 초기값을 정하면 네트워크의 왼쪽으로부터 오른쪽으로 연산이 진행되어 최종 결과값인 0.73이 출력됩니다. 이때 각 neuron의 중간 계산값을 위에 초록색 숫자로 표시하였습니다. Backpropagation은 제일 오른쪽 neuron의 출력에서 시작하여, 역으로 왼쪽으로 진행하며, 각 중간 결과값의 최종 출력값에 대한 변화율(gradient)를 계산합니다. 네트워크를 거꾸로 흐르며 각 중간 결과값의 gradient를 계산하기 때문에 이 기법을 backpropagation이라고 부릅니다.
 
+![placeholder](https://i.imgur.com/2UZZH3C.png "Figure 7")
+*Figure 7. Backpropagation Example [^CS231n17_3]*
 
+아래의 그림은 하나의 neuron에 대해 backpropagation이 어떻게 진행되는지를 좀 더 자세히 설명하는 그림입니다. Backpropagation algorithm은 출력 \\(y\\)의 최종값 \\(L\\)에 대한 gradient \\(\frac{\partial L}{\partial y}\\)를 알고 있다는 가정 하에 입력 \\(x\\)의 최종값 \\(L\\)에 대한 gradient \\(\frac{\partial L}{\partial x}\\)를 빠르게 계산해줍니다. 이는 \\(y\\)에 대한 \\(x\\)의 gradient를 구해서 \\(\frac{\partial L}{\partial y}\\)에 곱한 값입니다. 기본적인 미적분학의 chain rule을 이해하고 있으면 쉽게 이 방법을 증명할 수 있습니다.
 
+![placeholder](https://i.imgur.com/RXDNy7J.png "Figure 8")
+*Figure 8. Backpropagation for a Neuron*
 
+하지만 1970년대에 backpropagation이 제안된 이후에도 여전히 deep learning의 빙하기는 여전히 끝나지 않았습니다. 전문가들은 여러 가지 이유를 들지만, 이 글에서는 중요한 두 이유만 짚고 넘어가겠습니다.
+
+1. 여전히 학습에 필요한 연산량이 너무 많았습니다. Yann Lecun 교수가 1998년에 개발한 필기체 숫자 인식 기술의 경우, 각 neuron을 이전 layer의 일부 neuron에만 연결시켜 연산량을 획기적으로 줄이는 convolutional neural network(CNN)을 사용하였음에도 불구하고 10개의 숫자를 구별하는 모델을 학습하는데 당시 싱글코어 프로세서 하나를 2~3일 사용하여야 했다고 합니다[^LeCun98].
+2. 여러 이론적 한계 때문에 backpropagation이 잘 이루어지지 않았습니다. 그 중 대표적인 한계는 vanishing gradient라는 문제인데, 당시 주로 사용하던 activation function인 sigmoid function의 경우 아래 그림과 같이 입력값이 0에서 멀어질 경우 기울기가 급격히 0에 가까워지는 현상이 발생합니다. Backpropagation이 이 함수를 통과할 때 gradient가 거의 0으로 바뀌어 버리는 현상이 발생했고, 그 이후 layer들에서는 학습이 거의 이루어지지 않게 되었습니다.
+
+![placeholder](https://i.imgur.com/O43cLI7.png "Figure 8")
+*Figure 8. Sigmoid Function*
 
 ### Deep Learning 연구의 기폭제: AlexNet의 ImageNet Challenge 우승
 
@@ -105,3 +117,5 @@ Backpropagation은 이런 복잡한 neural network에 대해 gradient를 빠르�
 [^MongoDB]: https://www.mongodb.com/blog/post/deep-learning-and-the-artificial-intelligence-revolution-part-2
 [^AndrewNg]: AndrewNg, "Machine learning," Coursera.
 [^Deshpande16]: https://adeshpande3.github.io/adeshpande3.github.io/The-9-Deep-Learning-Papers-You-Need-To-Know-About.html
+[^CS231n17_3]: http://cs231n.github.io/optimization-2/
+[^LeCun98]: Y. Lecun, L. Bottou, Y. Bengio, and P. Haffner, "Gradient-based learning applied to document recognition,"  Proceedings of the IEEE, 1998.
