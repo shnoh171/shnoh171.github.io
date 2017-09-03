@@ -17,6 +17,9 @@ Deep learning은 이런 representation 추출 알고리즘을 스스로 학습�
 
 ![placeholder](https://i.imgur.com/ahRk6zc.png "Figure 1")
 
+이렇게 여러 개의 layer로 구성된 학습 시스템을 일반적으로 artificial neural network(ANN)라고 부릅니다. Neural network라고 부르는 이유는 인간의 뇌의 동작에서 힌트를 얻어 만들어졌기 때문입니다.
+
+
 ---
 * Deep learning은 neural network를 사용하는 machine learning 기술의 집합이다.
   + Deep learning is a class of techniques which allows computational models that are composed of multiple processing layers to learn representations of data with multiple levels of abstraction
