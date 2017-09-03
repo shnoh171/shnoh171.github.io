@@ -73,41 +73,17 @@ Backpropagation은 이런 복잡한 neural network에 대해 gradient를 빠르�
 ![placeholder](https://i.imgur.com/RXDNy7J.png "Figure 8")
 *Figure 8. Backpropagation for a Neuron*
 
-하지만 1970년대에 backpropagation이 제안된 이후에도 여전히 deep learning의 빙하기는 여전히 끝나지 않았습니다. 전문가들은 여러 가지 이유를 들지만, 이 글에서는 중요한 두 이유만 짚고 넘어가겠습니다.
-
-1. 여전히 학습에 필요한 연산량이 너무 많았습니다. Yann Lecun 교수가 1998년에 개발한 필기체 숫자 인식 기술의 경우, 각 neuron을 이전 layer의 일부 neuron에만 연결시켜 연산량을 획기적으로 줄이는 convolutional neural network(CNN)을 사용하였음에도 불구하고 10개의 숫자를 구별하는 모델을 학습하는데 당시 싱글코어 프로세서 하나를 2~3일 사용하여야 했다고 합니다[^LeCun98].
-2. 여러 이론적 한계 때문에 backpropagation이 잘 이루어지지 않았습니다. 그 중 대표적인 한계는 vanishing gradient라는 문제인데, 당시 주로 사용하던 activation function인 sigmoid function의 경우 아래 그림과 같이 입력값이 0에서 멀어질 경우 기울기가 급격히 0에 가까워지는 현상이 발생합니다. Backpropagation이 이 함수를 통과할 때 gradient가 거의 0으로 바뀌어 버리는 현상이 발생했고, 그 이후 layer들에서는 학습이 거의 이루어지지 않게 되었습니다.
-
-![placeholder](https://i.imgur.com/O43cLI7.png "Figure 8")
-*Figure 8. Sigmoid Function*
-
-### Deep Learning 연구의 기폭제: AlexNet의 ImageNet Challenge 우승
-
-
 ### 결론
 
----
+지금까지 기본적인 neural network의 구조와 이 네트워크를 학습시킬 수 있는 기본적인 기법인 backpropagation에 대해 알아보았습니다. 하지만 1970년대에 backpropagation이 제안된 이후에도 deep learning의 침체기는 끝나지 않았습니다. 그 이유는 아래와 같습니다.
 
-* Neural network에 이를 가능하게 하는 방법이 제안되었으니, 이는 backpropagation이다.
-  + TODO: backpropagation 조사하고 정리하여 설명
+1. 학습에 필요한 연산량이 여전히 너무 많았습니다. 이는 이후 연산량을 줄일 수 있는 여러 기법들의 제안과 컴퓨터 하드웨어의 발전에 따라 해결됩니다.
+2. 데이터의 양이 적었습니다. 이 역시 인터넷과 전자 기기들이 발전되며 해결됩니다.
+3. 마지막으로 여러 이론적 한계 때문에 학습이 여전히 잘 이루어지지 않았습니다. 대표적인 예는 vanishing gradient라는 문제였는데, backpropagation을 진행함에 따라 전달되는 gradient 값이 거의 0이 되어버려 파라미터 갱신이 되지 않는 문제였습니다. 이런 문제들 역시 deep learning 계의 학자들에 의해 차근차근 극복되었습니다.
 
+Deep learning이 성과를 보인 대표적인 사건은 ILSVRC 2012에서의 AlexNet의 우승입니다. Geoffrey Hinton 교수의 제자였던 Alex Krizhevsky는 convolutional neural network(CNN)라는 특수한 neural network 구조를 사용하여 image recognition 대회에서 오차율 15.4%를 기록하며 오차율 26.2%인 2등을 찍어누르며 우승합니다. 그 이후 ILSVRC 대회의 우승자들은 모두 CNN을 사용한 모델을 사용하고 있습니다.
 
-
-* Deep learning이 발전한 이유는 결국 다른 기술들에 유의미한 성과가 있었기 때문임
-* Deep learning 발전의 전환점이 된 두 사건
-  1. Automatic speech recognition (TIMIT dataset, 2010)
-  2. Image recognition (ImageNet challenge, 2012)
-* 지속적인 발전의 이유
-  1. 컴퓨팅 능력 향상
-  2. 이론적 한계를 차근차근 극복해나감
-  3. 데이터 셋 확보가 용이해짐
-  4. 돈이 됨?, 가능성 있음?
-
-### Convolutional Neural Network (CNN)
-
-  * 필요성: 연산량이 너무 많음
-  * Motivation: 지역적 정보 활용?
-  * Architecture 설명
+지금까지 가장 기본적인 deep learning 이론에 대해 알아보았습니다. 다음 포스트에서는 CNN에 대한 설명과 함께 image recognition 분야에서 deep learning의 발전에 어떻게 이루어졌는지에 대한 글을 적어보려 합니다.
 
 [^CS231n16_YouTube]: https://www.youtube.com/playlist?list=PLkt2uSq6rBVctENoVBg1TpCC7OQi31AlC
 [^LeCun15]: Y. Lecun, Y. Bengio, and G. Hinton, "Deep learning," Nature, 2015.
@@ -115,7 +91,7 @@ Backpropagation은 이런 복잡한 neural network에 대해 gradient를 빠르�
 [^CS231n17]: http://cs231n.stanford.edu
 [^CS231n17_2]: http://cs231n.github.io/neural-networks-1/
 [^MongoDB]: https://www.mongodb.com/blog/post/deep-learning-and-the-artificial-intelligence-revolution-part-2
-[^AndrewNg]: AndrewNg, "Machine learning," Coursera.
+[^AndrewNg]: Andrew Ng, "Machine learning," Coursera.
 [^Deshpande16]: https://adeshpande3.github.io/adeshpande3.github.io/The-9-Deep-Learning-Papers-You-Need-To-Know-About.html
 [^CS231n17_3]: http://cs231n.github.io/optimization-2/
 [^LeCun98]: Y. Lecun, L. Bottou, Y. Bengio, and P. Haffner, "Gradient-based learning applied to document recognition,"  Proceedings of the IEEE, 1998.
