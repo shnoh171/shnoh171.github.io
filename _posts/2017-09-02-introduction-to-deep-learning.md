@@ -22,7 +22,7 @@ Deep learning은 이런 representation 추출 알고리즘을 스스로 학습�
 
 ### Artificial Neural Network의 기본 구조
 
-Neuron은 ANN의 가장 작은 연산 단위입니다. 한 neuron은 이전 neuron들로부터 값들을 전달받아 일련의 연산을 처리한 후 다음 neuron에게 결과를 전달합니다. 이 방식은 우리 뇌 속의 neuron의 동작을 매우 단순화시켜 흉내내는 것입니다. 아래의 그림에서 보듯이, 이전 neuron으로 받은 값들은 각각 weight $w_i$를 곱한 후 bias $b$를 더하는 선형 결합으로 합쳐집니다. 그 후 이 값을 바로 다음 neuron에게 전달하는 것이 아니라, activation function이라고 불리는 함수 $f$를 거친 값을 전달합니다. Activation function이 필요한 이유는 nonlinear function을 사용하여 ANN이 표현할 수 있는 함수의 자유도를 높여주기 위해서인데, 이에 대해서는 조금 뒤에 더 설명하도록 하겠습니다.
+Neuron은 ANN의 가장 작은 연산 단위입니다. 한 neuron은 이전 neuron들로부터 값들을 전달받아 일련의 연산을 처리한 후 다음 neuron에게 결과를 전달합니다. 이 방식은 우리 뇌 속의 neuron의 동작을 매우 단순화시켜 흉내내는 것입니다. 아래의 그림에서 보듯이, 이전 neuron으로 받은 값들은 각각 weight \\(w_i\\)를 곱한 후 bias \\(b\\)를 더하는 선형 결합으로 합쳐집니다. 그 후 이 값을 바로 다음 neuron에게 전달하는 것이 아니라, activation function이라고 불리는 함수 \\(f\\)를 거친 값을 전달합니다. Activation function이 필요한 이유는 nonlinear function을 사용하여 ANN이 표현할 수 있는 함수의 자유도를 높여주기 위해서인데, 이에 대해서는 조금 뒤에 더 설명하도록 하겠습니다.
 
 ![placeholder](https://i.imgur.com/5H9IqY4.jpg "Figure 2")
 *Figure 2. Neuron [^CS231n17_2]*
@@ -39,7 +39,7 @@ ANN이 왜 좋은지를 설명하기 위해서, supervised learning의 한 갈�
 ![placeholder](https://i.imgur.com/0uJ5UUD.png "Figure 4")
 *Figure 4. Simple Classification [^MongoDB]*
 
-하지만 이미지를 보고 이미지에 찍힌 물체의 정체를 파악하는 image recognition의 경우 문제가 복잡해집니다. 우선 입력 데이터가 방대합니다. 가로 세로의 픽셀 수가 512인 저해상도 칼라 이미지만 하더라도 한 이미지의 입력 차원의 수는 \\(512\times512\times3\\)입니다(마지막 3을 곱하는 이유는 RGB 세 색상이 한 픽셀에 들어있기 때문임). 게다가 파악해야 하는 물체의 종류(class)가 많아질수록 \(512\times512\times3\) 차원 공간 속에 데이터의 분포가 매우 복잡해집니다. 이 공간 속에서 위의 간단한 예제에서 선을 그은 것과 같이 hyperplane을 결정해야 하는데, 이를 위해서는 매우 복잡한 함수를 사용하여야 합니다.
+하지만 이미지를 보고 이미지에 찍힌 물체의 정체를 파악하는 image recognition의 경우 문제가 복잡해집니다. 우선 입력 데이터가 방대합니다. 가로 세로의 픽셀 수가 512인 저해상도 칼라 이미지만 하더라도 한 이미지의 입력 차원의 수는 \\(512\times512\times3\\)입니다(마지막 3을 곱하는 이유는 RGB 세 색상이 한 픽셀에 들어있기 때문임). 게다가 파악해야 하는 물체의 종류(class)가 많아질수록 \\(512\times512\times3\\) 차원 공간 속에 데이터의 분포가 매우 복잡해집니다. 이 공간 속에서 위의 간단한 예제에서 선을 그은 것과 같이 hyperplane을 결정해야 하는데, 이를 위해서는 매우 복잡한 함수를 사용하여야 합니다.
 
 기존의 machine learning 기법들은 이런 접근 방식이 불가능했기 때문에, 해당 분야(여기서는 이미지 처리)의 전문가들이 적절한 representation을 추출해냄으로서 문제를 단순화시켰습니다. SIFT feature, HOG feature, SURF feature 등이 이에 해당합니다. 하지만 ANN을 사용할 경우, 굳이 그런 번거로운 작업을 거칠 필요 없이 layer의 수와 layer 안의 neuron 수를 충분히 늘려서 복잡한 hyperplane을 정할 수 있습니다. 물론 정확한 hyperplane을 얻기 위해서는 각 neuron의 weight와 bias들을 잘 조절해야 합니다. 정답이 존재하는 학습 시스템은 구축했지만, 그 정답까지 어떻게 찾아갈 수 있을지는 또 다른 문제인 것이죠. 1940년 대에 제안되었던 ANN은 이에 대한 해답을 내놓지 못하였고 빙하기를 맞게 됩니다. 그 후 1970년대에 ANN의 weight와 bias들을 자동적으로 학습할 수 있는 backpropagation이라는 방법이 제안됩니다.
 
@@ -50,15 +50,15 @@ Backpropagation을 이해하기 위해서는 gradient descent를 이해하고 �
 ![placeholder](https://i.imgur.com/hNpPZWv.png "Figure 5")
 *Figure 5. Gradient Descent [^AndrewNg]*
 
-Gradient descent는 안개가 끼어있는 산에서 사람에 내려오는 방법에 비유할 수 있습니다. 지도나 스마트폰이 없다면 우리가 취할 수 있는 유일한 방법은 경사가 낮은 방향으로 한 걸음씩 반복적으로 움직이는 것입니다. 위의 그림은 두 개의 파라미터 $\theta_0$와 $\theta_1$에 대한 loss function $J(\theta_0,\theta_1)$의 값을 표시한 그래프입니다. 그래프 상의 검은 선을 보면 좌측 상단에서 우측 하단으로 loss function의 결과 값이 줄어드는 방향으로(기울기가 가장 가파른 방향으로) 한 걸음씩 내려오는 것을 확인할 수 있습니다.
+Gradient descent는 안개가 끼어있는 산에서 사람에 내려오는 방법에 비유할 수 있습니다. 지도나 스마트폰이 없다면 우리가 취할 수 있는 유일한 방법은 경사가 낮은 방향으로 한 걸음씩 반복적으로 움직이는 것입니다. 위의 그림은 두 개의 파라미터 \\(\theta_0\\)와 \\(\theta_1\\)에 대한 loss function \\(J(\theta_0,\theta_1)\\)의 값을 표시한 그래프입니다. 그래프 상의 검은 선을 보면 좌측 상단에서 우측 하단으로 loss function의 결과 값이 줄어드는 방향으로(기울기가 가장 가파른 방향으로) 한 걸음씩 내려오는 것을 확인할 수 있습니다.
 
-즉, gradient descent는 주어진 파라미터 $\theta_0$과 $\theta_1$에 대해 gradient of $J$, 즉 $\nabla J(\theta_0,\theta_1)$를 계산한 후 step size $\gamma$만큼씩 각 parameter를 변경하는 것이라고 이야기할 수 있습니다. 이를 수식으로 표현하면 다음과 같습니다.
+즉, gradient descent는 주어진 파라미터 \\(\theta_0\\)과 \\(\theta_1\\)에 대해 gradient of \\(J\\), 즉 \\(\nabla J(\theta_0,\theta_1)\\)를 계산한 후 step size \\(\gamma\\)만큼씩 각 parameter를 변경하는 것이라고 이야기할 수 있습니다. 이를 수식으로 표현하면 다음과 같습니다.
 \\[\theta_0 := \theta_0 - \gamma \frac{\partial}{\partial \theta_0} J(\theta_0,\theta_1)\\]
 \\[\theta_1 := \theta_1 - \gamma \frac{\partial}{\partial \theta_1} J(\theta_0,\theta_1)\\]
 
 ### Backpropagation: Deep Learning을 위한 Gradient Descent 적용
 
-ANN에 gradient descent를 적용하기 힘든 이유는 weight와 bias값이 너무 많기 때문입니다. Loss function을 $J$라고 하면 각 neuron의 모든 weight $w$와 bias $b$에 대해 $\frac{\partial J}{\partial w}$와 $\frac{\partial J}{\partial b}$를 계산해야 하는데 이것이 보통 일이 아닙니다. 아래의 그림은 2014년 ImageNet Large Scale Visual Recognition Competition(ILSVRC)에서 우승한 GoogleNet의 구조인데 굉장히 복잡하게 layer를 구성했다는 것을 알 수 있습니다. 각 layer에는 다수의 neuron들이 있고, 각 neuron에는 다수의 weight와 bias 파라미터들이 존재합니다.
+ANN에 gradient descent를 적용하기 힘든 이유는 weight와 bias값이 너무 많기 때문입니다. Loss function을 \\(J\\)라고 하면 각 neuron의 모든 weight \\(w\\)와 bias \\(b\\)에 대해 \\(\frac{\partial J}{\partial w}\\)와 \\(\frac{\partial J}{\partial b}\\)를 계산해야 하는데 이것이 보통 일이 아닙니다. 아래의 그림은 2014년 ImageNet Large Scale Visual Recognition Competition(ILSVRC)에서 우승한 GoogleNet의 구조인데 굉장히 복잡하게 layer를 구성했다는 것을 알 수 있습니다. 각 layer에는 다수의 neuron들이 있고, 각 neuron에는 다수의 weight와 bias 파라미터들이 존재합니다.
 
 ![placeholder](https://i.imgur.com/K7QjClh.png "Figure 5")
 *Figure 6. GoogleNet's Architecture [^Deshpande16]*
