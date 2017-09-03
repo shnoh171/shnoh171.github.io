@@ -34,17 +34,21 @@ Layer는 neuron들의 집합입니다. ANN은 아래의 그림과 같이 여러 
 
 ### 그래서 Artificial Neural Network가 왜 좋나요?
 
+ANN이 왜 좋은지를 설명하기 위해서, supervised learning의 한 갈래인 classification 문제를 예로 들겠습니다. Classification은 주어진 입력 데이터가 주어진 class 중 어떤 class에 속하는지를 판별하는 문제입니다. 사진이 개를 찍은 것인지, 고양이를 찍은 것인지 판단하는 것이 대표적인 classfication 문제입니다. 아래 그림은 아주 단순한 classification의 예를 나타낸 것인데, 두 개의 입력 데이터(사람의 나이, 종양의 크기)를 사용하여 해당 종양이 악성인지 아닌지를 판단하는 문제입니다. 이 문제의 경우, 주어진 training data set을 보고 직선을 하나 그으면 종양의 악성 여부를 효과적으로 판별할 수 있습니다.
+
+![placeholder](https://i.imgur.com/0uJ5UUD.png "Figure 4")
+*Figure 4. Simple Classification [^MongoDB]*
+
+하지만 이미지를 보고 이미지에 찍힌 물체의 정체를 파악하는 image recognition의 경우 문제가 복잡해집니다. 우선 입력 데이터가 방대합니다. 가로 세로의 픽셀 수가 512인 저해상도 칼라 이미지만 하더라도 한 이미지의 입력 차원의 수는 $512\times512\times3$입니다(마지막 3을 곱하는 이유는 RGB 세 색상이 한 픽셀에 들어있기 때문임). 게다가 파악해야 하는 물체의 종류(class)가 많아질수록 $512\times512\times3$ 차원 공간 속에 데이터의 분포가 매우 복잡해집니다. 이 공간 속에서 위의 간단한 예제에서 선을 그은 것과 같이 hyperplane을 결정해야 하는데, 이를 위해서는 매우 복잡한 함수를 사용하여야 합니다.
+
+기존의 machine learning 기법들은 이런 접근 방식이 불가능했기 때문에, 해당 분야(여기서는 이미지 처리)의 전문가들이 적절한 representation을 추출해냄으로서 문제를 단순화시켰습니다. SIFT feature, HOG feature, SURF feature 등이 이에 해당합니다. 하지만 ANN을 사용할 경우, 굳이 그런 번거로운 작업을 거칠 필요 없이 layer의 수와 layer 안의 neuron 수를 충분히 늘려서 복잡한 hyperplane을 정할 수 있습니다. 물론 정확한 hyperplane을 얻기 위해서는 각 neuron의 weight와 bias들을 잘 조절해야 합니다. 정답이 존재하는 학습 시스템은 구축했지만, 그 정답까지 어떻게 찾아갈 수 있을지는 또 다른 문제인 것이죠. 1940년 대에 제안되었던 ANN은 이에 대한 해답을 내놓지 못하였고 빙하기를 맞게 됩니다. 그 후 1970년대에 ANN의 weight와 bias들을 자동적으로 학습할 수 있는 backpropagation이라는 방법이 제안됩니다.
+
+### Backpropagation 설명에 앞서: Gradient Descent
+
+Backpropagation을 이해하기 위해서는 기초적인 gradient descent를 이해하고 있어야 합니다. Gradient descent는 machine learning algorithm들이 사용하는 가장 기본적인 파라미터 최적화 기법입니다.
 
 ---
-* Neural network는 neuron들을 모아 layer를 구성한 network이다.
-  + Neuron은 사람의 neuron의 동작을 매우 단순화시킨 것
-  + Neuron에 대한 수식적 설명
-  + Neuron이 모여 layer를 구성하고 layer를 모아 neural network를 구성
-  + 무엇이 좋은가? - 복잡한 함수를 만들 수 있다.
-  + 예: Classification을 이용한 복잡한 함수를 만들 수 있다는 증거
-    - Problem of identifying to which of a set of categories a new observation belongs, on the basis of a training set of data containing observations (or instances) whose category membership is known
-    - 아무리 차원이 높아지고, 분포가 복잡해줘도 이를 분류할 수 있는 hyperplane을 '표현'할 수 있다. (신의 입장에서는 가능함)
-    - TODO: 설명 그림 자료 추가
+
 
 ### 어떻게 학습할 것인가?
 
@@ -77,6 +81,7 @@ Layer는 neuron들의 집합입니다. ANN은 아래의 그림과 같이 여러 
 [^Bengio13]: Y. Bengio, A. Courville, and P. Vincent, "Representation Learning: A Review and New Perspectives," IEEE Transactions on Pattern Analysis and Machine Intelligence, 2013.
 [^CS231n17]: http://cs231n.stanford.edu
 [^CS231n17_2]: http://cs231n.github.io/neural-networks-1/
+[^MongoDB]: https://www.mongodb.com/blog/post/deep-learning-and-the-artificial-intelligence-revolution-part-2
 
 ### Convolutional Neural Network (CNN)
 
