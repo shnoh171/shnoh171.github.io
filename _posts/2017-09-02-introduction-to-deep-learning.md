@@ -7,21 +7,15 @@ categories:
 **아직 미완성인 포스트입니다.** 본 포스트는 deep learning을 처음 접하는 학생들과 연구원들이 알아야 하는 배경과 기초 지식들을 공유하기 위해 작성되었습니다.
 
 ### Deep Learning이란 무엇인가
-2015년, deep learning을 이야기할 때 절대 빠질 수 없는 대가 세 사람(Yann Lecun, Yoshua Bengio, Geoffrey Hinton)이 Nature에 "Deep Learning"이라는 제목의 논문을 게재하였습니다[^LeCun15]. 이들은 논문에서 정의하는 deep learning이라는 개념을 정리하면 아래의 한 문장으로 요약할 수 있습니다.
+2015년, deep learning의 대가 세 사람(Yann Lecun, Yoshua Bengio, Geoffrey Hinton)이 Nature에 deep learning의 발전을 정리하는 논문을 게재하였습니다[^LeCun15]. 이 논문에서 정의하는 deep learning은 아래의 한 문장으로 요약할 수 있습니다.
 
->Deep learning is a class of techniques that allows computational models that are composed of multiple processing layers to learn representations of data with multiple levels of abstraction .
+> Deep learning is a class of techniques that allows computational models that are composed of multiple processing layers to learn representations of data with multiple levels of abstraction .
 
-1. Class of techniques
-    + Deep learning은 machine learning에 사용되는 기술 중 하나입니다.
-2. Learn representations of data
-    + Deep learning은 주어진 raw data를 목적에 맞게 스스로 학습하여 다른 형태로 표현하는 기술입니다.
-3. Multiple processing layers
-    + Deep learning은 이런 학습 과정을 한번에 해내는 것이 아니라, 여러 개의 layer를 사용하여 학습을 진행합니다.
+위의 문장에서 이야기하는 representation(또는 feature)은 데이터의 측정 가능한 특성을 의미합니다. 예를 들어 스팸 메일을 찾는 machine learning 알고리즘에서는 한 이메일에서 특정 단어의 반복 횟수, 작성 언어, 문법의 정확도, 제목의 시작 단어 등이 feature가 될 수 있습니다. 머신 러닝 알고리즘의 성능은 일반적으로 주어진 입력 데이터에서 어떤 representation을 추출하는지에 크게 영향을 받습니다[^Bengio13]. 일반적으로 해당 분야의 전문가들이 자신들의 경험에 기반하여 representation 추출 알고리즘을 개발하여 사용합니다. 하지만 입력 데이터의 차원이 커지고 풀어야 하는 문제가 복잡해질수록 인간이 적절한 representation을 추출하는 알고리즘을 만들기 힘들어집니다.
+
+Deep learning은 이런 representation 추출 알고리즘을 스스로 학습할 수 있는 기술입니다. 이를 가능하게 하는 이유는 많은 layer를 사용하여 여러 단계에 걸친 데이터 추상화 작업을 진행하기 때문입니다. 아래의 그림은 Stanford 대학의 CS231n 강좌에서 가져온 간단한 deep learning의 동작 그림입니다[^CS231n17]. 왼쪽에 사람이 말을 타고 있는 사진이 입력 데이터로 들어가고, 이 데이터가 오른쪽으로 layer를 거칠 때마다 점점 추상화된 형태로 가공됩니다. 마지막 layer를 지나고 오른쪽 끝에 도착했을 때, 말을 나타내는 8번째 representation이 가장 높은 값(흰색)을 가지게 되고, 이에 따라 이 사진을 말이라고 판별하게 됩니다.
 
 ![placeholder](https://i.imgur.com/ahRk6zc.png "Figure 1")
-
-위의 그림은 Stanford 대학의 CS231n 강좌에서 가져온 간단한 deep learning의 동작 그림입니다[^CS231n17]. 사람이 말을 타고 있는 사진이 왼쪽에서 오른쪽으로 layer를 거칠 때마다 10개의 이미지의 형태로 데이터를 가공하여 표현합니다. 마지막 layer를 거치고 오른쪽 끝에 도착했을 때, 말을 나타내는 이미지에 가장 높은 값이 나타나게 되어 이 이미지를 말이라고 인식하게 됩니다.
-
 
 ---
 * Deep learning은 neural network를 사용하는 machine learning 기술의 집합이다.
@@ -65,7 +59,8 @@ categories:
   4. 돈이 됨?, 가능성 있음?
 * 이제 간단히 이론에 대해 알아보겠음
 
-[^LeCun15]: Yann Lecun, Yoshua Bengio, and Geoffrey Hinton, "Deep learning," Nature, 2015.
+[^LeCun15]: Y. Lecun, Y. Bengio, and G. Hinton, "Deep learning," Nature, 2015.
+[^Bengio13]: Y. Bengio, A. Courville, and P. Vincent, "Representation Learning: A Review and New Perspectives," IEEE Transactions on Pattern Analysis and Machine Intelligence, 2013.
 [^CS231n17]: http://cs231n.stanford.edu
 
 
