@@ -71,7 +71,7 @@ Backpropagation은 이런 복잡한 neural network에 대해 gradient를 빠르�
 아래의 그림은 하나의 neuron에 대해 backpropagation이 어떻게 진행되는지를 좀 더 자세히 설명하는 그림입니다. Backpropagation algorithm은 출력 \\(y\\)의 최종값 \\(L\\)에 대한 gradient \\(\frac{\partial L}{\partial y}\\)를 알고 있다는 가정 하에 입력 \\(x\\)의 최종값 \\(L\\)에 대한 gradient \\(\frac{\partial L}{\partial x}\\)를 빠르게 계산해줍니다. 이는 \\(y\\)에 대한 \\(x\\)의 gradient를 구해서 \\(\frac{\partial L}{\partial y}\\)에 곱한 값입니다. 기본적인 미적분학의 chain rule을 이해하고 있으면 쉽게 이 방법을 증명할 수 있습니다.
 
 ![placeholder](https://i.imgur.com/RXDNy7J.png "Figure 8")
-*Figure 8. Backpropagation for a Neuron*
+*Figure 8. Backpropagation of a Neuron*
 
 ### 결론
 
