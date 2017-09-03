@@ -4,7 +4,7 @@ title: Deep Learning에 대한 간단한 소개
 categories:
   - Basic Theory
 ---
-**아직 미완성인 포스트입니다.** 본 포스트는 deep learning을 처음 접하는 학생들과 연구원들이 알아야 하는 배경과 기초 지식들을 공유하기 위해 작성되었습니다. 이 글에서 사용하는 그림들은 대부분 Stanford의 CS231n 강좌에서 가져왔습니다. 글을 읽고 deep learning에 대해 계속 공부하시려면 이 강의를 들어 보시는 것을 추천합니다[^CS231n16_YouTube].
+**아직 미완성인 포스트입니다...** 본 포스트는 deep learning을 처음 접하는 학생들과 연구원들이 알아야 하는 배경과 기초 지식들을 공유하기 위해 작성되었습니다. 이 글에서 사용하는 그림들은 대부분 Stanford의 CS231n 강좌에서 가져왔습니다. 글을 읽고 deep learning에 대해 계속 공부하시려면 이 강의를 들어 보시는 것을 추천합니다[^CS231n16_YouTube].
 
 ### Deep Learning이란 무엇인가
 2015년, deep learning의 대가 세 사람(Yann Lecun, Yoshua Bengio, Geoffrey Hinton)이 Nature에 deep learning의 발전을 정리하는 논문을 게재하였습니다[^LeCun15]. 이 논문에서 정의하는 deep learning은 아래의 한 문장으로 요약할 수 있습니다.
@@ -53,9 +53,7 @@ Backpropagation을 이해하기 위해서는 gradient descent를 이해하고 �
 Gradient descent는 안개가 끼어있는 산에서 사람에 내려오는 방법에 비유할 수 있습니다. 지도나 스마트폰이 없다면 우리가 취할 수 있는 유일한 방법은 경사가 낮은 방향으로 한 걸음씩 반복적으로 움직이는 것입니다. 위의 그림은 두 개의 파라미터 $\theta_0$와 $\theta_1$에 대한 loss function $J(\theta_0,\theta_1)$의 값을 표시한 그래프입니다. 그래프 상의 검은 선을 보면 좌측 상단에서 우측 하단으로 loss function의 결과 값이 줄어드는 방향으로(기울기가 가장 가파른 방향으로) 한 걸음씩 내려오는 것을 확인할 수 있습니다.
 
 즉, gradient descent는 주어진 파라미터 $\theta_0$과 $\theta_1$에 대해 gradient of $J$, 즉 $\nabla J(\theta_0,\theta_1)$를 계산한 후 step size $\gamma$만큼씩 각 parameter를 변경하는 것이라고 이야기할 수 있습니다. 이를 수식으로 표현하면 다음과 같습니다.
-
 \[\theta_0 := \theta_0 - \gamma \frac{\partial}{\partial \theta_0} J(\theta_0,\theta_1)\]
-
 \[\theta_1 := \theta_1 - \gamma \frac{\partial}{\partial \theta_1} J(\theta_0,\theta_1)\]
 
 ### Backpropagation: Deep Learning을 위한 Gradient Descent 적용
