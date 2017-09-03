@@ -52,23 +52,21 @@ Backpropagation을 이해하기 위해서는 gradient descent를 이해하고 �
 
 Gradient descent는 안개가 끼어있는 산에서 사람에 내려오는 방법에 비유할 수 있습니다. 지도나 스마트폰이 없다면 우리가 취할 수 있는 유일한 방법은 경사가 낮은 방향으로 한 걸음씩 반복적으로 움직이는 것입니다. 위의 그림은 두 개의 파라미터 $\theta_0$와 $\theta_1$에 대한 loss function $J(\theta_0,\theta_1)$의 값을 표시한 그래프입니다. 그래프 상의 검은 선을 보면 좌측 상단에서 우측 하단으로 loss function의 결과 값이 줄어드는 방향으로(기울기가 가장 가파른 방향으로) 한 걸음씩 내려오는 것을 확인할 수 있습니다.
 
-## Backpropagation: Deep Learning을 위한 Gradient Descent 적용
+### Backpropagation: Deep Learning을 위한 Gradient Descent 적용
 
 
 
+### Deep Learning 연구의 기폭제: AlexNet의 ImageNet Challenge 우승
+
+
+### 결론
 
 ---
 
-
-### 어떻게 학습할 것인가?
-
-*
-  + Gradient descent는 산에서 내려가는 방법에 비유할 수 있음
-  + 2개의 parameter를 가지는 경우의 gradient descent
 * Neural network에 이를 가능하게 하는 방법이 제안되었으니, 이는 backpropagation이다.
   + TODO: backpropagation 조사하고 정리하여 설명
 
-### Deep Learning 연구의 기폭제: AlexNet의 ImageNet Challenge 우승
+
 
 * Deep learning이 발전한 이유는 결국 다른 기술들에 유의미한 성과가 있었기 때문임
 * Deep learning 발전의 전환점이 된 두 사건
