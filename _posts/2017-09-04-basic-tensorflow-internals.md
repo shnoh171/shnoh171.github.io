@@ -1,6 +1,6 @@
 ---
 layout: post
-title: TensorFlow 소개
+title: TensorFlow 이해하기
 categories:
   - TensorFlow
 ---
