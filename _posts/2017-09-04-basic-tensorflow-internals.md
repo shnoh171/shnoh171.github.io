@@ -1,14 +1,14 @@
 ---
 layout: post
-title: TensorFlow 구조와 내부 동작에 대한 간단한 소개
+title: TensorFlow의 내부 동작에 대한 간단한 소개
 categories:
   - TensorFlow
 ---
 **아직 작성 중인 글입니다.**
 
-Google의 TensorFlow는
+자율주행 자동차와 인공지능과 같은 deep learning을 사용하는 서비스들이 두각을 나타내면서 deep learning 플랫폼에 대한 경쟁도 심화되고 있습니다. 하드웨어 플랫폼의 경우 초창기부터 많은 투자를 한 NVIDIA가 많이 앞서 나가고 있다고 봐도 될 것 같습니다. 특히, NVIDIA의 병렬 컴퓨팅 아키텍처인 CUDA의 개발자 커뮤니티는 경쟁자들을 압도하고 있습니다[^Dettmers17]. Google의 Tensor Processiong Unit(TPU)를 필두로 여러 회사들이 deep learning을 위한 프로세서를 제안하고 있지만, NVIDIA가 쉽게 자리를 내줄지는 아직 의문입니다.
 
-## Deep Learning 시장 선점을 위한 플랫폼 경쟁
+### Deep Learning 시장 선점을 위한 플랫폼 경쟁
 
 // 조사: Deep learning App, HW Platform, SW Platform
 * Deep learning
@@ -16,19 +16,19 @@ HW 플랫폼 - NVIDA가 선두, 나머지 따라가는 중
 
 SW 플랫폼 - 춘추 전국 시대, TensorFlow가 약간 앞서 가는 중
 
-## Google TensorFlow의 철학
+### Google TensorFlow의 철학
 
 *
 * Jeff Dean
   - Map Reduce 논문의 1저자
 
-## TensorFlow 프레임워크의 구조
+### TensorFlow 프레임워크의 구조
 
 
 
 
 
-## TensorFlow 프로그램 구조
+### TensorFlow 프로그램 구조
 
 ```python
 # mnist_softmax.py
@@ -58,15 +58,6 @@ def main(_):
   # Define loss and optimizer
   y_ = tf.placeholder(tf.float32, [None, 10])
 
-  # The raw formulation of cross-entropy,
-  #
-  #   tf.reduce_mean(-tf.reduce_sum(y_ * tf.log(tf.nn.softmax(y)),
-  #                                 reduction_indices=[1]))
-  #
-  # can be numerically unstable.
-  #
-  # So here we use tf.nn.softmax_cross_entropy_with_logits on the raw
-  # outputs of 'y', and then average across the batch.
   cross_entropy = tf.reduce_mean(
       tf.nn.softmax_cross_entropy_with_logits(labels=y_, logits=y))
   train_step = tf.train.GradientDescentOptimizer(0.5).minimize(cross_entropy)
@@ -94,7 +85,7 @@ if __name__ == '__main__':
 
 // Expressing computation via Graph과 Executing computation
 
-## Step 1. Expressing Computation via Computation Graph
+### Step 1. Expressing Computation via Computation Graph
 * tf.Graph
   + A TensorFlow computation, represented as a dataflow graph
 * tf.Operation
@@ -111,7 +102,7 @@ if __name__ == '__main__':
 
 
 
-## Step 2. Executing the Computation Graph (Single Machine Case)
+### Step 2. Executing the Computation Graph (Single Machine Case)
 
 * Session object를 사용하여 graph 상의 operation들을 수행
   + Operation의 수행은 OpKernel::Compute()에 정의되어 있음
@@ -145,7 +136,6 @@ template <typename Device, typename T, bool USE_CUBLAS> class MatMulOp : public 
 ```
 
 
-# Stemp
 
 ```c
 // tensorflow/core/kernels/matmul_op.cc
@@ -166,3 +156,5 @@ struct LaunchMatMul<GPUDevice, T, true /* USE_CUBLAS */> {
   }
 }
 ```
+
+[^Dettmers17]: http://timdettmers.com/2017/04/09/which-gpu-for-deep-learning/
