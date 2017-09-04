@@ -1,6 +1,6 @@
 ---
 layout: post
-title: TensorFlow의 내부 동작에 대한 간단 소개
+title: TensorFlow 소개: 철학, 구조, 내부 동작
 categories:
   - TensorFlow
 ---
