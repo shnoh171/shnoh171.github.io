@@ -6,21 +6,20 @@ categories:
 ---
 **아직 작성 중인 글입니다.**
 
-자율주행 자동차와 인공지능과 같은 deep learning을 사용하는 서비스들이 두각을 나타내면서 deep learning 플랫폼에 대한 경쟁도 심화되고 있습니다. 하드웨어 플랫폼의 경우 초창기부터 많은 투자를 한 NVIDIA가 많이 앞서 나가고 있다고 봐도 될 것 같습니다. 특히, NVIDIA의 병렬 컴퓨팅 아키텍처인 CUDA의 개발자 커뮤니티는 경쟁자들을 압도하고 있습니다[^Dettmers17]. Google의 Tensor Processiong Unit(TPU)를 필두로 여러 회사들이 deep learning을 위한 프로세서를 제안하고 있지만, NVIDIA가 쉽게 자리를 내줄지는 아직 의문입니다.
+자율주행 자동차와 인공지능과 같은 deep learning을 사용하는 서비스들이 두각을 나타내면서 deep learning 플랫폼에 대한 경쟁도 심화되고 있습니다. 하드웨어 플랫폼의 경우 초창기부터 많은 투자를 한 NVIDIA가 많이 앞서 나가고 있다고 봐도 될 것 같습니다. 특히, NVIDIA의 병렬 컴퓨팅 아키텍처인 CUDA의 개발자 커뮤니티는 경쟁자들의 커뮤니티 규모를 압도하고 있습니다[^Dettmers17]. 이런 문맥으로 볼 때, Google의 Tensor Processiong Unit(TPU)를 필두로 여러 회사들이 deep learning을 위한 프로세서를 제안하고 있지만 NVIDIA가 쉽게 자리를 내줄지 의문스럽습니다.
 
-### Deep Learning 시장 선점을 위한 플랫폼 경쟁
+반면 소프트웨어 플랫폼은 상대적으로 경쟁이 치열해 보입니다.
 
-// 조사: Deep learning App, HW Platform, SW Platform
-* Deep learning
-HW 플랫폼 - NVIDA가 선두, 나머지 따라가는 중
 
-SW 플랫폼 - 춘추 전국 시대, TensorFlow가 약간 앞서 가는 중
+
 
 ### Google TensorFlow의 철학
 
 *
 * Jeff Dean
   - Map Reduce 논문의 1저자
+
+> One of the reasons we built TensorFlow, our next-generation system, the system that we’ve actually open sourced for machine learning, is that we wanted to keep the scalable attributes and production readiness of our first system, but make it a much more flexible platform for doing all kinds of machine-learning research and product development [^Jeffrey17]
 
 ### TensorFlow 프레임워크의 구조
 
@@ -158,3 +157,4 @@ struct LaunchMatMul<GPUDevice, T, true /* USE_CUBLAS */> {
 ```
 
 [^Dettmers17]: http://timdettmers.com/2017/04/09/which-gpu-for-deep-learning/
+[^Jeffrey17]: Jeffrey Dean and Sanjay Ghemawat, "MapReduce: simplified data processing on large clusters," USENIX Symposium on Operating Systems Design and Implementation (OSDI), 2014.
