@@ -6,7 +6,7 @@ categories:
 ---
 **아직 작성 중인 글입니다.**
 
-자율주행 자동차와 인공지능과 같은 deep learning을 사용하는 서비스들이 두각을 나타내면서 deep learning 플랫폼에 대한 경쟁도 심화되고 있습니다. 하드웨어 플랫폼의 경우 초창기부터 많은 투자를 한 NVIDIA가 많이 앞서 나가고 있다고 봐도 될 것 같습니다. 특히, NVIDIA의 병렬 컴퓨팅 아키텍처인 CUDA의 개발자 커뮤니티는 경쟁자들의 커뮤니티 규모를 압도하고 있습니다[^Dettmers17]. 이런 문맥으로 볼 때, Google의 Tensor Processiong Unit(TPU)를 필두로 여러 회사들이 deep learning을 위한 프로세서를 제안하고 있지만 NVIDIA가 쉽게 자리를 내줄지 의문스럽습니다.
+자율주행 자동차와 인공지능과 같은 deep learning을 사용하는 서비스들이 두각을 나타내면서 deep learning 플랫폼에 대한 경쟁도 심화되고 있습니다. 하드웨어 플랫폼의 경우 초창기부터 많은 투자를 한 NVIDIA가 많이 앞서 나가고 있다고 봐도 될 것 같습니다. 특히, NVIDIA의 병렬 컴퓨팅 아키텍처인 CUDA의 deep learning 라이브러리 지원과 개발자 커뮤니티 규모는 경쟁자들을 압도하고 있습니다[^Dettmers17]. 이런 문맥으로 볼 때, Google의 Tensor Processiong Unit(TPU)를 필두로 여러 회사들이 deep learning을 위한 프로세서를 제안하고 있지만 NVIDIA가 쉽게 자리를 내줄지 의문스럽습니다.
 
 반면 소프트웨어 플랫폼은 상대적으로 경쟁이 치열해 보입니다.
 
