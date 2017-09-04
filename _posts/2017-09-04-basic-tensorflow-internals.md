@@ -8,9 +8,9 @@ categories:
 
 자율주행 자동차와 인공지능과 같은 deep learning을 사용하는 서비스들이 두각을 나타내면서 deep learning 플랫폼에 대한 경쟁도 심화되고 있습니다. 하드웨어 플랫폼의 경우 초창기부터 많은 투자를 한 NVIDIA가 많이 앞서 나가고 있습니다. 특히, NVIDIA의 병렬 컴퓨팅 아키텍처인 CUDA의 deep learning 라이브러리 지원(cuBLAS, cuDNN)과 개발자 커뮤니티 규모는 경쟁자들을 압도하고 있습니다[^Dettmers17]. Google의 Tensor Processiong Unit(TPU)를 필두로 여러 회사들이 deep learning을 위한 프로세서를 제안하고 있지만 NVIDIA를 추월하는 것은 쉽지 않을 것으로 보입니다.
 
-반면 소프트웨어 플랫폼은 상대적으로 경쟁이 치열해 보입니다. Google의 TensorFlow가 빠르게 플랫폼을 오픈 소스로 공개하고 양질의 튜토리얼/문서들을 제공하며 많은 개발자들이 사용하는 주요 플랫폼이 되었지만[^Rubashkin17], 후발 주자들이 더 높은 성능과 편리한 기능들을 갖춘 플랫폼들(Microsoft CNTK, MXNet, Chainer, PyTorch)을 제안하고 발전시키고 있기 때문에 안심할 상황은 아닙니다[^TensorFlowBlog].
+반면 소프트웨어 플랫폼은 상대적으로 경쟁이 치열해 보입니다. Google의 TensorFlow가 빠르게 플랫폼을 오픈 소스로 공개하고 양질의 튜토리얼과 문서들을 제공하며 많은 개발자들이 사용하는 주요 플랫폼이 되었지만[^Rubashkin17], 후발 주자들(Microsoft CNTK, MXNet, PyTorch, ...)이 향상된 성능과 편리한 기능들을 선보이고 있기 때문에 안심할 상황은 아닙니다[^TensorFlowBlog].
 
-TensorFlow는 천하의 Google이 야심차게 진행하고 있는 프로젝트이기 때문에 미래가 밝을 것으로 예상하지만, 이를 state-of-the-art 플랫폼이라고 단정짓는 것은 매우 위험한 생각입니다. 이 글을 통해 처음 TensorFlow를 접하시는 분들은 이를 유념하고 TensorFlow를 공부하기 시작하셨으면 합니다. 지금부터 TensorFlow의 철학, 구조와 기본 동작을 알아보도록 하겠습니다.
+그럼에도 불구하고 TensorFlow는 천하의 Google이 야심차게 진행하고 있는 프로젝트이기 때문에 미래가 밝을 것 같지만, 이를 state-of-the-art라고 단정짓는 것은 매우 위험합니다. 이 사실을 염두에 두고 지금부터 TensorFlow의 철학, 구조와 기본 동작을 알아보도록 하겠습니다.
 
 ### Google TensorFlow의 철학
 
