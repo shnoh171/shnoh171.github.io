@@ -11,9 +11,9 @@ categories:
 
 > Deep learning is a class of techniques that allows computational models that are composed of multiple processing layers to learn representations of data with multiple levels of abstraction .
 
-위의 문장에서 이야기하는 representation(또는 feature)은 데이터의 측정 가능한 특성을 의미합니다. 예를 들어 스팸 메일을 찾는 machine learning 알고리즘에서는 한 이메일에서 특정 단어의 반복 횟수, 작성 언어, 문법의 정확도, 제목의 시작 단어 등이 feature가 될 수 있습니다. 머신 러닝 알고리즘의 성능은 일반적으로 주어진 입력 데이터에서 어떤 representation을 추출하는지에 크게 영향을 받습니다[^Bengio13]. 일반적으로 해당 분야의 전문가들이 자신들의 경험에 기반하여 representation 추출 알고리즘을 개발하여 사용합니다. 하지만 입력 데이터의 차원이 커지고 풀어야 하는 문제가 복잡해질수록 인간이 적절한 representation을 추출하는 알고리즘을 만들기 힘들어집니다.
+위의 문장에서 이야기하는 representation(또는 feature)은 데이터의 측정 가능한 특성을 의미합니다. 예를 들어 스팸 메일을 찾는 machine learning 알고리즘에서는 특정 단어의 반복 횟수, 작성 언어, 문법의 정확도, 제목의 시작 단어 등이 feature가 될 수 있습니다. 머신 러닝 알고리즘의 성능은 일반적으로 주어진 입력 데이터에서 어떤 representation을 추출하는지에 크게 영향을 받습니다[^Bengio13]. 보통 해당 분야의 전문가들이 자신들의 경험에 기반하여 representation 추출 알고리즘을 개발하여 사용합니다. 하지만 입력 데이터의 차원이 커지고 풀어야 하는 문제가 복잡해질수록 인간이 적절한 representation을 추출하기 힘들어집니다.
 
-Deep learning은 이런 representation 추출 알고리즘을 스스로 학습할 수 있는 기술입니다. 이를 가능하게 하는 이유는 많은 layer를 사용하여 여러 단계에 걸친 데이터 추상화 작업을 진행하기 때문입니다. 아래의 그림은 Stanford 대학의 CS231n 강좌에서 가져온 간단한 deep learning의 동작 그림입니다. 왼쪽에 사람이 말을 타고 있는 사진이 입력 데이터로 들어가고, 이 데이터가 오른쪽으로 layer를 거칠 때마다 점점 추상화된 형태로 가공됩니다. 마지막 layer를 지나고 오른쪽 끝에 도착했을 때, 말을 나타내는 8번째 representation이 가장 높은 값(흰색)을 가지게 되고, 이에 따라 이 사진을 말이라고 판별하게 됩니다.
+Deep learning은 이런 representation 추출 알고리즘을 스스로 학습할 수 있는 기술입니다. 이를 가능하게 하는 이유는 많은 layer를 사용하여 데이터를 여러 단계에 걸쳐 추상화시키기 때문입니다. 아래의 그림은 Stanford 대학의 CS231n 강좌에서 가져온 간단한 deep learning의 동작 그림입니다. 왼쪽에 사람이 말을 타고 있는 사진이 입력 데이터로 들어가고, 이 데이터가 오른쪽으로 layer를 거칠 때마다 점점 추상화된 형태로 가공됩니다. 마지막 layer를 지나고 오른쪽 끝에 도착했을 때, 말을 나타내는 8번째 representation이 가장 높은 값(흰색)을 가지게 되고, 이에 따라 이 사진을 말이라고 판별하게 됩니다.
 
 ![placeholder](https://i.imgur.com/ahRk6zc.png "Figure 1")
 *Figure 1. Image Recognition with Deep Learning [^CS231n17]*
@@ -22,26 +22,26 @@ Deep learning은 이런 representation 추출 알고리즘을 스스로 학습�
 
 ### Artificial Neural Network의 기본 구조
 
-Neuron은 ANN의 가장 작은 연산 단위입니다. 한 neuron은 이전 neuron들로부터 값들을 전달받아 일련의 연산을 처리한 후 다음 neuron에게 결과를 전달합니다. 이 방식은 우리 뇌 속의 neuron의 동작을 매우 단순화시켜 흉내내는 것입니다. 아래의 그림에서 보듯이, 이전 neuron으로 받은 값들은 각각 weight \\(w_i\\)를 곱한 후 bias \\(b\\)를 더하는 선형 결합으로 합쳐집니다. 그 후 이 값을 바로 다음 neuron에게 전달하는 것이 아니라, activation function이라고 불리는 함수 \\(f\\)를 거친 값을 전달합니다. Activation function이 필요한 이유는 nonlinear function을 사용하여 ANN이 표현할 수 있는 함수의 자유도를 높여주기 위해서인데, 이에 대해서는 조금 뒤에 더 설명하도록 하겠습니다.
+Neuron은 ANN의 가장 작은 연산 단위입니다. 한 neuron은 이전 neuron들로부터 값들을 전달받아 일련의 연산을 처리한 후 다음 neuron에게 결과를 전달합니다. 이 방식은 우리 뇌 속의 neuron의 동작을 매우 단순화시켜 흉내내는 것입니다. 아래의 그림에서 보듯이, 이전 neuron으로 받은 값들은 각각 weight \\(w_i\\)를 곱한 후 bias \\(b\\)를 더하는 선형 결합으로 합쳐집니다. 이 값을 바로 다음 neuron에게 전달하는 것이 아니라, activation function이라고 불리는 함수 \\(f\\)를 거친 값을 전달합니다. Activation function이 필요한 이유는 nonlinear function을 사용하여 ANN이 표현할 수 있는 함수의 자유도를 높여주기 위해서인데, 이에 대해서는 조금 뒤에 더 설명하도록 하겠습니다.
 
 ![placeholder](https://i.imgur.com/5H9IqY4.jpg "Figure 2")
 *Figure 2. Neuron [^CS231n17_2]*
 
-Layer는 neuron들의 집합입니다. ANN은 아래의 그림과 같이 여러 개의 layer로 구성되며, 각 layer는 직전 layer의 neuron들로부터 값을 입력으로 전달받아 다음 layer의 neuron들에게 출력값을 전달합니다. Raw data를 직접 입력으로 받는 첫번째 layer를 input layer라고 부르고, 최종 출력을 담당하는 마지막 layer를 output layer라고 부릅니다. 나머지 layer는 hidden layer입니다. 일반적으로 hidden layer가 하나 이상이면 deep learning이라고 부르는데, 어차피 deep learning이라는 단어가 광고성 단어이기 때문에 이런 구분이 크게 중요하지는 않습니다.
+Layer는 neuron들의 집합입니다. ANN은 아래의 그림과 같이 여러 개의 layer로 구성되며, 각 layer의 neuron은 직전 layer의 neuron들로부터 입력을 전달받아 계산을 수행하고 다음 layer의 neuron들에게 출력을 전달합니다. Raw data를 직접 입력으로 받는 첫번째 layer를 input layer라고 부르고, 최종 출력을 담당하는 마지막 layer를 output layer라고 부릅니다. 나머지 layer는 hidden layer입니다. 일반적으로 hidden layer가 하나 이상이면 deep learning이라고 부르는데, 어차피 deep learning이라는 단어가 광고성 단어이기 때문에 이런 구분이 크게 중요하지는 않습니다.
 
 ![placeholder](https://i.imgur.com/WYV1zUu.jpg "Figure 3")
 *Figure 3. Neural Network [^CS231n17_2]*
 
 ### 그래서 Artificial Neural Network가 왜 좋나요?
 
-ANN이 왜 좋은지를 설명하기 위해서, supervised learning의 한 갈래인 classification 문제를 예로 들겠습니다. Classification은 주어진 입력 데이터가 주어진 class 중 어떤 class에 속하는지를 판별하는 문제입니다. 사진이 개를 찍은 것인지, 고양이를 찍은 것인지 판단하는 것이 대표적인 classfication 문제입니다. 아래 그림은 아주 단순한 classification의 예를 나타낸 것인데, 두 개의 입력 데이터(사람의 나이, 종양의 크기)를 사용하여 해당 종양이 악성인지 아닌지를 판단하는 문제입니다. 이 문제의 경우, 주어진 training data set을 보고 직선을 하나 그으면 종양의 악성 여부를 효과적으로 판별할 수 있습니다.
+ANN이 왜 좋은지를 설명하기 위해서, supervised learning의 한 갈래인 classification 문제를 예로 들겠습니다. Classification은 주어진 입력 데이터가 주어진 class 중 어디에 속하는지를 판별하는 문제입니다. 사진이 개를 찍은 것인지, 고양이를 찍은 것인지 판단하는 것이 대표적인 classfication 문제입니다. 아래 그림은 아주 단순한 classification의 예를 나타낸 것인데, 두 개의 입력 데이터(사람의 나이, 종양의 크기)를 사용하여 해당 종양이 악성인지 아닌지를 판단하는 문제입니다. 이 문제의 경우, 주어진 training data set을 보고 직선을 하나 그으면 종양의 악성 여부를 효과적으로 판별할 수 있습니다.
 
 ![placeholder](https://i.imgur.com/0uJ5UUD.png "Figure 4")
 *Figure 4. Simple Classification [^MongoDB]*
 
-하지만 이미지를 보고 이미지에 찍힌 물체의 정체를 파악하는 image recognition의 경우 문제가 복잡해집니다. 우선 입력 데이터가 방대합니다. 가로 세로의 픽셀 수가 512인 저해상도 칼라 이미지만 하더라도 한 이미지의 입력 차원의 수는 \\(512\times512\times3\\)입니다(마지막 3을 곱하는 이유는 RGB 세 색상이 한 픽셀에 들어있기 때문임). 게다가 파악해야 하는 물체의 종류(class)가 많아질수록 \\(512\times512\times3\\) 차원 공간 속에 데이터의 분포가 매우 복잡해집니다. 이 공간 속에서 위의 간단한 예제에서 선을 그은 것과 같이 hyperplane을 결정해야 하는데, 이를 위해서는 매우 복잡한 함수를 사용하여야 합니다.
+하지만 이미지를 보고 이미지에 찍힌 물체의 정체를 파악하는 image recognition의 경우 문제가 복잡해집니다. 우선 입력 데이터가 방대합니다. 가로 세로의 픽셀 수가 512인 저해상도 칼라 이미지만 하더라도 한 이미지의 입력 차원의 수는 \\(512\times512\times3\\)입니다(마지막 3을 곱하는 이유는 RGB 세 색상이 한 픽셀에 들어있기 때문입니다). 게다가 파악해야 하는 물체의 종류(class)가 많아질수록 \\(512\times512\times3\\) 차원 공간 속에 데이터의 분포가 매우 복잡해집니다. 이 공간 속에서 위의 간단한 예제에서 선을 그은 것과 같이 hyperplane을 결정해야 하는데, 이를 위해서는 매우 복잡한 함수를 사용하여야 합니다.
 
-기존의 machine learning 기법들은 이런 접근 방식이 불가능했기 때문에, 해당 분야(여기서는 이미지 처리)의 전문가들이 적절한 representation을 추출해냄으로서 문제를 단순화시켰습니다. SIFT feature, HOG feature, SURF feature 등이 이에 해당합니다. 하지만 ANN을 사용할 경우, 굳이 그런 번거로운 작업을 거칠 필요 없이 layer의 수와 layer 안의 neuron 수를 충분히 늘려서 복잡한 hyperplane을 정할 수 있습니다. 물론 정확한 hyperplane을 얻기 위해서는 각 neuron의 weight와 bias들을 잘 조절해야 합니다. 정답이 존재하는 학습 시스템은 구축했지만, 그 정답까지 어떻게 찾아갈 수 있을지는 또 다른 문제인 것이죠. 1940년 대에 제안되었던 ANN은 이에 대한 해답을 내놓지 못하였고 빙하기를 맞게 됩니다. 그 후 1970년대에 ANN의 weight와 bias들을 자동적으로 학습할 수 있는 backpropagation이라는 방법이 제안됩니다.
+기존의 machine learning 기법들은 이런 접근 방식이 불가능했기 때문에, 해당 분야(여기서는 이미지 처리)의 전문가들이 적절한 representation을 추출하여 문제를 단순화시켰습니다. SIFT feature, HOG feature, SURF feature 등이 대표적인 예입니다. 하지만 ANN을 사용할 경우, 굳이 그런 번거로운 작업을 거칠 필요 없이 layer의 수와 layer 안의 neuron 수를 충분히 늘려서 복잡한 hyperplane을 정할 수 있습니다. 물론 정확한 hyperplane을 얻기 위해서는 각 neuron의 weight와 bias들을 잘 조절해야 합니다. 정답이 존재하는 학습 시스템은 구축했지만, 그 정답까지 어떻게 찾아갈 수 있을지는 또 다른 문제인 것이죠. 1940년 대에 제안되었던 ANN은 이에 대한 해답을 내놓지 못하였고 암흑기를 맞게 됩니다(AI 쪽 사람들은 이를 흔히 AI winter라고 부릅니다). 그 후 1970년대에 ANN의 weight와 bias들을 자동적으로 학습할 수 있는 backpropagation이라는 방법이 제안됩니다.
 
 ### Backpropagation 설명에 앞서 Gradient Descent 이해하기
 
@@ -52,7 +52,7 @@ Backpropagation을 이해하기 위해서는 gradient descent를 이해하고 �
 
 Gradient descent는 안개가 끼어있는 산에서 사람에 내려오는 방법에 비유할 수 있습니다. 지도나 스마트폰이 없다면 우리가 취할 수 있는 유일한 방법은 경사가 낮은 방향으로 한 걸음씩 반복적으로 움직이는 것입니다. 위의 그림은 두 개의 파라미터 \\(\theta_0\\)와 \\(\theta_1\\)에 대한 loss function \\(J(\theta_0,\theta_1)\\)의 값을 표시한 그래프입니다. 그래프 상의 검은 선을 보면 좌측 상단에서 우측 하단으로 loss function의 결과 값이 줄어드는 방향으로(기울기가 가장 가파른 방향으로) 한 걸음씩 내려오는 것을 확인할 수 있습니다.
 
-즉, gradient descent는 주어진 파라미터 \\(\theta_0\\)과 \\(\theta_1\\)에 대해 gradient of \\(J\\), 즉 \\(\nabla J(\theta_0,\theta_1)\\)를 계산한 후 step size \\(\gamma\\)만큼씩 각 parameter를 변경하는 것이라고 이야기할 수 있습니다. 이를 수식으로 표현하면 다음과 같습니다.
+즉, gradient descent는 주어진 파라미터 \\(\theta_0\\)과 \\(\theta_1\\)에 대해 gradient of \\(J\\), 즉 \\(\nabla J(\theta_0,\theta_1)\\)를 계산한 후 step size \\(\gamma\\)만큼씩 각 parameter를 변경하는 작업을 반복하는 것입니다. 이 작업을 수식으로 표현하면 다음과 같습니다.
 \\[\theta_0 := \theta_0 - \gamma \frac{\partial}{\partial \theta_0} J(\theta_0,\theta_1)\\]
 \\[\theta_1 := \theta_1 - \gamma \frac{\partial}{\partial \theta_1} J(\theta_0,\theta_1)\\]
 
@@ -78,7 +78,7 @@ Backpropagation은 이런 복잡한 neural network에 대해 gradient를 빠르�
 지금까지 기본적인 neural network의 구조와 이 네트워크를 학습시킬 수 있는 기본적인 기법인 backpropagation에 대해 알아보았습니다. 하지만 1970년대에 backpropagation이 제안된 이후에도 deep learning의 침체기는 끝나지 않았습니다. 그 이유는 아래와 같습니다.
 
 1. 학습에 필요한 연산량이 여전히 너무 많았습니다. 이는 이후 연산량을 줄일 수 있는 여러 기법들의 제안과 컴퓨터 하드웨어의 발전에 따라 해결됩니다.
-2. 데이터의 양이 적었습니다. 이 역시 인터넷과 전자 기기들이 발전되며 해결됩니다.
+2. 데이터의 양이 적었습니다. 이 역시 인터넷과 전자기기들이 발전되며 해결됩니다.
 3. 마지막으로 여러 이론적 한계 때문에 학습이 여전히 잘 이루어지지 않았습니다. 대표적인 예는 vanishing gradient라는 문제였는데, backpropagation을 진행함에 따라 전달되는 gradient 값이 거의 0이 되어버려 파라미터 갱신이 되지 않는 문제였습니다. 이런 문제들 역시 deep learning 계의 학자들에 의해 차근차근 극복되었습니다.
 
 Deep learning이 성과를 보인 대표적인 사건은 ILSVRC 2012에서의 AlexNet의 우승입니다[^Krizhevsky12]. Geoffrey Hinton 교수의 제자였던 Alex Krizhevsky는 convolutional neural network(CNN)라는 특수한 neural network 구조를 사용하여 image recognition 대회에서 오차율 15.4%를 기록하며 오차율 26.2%인 2등을 찍어누르며 우승합니다. 그 이후 ILSVRC 대회의 우승자들은 모두 CNN을 사용한 모델을 사용하고 있습니다.
