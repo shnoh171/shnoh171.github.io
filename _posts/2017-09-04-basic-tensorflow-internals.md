@@ -8,9 +8,7 @@ categories:
 
 자율주행 자동차와 인공지능과 같은 deep learning을 사용하는 서비스들이 두각을 나타내면서 deep learning 플랫폼에 대한 경쟁도 심화되고 있습니다. 하드웨어 플랫폼의 경우 초창기부터 많은 투자를 한 NVIDIA가 많이 앞서 나가고 있다고 봐도 될 것 같습니다. 특히, NVIDIA의 병렬 컴퓨팅 아키텍처인 CUDA의 deep learning 라이브러리 지원(cuBLAS, cuDNN)과 개발자 커뮤니티 규모는 경쟁자들을 압도하고 있습니다[^Dettmers17]. 이런 문맥으로 볼 때, Google의 Tensor Processiong Unit(TPU)를 필두로 여러 회사들이 deep learning을 위한 프로세서를 제안하고 있지만 NVIDIA가 쉽게 자리를 내줄지 의문스럽습니다.
 
-반면 소프트웨어 플랫폼은 상대적으로 경쟁이 치열해 보입니다. Google의 TensorFlow가 빠르게 플랫폼을 오픈 소스로 공개하고 양질의 튜토리얼/문서들을 제공하며 많은 개발자들이 사용하는 주요 플랫폼이 되었지만[^TensorFlow_get_started]:[^Rubashkin17], 후발 주자들이 더 높은 성능과 편리한 기능들을 갖춘 플랫폼들(Microsoft CNTK, MXNet, Chainer, PyTorch)을 제안하고 있기 때문에 안심할 상황은 아닙니다[^TensorFlowBlog]:[^Perez17].
-
-
+반면 소프트웨어 플랫폼은 상대적으로 경쟁이 치열해 보입니다. Google의 TensorFlow가 빠르게 플랫폼을 오픈 소스로 공개하고 양질의 튜토리얼/문서들을 제공하며 많은 개발자들이 사용하는 주요 플랫폼이 되었지만[^Rubashkin17], 후발 주자들이 더 높은 성능과 편리한 기능들을 갖춘 플랫폼들(Microsoft CNTK, MXNet, Chainer, PyTorch)을 제안하고 있기 때문에 안심할 상황은 아닙니다[^TensorFlowBlog].
 
 
 ### Google TensorFlow의 철학
@@ -158,7 +156,5 @@ struct LaunchMatMul<GPUDevice, T, true /* USE_CUBLAS */> {
 
 [^Dettmers17]: http://timdettmers.com/2017/04/09/which-gpu-for-deep-learning/
 [^Jeffrey17]: Jeffrey Dean and Sanjay Ghemawat, "MapReduce: simplified data processing on large clusters," USENIX Symposium on Operating Systems Design and Implementation (OSDI), 2014.
-[^TensorFlow_get_started]: https://www.tensorflow.org/get_started/
 [^Rubashkin17]: https://www.svds.com/getting-started-deep-learning/?utm_campaign=Revue+newsletter&utm_medium=Newsletter&utm_source=revue
 [^TensorFlowBlog]: https://tensorflow.blog/2017/02/13/chainer-mxnet-cntk-tf-benchmarking/
-[^Perez17]: https://medium.com/intuitionmachine/pytorch-dynamic-computational-graphs-and-modular-deep-learning-7e7f89f18d1
