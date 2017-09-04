@@ -9,7 +9,7 @@ categories:
 ### Deep Learning이란 무엇인가
 2015년, deep learning의 대가 세 사람(Yann Lecun, Yoshua Bengio, Geoffrey Hinton)이 Nature에 deep learning의 발전을 정리하는 논문을 게재하였습니다[^LeCun15]. 이 논문에서 정의하는 deep learning은 한 문장으로 요약할 수 있습니다.
 
-> Deep learning is a class of techniques that allows computational models that are composed of multiple processing layers to learn representations of data with multiple levels of abstraction .
+> Deep learning is a class of techniques that allows computational models that are composed of multiple processing layers to learn representations of data with multiple levels of abstraction.
 
 위의 문장에서 이야기하는 representation(또는 feature)은 데이터의 측정 가능한 특성을 의미합니다. 예를 들어 스팸 메일을 찾는 machine learning 알고리즘에서는 특정 단어의 반복 횟수, 작성 언어, 문법의 정확도, 제목의 시작 단어 등이 feature가 될 수 있습니다. 머신 러닝 알고리즘의 성능은 일반적으로 주어진 입력 데이터에서 어떤 representation을 추출하는지에 크게 영향을 받습니다[^Bengio13]. 보통 해당 분야의 전문가들이 자신들의 경험에 기반하여 representation 추출 알고리즘을 개발하여 사용합니다. 하지만 입력 데이터의 차원이 커지고 풀어야 하는 문제가 복잡해질수록 인간이 적절한 representation을 추출하기 힘들어집니다.
 
@@ -18,11 +18,11 @@ Deep learning은 이런 representation 추출 알고리즘을 스스로 학습�
 ![placeholder](https://i.imgur.com/ahRk6zc.png "Figure 1")
 *Figure 1. Image Recognition with Deep Learning [^CS231n17]*
 
-이렇게 여러 개의 layer로 구성된 학습 시스템을 일반적으로 artificial neural network(ANN)라고 부릅니다. Neural network라고 부르는 이유는 인간의 뇌의 동작에서 힌트를 얻어 만들어졌기 때문입니다. Deep learning은 한마디로 ANN을 사용하는 machine learning 기술의 집합입니다. 사실 ANN의 개념은 1940년대에 제안되었지만 오랜 기간 동안 주목 받지 못했었고, 2000년대 들어 이 분야가 다시 주목받기 시작하면서 관련 연구자들이 "Deep Learning"이라는 새로운 단어를 유행시켰습니다. 그 후 deep learing은 machine learning의 한 분류인 supervised learning에서 큰 성과를 거뒀고, 현재는 unsupervised learning과 reinforcement learning에서도 활발히 연구되고 있습니다.
+이렇게 여러 개의 layer로 구성된 학습 시스템을 일반적으로 artificial neural network(ANN)라고 부릅니다. Neural network라고 부르는 이유는 인간의 뇌의 동작에서 힌트를 얻어 만들어졌기 때문입니다. Deep learning은 한마디로 ANN을 사용하는 machine learning 기술의 집합입니다. 사실 ANN의 개념은 1940년대에 제안되었지만 오랜 기간 동안 주목 받지 못했었고, 2000년대 들어 이 분야가 다시 주목받기 시작하면서 관련 연구자들이 "Deep Learning"이라는 새로운 단어를 유행시켰습니다. 그 후 deep learning은 machine learning의 한 분류인 supervised learning에서 큰 성과를 거뒀고, 현재는 unsupervised learning과 reinforcement learning에서도 활발히 연구되고 있습니다.
 
 ### Artificial Neural Network의 기본 구조
 
-Neuron은 ANN의 가장 작은 연산 단위입니다. 한 neuron은 이전 neuron들로부터 값들을 전달받아 일련의 연산을 처리한 후 다음 neuron에게 결과를 전달합니다. 이 방식은 우리 뇌 속의 neuron의 동작을 매우 단순화시켜 흉내내는 것입니다. 아래의 그림에서 보듯이, 이전 neuron으로 받은 값들은 각각 weight \\(w_i\\)를 곱한 후 bias \\(b\\)를 더하는 선형 결합으로 합쳐집니다. 이 값을 바로 다음 neuron에게 전달하는 것이 아니라, activation function이라고 불리는 함수 \\(f\\)를 거친 값을 전달합니다. Activation function이 필요한 이유는 nonlinear function을 사용하여 ANN이 표현할 수 있는 함수의 자유도를 높여주기 위해서인데, 이에 대해서는 조금 뒤에 더 설명하도록 하겠습니다.
+Neuron은 ANN의 가장 작은 연산 단위입니다. 한 neuron은 이전 neuron들로부터 값들을 전달받아 일련의 연산을 처리한 후 다음 neuron에게 결과를 전달합니다. 이 방식은 우리 뇌 속의 neuron의 동작을 매우 단순화시켜 흉내 내는 것입니다. 아래의 그림에서 보듯이, 이전 neuron으로 받은 값들은 각각 weight \\(w_i\\)를 곱한 후 bias \\(b\\)를 더하는 선형 결합으로 합쳐집니다. 이 값을 바로 다음 neuron에게 전달하는 것이 아니라, activation function이라고 불리는 함수 \\(f\\)를 거친 값을 전달합니다. Activation function이 필요한 이유는 nonlinear function을 사용하여 ANN이 표현할 수 있는 함수의 자유도를 높여주기 위해서인데, 이에 대해서는 조금 뒤에 더 설명하도록 하겠습니다.
 
 ![placeholder](https://i.imgur.com/5H9IqY4.jpg "Figure 2")
 *Figure 2. Neuron [^CS231n17_2]*
@@ -34,7 +34,7 @@ Layer는 neuron들의 집합입니다. ANN은 아래의 그림과 같이 여러 
 
 ### 그래서 Artificial Neural Network가 왜 좋나요?
 
-ANN이 왜 좋은지를 설명하기 위해서, supervised learning의 한 갈래인 classification 문제를 예로 들겠습니다. Classification은 주어진 입력 데이터가 주어진 class 중 어디에 속하는지를 판별하는 문제입니다. 사진이 개를 찍은 것인지, 고양이를 찍은 것인지 판단하는 것이 대표적인 classfication 문제입니다. 아래 그림은 아주 단순한 classification의 예를 나타낸 것인데, 두 개의 입력 데이터(사람의 나이, 종양의 크기)를 사용하여 해당 종양이 악성인지 아닌지를 판단하는 문제입니다. 이 문제의 경우, 주어진 training data set을 보고 직선을 하나 그으면 종양의 악성 여부를 효과적으로 판별할 수 있습니다.
+ANN이 왜 좋은지를 설명하기 위해서, supervised learning의 한 갈래인 classification 문제를 예로 들겠습니다. Classification은 주어진 입력 데이터가 주어진 class 중 어디에 속하는지를 판별하는 문제입니다. 사진이 개를 찍은 것인지, 고양이를 찍은 것인지 판단하는 것이 대표적인 classification 문제입니다. 아래 그림은 아주 단순한 classification의 예를 나타낸 것인데, 두 개의 입력 데이터(사람의 나이, 종양의 크기)를 사용하여 해당 종양이 악성인지 아닌지를 판단하는 문제입니다. 이 문제의 경우, 주어진 training data set을 보고 직선을 하나 그으면 종양의 악성 여부를 효과적으로 판별할 수 있습니다.
 
 ![placeholder](https://i.imgur.com/0uJ5UUD.png "Figure 4")
 *Figure 4. Simple Classification [^MongoDB]*
@@ -45,7 +45,7 @@ ANN이 왜 좋은지를 설명하기 위해서, supervised learning의 한 갈�
 
 ### Backpropagation 설명에 앞서 Gradient Descent 이해하기
 
-Backpropagation을 이해하기 위해서는 gradient descent를 이해하고 있어야 합니다. Gradient descent는 machine learning algorithm들이 training 단계에서 사용하는 가장 기본적인 파라미터 최적화 기법입니다. 주어진 training set과 파라미터에 대해 학습이 얼마나 잘 되었는지를 판단하기 위한 loss function(또는 cost function)을 정의하고, 이 함수가 충분히 줄어들 때까지 파라미터를 변경하고 loss function을 계산하는 과정을 반복합니다. Loss function을 어떻게 정할지는 machine learning engineer의 몫인데, 원하는 값과 실제 값 사이에 얼마나 차이가 있는지를 수식으로 표현하여 사용합니다.
+Backpropagation을 이해하기 위해서는 gradient descent를 이해하고 있어야 합니다. Gradient descent는 machine learning algorithm들이 training 단계에서 사용하는 가장 기본적인 파라미터 최적화 기법입니다. 주어진 training set과 파라미터에 대해 학습이 얼마나 잘 되었는지를 판단하기 위한 loss function(또는 cost function)을 정의하고, 이 함수가 충분히 줄어들 때까지 파라미터를 변경하고 loss function을 계산하는 과정을 반복합니다. Loss function을 어떻게 정할 지는 machine learning engineer의 몫인데, 원하는 값과 실제 값 사이에 얼마나 차이가 있는지를 수식으로 표현하여 사용합니다.
 
 ![placeholder](https://i.imgur.com/hNpPZWv.png "Figure 5")
 *Figure 5. Gradient Descent [^AndrewNg]*
@@ -81,7 +81,7 @@ Backpropagation은 이런 복잡한 neural network에 대해 gradient를 빠르�
 2. 데이터의 양이 적었습니다. 이 역시 인터넷과 전자기기들이 발전되며 해결됩니다.
 3. 마지막으로 여러 이론적 한계 때문에 학습이 여전히 잘 이루어지지 않았습니다. 대표적인 예는 vanishing gradient라는 문제였는데, backpropagation을 진행함에 따라 전달되는 gradient 값이 거의 0이 되어버려 파라미터 갱신이 되지 않는 문제였습니다. 이런 문제들 역시 deep learning 계의 학자들에 의해 차근차근 극복되었습니다.
 
-Deep learning이 성과를 보인 대표적인 사건은 ILSVRC 2012에서의 AlexNet의 우승입니다[^Krizhevsky12]. Geoffrey Hinton 교수의 제자였던 Alex Krizhevsky는 convolutional neural network(CNN)라는 특수한 neural network 구조를 사용하여 image recognition 대회에서 오차율 15.4%를 기록하며 오차율 26.2%인 2등을 찍어누르며 우승합니다. 그 이후 ILSVRC 대회의 우승자들은 모두 CNN을 사용한 모델을 사용하고 있습니다.
+Deep learning이 성과를 보인 대표적인 사건은 ILSVRC 2012에서의 AlexNet의 우승입니다[^Krizhevsky12]. Geoffrey Hinton 교수의 제자였던 Alex Krizhevsky는 convolutional neural network(CNN)라는 특수한 neural network 구조를 사용하여 image recognition 대회에서 오차율 15.4%를 기록하며 오차율 26.2%인 2등을 찍어 누르며 우승합니다. 그 이후 ILSVRC 대회의 우승자들은 모두 CNN을 사용한 모델을 사용하고 있습니다.
 
 지금까지 가장 기본적인 deep learning 이론에 대해 알아보았습니다. 다음 포스트에서는 CNN에 대한 설명과 함께 image recognition 분야에서 deep learning의 발전에 어떻게 이루어졌는지에 대한 글을 적어보려 합니다.
 
