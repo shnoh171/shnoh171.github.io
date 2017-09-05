@@ -11,9 +11,9 @@ categories:
 ![placeholder](https://i.imgur.com/6Ai3QMa.png "Figure 1")
 *Figure 1. 2016년 이후 폭발적으로 오른 NVIDIA 주가*
 
-반면 소프트웨어 플랫폼은 상대적으로 경쟁이 치열해 보입니다. Google의 TensorFlow가 빠르게 플랫폼을 오픈 소스로 공개하고 양질의 튜토리얼과 문서들을 제공하며 많은 개발자들이 사용하는 주요 플랫폼이 되었지만[^Rubashkin17], 후발 주자들(Microsoft CNTK, MXNet, PyTorch, ...)이 향상된 성능과 편리한 기능들을 선보이고 있기 때문에 안심할 상황은 아닙니다[^TensorFlowBlog].
+반면 소프트웨어 플랫폼은 상대적으로 경쟁이 치열해 보입니다. Google의 TensorFlow가 빠르게 플랫폼을 오픈 소스로 공개하고 양질의 튜토리얼과 문서들을 제공하며 선점 효과를 누리고 있지만[^Rubashkin17], 후발 주자들(Microsoft CNTK, MXNet, PyTorch, ...)이 향상된 성능과 편리한 기능들을 선보이고 있기 때문에 안심할 상황은 아닙니다[^TensorFlowBlog].
 
-TensorFlow는 천하의 Google이 야심차게 진행하고 있는 프로젝트이기 때문에 미래가 밝을 것 같지만, 이 플랫폼을 state-of-the-art로 단정짓는 것은 매우 위험한 생각입니다. 이 사실을 염두에 두고 지금부터 TensorFlow에 대해 알아보도록 하겠습니다.
+TensorFlow는 천하의 Google이 야심차게 진행하고 있는 프로젝트이기 때문에 미래가 밝겠지만, 위와 같은 이유로 이 플랫폼을 state-of-the-art로 단정짓는 것은 성급한 생각인 것 같습니다. 이를 염두에 두고 지금부터 TensorFlow에 대해 알아보도록 하겠습니다.
 
 ### Google은 왜 TensorFlow를 오픈 소스로 공개하였을까?
 
