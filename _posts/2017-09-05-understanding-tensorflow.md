@@ -49,6 +49,7 @@ Distributed master와 networking layer는 TensorFlow의 분산 시스템에서�
 
 ```python
 # mnist_softmax.py
+
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
@@ -74,7 +75,6 @@ def main(_):
 
   # Define loss and optimizer
   y_ = tf.placeholder(tf.float32, [None, 10])
-
   cross_entropy = tf.reduce_mean(
       tf.nn.softmax_cross_entropy_with_logits(labels=y_, logits=y))
   train_step =
