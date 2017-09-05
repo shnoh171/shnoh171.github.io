@@ -43,9 +43,12 @@ Client가 개시한 dataflow graph의 수행을 실제 처리하는 부분은 co
 
 Distributed master와 networking layer는 TensorFlow의 분산 시스템에서의 동작을 지원하기 위한 부분입니다. 이 글의 목적은 기본적인 TensorFlow 동작을 이해하는 것이므로 분산 시스템의 경우는 고려하지 않도록 하겠습니다.
 
-### MNIST 예제로
+### TensorFlow 프로그램의 기본 구조
 
-아래의 프로그램은 deep learning 계의 hello world라고 이야기할 수 있는 MNIST dataset을 이용한 숫자 필기 인식 프로그램입니다[^TensorFlow4].
+![placeholder](https://i.imgur.com/kpjwnOr.png "Figure 4")
+*Figure 3. MNIST dataset*
+
+아래의 프로그램은 deep learning 계의 hello world라고 이야기할 수 있는 MNIST dataset을 이용한 숫자 필기 인식 프로그램입니다[^TensorFlow4]. 각 입력 이미지는 위의 그림과 같은 가로 세로 28픽셀의 흑백 이미지입니다. Input layer는 이미지의 각 픽셀을 입력으로 받고 output layer는 10개의 숫자 각각에 대한 점수를 매깁니다. 파라미터 최적화를 위한 loss function 계산에는 softmax regression을 사용하였습니다. 코드를 읽어보고, 각 부분에 대해 간단히 설명하겠습니다.
 
 ```python
 # mnist_softmax.py
@@ -82,6 +85,7 @@ def main(_):
 
   sess = tf.InteractiveSession()
   tf.global_variables_initializer().run()
+
   # Train
   for _ in range(1000):
     batch_xs, batch_ys = mnist.train.next_batch(100)
@@ -104,7 +108,7 @@ if __name__ == '__main__':
 
 // Expressing computation via Graph과 Executing computation
 
-### Step 1. Expressing Computation via Computation Graph
+### Step 1. Dataflow graph를 사용한 computation 표현
 * tf.Graph
   + A TensorFlow computation, represented as a dataflow graph
 * tf.Operation
