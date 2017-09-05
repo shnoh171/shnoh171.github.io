@@ -45,7 +45,7 @@ Distributed master와 networking layer는 TensorFlow의 분산 시스템에서�
 
 ### MNIST 예제로
 
-아래의 프로그램은 deep learning 계의 hello world라고 이야기할 수 있는 MNIST dataset을 이용한 숫자 필기 인식 프로그램입니다[^TensorFlow4]. Input layer와 output layer로 구성된 two-layer network를 구축하였고 softmax regression을 사용하였습니다.
+아래의 프로그램은 deep learning 계의 hello world라고 이야기할 수 있는 MNIST dataset을 이용한 숫자 필기 인식 프로그램입니다[^TensorFlow4].
 
 ```python
 # mnist_softmax.py
