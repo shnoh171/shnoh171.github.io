@@ -43,9 +43,9 @@ Client가 개시한 dataflow graph의 수행을 실제 처리하는 부분은 co
 
 Distributed master와 networking layer는 TensorFlow의 분산 시스템에서의 동작을 지원하기 위한 부분입니다. 이 글의 목적은 기본적인 TensorFlow 동작을 이해하는 것이므로 분산 시스템의 경우는 고려하지 않도록 하겠습니다.
 
-### TensorFlow 프로그램 구조
+### MNIST 예제로
 
-아래의 프로그램은 deep learning 계의 hello world라고 이야기할 수 있는 MNIST dataset을 이용한 숫자 필기 인식 프로그램입니다[^TensorFlow4]. Input layer와 output layer로 구성된 two-layer network를 구축하였고, loss function으로 softmax를 사용하였습니다.
+아래의 프로그램은 deep learning 계의 hello world라고 이야기할 수 있는 MNIST dataset을 이용한 숫자 필기 인식 프로그램입니다[^TensorFlow4]. Input layer와 output layer로 구성된 two-layer network를 구축하였고, softmax regression을 사용하였습니다.
 
 ```python
 # mnist_softmax.py
