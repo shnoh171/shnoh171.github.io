@@ -176,7 +176,7 @@ struct LaunchMatMul<GPUDevice, T, true /* USE_CUBLAS */> {
 }
 ```
 
-[^Dettmers17]: <http://timdettmers.com/2017/04/09/which-gpu-for-deep-learning>
+[^Dettmers17]: <http://timdettmers.com/2017/04/09/which-gpu-for-deep-learning> !!
 [^Rubashkin17]: [https://www.svds.com/getting-started-deep-learning/?utm_campaign=Revue+newsletter&utm_medium=Newsletter&utm_source=revue](https://www.svds.com/getting-started-deep-learning/?utm_campaign=Revue+newsletter&utm_medium=Newsletter&utm_source=revue)
 [^TensorFlowBlog]: [https://tensorflow.blog/2017/02/13/chainer-mxnet-cntk-tf-benchmarking](https://tensorflow.blog/2017/02/13/chainer-mxnet-cntk-tf-benchmarking)
 [^Jeffrey14]: Jeffrey Dean and Sanjay Ghemawat, "MapReduce: simplified data processing on large clusters," USENIX Symposium on Operating Systems Design and Implementation (OSDI), 2014.
