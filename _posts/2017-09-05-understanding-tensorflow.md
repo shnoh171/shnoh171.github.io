@@ -130,7 +130,7 @@ TensorFlow 프로그램은 크게 (1) dataflow graph를 작성하여 원하는 c
 
 #### Define loss and optimizer
 
-계속 dataflow graph를 확장하여 training을 하기 위한 computation을 표현합니다. y_는 입력으로 받는 각 이미지 데이터 x에 대한 정답(label)입니다. 마찬가지로 dataflow graph를 수행할 때 들어올 것이기 때문에 placeholder를 사용합니다.
+계속 dataflow graph를 확장하여 training을 하기 위한 computation을 표현합니다. y_는 입력으로 받는 각 이미지 데이터 x에 대한 정답(label)입니다. 마찬가지로 dataflow graph를 수행할 때 들어올 것이기 때문에 placeholder를 사용합니다. 다음 줄의 cross_entropy는 loss function을 계산합니다. 각 이미지 데이터에 대해 y의 계산값과 labe인 y_를 입력으로 받아 cross entropy를 계산하고, 전체의 평균값을
 
 ![placeholder](https://i.imgur.com/J5UvFyv.png "Figure 6")
 *Figure 6. Dataflow Graph of MNIST Example*
