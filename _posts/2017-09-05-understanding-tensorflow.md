@@ -94,6 +94,7 @@ def main(_):
   train_step =
       tf.train.GradientDescentOptimizer(0.5).minimize(cross_entropy)
 
+  # Initialize
   sess = tf.InteractiveSession()
   tf.global_variables_initializer().run()
 
@@ -133,6 +134,8 @@ TensorFlow 프로그램은 크게 (1) dataflow graph를 작성하여 원하는 c
 
 ![placeholder](https://i.imgur.com/J5UvFyv.png "Figure 6")
 *Figure 6. Dataflow Graph of MNIST Example*
+
+#### Initialize
 
 #### Train
 
