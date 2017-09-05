@@ -176,16 +176,16 @@ struct LaunchMatMul<GPUDevice, T, true /* USE_CUBLAS */> {
 }
 ```
 
-[^Dettmers17]: <http://timdettmers.com/2017/04/09/which-gpu-for-deep-learning> !!
-[^Rubashkin17]: [https://www.svds.com/getting-started-deep-learning/?utm_campaign=Revue+newsletter&utm_medium=Newsletter&utm_source=revue](https://www.svds.com/getting-started-deep-learning/?utm_campaign=Revue+newsletter&utm_medium=Newsletter&utm_source=revue)
-[^TensorFlowBlog]: [https://tensorflow.blog/2017/02/13/chainer-mxnet-cntk-tf-benchmarking](https://tensorflow.blog/2017/02/13/chainer-mxnet-cntk-tf-benchmarking)
+[^Dettmers17]: <http://timdettmers.com/2017/04/09/which-gpu-for-deep-learning>
+[^Rubashkin17]: <https://www.svds.com/getting-started-deep-learning/?utm_campaign=Revue+newsletter&utm_medium=Newsletter&utm_source=revue>
+[^TensorFlowBlog]: <https://tensorflow.blog/2017/02/13/chainer-mxnet-cntk-tf-benchmarking>
 [^Jeffrey14]: Jeffrey Dean and Sanjay Ghemawat, "MapReduce: simplified data processing on large clusters," USENIX Symposium on Operating Systems Design and Implementation (OSDI), 2014.
-[^Jeffrey17]: [https://youtu.be/B0ZnbaOlNss](https://youtu.be/B0ZnbaOlNss)
-[^Lee16]: [https://si.mpli.st/dev/tensorflow-open-source.html](https://si.mpli.st/dev/tensorflow-open-source.html)
-[^GoogleCloud]: [https://cloud.google.com/ml-engine](https://cloud.google.com/ml-engine)
-[^TensorFlowBlog2]: [https://tensorflow.blog/2016/11/16/openai-microsoft](https://tensorflow.blog/2016/11/16/openai-microsoft)
-[^TensorFlow]: [https://www.tensorflow.org/extend/architecture](https://www.tensorflow.org/extend/architecture)
-[^TensorFlow2]: [https://www.tensorflow.org/extend/language_bindings](https://www.tensorflow.org/extend/language_bindings)
-[^Puget16]: [https://www.ibm.com/developerworks/community/blogs/jfp/entry/What_Language_Is_Best_For_Machine_Learning_And_Data_Science?lang=en](https://www.ibm.com/developerworks/community/blogs/jfp/entry/What_Language_Is_Best_For_Machine_Learning_And_Data_Science?lang=en)
-[^TensorFlow3]: [https://www.tensorflow.org/programmers_guide/graphs](https://www.tensorflow.org/programmers_guide/graphs)
-[^TensorFlow4]: [https://www.tensorflow.org/get_started/mnist/beginners](https://www.tensorflow.org/get_started/mnist/beginners)
+[^Jeffrey17]: <https://youtu.be/B0ZnbaOlNss>
+[^Lee16]: <https://si.mpli.st/dev/tensorflow-open-source.html>
+[^GoogleCloud]: <https://cloud.google.com/ml-engine>
+[^TensorFlowBlog2]: <https://tensorflow.blog/2016/11/16/openai-microsoft>
+[^TensorFlow]: <https://www.tensorflow.org/extend/architecture>
+[^TensorFlow2]: <https://www.tensorflow.org/extend/language_bindings>
+[^Puget16]: <https://www.ibm.com/developerworks/community/blogs/jfp/entry/What_Language_Is_Best_For_Machine_Learning_And_Data_Science?lang=en>
+[^TensorFlow3]: <https://www.tensorflow.org/programmers_guide/graphs>
+[^TensorFlow4]: <https://www.tensorflow.org/get_started/mnist/beginners>
