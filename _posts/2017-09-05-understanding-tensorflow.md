@@ -105,6 +105,17 @@ if __name__ == '__main__':
   FLAGS, unparsed = parser.parse_known_args()
   tf.app.run(main=main, argv=[sys.argv[0]] + unparsed)
 ```
+#### Import data
+
+#### Create the model
+
+#### Define loss and optimizer
+
+#### Train
+
+#### Test trained model
+
+
 
 // Expressing computation via Graph과 Executing computation
 
