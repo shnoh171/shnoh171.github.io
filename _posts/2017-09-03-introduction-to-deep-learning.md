@@ -85,14 +85,14 @@ Deep learning이 성과를 보인 대표적인 사건은 ILSVRC 2012에서의 Al
 
 지금까지 가장 기본적인 deep learning 이론에 대해 알아보았습니다. 다음 포스트에서는 CNN에 대한 설명과 함께 image recognition 분야에서 deep learning의 발전에 어떻게 이루어졌는지에 대한 글을 적어보려 합니다.
 
-[^CS231n16_YouTube]: https://www.youtube.com/playlist?list=PLkt2uSq6rBVctENoVBg1TpCC7OQi31AlC
+[^CS231n16_YouTube]: <https://www.youtube.com/playlist?list=PLkt2uSq6rBVctENoVBg1TpCC7OQi31AlC>
 [^LeCun15]: Y. Lecun, Y. Bengio, and G. Hinton, "Deep learning," Nature, 2015.
 [^Bengio13]: Y. Bengio, A. Courville, and P. Vincent, "Representation learning: A review and new perspectives," IEEE Transactions on Pattern Analysis and Machine Intelligence, 2013.
-[^CS231n17]: http://cs231n.stanford.edu
-[^CS231n17_2]: http://cs231n.github.io/neural-networks-1/
-[^MongoDB]: https://www.mongodb.com/blog/post/deep-learning-and-the-artificial-intelligence-revolution-part-2
+[^CS231n17]: <http://cs231n.stanford.edu>
+[^CS231n17_2]: <http://cs231n.github.io/neural-networks-1>
+[^MongoDB]: <https://www.mongodb.com/blog/post/deep-learning-and-the-artificial-intelligence-revolution-part-2>
 [^AndrewNg]: Andrew Ng, "Machine learning," Coursera.
-[^Deshpande16]: https://adeshpande3.github.io/adeshpande3.github.io/The-9-Deep-Learning-Papers-You-Need-To-Know-About.html
-[^CS231n17_3]: http://cs231n.github.io/optimization-2/
+[^Deshpande16]: <https://adeshpande3.github.io/adeshpande3.github.io/The-9-Deep-Learning-Papers-You-Need-To-Know-About.html>
+[^CS231n17_3]: <http://cs231n.github.io/optimization-2>
 [^LeCun98]: Y. Lecun, L. Bottou, Y. Bengio, and P. Haffner, "Gradient-based learning applied to document recognition,"  Proceedings of the IEEE, 1998.
 [^Krizhevsky12]: A. Krizhevsky, I. Sutskever, and G. E. Hinton, "ImageNet Classification with Deep Convolutional Neural Networks," Advances in Neural Information Processing Systems(NIPS), 2012.
