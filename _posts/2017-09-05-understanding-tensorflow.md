@@ -27,17 +27,21 @@ TensorFlow 개발의 책임자는 MapReduce 논문으로 유명한 Jeff Dean입�
 
 ### TensorFlow 프레임워크의 구조
 
+TensorFlow의 핵심 구성 요소는 개발자가 사용하는 언어 별로 구현되어 있는 client(front-end)와 실제 training과 inference를 수행하는 core execution system(back-end)입니다. 개발자는 client가 제공하는 API를 사용하여 프로그램을 작성할 수도 있고, 이를 기반으로 작성된 training libraries나 inference libraries를 사용할 수도 있습니다. Client와 core execution system 사이에는 이 C API가 존재하는데, client와 core execution system의 작성 언어가 다를 경우 이를 연결해주는 역할을 합니다.
+
 ![placeholder](https://i.imgur.com/MUyr3eh.png "Figure 2")
 *Figure 2. TensorFlow Architecture [^TensorFlow]*
 
-TensorFlow의 핵심 구성 요소는 개발자가 사용하는 언어 별로 구현되어 있는 client(front-end)와 실제 training과 inference를 수행하는 core execution system(back-end)입니다. 개발자는 client가 제공하는 API를 사용하여 프로그램을 작성할 수도 있고, 이를 기반으로 작성된 training libraries나 inference libraries를 사용할 수도 있습니다. Client와 core execution system 사이에는 이 C API가 존재하는데, client와 core execution system의 작성 언어가 다를 경우 이를 연결해주는 역할을 합니다.
+TensorFlow는 기본적으로 Python, Java, C/C++, Go 언어를 지원하고, 이를 위한 client가 구현되어 있습니다. 추가 언어 지원을 위한 client를 작성할 수도 있습니다. 하지만, 문서화나 API의 제공 정도를 고려할 때, 특별한 이유가 없다면 Python을 선택하는 것이 가장 합리적인 선택입니다[^TensorFlow2]. TensorFlow 뿐만이 아니라 많은 deep learning 소프트웨어 플랫폼들이 Python 지원에 주력하고 있는데, 이는 machine learning 개발자들이 가장 많이 쓰는 언어이기 때문입니다[^Puget16].
 
-TensorFlow는 기본적으로 Python, Java, C/C++, Go 언어를 지원하고, 이를 위한 client가 구현되어 있습니다. 또한 추가 언어 지원을 위한 client를 작성할 수도 있습니다. 하지만, 문서화나 API의 제공 정도를 고려할 때, 특별한 이유가 없다면 Python을 선택하는 것이 가장 합리적인 선택입니다[^TensorFlow2]. TensorFlow 뿐만이 아니라 많은 deep learning 소프트웨어 플랫폼들이 Python 지원에 주력하고 있는데, 이는 machine learning 개발자들이 가장 많이 쓰는 언어이기 때문입니다[^Puget16].
+Client의 주요 역할은 TensorFlow 개발자가 작성한 프로그램을 dataflow graph의 형태로 저장하고 수행을 개시하는 것입니다. Dataflow graph의 node는 operation입니다. Operation은 사전에 정의된 작업을 수행하는 연산의 최소 단위입니다. 단순한 덧셈과 뺄셈부터 matrix multiplication, convolution까지 모두 operation이 될 수 있습니다. Operation의 입출력으로 사용되는 자료구조는 tensor입니다. Tensor는 다차원의 행렬을 표현하기 위하여 TensorFlow에서 사용하는 자료구조입니다. 아래의 그림은 TensorFlow 홈페이지에 나와 있는 dataflow graph의 예입니다.
 
-Client의 주요 역할은 TensorFlow 개발자가 작성한 프로그램을 computational graph의 형태로 저장하고, Session이라는 class를 사용하여 graph의 수행을 개시하는 것입니다. Client는 computational graph의 수행 시작 명령을 내릴 뿐이고, 실제 수행은 core execution system이 담당합니다.
+![placeholder](https://i.imgur.com/qvjrgd2.gif "Figure 3")
+*Figure 3. Example of Dataflow Graph in TensorFlow [^TensorFlow3]*
 
-Core execution system은 성능 이슈로 인해 C++로 작성되어 있습니다.
+Client가 개시한 dataflow graph의 수행을 실제 처리하는 부분은 core execution system입니다. Figure 2 상에서 dataflow executor는 dataflow graph를 client로부터 전달 받은 후, device에게 dataflow 상의 각 operation의 kernel을 수행하라는 명령을 내립니다. Device는 CPU나 GPU와 같은 operation을 수행할 수 있는 processing unit입니다. Kernel은 한 operation의 특정 device에 대한 구현을 의미합니다. 시스템 상에 여러 device가 존재할 경우 여러 개의 kernel을 구현해서 사용할 수 있습니다. 예를 들어, TensorFlow에는 matrix multiplication operation에 대해 CPU kernel과 CUDA library를 사용하는 GPU kernel이 따로 구현되어 있습니다.
 
+Distributed master와 networking layer는 TensorFlow의 분산 시스템에서의 동작을 지원하기 위한 부분입니다. 이 글의 목적은 기본적인 TensorFlow 동작을 이해하는 것이므로 분산 시스템의 경우는 고려하지 않도록 하겠습니다.
 
 ### TensorFlow 프로그램 구조
 
@@ -179,3 +183,4 @@ struct LaunchMatMul<GPUDevice, T, true /* USE_CUBLAS */> {
 [^TensorFlow]: https://www.tensorflow.org/extend/architecture
 [^TensorFlow2]: https://www.tensorflow.org/extend/language_bindings
 [^Puget16]: https://www.ibm.com/developerworks/community/blogs/jfp/entry/What_Language_Is_Best_For_Machine_Learning_And_Data_Science?lang=en
+[^TensorFlow3]: https://www.tensorflow.org/programmers_guide/graphs
