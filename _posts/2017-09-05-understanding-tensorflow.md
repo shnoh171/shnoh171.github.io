@@ -34,7 +34,7 @@ TensorFlow의 핵심 구성 요소는 개발자가 사용하는 언어 별로 �
 
 TensorFlow는 기본적으로 Python, Java, C/C++, Go 언어를 지원하고, 이를 위한 client가 구현되어 있습니다. 추가 언어 지원을 위한 client를 작성할 수도 있습니다. 하지만, 문서화나 API의 제공 정도를 고려할 때, 특별한 이유가 없다면 Python을 선택하는 것이 가장 합리적인 선택입니다[^TensorFlow2]. TensorFlow 뿐만이 아니라 많은 deep learning 소프트웨어 플랫폼들이 Python 지원에 주력하고 있는데, 이는 machine learning 개발자들이 가장 많이 쓰는 언어이기 때문입니다[^Puget16].
 
-Client의 주요 역할은 TensorFlow 개발자가 작성한 프로그램을 dataflow graph의 형태로 저장하고 수행을 개시하는 것입니다. Dataflow graph의 node는 operation입니다. Operation은 사전에 정의된 작업을 수행하는 연산의 최소 단위입니다. 단순한 덧셈과 뺄셈부터 matrix multiplication, convolution까지 모두 operation이 될 수 있습니다. Operation의 입출력으로 사용되는 자료구조는 tensor입니다. Tensor는 다차원의 행렬을 표현하기 위하여 TensorFlow에서 사용하는 자료구조입니다. 아래의 그림은 TensorFlow 홈페이지에 나와 있는 dataflow graph의 예입니다.
+Client의 주요 역할은 TensorFlow 개발자가 작성한 프로그램을 dataflow graph의 형태로 저장하고 수행을 개시하는 것입니다. Dataflow graph의 node는 operation입니다. Operation은 사전에 정의된 작업을 수행하는 연산의 최소 단위입니다. 단순한 덧셈과 뺄셈부터 matrix multiplication, convolution까지 모두 operation이 될 수 있습니다. Operation의 입출력으로 사용되는 자료구조는 tensor입니다. Tensor는 다차원의 행렬을 표현하기 위하여 TensorFlow에서 사용하는 자료구조입니다. Figure 3는 TensorFlow 홈페이지에 나와 있는 dataflow graph의 예입니다.
 
 ![placeholder](https://i.imgur.com/qvjrgd2.gif "Figure 3")
 *Figure 3. Example of Dataflow Graph in TensorFlow [^TensorFlow3]*
@@ -45,10 +45,21 @@ Distributed master와 networking layer는 TensorFlow의 분산 시스템에서�
 
 ### TensorFlow 프로그램의 기본 구조
 
-![placeholder](https://i.imgur.com/kpjwnOr.png "Figure 4")
-*Figure 3. MNIST dataset*
+지금부터 deep learning 계의 hello world에 준하는 간단한 예제를 통해 TensorFlow 프로그램의 작성 방식을 알아보겠습니다. 소개하는 프로그램은 TensorFlow 홈페이제에 처음 나오는 예제로, MNIST dataset을 이용한 숫자 필기 인식 프로그램입니다[^TensorFlow4]. 이 프로그램은 아래의 figure 4와 같은 가로 세로 28픽셀의 흑백 숫자 이미지 입력으로 받아 0~9 중 어떤 숫자인지를 판별합니다. 이를 위해 구성한 neural network 구조를 figure 5에 표시하였습니다. Input layer는 각 이미지의 784개의 픽셀을 입력으로 받습니다. Output layer는 input layer의 각 neuron으로부터 픽셀 값을 전달 받아 weighted sum을 계산하여 출력합니다. 예제를 단순하게 하기 위해 여기서는 어떤 neuron도 activation function을 가지지 않습니다. 최종 출력값 10개는 각각 0~9의 숫자의 점수를 의미하고, 가장 높은 점수가 높은 숫자를 해당 입력 이미지의 숫자로 결정합니다.
 
-아래의 프로그램은 deep learning 계의 hello world라고 이야기할 수 있는 MNIST dataset을 이용한 숫자 필기 인식 프로그램입니다[^TensorFlow4]. 각 입력 이미지는 위의 그림과 같은 가로 세로 28픽셀의 흑백 이미지입니다. Input layer는 이미지의 각 픽셀을 입력으로 받고 output layer는 10개의 숫자 각각에 대한 점수를 매깁니다. 파라미터 최적화를 위한 loss function 계산에는 softmax regression을 사용하였습니다. 코드를 읽어보고, 각 부분에 대해 간단히 설명하겠습니다.
+![placeholder](https://i.imgur.com/kpjwnOr.png "Figure 4")
+*Figure 4. MNIST dataset*
+
+![placeholder](https://i.imgur.com/A0ACsjH.gif "Figure 5")
+*Figure 5. Very Simple Neural Network*
+
+이 네트워크의 입력과 출력을 각각 벡터 \\(x\\)와 \\(y\\)로 표현할 경우, 이 둘 사이의 관계식은 아래와 같습니다.
+
+\\[y = Wx + b\\]
+
+이 때 \\(W\\)는 output layer의 각 neuron들의 weight를 저장하는 \\(10 \times 284\\) 크기를 가지는 행렬입니다.
+
+지금부터 softmax regression을 사용하여 각 weight 값을 training한 후 결과를 test하는 프로그램을 설명하겠습니다.
 
 ```python
 # mnist_softmax.py
