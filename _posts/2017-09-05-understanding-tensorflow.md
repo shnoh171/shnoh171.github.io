@@ -107,7 +107,13 @@ if __name__ == '__main__':
 ```
 #### Import data
 
+서버에서 MNIST data set을 가져옵니다.
+
 #### Create the model
+
+Dataflow graph를 그립니다. 우리가 최종적으로 표현할 식은 다음과 같습니다.
+
+\\[y = Wx + b\\]
 
 #### Define loss and optimizer
 
