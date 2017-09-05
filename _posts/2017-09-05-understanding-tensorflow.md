@@ -19,11 +19,9 @@ TensorFlow는 천하의 Google이 야심차게 진행하고 있는 프로젝트�
 
 TensorFlow 개발의 책임자는 MapReduce 논문으로 유명한 Jeff Dean입니다[^Jeffrey14]. Jeff Dean은 구글이 TensorFlow를 만들고 오픈 소스로 공개한 이유에 대해 아래와 같이 설명합니다.
 
-> One of the reasons we built TensorFlow, our next-generation system, the system that we’ve actually open sourced for machine learning, is that we wanted to keep the scalable attributes and production readiness of our first system, but make it a much more flexible platform for doing all kinds of machine-learning research and product development[^Jeffrey17]
+> One of the reasons we built TensorFlow, our next-generation system, the system that we’ve actually open sourced for machine learning, is that we wanted to keep the scalable attributes and production readiness of our first system, but make it a much more flexible platform for doing all kinds of machine-learning research and product development [^Jeffrey17]
 
-결국 핵심은
-
-
+오픈 소스로 공개하는 주 이유는 MapReduce나 BigTable, Borg와 같은 기술에서 겪었던 실수를 반복하지 않기 위해서 입니다. 당시 Google은 자체적으로 개발한 기술을 직접 공개하지 않고 whitepaper를 만들었는데, 외부의 개발자들이 이를 구현한 Hadoop, HBase, Docker 등이 산업 표준이 되어 버리면서 Google이 이에 맞춰야 하는 우스꽝스러운 상황이 반복되었습니다[^Lee16]. Jeff Dean의 작전은 Google이 사용하는 기술을 오픈 소스화하여 기술의 장점과 오픈 소스 커뮤니티의 힘을 동시에 취하는 것입니다.
 
 ### TensorFlow 프레임워크의 구조
 
@@ -165,3 +163,4 @@ struct LaunchMatMul<GPUDevice, T, true /* USE_CUBLAS */> {
 [^TensorFlowBlog]: https://tensorflow.blog/2017/02/13/chainer-mxnet-cntk-tf-benchmarking/
 [^Jeffrey14]: Jeffrey Dean and Sanjay Ghemawat, "MapReduce: simplified data processing on large clusters," USENIX Symposium on Operating Systems Design and Implementation (OSDI), 2014.
 [^Jeffrey17]: https://youtu.be/B0ZnbaOlNss
+[^Lee16]: https://si.mpli.st/dev/tensorflow-open-source.html
