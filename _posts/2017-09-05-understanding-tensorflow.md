@@ -21,12 +21,22 @@ TensorFlow 개발의 책임자는 MapReduce 논문으로 유명한 Jeff Dean입�
 
 > One of the reasons we built TensorFlow, our next-generation system, the system that we’ve actually open sourced for machine learning, is that we wanted to keep the scalable attributes and production readiness of our first system, but make it a much more flexible platform for doing all kinds of machine-learning research and product development [^Jeffrey17]
 
-오픈 소스로 공개하는 주 이유는 MapReduce나 BigTable, Borg와 같은 기술에서 겪었던 실수를 반복하지 않기 위해서 입니다. 당시 Google은 자체적으로 개발한 기술을 직접 공개하지 않고 whitepaper를 만들었는데, 외부의 개발자들이 이를 구현한 Hadoop, HBase, Docker 등이 산업 표준이 되어 버리면서 Google이 이에 맞춰야 하는 우스꽝스러운 상황이 반복되었습니다[^Lee16]. Jeff Dean의 작전은 Google이 사용하는 기술을 오픈 소스화하여 기술의 장점과 오픈 소스 커뮤니티의 힘을 동시에 취하는 것입니다.
+오픈 소스로 공개하는 주 이유는 MapReduce나 BigTable, Borg와 같은 기술에서 겪었던 실수를 반복하지 않기 위해서 입니다. 당시 Google은 자체적으로 개발한 기술을 직접 공개하지 않고 whitepaper를 만들었는데, 외부의 개발자들이 이를 구현한 Hadoop, HBase, Docker 등이 산업 표준이 되어 버리면서 Google이 이에 맞춰야 하는 우스꽝스러운 상황이 반복되었습니다[^Lee16]. Jeff Dean이 주장하는 작전은 Google이 사용하는 기술을 오픈 소스화하여 기술의 장점과 오픈 소스 커뮤니티의 힘을 동시에 취하는 것입니다.
+
+덧붙여, Amazon이 주도권을 쥐고 있는 클라우드 시장의 판도를 뒤집으려는 의도도 보입니다. Deep learning 클라우드 시장의 킬러 앱이 될 경우, 현재 진행 중인 Google Cloud Platform과 TensorFlow의 연계는 위력을 발휘할 수 밖에 없습니다[^GoogleCloud]. 최근 OpenAI가 Microsoft의 Azure를 deep learning 플랫폼을 선택한 것도 어쩌면 이런 클라우드 시장의 지각 변동의 징조일지도 모릅니다[^TensorFlowBlog2].
 
 ### TensorFlow 프레임워크의 구조
 
+![placeholder](https://i.imgur.com/MUyr3eh.png "Figure 2")
+*Figure 2. TensorFlow Architecture [^TensorFlow]*
 
+TensorFlow의 핵심 구성 요소는 개발자가 사용하는 언어 별로 구현되어 있는 client(front-end)와 실제 training과 inference를 수행하는 core execution system(back-end)입니다. 개발자는 client가 제공하는 API를 사용하여 프로그램을 작성할 수도 있고, 이를 기반으로 작성된 training libraries나 inference libraries를 사용할 수도 있습니다. Client와 core execution system 사이에는 이 C API가 존재하는데, client와 core execution system의 작성 언어가 다를 경우 이를 연결해주는 역할을 합니다.
 
+TensorFlow는 기본적으로 Python, Java, C/C++, Go 언어를 지원하고, 이를 위한 client가 구현되어 있습니다. 또한 추가 언어 지원을 위한 client를 작성할 수도 있습니다. 하지만, 문서화나 API의 제공 정도를 고려할 때, 특별한 이유가 없다면 Python을 선택하는 것이 가장 합리적인 선택입니다[^TensorFlow2]. TensorFlow 뿐만이 아니라 많은 deep learning 소프트웨어 플랫폼들이 Python 지원에 주력하고 있는데, 이는 machine learning 개발자들이 가장 많이 쓰는 언어이기 때문입니다[^Puget16].
+
+Client의 주요 역할은 TensorFlow 개발자가 작성한 프로그램을 computational graph의 형태로 저장하고, Session이라는 class를 사용하여 graph의 수행을 개시하는 것입니다. Client는 computational graph의 수행 시작 명령을 내릴 뿐이고, 실제 수행은 core execution system이 담당합니다.
+
+Core execution system은 성능 이슈로 인해 C++로 작성되어 있습니다.
 
 
 ### TensorFlow 프로그램 구조
@@ -164,3 +174,8 @@ struct LaunchMatMul<GPUDevice, T, true /* USE_CUBLAS */> {
 [^Jeffrey14]: Jeffrey Dean and Sanjay Ghemawat, "MapReduce: simplified data processing on large clusters," USENIX Symposium on Operating Systems Design and Implementation (OSDI), 2014.
 [^Jeffrey17]: https://youtu.be/B0ZnbaOlNss
 [^Lee16]: https://si.mpli.st/dev/tensorflow-open-source.html
+[^GoogleCloud]: https://cloud.google.com/ml-engine/
+[^TensorFlowBlog2]: https://tensorflow.blog/2016/11/16/openai-microsoft/
+[^TensorFlow]: https://www.tensorflow.org/extend/architecture
+[^TensorFlow2]: https://www.tensorflow.org/extend/language_bindings
+[^Puget16]: https://www.ibm.com/developerworks/community/blogs/jfp/entry/What_Language_Is_Best_For_Machine_Learning_And_Data_Science?lang=en
