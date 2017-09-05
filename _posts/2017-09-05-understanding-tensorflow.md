@@ -125,7 +125,7 @@ TensorFlow 프로그램은 크게 (1) dataflow graph를 작성하여 원하는 c
 
 #### Create the model
 
-\\(y = Wx + b\\)를 계산할 수 있는 dataflow graph를 그립니다.
+\\(y = Wx + b\\)를 계산할 수 있는 dataflow graph를 그립니다. Graph를 작성하는 과정은 매우 직관적입니다. 변수 x, W와 b를 정의한 후 이들을 입력으로 받아 y를 계산할 수 있는 statement를 작성합니다. x를 선언할 때 쓰인 placeholder는 실제 dataflow graph를 수행할 때 입력 데이터가 들어올 것이라는 것을 표시하는 함수입니다. 반면 W와 b는 향후 training을 통해 값이 정해질 것이기 때문에 여기서는 0으로 초기화시킬 것이라고 표시합니다.
 
 #### Define loss and optimizer
 
