@@ -45,6 +45,8 @@ Distributed master와 networking layer는 TensorFlow의 분산 시스템에서�
 
 ### TensorFlow 프로그램 구조
 
+아래의 프로그램은 deep learning 계의 hello world라고 이야기할 수 있는 MNIST dataset을 이용한 숫자 필기 인식 프로그램입니다[^TensorFlow4]. Input layer와 output layer로 구성된 two-layer network를 구축하였고, loss function으로 softmax를 사용하였습니다.
+
 ```python
 # mnist_softmax.py
 from __future__ import absolute_import
@@ -75,7 +77,8 @@ def main(_):
 
   cross_entropy = tf.reduce_mean(
       tf.nn.softmax_cross_entropy_with_logits(labels=y_, logits=y))
-  train_step = tf.train.GradientDescentOptimizer(0.5).minimize(cross_entropy)
+  train_step =
+      tf.train.GradientDescentOptimizer(0.5).minimize(cross_entropy)
 
   sess = tf.InteractiveSession()
   tf.global_variables_initializer().run()
@@ -92,7 +95,8 @@ def main(_):
 
 if __name__ == '__main__':
   parser = argparse.ArgumentParser()
-  parser.add_argument('--data_dir', type=str, default='/tmp/tensorflow/mnist/input_data',
+  parser.add_argument('--data_dir', type=str,
+                      default='/tmp/tensorflow/mnist/input_data',
                       help='Directory for storing input data')
   FLAGS, unparsed = parser.parse_known_args()
   tf.app.run(main=main, argv=[sys.argv[0]] + unparsed)
@@ -184,3 +188,4 @@ struct LaunchMatMul<GPUDevice, T, true /* USE_CUBLAS */> {
 [^TensorFlow2]: https://www.tensorflow.org/extend/language_bindings
 [^Puget16]: https://www.ibm.com/developerworks/community/blogs/jfp/entry/What_Language_Is_Best_For_Machine_Learning_And_Data_Science?lang=en
 [^TensorFlow3]: https://www.tensorflow.org/programmers_guide/graphs
+[^TensorFlow4]: https://www.tensorflow.org/get_started/mnist/beginners
