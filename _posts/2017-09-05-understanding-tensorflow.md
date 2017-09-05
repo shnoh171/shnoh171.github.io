@@ -51,15 +51,15 @@ Distributed master와 networking layer는 TensorFlow의 분산 시스템에서�
 *Figure 4. MNIST dataset*
 
 ![placeholder](https://i.imgur.com/A0ACsjH.gif "Figure 5")
-*Figure 5. Very Simple Neural Network*
+*Figure 5. Very Simple Neural (?) Network*
 
 이 네트워크의 입력과 출력을 각각 벡터 \\(x\\)와 \\(y\\)로 표현할 경우, 이 둘 사이의 관계식은 아래와 같습니다.
 
 \\[y = Wx + b\\]
 
-이 때 \\(W\\)는 output layer의 각 neuron들의 weight를 저장하는 \\(10 \times 284\\) 크기를 가지는 행렬입니다.
+이 때 \\(W\\)는 output layer에서 각 neuron들의 weight를 저장하는 \\(10 \times 284\\) 행렬입니다.
 
-지금부터 softmax regression을 사용하여 각 weight 값을 training한 후 결과를 test하는 프로그램을 설명하겠습니다.
+지금부터 이 네트워크의 weight 값들을 train하고 test하는 프로그램을 단계별로 설명하겠습니다.
 
 ```python
 # mnist_softmax.py
@@ -116,15 +116,16 @@ if __name__ == '__main__':
   FLAGS, unparsed = parser.parse_known_args()
   tf.app.run(main=main, argv=[sys.argv[0]] + unparsed)
 ```
+
+TensorFlow 프로그램은 크게 (1) dataflow graph를 작성하여 원하는 computation을 표현하는 부분과 (2) dataflow graph를 수행하는 부분으로 나눌 수 있습니다. 위의 코드에서 create the model과 define loss and optimizer는 (1)에 해당하고, train과 test trained model은 (2)에 해당합니다.
+
 #### Import data
 
 서버에서 MNIST data set을 가져옵니다.
 
 #### Create the model
 
-Dataflow graph를 그립니다. 우리가 최종적으로 표현할 식은 다음과 같습니다.
-
-\\[y = Wx + b\\]
+\\(y = Wx + b\\)를 계산할 수 있는 dataflow graph를 그립니다.
 
 #### Define loss and optimizer
 
