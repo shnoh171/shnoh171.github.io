@@ -130,7 +130,8 @@ TensorFlow 프로그램은 크게 (1) dataflow graph를 작성하여 원하는 c
 
 #### Define loss and optimizer
 
-계속 dataflow graph를 확장하여 training을 하기 위한 computation을 표현합니다. y_는 입력으로 받는 각 이미지 데이터 x에 대한 정답(label)입니다. 마찬가지로 dataflow graph를 수행할 때 들어올 것이기 때문에 placeholder를 사용합니다. 다음 줄의 cross_entropy는 loss function을 계산합니다. 각 이미지 데이터에 대해 y의 계산값과 labe인 y_를 입력으로 받아 cross entropy를 계산하고, 전체의 평균값을
+계속 dataflow graph를 확장하여 training을 하기 위한 computation을 표현합니다. y_는 입력으로 받는 각 이미지 데이터 x에 대한 정답(label)입니다. 마찬가지로 dataflow graph를 수행할 때 들어올 것이기 때문에 placeholder를 사용합니다. cross_entropy에는 loss function의 계산식을 입력합니다. 여기서는 softmax regression을 사용하여 loss function을 계산하는데[^CrossEntropy], 이에 대한 설명은 생략하도록 하겠습니다. 계산할 때 y와 y_가 입력으로 들어가서 dataflow graph가 확장된다는 점만 눈여겨 보시면 될 것 같습니다. 마지막으로, train_step에 learning rate 0.5로 gradient descent를 할 수 있는 operation을 인가하여 dataflow graph를 완성합니다. 이제 train_step을 수행할 때마다
+
 
 ![placeholder](https://i.imgur.com/J5UvFyv.png "Figure 6")
 *Figure 6. Dataflow Graph of MNIST Example*
@@ -230,3 +231,4 @@ struct LaunchMatMul<GPUDevice, T, true /* USE_CUBLAS */> {
 [^Puget16]: <https://www.ibm.com/developerworks/community/blogs/jfp/entry/What_Language_Is_Best_For_Machine_Learning_And_Data_Science?lang=en>
 [^TensorFlow3]: <https://www.tensorflow.org/programmers_guide/graphs>
 [^TensorFlow4]: <https://www.tensorflow.org/get_started/mnist/beginners>
+[^CrossEntropy]: <http://colah.github.io/posts/2015-09-Visual-Information/>
