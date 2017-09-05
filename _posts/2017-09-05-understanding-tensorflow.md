@@ -45,12 +45,12 @@ Distributed master와 networking layer는 TensorFlow의 분산 시스템에서�
 
 ### TensorFlow 프로그램의 기본 구조
 
-지금부터 deep learning 계의 hello world에 준하는 간단한 예제를 통해 TensorFlow 프로그램의 작성 방식을 알아보겠습니다. 소개하는 프로그램은 TensorFlow 홈페이제에 처음 나오는 예제로, MNIST dataset을 이용한 숫자 필기 인식 프로그램입니다[^TensorFlow4]. 이 프로그램은 아래의 figure 4와 같은 가로 세로 28픽셀의 흑백 숫자 이미지 입력으로 받아 0~9 중 어떤 숫자인지를 판별합니다. 이를 위해 구성한 neural network 구조를 figure 5에 표시하였습니다. Input layer는 각 이미지의 784개의 픽셀을 입력으로 받습니다. Output layer는 input layer의 각 neuron으로부터 픽셀 값을 전달 받아 weighted sum을 계산하여 출력합니다. 예제를 단순하게 하기 위해 여기서는 어떤 neuron도 activation function을 가지지 않습니다. 최종 출력값 10개는 각각 0~9의 숫자의 점수를 의미하고, 가장 높은 점수가 높은 숫자를 해당 입력 이미지의 숫자로 결정합니다.
+지금부터 deep learning 계의 hello world에 준하는 간단한 예제를 통해 TensorFlow 프로그램의 작성 방식을 알아보겠습니다. 소개하는 프로그램은 TensorFlow 홈페이제에 처음 나오는 예제로, MNIST dataset을 이용한 숫자 필기 인식 프로그램입니다[^TensorFlow4]. 이 프로그램은 아래의 figure 4와 같은 가로 세로 28픽셀의 흑백 숫자 이미지 입력으로 받아 0~9 중 어떤 숫자인지를 판별합니다. 이를 위해 구성한 neural network 구조를 figure 5에 표시하였습니다. Input layer는 각 이미지의 784개의 픽셀을 입력으로 받습니다. Output layer는 input layer의 각 neuron으로부터 픽셀 값을 전달 받아 weighted sum을 계산하여 bias를 더한 후 출력합니다. 예제를 단순하게 하기 위해 여기서는 어떤 neuron도 activation function을 가지지 않습니다. 최종 출력값 10개는 각각 0~9의 숫자의 점수를 의미하고, 가장 높은 점수가 높은 숫자를 해당 입력 이미지의 숫자로 결정합니다.
 
 ![placeholder](https://i.imgur.com/kpjwnOr.png "Figure 4")
 *Figure 4. MNIST dataset*
 
-![placeholder](https://i.imgur.com/A0ACsjH.gif "Figure 5")
+![placeholder](https://i.imgur.com/RkC4KVm.png "Figure 5")
 *Figure 5. Very Simple Neural (?) Network*
 
 이 네트워크의 입력과 출력을 각각 벡터 \\(x\\)와 \\(y\\)로 표현할 경우, 이 둘 사이의 관계식은 아래와 같습니다.
@@ -128,6 +128,11 @@ TensorFlow 프로그램은 크게 (1) dataflow graph를 작성하여 원하는 c
 \\(y = Wx + b\\)를 계산할 수 있는 dataflow graph를 그립니다. Graph를 작성하는 과정은 매우 직관적입니다. 변수 x, W와 b를 정의한 후 이들을 입력으로 받아 y를 계산할 수 있는 statement를 작성합니다. x를 선언할 때 쓰인 placeholder는 실제 dataflow graph를 수행할 때 입력 데이터가 들어올 것이라는 것을 표시하는 함수입니다. 반면 W와 b는 향후 training을 통해 값이 정해질 것이기 때문에 여기서는 0으로 초기화시킬 것이라고 표시합니다.
 
 #### Define loss and optimizer
+
+계속 dataflow graph를 확장하여 training을 하기 위한 computation을 표현합니다. y_는 입력으로 받는 각 이미지 데이터 x에 대한 정답(label)입니다. 마찬가지로 dataflow graph를 수행할 때 들어올 것이기 때문에 placeholder를 사용합니다.
+
+![placeholder](https://i.imgur.com/J5UvFyv.png "Figure 6")
+*Figure 6. Dataflow Graph of MNIST Example*
 
 #### Train
 
