@@ -61,7 +61,7 @@ Core execution system은 client가 개시한 dataflow graph의 수행을 실제 
 
 이 때, \\(W\\)는 output layer에서 각 neuron들의 weight를 저장하는 \\(10 \times 284\\) 행렬입니다. \\(W\\)의 \\(i\\)번째 행은 output layer의 \\(i\\)번째 neuron의 weight 값들을 저장합니다.
 
-이제 프로그램을 단계별로 설명하겠습니다.
+이제 프로그램을 단계별로 설명하겠습니다. 여기서는 프로그램의 구조를 파악하기 위한 최소한의 설명만 할 것입니다. 자세한 설명이 필요할 경우 TensorFlow 홈페이지를 참고하시면 됩니다[^TensorFlow4].
 
 ```python
 # mnist_softmax.py
@@ -128,17 +128,18 @@ TensorFlow 프로그램은 크게 (1) dataflow graph를 작성하여 원하는 c
 
 #### Create the model
 
-\\(y = Wx + b\\)를 계산할 수 있는 dataflow graph를 그립니다. Graph를 작성하는 과정은 매우 직관적입니다. 변수 x, W와 b를 정의한 후 이들을 입력으로 받아 y를 계산할 수 있는 statement를 작성합니다. x를 선언할 때 쓰인 placeholder는 실제 dataflow graph를 수행할 때 입력 데이터가 들어올 것이라는 것을 표시하는 함수입니다. 반면 W와 b는 향후 training을 통해 값이 정해질 것이기 때문에 여기서는 0으로 초기화시킬 것이라고 표시합니다.
+\\(y = Wx + b\\)를 계산할 수 있는 dataflow graph를 그립니다. Graph를 작성하는 과정은 매우 직관적입니다. 각 statement는 새로운 tensor를 선언하고 해당 tensor를 생성할 operation을 명시합니다. 즉, 프로그램의 x, W와 b는 tensor이고 placeholder, Variable, matmul와 더하기는 operation입니다. Tensor x를 정의할 때 쓰인 placerholder은 실제 dataflow graph를 수행할 때 입력되는 데이터를 전달하는 operation입니다. 최종적으로 \\(y = Wx + b\\)를 계산한 최종 결과가 tensor y에 저장되는 dataflow graph가 완성되었습니다.
 
 #### Define loss and optimizer
 
-계속 dataflow graph를 확장하여 training을 하기 위한 computation을 표현합니다. y_는 입력으로 받는 각 이미지 데이터 x에 대한 정답(label)입니다. 마찬가지로 dataflow graph를 수행할 때 들어올 것이기 때문에 placeholder를 사용합니다. cross_entropy에는 loss function의 계산식을 입력합니다. 여기서는 softmax regression을 사용하여 loss function을 계산하는데[^CrossEntropy], 이에 대한 설명은 생략하도록 하겠습니다. 계산할 때 y와 y_가 입력으로 들어가서 dataflow graph가 확장된다는 점만 눈여겨 보시면 될 것 같습니다. 마지막으로, train_step에 learning rate 0.5로 gradient descent를 할 수 있는 operation을 인가하여 dataflow graph를 완성합니다. 이제 train_step을 수행할 때마다
-
+W와 b를 training 시킬 수 있도록 dataflow graph를 확장합니다. y_는 입력으로 받는 각 이미지 데이터 x에 대한 label(정답)을 저장하는 tensor입니다. cross_entropy에는 이 neural network의 loss function을 계산한 결과를 저장합니다. Loss function을 계산하는 과정에서 neural network를 통과한 결과를 저장하는 y와 label이 저장된 y_를 입력으로 받습니다(이에 따라 dataflow graph가 연결됩니다). 참고로 여기서는 softmax regression을 사용하여 loss function을 계산하는데[^CrossEntropy], 이에 대한 설명은 생략하도록 하겠습니다. 마지막으로 train_step이라는 tensor에 W와 b에 대해 gradient descent를 수행할 operation의 결과를 인가합니다. 아래의 figure 6는 완성된 dataflow graph를 TensorBoard라는 도구를 사용하여 출력한 결과입니다.
 
 ![placeholder](https://i.imgur.com/J5UvFyv.png "Figure 6")
 *Figure 6. Dataflow Graph of MNIST Example*
 
 #### Initialize
+
+본격적으로 작성한 dataflow graph를 돌리기에 앞서 tensor들을 초기화시킵니다.
 
 #### Train
 
