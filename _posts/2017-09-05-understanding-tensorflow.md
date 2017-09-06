@@ -11,9 +11,9 @@ categories:
 ![placeholder](https://i.imgur.com/6Ai3QMa.png "Figure 1")
 *Figure 1. 2016년 이후 폭발적으로 오른 NVIDIA 주가*
 
-반면 소프트웨어 플랫폼은 상대적으로 경쟁이 치열해 보입니다. Google의 TensorFlow가 빠르게 플랫폼을 오픈 소스로 공개하고 양질의 튜토리얼과 문서들을 제공하며 선점 효과를 누리고 있지만[^Rubashkin17], 후발 주자들(Microsoft CNTK, MXNet, PyTorch, ...)이 향상된 성능과 편리한 기능들을 선보이고 있기 때문에 안심할 상황은 아닙니다[^TensorFlowBlog].
+반면 소프트웨어 플랫폼은 상대적으로 경쟁이 치열해 보입니다. Google의 TensorFlow가 플랫폼을 오픈 소스로 공개하고 양질의 튜토리얼과 문서들을 제공하며 선점 효과를 누리고 있지만[^Rubashkin17], 후발 주자들(Microsoft CNTK, MXNet, PyTorch, ...)이 향상된 성능과 편리한 기능들을 선보이고 있기 때문에 안심할 상황은 아닌 것 같습니다[^TensorFlowBlog].
 
-TensorFlow는 천하의 Google이 야심차게 진행하고 있는 프로젝트이기 때문에 미래가 밝겠지만, 위와 같은 이유로 이 플랫폼을 state-of-the-art로 단정짓는 것은 성급한 생각인 것 같습니다. 이를 염두에 두고 지금부터 TensorFlow에 대해 알아보도록 하겠습니다.
+TensorFlow는 천하의 Google이 야심차게 진행하고 있는 프로젝트이기 때문에 미래가 밝아 보입니다. 하지만, 따라오는 후발 주자들의 기세를 볼 때 이 플랫폼을 state-of-the-art로 단정짓는 것은 성급한 생각인 것 같습니다. 이를 염두에 두고 지금부터 TensorFlow에 대해 알아보도록 하겠습니다.
 
 ### Google은 왜 TensorFlow를 오픈 소스로 공개하였을까?
 
@@ -21,9 +21,9 @@ TensorFlow 개발의 책임자는 MapReduce 논문으로 유명한 Jeff Dean입�
 
 > One of the reasons we built TensorFlow, our next-generation system, the system that we’ve actually open sourced for machine learning, is that we wanted to keep the scalable attributes and production readiness of our first system, but make it a much more flexible platform for doing all kinds of machine-learning research and product development [^Jeffrey17]
 
-오픈 소스로 공개하는 주 이유는 MapReduce나 BigTable, Borg와 같은 기술에서 겪었던 실수를 반복하지 않기 위해서 입니다. 당시 Google은 자체적으로 개발한 기술을 직접 공개하지 않고 whitepaper를 만들었는데, 외부의 개발자들이 이를 구현한 Hadoop, HBase, Docker 등이 산업 표준이 되어 버리면서 Google이 이에 맞춰야 하는 우스꽝스러운 상황이 반복되었습니다[^Lee16]. Jeff Dean이 주장하는 작전은 Google이 사용하는 기술을 오픈 소스화하여 기술의 장점과 오픈 소스 커뮤니티의 힘을 동시에 취하는 것입니다.
+글에 따르면 TensorFlow를 오픈 소스로 공개하는 주 이유는 MapReduce나 BigTable, Borg와 같은 기술에서 Google이 겪었던 실패를 반복하지 않기 위해서 입니다. 당시 Google은 자체적으로 개발한 기술을 직접 공개하지 않고 whitepaper를 배포하였는데, 외부의 개발자들이 이를 구현한 Hadoop, HBase, Docker 등이 산업 표준이 되어 버리면서 Google이 이에 맞춰야 하는 우스꽝스러운 상황이 반복되었습니다[^Lee16]. Jeff Dean이 주장하는 작전은 Google이 사용하는 기술을 오픈 소스화하여 기술의 장점과 오픈 소스 커뮤니티의 힘을 동시에 취하는 것입니다.
 
-덧붙여, Amazon이 주도권을 쥐고 있는 클라우드 시장의 판도를 뒤집으려는 의도도 보입니다. Deep learning 클라우드 시장의 킬러 앱이 될 경우, 현재 진행 중인 Google Cloud Platform과 TensorFlow의 연계는 위력을 발휘할 수 밖에 없습니다[^GoogleCloud]. 최근 OpenAI가 Microsoft의 Azure를 deep learning 플랫폼을 선택한 것도 어쩌면 이런 클라우드 시장의 지각 변동의 징조일지도 모릅니다[^TensorFlowBlog2].
+덧붙여, Amazon이 주도권을 쥐고 있는 클라우드 시장의 판도를 뒤집으려는 의도도 보입니다. Deep learning 서비스가 클라우드 시장의 킬러 앱이 되면 Google Cloud Platform과 TensorFlow의 연계는 매우 위력적일 것입니다[^GoogleCloud]. 최근 OpenAI가 Microsoft의 Azure를 deep learning 플랫폼을 선택한 것이 어쩌면 클라우드 시장 지각 변동의 서막일지도 모릅니다[^TensorFlowBlog2].
 
 ### TensorFlow 프레임워크의 구조
 
@@ -32,16 +32,16 @@ TensorFlow의 핵심 구성 요소는 개발자가 사용하는 언어 별로 �
 ![placeholder](https://i.imgur.com/MUyr3eh.png "Figure 2")
 *Figure 2. TensorFlow Architecture [^TensorFlow]*
 
-TensorFlow는 기본적으로 Python, Java, C/C++, Go 언어를 지원하고, 이를 위한 client가 구현되어 있습니다. 추가 언어 지원을 위한 client를 작성할 수도 있습니다. 하지만, 문서화나 API의 제공 정도를 고려할 때, 특별한 이유가 없다면 Python을 선택하는 것이 가장 합리적인 선택입니다[^TensorFlow2]. TensorFlow 뿐만이 아니라 많은 deep learning 소프트웨어 플랫폼들이 Python 지원에 주력하고 있는데, 이는 machine learning 개발자들이 가장 많이 쓰는 언어이기 때문입니다[^Puget16].
+TensorFlow는 기본적으로 Python, Java, C/C++, Go를 지원하고, 이를 위한 client들이 구현되어 있습니다. 또 추가 언어 지원을 위한 client를 작성할 수도 있습니다. 하지만 문서화나 API의 풍부함을 생각하면, 특별한 이유가 없다면 Python을 선택하는 것이 가장 합리적인 선택입니다[^TensorFlow2]. TensorFlow 뿐만이 아니라 많은 deep learning 소프트웨어 플랫폼들이 Python 지원에 주력하고 있는데, 이는 Python이 machine learning 개발자들이 가장 많이 사용하는 언어이기 때문입니다[^Puget16].
 
-Client의 주요 역할은 TensorFlow 개발자가 작성한 프로그램을 dataflow graph의 형태로 저장하고 수행을 개시하는 것입니다. Dataflow graph의 node는 operation입니다. Operation은 사전에 정의된 작업을 수행하는 연산의 최소 단위입니다. 단순한 덧셈과 뺄셈부터 matrix multiplication, convolution까지 모두 operation이 될 수 있습니다. Operation의 입출력으로 사용되는 자료구조는 tensor입니다. Tensor는 다차원의 행렬을 표현하기 위하여 TensorFlow에서 사용하는 자료구조입니다. Figure 3는 TensorFlow 홈페이지에 나와 있는 dataflow graph의 예입니다.
+Client의 주요 역할은 TensorFlow 개발자가 작성한 프로그램을 dataflow graph(computational graph)의 형태로 저장하고 수행을 개시하는 것입니다. Dataflow graph의 node는 operation입니다. Operation은 사전에 정의된 작업을 수행하는 연산의 최소 단위입니다. 단순한 덧셈과 뺄셈부터 matrix multiplication, convolution까지 모두 operation으로 정의할 수 있습니다. 각 operation은 0개 이상의 tensor를 입력으로 받아 한 개의 tensor를 출력합니다. Tensor는 TensorFlow에서 데이터를 저장하기 위한 자료구조로, 다차원의 행렬을 저장할 수 있습니다. Operation들이 tensor를 통해 연결되어 있기 때문에 tensor를 dataflow graph의 edge라고 부릅니다. 아래의 figure 3는 TensorFlow 홈페이지에 나와 있는 dataflow graph의 예입니다.
 
 ![placeholder](https://i.imgur.com/qvjrgd2.gif "Figure 3")
 *Figure 3. Example of Dataflow Graph in TensorFlow [^TensorFlow3]*
 
-Client가 개시한 dataflow graph의 수행을 실제 처리하는 부분은 core execution system입니다. Figure 2 상에서 dataflow executor는 dataflow graph를 client로부터 전달 받은 후, device에게 dataflow 상의 각 operation의 kernel을 수행하라는 명령을 내립니다. Device는 CPU나 GPU와 같은 operation을 수행할 수 있는 processing unit입니다. Kernel은 한 operation의 특정 device에 대한 구현을 의미합니다. 시스템 상에 여러 device가 존재할 경우 여러 개의 kernel을 구현해서 사용할 수 있습니다. 예를 들어, TensorFlow에는 matrix multiplication operation에 대해 CPU kernel과 CUDA library를 사용하는 GPU kernel이 따로 구현되어 있습니다.
+Core execution system은 client가 개시한 dataflow graph의 수행을 실제 처리합니다. 위의 figure 2를 다시 보겠습니다. Core execution system 안의 dataflow executor는 dataflow graph를 client로부터 전달 받은 후, CPU나 GPU 같은 device에게 dataflow 상의 각 operation의 kernel을 수행하라는 명령을 내립니다. 이때 kernel은 특정 device에서의 operation의 구현입니다. 예를 들어 TensorFlow에는 matrix multiplication operation에 대해 CPU kernel과 CUDA library를 사용하는 GPU kernel이 따로 구현되어 있습니다.
 
-Distributed master와 networking layer는 TensorFlow의 분산 시스템에서의 동작을 지원하기 위한 부분입니다. 이 글의 목적은 기본적인 TensorFlow 동작을 이해하는 것이므로 분산 시스템의 경우는 고려하지 않도록 하겠습니다.
+남은 부분인 distributed master와 networking layer는 TensorFlow의 분산 시스템 지원을 위한 부분입니다. 이 글의 목적은 기본적인 TensorFlow 동작을 이해하는 것이므로 설명하지 않고 넘어가도록 하겠습니다.
 
 ### TensorFlow 프로그램의 기본 구조
 
