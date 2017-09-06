@@ -178,10 +178,11 @@ Executor는 subgraph 상의 각 operation의 수행을 Device에게 순차적으
 
 아래의 코드는 matrix multiplication operator의 GPU에 대한 kernel의 예입니다. MatMulOp object의 Compute() method는 LaunchMatMul object의 launch() method를 호출합니다. 이는 TensorFlow의 GPU kernel의 전형적인 프로그래밍 패턴입니다. launch() method는 CUDA에서 지원하는 cuBLAS를 사용하여 matrix multiplication을 수행합니다.
 
-```c
+```c++
 // tensorflow/core/kernels/matmul_op.cc
 
-template <typename Device, typename T, bool USE_CUBLAS> class MatMulOp : public OpKernel {
+template <typename Device, typename T, bool USE_CUBLAS>
+class MatMulOp : public OpKernel {
   public:
   void Compute(OpKernelContext* ctx) override {
     // ...
@@ -191,7 +192,7 @@ template <typename Device, typename T, bool USE_CUBLAS> class MatMulOp : public 
 };
 ```
 
-```c
+```c++
 // tensorflow/core/kernels/matmul_op.cc
 template <typename T>
 struct LaunchMatMul<GPUDevice, T, true /* USE_CUBLAS */> {
