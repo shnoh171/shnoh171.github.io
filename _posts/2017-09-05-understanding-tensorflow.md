@@ -139,15 +139,17 @@ W와 b를 training 시킬 수 있도록 dataflow graph를 확장합니다. y_는
 
 #### Initialize
 
-본격적으로 작성한 dataflow graph를 돌리기에 앞서 tensor들을 초기화시킵니다.
+실제 dataflow graph를 돌리기 위해서는 session object를 하나 선언합니다. 그리고, 본격적으로 작성한 dataflow graph를 돌리기에 앞서 tensor들을 초기화시킵니다. 초기화시킬 변수는 W와 b입니다(앞에서 dataflow graph를 그리는 과정에서 이 두 변수를 0으로 초기화시킬 것이라고 명시하였습니다).
 
 #### Train
 
+1000번에 걸쳐 training set에서 100개의 batch data를 사용하여 training을 수행합니다. Session의 run method를 호출할 때 앞서 선언한 train_step이라는 tensor를 입력으로 받습니다. 이러면 train_step을 정의할 때 사용된 GradientDescentOptimizer를 사용하여 training을 실제로 진행합니다. 이때, 앞서 placeholder로 선언된 x와 y_에 들어갈 데이터를 feed_dict을 사용하여 인가해줘야 합니다.
+
 #### Test trained model
 
+Training을 마친 모델에 대해 test set을 사용하여 정확도를 검증합니다. Tensor y와 y_로부터 다시 dataflow graph를 확장하여 정확도를 계산한 결과를 accuracy라는 tensor에 저장하게 하고, 마찬가지로 session의 run method를 사용하여 결과를 출력합니다.
 
-
-// Expressing computation via Graph과 Executing computation
+여기까지 TensorFlow 프로그램의 구조에 대해 알아보았습니다. 앞서 이야기한 것처럼 TensorFlow의 프로그램은 (1) dataflow graph를 작성하여 원하는 computation을 표현하는 부분과 (2) dataflow graph를 수행하는 부분으로 나뉩니다. 마지막으로 각 부분이 실제 프레임워크 상에서 어떻게 동작하는지를 조금 더 자세히 알아보겠습니다.
 
 ### Step 1. Dataflow graph를 사용한 computation 표현
 * tf.Graph
