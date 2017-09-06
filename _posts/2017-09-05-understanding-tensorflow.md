@@ -45,21 +45,23 @@ Core execution system은 client가 개시한 dataflow graph의 수행을 실제 
 
 ### TensorFlow 프로그램의 기본 구조
 
-지금부터 deep learning 계의 hello world에 준하는 간단한 예제를 통해 TensorFlow 프로그램의 작성 방식을 알아보겠습니다. 소개하는 프로그램은 TensorFlow 홈페이제에 처음 나오는 예제로, MNIST dataset을 이용한 숫자 필기 인식 프로그램입니다[^TensorFlow4]. 이 프로그램은 아래의 figure 4와 같은 가로 세로 28픽셀의 흑백 숫자 이미지 입력으로 받아 0~9 중 어떤 숫자인지를 판별합니다. 이를 위해 구성한 neural network 구조를 figure 5에 표시하였습니다. Input layer는 각 이미지의 784개의 픽셀을 입력으로 받습니다. Output layer는 input layer의 각 neuron으로부터 픽셀 값을 전달 받아 weighted sum을 계산하여 bias를 더한 후 출력합니다. 예제를 단순하게 하기 위해 여기서는 어떤 neuron도 activation function을 가지지 않습니다. 최종 출력값 10개는 각각 0~9의 숫자의 점수를 의미하고, 가장 높은 점수가 높은 숫자를 해당 입력 이미지의 숫자로 결정합니다.
+간단한 예제를 통해 TensorFlow 프로그램 구조를 알아보겠습니다. 예제는 TensorFlow 홈페이지의 튜토리얼 문서에 나오는 MNIST dataset을 이용한 숫자 필기 인식 프로그램입니다[^TensorFlow4]. 아래 figure 4와 같은 가로 세로 28픽셀의 흑백 숫자 이미지 입력으로 받아 0~9 중 어떤 숫자인지를 판별합니다.
 
 ![placeholder](https://i.imgur.com/kpjwnOr.png "Figure 4")
 *Figure 4. MNIST dataset*
 
-![placeholder](https://i.imgur.com/RkC4KVm.png "Figure 5")
-*Figure 5. Very Simple Neural (?) Network*
+작성할 neural network 구조는 figure 5에 표시하였습니다. Input layer는 각 이미지의 784개의 픽셀을 입력으로 받습니다. Output layer는 input layer의 각 neuron으로부터 픽셀 값을 전달 받아 weighted sum을 계산하여 bias를 더한 후 출력합니다. 이 예제는 매우 단순하기 때문에 어떤 neuron도 activation function을 가지지 않습니다. 최종 출력값 10개는 각각 0~9의 숫자의 점수를 의미하고, 가장 높은 점수가 높은 숫자를 해당 입력 이미지의 숫자로 결정합니다.
 
-이 네트워크의 입력과 출력을 각각 벡터 \\(x\\)와 \\(y\\)로 표현할 경우, 이 둘 사이의 관계식은 아래와 같습니다.
+![placeholder](https://i.imgur.com/RkC4KVm.png "Figure 5")
+*Figure 5. Very Simple Neural Network*
+
+이 네트워크의 입력과 출력을 각각 벡터 \\(x\\)와 \\(y\\)로 표시하면 둘 사이의 관계식은 아래와 같습니다.
 
 \\[y = Wx + b\\]
 
-이 때 \\(W\\)는 output layer에서 각 neuron들의 weight를 저장하는 \\(10 \times 284\\) 행렬입니다.
+이 때, \\(W\\)는 output layer에서 각 neuron들의 weight를 저장하는 \\(10 \times 284\\) 행렬입니다. \\(W\\)의 \\(i\\)번째 행은 output layer의 \\(i\\)번째 neuron의 weight 값들을 저장합니다.
 
-지금부터 이 네트워크의 weight 값들을 train하고 test하는 프로그램을 단계별로 설명하겠습니다.
+이제 프로그램을 단계별로 설명하겠습니다.
 
 ```python
 # mnist_softmax.py
