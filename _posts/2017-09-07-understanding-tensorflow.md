@@ -151,24 +151,30 @@ Training을 마친 모델에 대해 test set을 사용하여 정확도를 검증
 
 여기까지 TensorFlow 프로그램의 구조에 대해 알아보았습니다. 앞서 이야기한 것처럼 TensorFlow의 프로그램은 (1) dataflow graph를 작성하여 원하는 computation을 표현하는 부분과 (2) dataflow graph를 수행하는 부분으로 나뉩니다. 마지막으로 각 부분이 실제 프레임워크 상에서 어떻게 동작하는지 조금 더 자세히 알아보겠습니다.
 
-### Step 1. Dataflow graph를 사용한 computation 표현
-* tf.Graph
+### Step 1. Dataflow graph 구축
+
+Dataflow graph를 구축하는 작업은 전적으로 client 단에서 이루어집니다. 앞서 설명한 것처럼 TensorFlow는 지원하는 언어마다 각각 client가 구현되어 있는데, 이 중 가장 많이 쓰이는 Python client를 기준으로 설명하겠습니다.
+
+Python client는 dataflow graph를 관리하기 위해 세 개의 object를 관리합니다. 각 object에 대한 설명은 아래와 같습니다.
+
+* Graph
   + A TensorFlow computation, represented as a dataflow graph
-* tf.Operation
+* Operation
   + Represents unit of computation
-  + Node of tf.Graph
-* tf.Tensor
+  + Node of Graph
+* Tensor
   + Represents unit of data that flow between operations
-  + Edge of tf.Graph
+  + Edge of Graph
+
+Graph object는 자신이 소유하고 있는 operation들을 가리키기 위한 dictionary 자료 구조를 유지합니다. 이를 통한 Python client는 자신이 원하는 operation에 쉽게 접근할 수 있습니다. Operation object는 자신의 입력 tensor와 출력 tensor를 가리키고 있습니다. 마찬가지로, tensor object는 자신을 출력하는 operation과 자신을 입력으로 받는 operation을 가리키고 있습니다.
+
+프로그램에 따라 dataflow graph 구축을 마치면 session의 run method가 호출됩니다. 그러면 Python client는 C API로 구현된 wrapper function을 호출하여 core execution system에게 실제 dataflow graph 수행을 명령합니다. 이 과정에서 Python client가 작성한 그래프 자료구조를 core execution system에게 넘겨줍니다.
+
+### Step 2. Dataflow graph 수행(단일 머신의 경우)
 
 
 
 
-
-
-
-
-### Step 2. Executing the Computation Graph (Single Machine Case)
 
 * Session object를 사용하여 graph 상의 operation들을 수행
   + Operation의 수행은 OpKernel::Compute()에 정의되어 있음
