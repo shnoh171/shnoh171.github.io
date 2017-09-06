@@ -13,7 +13,7 @@ categories:
 
 반면 소프트웨어 플랫폼은 상대적으로 경쟁이 치열해 보입니다. Google의 TensorFlow가 플랫폼을 오픈 소스로 공개하고 양질의 튜토리얼과 문서들을 제공하며 선점 효과를 누리고 있지만[^Rubashkin17], 후발 주자들(Microsoft CNTK, MXNet, PyTorch, ...)이 향상된 성능과 편리한 기능들을 선보이고 있기 때문에 안심할 상황은 아닌 것 같습니다[^TensorFlowBlog].
 
-TensorFlow는 천하의 Google이 야심차게 진행하고 있는 프로젝트이기 때문에 미래가 밝아 보입니다. 하지만, 따라오는 후발 주자들의 기세를 볼 때 이 플랫폼을 state-of-the-art로 단정짓는 것은 성급한 생각인 것 같습니다. 이를 염두에 두고 지금부터 TensorFlow에 대해 알아보도록 하겠습니다.
+TensorFlow는 천하의 Google이 야심 차게 진행하고 있는 프로젝트이기 때문에 미래가 밝아 보입니다. 하지만, 따라오는 후발 주자들의 기세를 볼 때 이 플랫폼을 state-of-the-art로 단정짓는 것은 성급한 생각인 것 같습니다. 이를 염두에 두고 지금부터 TensorFlow에 대해 알아보도록 하겠습니다.
 
 ### Google은 왜 TensorFlow를 오픈 소스로 공개하였을까?
 
@@ -21,7 +21,7 @@ TensorFlow 개발의 책임자는 MapReduce 논문으로 유명한 Jeff Dean입�
 
 > One of the reasons we built TensorFlow, our next-generation system, the system that we’ve actually open sourced for machine learning, is that we wanted to keep the scalable attributes and production readiness of our first system, but make it a much more flexible platform for doing all kinds of machine-learning research and product development [^Jeffrey17]
 
-글에 따르면 TensorFlow를 오픈 소스로 공개하는 주 이유는 MapReduce나 BigTable, Borg와 같은 기술에서 Google이 겪었던 실패를 반복하지 않기 위해서 입니다. 당시 Google은 자체적으로 개발한 기술을 직접 공개하지 않고 whitepaper를 배포하였는데, 외부의 개발자들이 이를 구현한 Hadoop, HBase, Docker 등이 산업 표준이 되어 버리면서 Google이 이에 맞춰야 하는 우스꽝스러운 상황이 반복되었습니다[^Lee16]. Jeff Dean이 주장하는 작전은 Google이 사용하는 기술을 오픈 소스화하여 기술의 장점과 오픈 소스 커뮤니티의 힘을 동시에 취하는 것입니다.
+글에 따르면 TensorFlow를 오픈 소스로 공개하는 주 이유는 MapReduce나 BigTable, Borg와 같은 기술에서 Google이 겪었던 실패를 반복하지 않기 위해서 입니다. 당시 Google은 자체적으로 개발한 기술을 직접 공개하지 않고 whitepaper를 배포하였는데, 외부의 개발자들이 이를 구현한 Hadoop, HBase, Docker 등이 산업 표준이 되어 버리면서 Google이 이에 맞춰야 하는 우스꽝스러운 상황이 반복되었습니다[^Lee16]. Jeff Dean이 주장하는 작전은 Google이 사용하는 기술을 오픈 소스로 공개하여 기술의 장점과 오픈 소스 커뮤니티의 힘을 동시에 취하는 것입니다.
 
 덧붙여, Amazon이 주도권을 쥐고 있는 클라우드 시장의 판도를 뒤집으려는 의도도 보입니다. Deep learning 서비스가 클라우드 시장의 킬러 앱이 되면 Google Cloud Platform과 TensorFlow의 연계는 매우 위력적일 것입니다[^GoogleCloud]. 최근 OpenAI가 Microsoft의 Azure를 deep learning 플랫폼을 선택한 것이 어쩌면 클라우드 시장 지각 변동의 서막일지도 모릅니다[^TensorFlowBlog2].
 
@@ -39,7 +39,7 @@ Client의 주요 역할은 TensorFlow 개발자가 작성한 프로그램을 dat
 ![placeholder](https://i.imgur.com/qvjrgd2.gif "Figure 3")
 *Figure 3. Example of Dataflow Graph in TensorFlow [^TensorFlow3]*
 
-Core execution system은 client가 개시한 dataflow graph의 수행을 실제 처리합니다. 위의 figure 2를 다시 보겠습니다. Core execution system 안의 dataflow executor는 dataflow graph를 client로부터 전달 받은 후, CPU나 GPU 같은 device에게 dataflow 상의 각 operation의 kernel을 수행하라는 명령을 내립니다. 이때 kernel은 특정 device에서의 operation의 구현입니다. 예를 들어 TensorFlow에는 matrix multiplication operation에 대해 CPU kernel과 CUDA library를 사용하는 GPU kernel이 따로 구현되어 있습니다.
+Core execution system은 client가 개시한 dataflow graph의 수행을 실제 처리합니다. 위의 figure 2를 다시 보겠습니다. Core execution system 안의 dataflow executor는 dataflow graph를 client로부터 전달 받은 후, CPU나 GPU 같은 device에게 dataflow 상의 각 operation의 kernel을 수행하라는 명령을 내립니다. 이때 kernel은 특정 device에서의 operation의 구현입니다. 예를 들어 TensorFlow에는 matrix multiplication operation에 대해 CPU kernel과 CUDA library를 사용하는 GPU kernel이 따로 구현되어 있습니다. 참고로, core execution system은 처리 성능을 높이기 위해 모두 C++로 구현되어 있습니다.
 
 남은 부분인 distributed master와 networking layer는 TensorFlow의 분산 시스템 지원을 위한 부분입니다. 이 글의 목적은 기본적인 TensorFlow 동작을 이해하는 것이므로 설명하지 않고 넘어가도록 하겠습니다.
 
@@ -50,7 +50,7 @@ Core execution system은 client가 개시한 dataflow graph의 수행을 실제 
 ![placeholder](https://i.imgur.com/kpjwnOr.png "Figure 4")
 *Figure 4. MNIST dataset*
 
-작성할 neural network 구조는 figure 5에 표시하였습니다. Input layer는 각 이미지의 784개의 픽셀을 입력으로 받습니다. Output layer는 input layer의 각 neuron으로부터 픽셀 값을 전달 받아 weighted sum을 계산하여 bias를 더한 후 출력합니다. 이 예제는 매우 단순하기 때문에 어떤 neuron도 activation function을 가지지 않습니다. 최종 출력값 10개는 각각 0~9의 숫자의 점수를 의미하고, 가장 높은 점수가 높은 숫자를 해당 입력 이미지의 숫자로 결정합니다.
+작성할 neural network 구조는 figure 5에 표시하였습니다. Input layer는 각 이미지의 784개의 픽셀을 입력으로 받습니다. Output layer는 input layer의 각 neuron으로부터 픽셀 값을 전달 받아 weighted sum을 계산하여 bias를 더한 후 출력합니다. 이 예제는 매우 단순하기 때문에 어떤 neuron도 activation function을 가지지 않습니다. 최종 출력 값 10개는 각각 0~9의 숫자의 점수를 의미하고, 가장 높은 점수가 높은 숫자를 해당 입력 이미지의 숫자로 결정합니다.
 
 ![placeholder](https://i.imgur.com/RkC4KVm.png "Figure 5")
 *Figure 5. Very Simple Neural Network*
@@ -128,7 +128,7 @@ TensorFlow 프로그램은 크게 (1) dataflow graph를 작성하여 원하는 c
 
 #### Create the model
 
-\\(y = Wx + b\\)를 계산할 수 있는 dataflow graph를 그립니다. Graph를 작성하는 과정은 매우 직관적입니다. 각 statement는 새로운 tensor를 선언하고 해당 tensor를 생성할 operation을 명시합니다. 즉, 프로그램의 x, W와 b는 tensor이고 placeholder, Variable, matmul와 더하기는 operation입니다. Tensor x를 정의할 때 쓰인 placerholder은 실제 dataflow graph를 수행할 때 입력되는 데이터를 전달하는 operation입니다. 최종적으로 \\(y = Wx + b\\)를 계산한 최종 결과가 tensor y에 저장되는 dataflow graph가 완성되었습니다.
+\\(y = Wx + b\\)를 계산할 수 있는 dataflow graph를 그립니다. Graph를 작성하는 과정은 매우 직관적입니다. 각 statement는 새로운 tensor를 선언하고 해당 tensor를 생성할 operation을 명시합니다. 즉, 프로그램의 x, W와 b는 tensor이고 placeholder, Variable, matmul와 더하기는 operation입니다. Tensor x를 정의할 때 쓰인 placeholder은 실제 dataflow graph를 수행할 때 입력되는 데이터를 전달하는 operation입니다. 최종적으로 \\(y = Wx + b\\)를 계산한 최종 결과가 tensor y에 저장되는 dataflow graph가 완성되었습니다.
 
 #### Define loss and optimizer
 
@@ -139,11 +139,11 @@ W와 b를 training 시킬 수 있도록 dataflow graph를 확장합니다. y_는
 
 #### Initialize
 
-실제 dataflow graph를 돌리기 위해서는 session object를 하나 선언합니다. 그리고, 본격적으로 작성한 dataflow graph를 돌리기에 앞서 tensor들을 초기화시킵니다. 초기화시킬 변수는 W와 b입니다(앞에서 dataflow graph를 그리는 과정에서 이 두 변수를 0으로 초기화시킬 것이라고 명시하였습니다).
+실제 dataflow graph를 돌리기 위해서는 session object를 하나 선언합니다. 그리고, 본격적으로 작성한 dataflow graph를 돌리기에 앞서 tensor들을 초기화 시킵니다. 초기화 시킬 변수는 W와 b입니다(앞에서 dataflow graph를 그리는 과정에서 이 두 변수를 0으로 초기화 시킬 것이라고 명시하였습니다).
 
 #### Train
 
-1000번에 걸쳐 training set에서 100개의 batch data를 사용하여 training을 수행합니다. Session의 run method를 호출할 때 앞서 선언한 train_step이라는 tensor를 입력으로 받습니다. 이러면 train_step을 정의할 때 사용된 GradientDescentOptimizer를 사용하여 training을 실제로 진행합니다. 이때, 앞서 placeholder로 선언된 x와 y_에 들어갈 데이터를 feed_dict을 사용하여 인가해줘야 합니다.
+1000번에 걸쳐 training set에서 100개의 batch data를 사용하여 training을 수행합니다. Session의 run() method를 호출할 때 앞서 선언한 train_step이라는 tensor를 입력으로 받습니다. 이러면 train_step을 정의할 때 사용된 GradientDescentOptimizer를 사용하여 training을 실제로 진행합니다. 이때, 앞서 placeholder로 선언된 x와 y_에 들어갈 데이터를 feed_dict을 사용하여 인가해줘야 합니다.
 
 #### Test trained model
 
@@ -166,55 +166,40 @@ Python client는 dataflow graph를 관리하기 위해 세 개의 object를 관�
   + Represents unit of data that flow between operations
   + Edge of Graph
 
-Graph object는 자신이 소유하고 있는 operation들을 가리키기 위한 dictionary 자료 구조를 유지합니다. 이를 통한 Python client는 자신이 원하는 operation에 쉽게 접근할 수 있습니다. Operation object는 자신의 입력 tensor와 출력 tensor를 가리키고 있습니다. 마찬가지로, tensor object는 자신을 출력하는 operation과 자신을 입력으로 받는 operation을 가리키고 있습니다.
+Graph object는 자신이 소유하고 있는 Operation object들을 가리키기 위한 dictionary 자료 구조를 유지합니다. 이를 통한 Python client는 자신이 원하는 Operation object에 쉽게 접근할 수 있습니다. Operation object는 자신의 입력 Tensor object와 출력 Tensor object를 가리키고 있습니다. 마찬가지로, Tensor object는 자신을 출력하는 Operation object와 자신을 입력으로 받는 Operation object를 가리키고 있습니다.
 
-프로그램에 따라 dataflow graph 구축을 마치면 session의 run method가 호출됩니다. 그러면 Python client는 C API로 구현된 wrapper function을 호출하여 core execution system에게 실제 dataflow graph 수행을 명령합니다. 이 과정에서 Python client가 작성한 그래프 자료구조를 core execution system에게 넘겨줍니다.
+프로그램에 따라 dataflow graph 구축을 마치면 Session의 run() method가 호출됩니다. 그러면 Python client는 C API로 구현된 wrapper function을 호출하여 core execution system이 dataflow graph 수행을 시작할 수 있게 해줍니다. 이 과정에서 Python client가 작성한 그래프 자료구조를 core execution system에게 넘겨주게 됩니다.
 
 ### Step 2. Dataflow graph 수행(단일 머신의 경우)
 
+TensorFlow의 core execution system은 두 종류의 Session object를 가지고 있습니다. 하나는 단일 머신에서 사용하는 DirectSession이고 다른 하나는 분산 시스템에서 사용하는 GrpcSession입니다. 여기서는 DirectSession에 대해서면 다루겠습니다.
 
+DirectSession은 전달받은 dataflow graph의 수행을 관리합니다. Dataflow graph를 병렬적으로 수행할 수 있는 선에서 여러 개의 subgraph로 나눕니다. 그 후, subgraph의 개수만큼 Executor라는 object를 생성하고, 각 Executor에 subgraph를 전달하고 수행을 명령합니다. DirectSession는 barrier를 사용하여 모든 Executor가 맡은 일을 마무리할 때까지 대기합니다.
 
+Executor는 subgraph 상의 각 operation의 수행을 Device에게 순차적으로 명령합니다. Device는 시스템 상의 processing unit(CPU나 GPU)마다 하나씩 선언되어 있습니다. Device는 Executor로부터 해당 operation을 수행하기 위한 입력과 kernel을 전달받아 실제 작업을 수행합니다. 특정 operation의 kernel은 해당 operation의 object의 Compute() method에 정의되어 있습니다.
 
-
-* Session object를 사용하여 graph 상의 operation들을 수행
-  + Operation의 수행은 OpKernel::Compute()에 정의되어 있음
-    - A kernel is a particular implementation of an operation that can be run on a particular type of device (e.g., CPU or GPU)
-
-* Session
-  + Lets a caller drive a TensorFlow graph computations
-* Executor
-  + Runs a graph computation
-* Device
-  + Actually performs computations
-
-Session -> Executor로 Graph, Executor -> Device로 OpKernel
-
-Session: Graph를 생성하여 나누고 executor에게 분배
-Executor 간 동기화를 위해 barrier 사용
-
-Executor: Device들에게 graph 상의 operation의 kernel 수행을 명령
-
-Device: 해당 operation의 kernel 수행
+아래의 코드는 matrix multiplication operator의 GPU에 대한 kernel의 예입니다. MatMulOp object의 Compute() method는 LaunchMatMul object의 launch() method를 호출합니다. 이는 TensorFlow의 GPU kernel의 전형적인 프로그래밍 패턴입니다. launch() method는 CUDA에서 지원하는 cuBLAS를 사용하여 matrix multiplication을 수행합니다.
 
 ```c
 // tensorflow/core/kernels/matmul_op.cc
+
 template <typename Device, typename T, bool USE_CUBLAS> class MatMulOp : public OpKernel {
   public:
   void Compute(OpKernelContext* ctx) override {
     // ...
-    LaunchMatMul<Device, T, USE_CUBLAS>::launch(ctx, this, a, b, dim_pair, out);
+    LaunchMatMul<Device, T, USE_CUBLAS>::launch(
+      ctx, this, a, b, dim_pair, out);
   }
 };
 ```
-
-
 
 ```c
 // tensorflow/core/kernels/matmul_op.cc
 template <typename T>
 struct LaunchMatMul<GPUDevice, T, true /* USE_CUBLAS */> {
   static void launch(
-    OpKernelContext* ctx, OpKernel* kernel, const Tensor& a, const Tensor& b,
+    OpKernelContext* ctx, OpKernel* kernel, const Tensor& a,
+    const Tensor& b,
     const Eigen::array<Eigen::IndexPair<Eigen::DenseIndex>, 1>& dim_pair,
     Tensor* out) {
   // ...
@@ -228,6 +213,10 @@ struct LaunchMatMul<GPUDevice, T, true /* USE_CUBLAS */> {
   }
 }
 ```
+
+### 결론
+
+지금까지 TensorFlow의 배경, 철학, 구조와 동작 방식에 대해 간략하게 알아보았습니다. 향후에는 분산 시스템의 경우를 포함한 TensorFlow 내부 동작에 대한 자세한 분석을 다룰 예정입니다.
 
 [^Dettmers17]: <http://timdettmers.com/2017/04/09/which-gpu-for-deep-learning>
 [^Rubashkin17]: <https://www.svds.com/getting-started-deep-learning/?utm_campaign=Revue+newsletter&utm_medium=Newsletter&utm_source=revue>
