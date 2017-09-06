@@ -149,7 +149,7 @@ W와 b를 training 시킬 수 있도록 dataflow graph를 확장합니다. y_는
 
 Training을 마친 모델에 대해 test set을 사용하여 정확도를 검증합니다. Tensor y와 y_로부터 다시 dataflow graph를 확장하여 정확도를 계산한 결과를 accuracy라는 tensor에 저장하게 하고, 마찬가지로 session의 run method를 사용하여 결과를 출력합니다.
 
-여기까지 TensorFlow 프로그램의 구조에 대해 알아보았습니다. 앞서 이야기한 것처럼 TensorFlow의 프로그램은 (1) dataflow graph를 작성하여 원하는 computation을 표현하는 부분과 (2) dataflow graph를 수행하는 부분으로 나뉩니다. 마지막으로 각 부분이 실제 프레임워크 상에서 어떻게 동작하는지를 조금 더 자세히 알아보겠습니다.
+여기까지 TensorFlow 프로그램의 구조에 대해 알아보았습니다. 앞서 이야기한 것처럼 TensorFlow의 프로그램은 (1) dataflow graph를 작성하여 원하는 computation을 표현하는 부분과 (2) dataflow graph를 수행하는 부분으로 나뉩니다. 마지막으로 각 부분이 실제 프레임워크 상에서 어떻게 동작하는지 조금 더 자세히 알아보겠습니다.
 
 ### Step 1. Dataflow graph를 사용한 computation 표현
 * tf.Graph
