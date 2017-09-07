@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Neuron의 구조 이해하기
+title: 왜 Neuron은 Activation Function이 필요한가?
 categories:
   - Basic Theory
 ---
