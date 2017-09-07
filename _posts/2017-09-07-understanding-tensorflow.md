@@ -130,7 +130,7 @@ TensorFlow 프로그램은 크게 (1) dataflow graph를 작성하여 원하는 c
 
 #### Define loss and optimizer
 
-W와 b를 training 시킬 수 있도록 dataflow graph를 확장합니다. y_는 입력으로 받는 각 이미지 데이터 x에 대한 label(정답)을 저장하는 tensor입니다. cross_entropy에는 이 neural network의 loss function을 계산한 결과를 저장합니다. Loss function을 계산하는 과정에서 neural network를 통과한 결과를 저장하는 y와 label이 저장된 y_를 입력으로 받습니다(이에 따라 dataflow graph가 연결됩니다). 참고로 여기서는 softmax regression을 사용하여 loss function을 계산하는데[^CrossEntropy], 이에 대한 설명은 생략하도록 하겠습니다. 마지막으로 train_step이라는 tensor에 W와 b에 대해 gradient descent를 수행할 operation의 결과를 인가합니다. 아래의 figure 6는 완성된 dataflow graph를 TensorBoard라는 도구를 사용하여 출력한 결과입니다.
+W와 b를 training 시킬 수 있도록 dataflow graph를 확장합니다. y_는 입력으로 받는 각 이미지 데이터 x에 대한 label(정답)을 저장하는 tensor입니다. cross_entropy에는 이 neural network의 loss function을 계산한 결과를 저장합니다. Loss function을 계산하는 과정에서 neural network를 통과한 결과를 저장하는 y와 label이 저장된 y_를 입력으로 받습니다(이에 따라 dataflow graph가 연결됩니다). 참고로 여기서는 softmax regression을 사용하는데[^CrossEntropy], 이에 대한 설명은 생략하도록 하겠습니다. 마지막으로 train_step이라는 tensor에 W와 b에 대해 gradient descent를 수행할 operation의 결과를 인가합니다. 아래의 figure 6는 완성된 dataflow graph를 TensorBoard라는 도구를 사용하여 출력한 결과입니다.
 
 ![placeholder](https://i.imgur.com/J5UvFyv.png "Figure 6")
 *Figure 6. Dataflow Graph of MNIST Example*
