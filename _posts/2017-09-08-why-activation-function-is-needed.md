@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 왜 Neuron은 Activation Function이 필요한가?
+title: 왜 Activation Function이 필요한가?
 categories:
   - Basic Theory
 ---
