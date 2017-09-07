@@ -194,6 +194,7 @@ class MatMulOp : public OpKernel {
 
 ```c++
 // tensorflow/core/kernels/matmul_op.cc
+
 template <typename T>
 struct LaunchMatMul<GPUDevice, T, true /* USE_CUBLAS */> {
   static void launch(
