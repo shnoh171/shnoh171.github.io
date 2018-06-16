@@ -1,11 +1,11 @@
 ---
 layout: post
-title: 왜 Activation Function이 필요한가?
+title: Embedded AI를 위한 Stream Processing Language의 필요성
 categories:
   - Basic Theory
 ---
 
-**test**
+**현재 작성 중인 포스트입니다.**
 
 왜 단일 neuron은 weighted sum과 nonlinear activation function으로 이루어져 있는가?에 대한 답 찾기
 
