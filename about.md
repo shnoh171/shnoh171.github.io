@@ -11,11 +11,11 @@ Ph.D. Candidate at Real-Time Operating Systems Laboratory, Department of Electri
 
 Myungsun Kim, Soonhyun Noh, Sungju Huh and Seongsoo Hong, "[Fair-share scheduling for performance-asymmetric multicore architecture via scaled virtual runtime](https://ieeexplore.ieee.org/document/7299846/)," IEEE 21st International Conference on Embedded and Real-Time Computing Systems and Applications (RTCSA), 2015.
 
-Yongshik Moon\*, Soonhyun Noh\*, Daedong Park\*, Chen Luo\*, Anshumail Shirivastava, Seongsoo Hong, and Krishna Palem, "[CaPSuLe: A camera-based positioning system using learning](https://ieeexplore.ieee.org/document/7905476/)," 29th IEEE International System-on Chip Conference (SOCC), 2016. (\* indicate equal contribution)
+Yongshik Moon\*, Soonhyun Noh\*, Daedong Park\*, Chen Luo\*, Anshumail Shirivastava, Seongsoo Hong, and Krishna Palem, "[CaPSuLe: A camera-based positioning system using learning](https://ieeexplore.ieee.org/document/7905476/)," 29th IEEE International System-on Chip Conference (SOCC), 2016. (\* indicates equal contribution)
 
 Soonhyun Noh, Myungsun Kim and Seongsoo Hong, "[Enhancing AUTOSAR safety mechanisms for ISO 26262 functional safety requirements](http://redwood.snu.ac.kr/wordpress/paper_server.php?file=eGx4cERzMWVHWUIvSVBKeXUzOG1hWFAyTUZQZ2ZUZVJ3emx4TGJaeWNOWEFCbFRVMnVqbnJyZHVmZ3hVYW40OExSY0lrc1lNS0drQXZXVlJiek5OWWc9PQ==)," FISITA World Automotive Congress, 2016.
 
-J. Jose Gonzales E., Chen Luo, Anshumali Shrivastava, Krishna Palem, Yongshik Moon, Soonhyun Noh, Daedong Park and Seongsoo Hong, "[Location Detection for Navigation Using IMUs with a Map Through Coarse-Grained Machine Learning](http://ieeexplore.ieee.org/document/7927040/)," Design, Automation and Test in Europe (DATE 2017), Mar 2017
+J. Jose Gonzales E., Chen Luo, Anshumali Shrivastava, Krishna Palem, Yongshik Moon, Soonhyun Noh, Daedong Park and Seongsoo Hong, "[Location Detection for Navigation Using IMUs with a Map Through Coarse-Grained Machine Learning](http://ieeexplore.ieee.org/document/7927040/)," Design, Automation and Test in Europe (DATE), 2017.
 
 Myungsun Kim, Soonhyun Noh, Jinhwa Hyeon and Seongsoo Hong, "[Fair-share scheduling in single-ISA asymmetric multicore architecture via scaled virtual runtime and load redistribution](https://www.sciencedirect.com/science/article/pii/S0743731517302423)," Journal of Parallel and Distributed Computing (JPDC), 2018.
 
