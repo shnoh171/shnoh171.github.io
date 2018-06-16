@@ -11,7 +11,7 @@ Ph.D. Candidate at Real-Time Operating Systems Laboratory, Department of Electri
 
 Myungsun Kim, Soonhyun Noh, Sungju Huh and Seongsoo Hong, "[Fair-share scheduling for performance-asymmetric multicore architecture via scaled virtual runtime](https://ieeexplore.ieee.org/document/7299846/)," IEEE 21st International Conference on Embedded and Real-Time Computing Systems and Applications (RTCSA), 2015.
 
-Yongshik Moon&ast;, Soonhyun Noh&ast;, Daedong Park&ast;, Chen Luo&ast;, Anshumail Shirivastava, Seongsoo Hong, and Krishna Palem, "[CaPSuLe: A camera-based positioning system using learning](https://ieeexplore.ieee.org/document/7905476/)," 29th IEEE International System-on Chip Conference (SOCC), 2016. (&ast; indicate equal contribution)
+Yongshik Moon\*, Soonhyun Noh\*, Daedong Park\*, Chen Luo\*, Anshumail Shirivastava, Seongsoo Hong, and Krishna Palem, "[CaPSuLe: A camera-based positioning system using learning](https://ieeexplore.ieee.org/document/7905476/)," 29th IEEE International System-on Chip Conference (SOCC), 2016. (\* indicate equal contribution)
 
 Soonhyun Noh, Myungsun Kim and Seongsoo Hong, "[Enhancing AUTOSAR safety mechanisms for ISO 26262 functional safety requirements](http://redwood.snu.ac.kr/wordpress/paper_server.php?file=eGx4cERzMWVHWUIvSVBKeXUzOG1hWFAyTUZQZ2ZUZVJ3emx4TGJaeWNOWEFCbFRVMnVqbnJyZHVmZ3hVYW40OExSY0lrc1lNS0drQXZXVlJiek5OWWc9PQ==)," FISITA World Automotive Congress, 2016.
 
