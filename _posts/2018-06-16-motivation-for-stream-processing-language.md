@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Embedded AI를 위한 Stream Processing Language의 필요성
+title: Embedded AI를 위한 프로그래밍 언어
 categories:
   - Programming Languages
 ---
