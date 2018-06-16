@@ -9,7 +9,7 @@ Ph.D. Candidate at Real-Time Operating Systems Laboratory, Department of Electri
 
 **Publications**
 
-Myungsun Kim, Soonhyun Noh, Sungju Huh and Seongsoo Hong, "Fair-share scheduling for performance-asymmetric multicore architecture via scaled virtual runtime," IEEE International Conference on Embedded and Real-Time Computing Systems and Applications (RTCSA), 2015.
+Myungsun Kim, Soonhyun Noh, Sungju Huh and Seongsoo Hong, "[Fair-share scheduling for performance-asymmetric multicore architecture via scaled virtual runtime](https://ieeexplore.ieee.org/document/7299846/)," IEEE 21st International Conference on Embedded and Real-Time Computing Systems and Applications (RTCSA), 2015.
 
 Yongshik Moon*, Soonhyun Noh*, Daedong Park*, Chen Luo*, Anshumail Shirivastava, Seongsoo Hong, and Krishna Palem, "CaPSuLe: A camera-based positioning system using learning," IEEE International System-on Chip Conference (SOCC), 2016. (* indicate equal contribution)
 
