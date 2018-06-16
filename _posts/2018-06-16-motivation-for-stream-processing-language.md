@@ -12,7 +12,7 @@ categories:
 - Programming small은 많은 deep learning framework들에서 지원한다.
 - 하지만 programming large에 대한 지원은 현재 미비하다.
   - 대표적인 도메인인 자율주행의 경우, (1) 플랫폼 지원 없이 C/C++ 등의 언어로 바로 개발하거나, (2) 기존의 ROS, Simulink, AUTOSAR 등에서 제공하는 개발 방법론을 하나 이상 활용한다.
-    - Waymo/Tesla/Drive.ai?
+    - Waymo/Tesla/Drive.ai/Uber/Apple?
   - 하지만 이런 개발 방법론들은 embedded AI의 핵심 요구사항인 real-time stream processing을 거의 고려하지 못한다.
 - Real-time stream processing을 위해서는 다섯 가지 세부적인 요구사항들을 만족시켜야 한다.
   1. Visual programming
