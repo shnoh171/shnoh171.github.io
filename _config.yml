@@ -3,9 +3,9 @@ markdown:         kramdown
 highlighter:      rouge
 
 # Setup
-title:            SW Platform for Real-Time Embedded AI
+title:            Software Platform for AI
 tagline:          'A Jekyll theme'
-description:      '임베디드 시스템 상에서 수행되는 Deep Learning 기반 AI 응용들을 지원하기 위한 플랫폼에 대한 이야기를 합니다.'
+description:      'Deep Learning 기반 AI 응용들을 지원하기 위한 SW 플랫폼을 다룹니다.'
 url:              https://nsh3389.github.io
 baseurl:          # the optional subpath of your site, e.g. "/blog"
 
