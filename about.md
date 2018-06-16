@@ -14,3 +14,7 @@ Myungsun Kim, Soonhyun Noh, Sungju Huh and Seongsoo Hong, "Fair-share scheduling
 Yongshik Moon*, Soonhyun Noh*, Daedong Park*, Chen Luo*, Anshumail Shirivastava, Seongsoo Hong, and Krishna Palem, "CaPSuLe: A camera-based positioning system using learning," IEEE International System-on Chip Conference (SOCC), 2016. (* indicate equal contribution)
 
 Soonhyun Noh, Myungsun Kim and Seongsoo Hong, "Enhancing AUTOSAR safety mechanisms for ISO 26262 functional safety requirements," FISITA World Automotive Congress, 2016.
+
+Myungsun Kim, Soonhyun Noh, Jinhwa Hyeon and Seongsoo Hong, "Fair-share scheduling in single-ISA asymmetric multicore architecture via scaled virtual runtime and load redistribution," Journal of Parallel and Distributed Computing (JPDC), 2018.
+
+Soonhyun Noh and Seongsoo Hong, "Splash: Stream processing language for autonomous driving," International Conference on Ubiquitous Robots, 2018.
