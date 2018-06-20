@@ -1,11 +1,17 @@
 ---
 layout: post
-title: Embedded AI를 위한 프로그래밍 언어
+title: RT Embedded AI를 위한 프로그래밍 언어
 categories:
   - Development Supports for AI
 ---
 
 **현재 작성 중인 포스트입니다.**
+
+자율주행자동차나 로봇 등 다양한 임베디드 시스템에 AI 기술이 도입되고 있습니다. AI 응용 개발 과정은 기존의 응용 개발 과정과는 매우 다르기 때문에, 임베디드 시스템 상에서 수행될 AI 응용 개발을 위한 프로그래밍 단의 지원이 필수적입니다.
+
+
+
+
 
 - 자율주행이나 로봇 등 많은 임베디드 시스템에 AI 기술이 도입되면서, embedded AI 응용의 개발을 지원하기 위한 프로그래밍 지원에 대한 필요성이 대두되고 있다.
 - Embedded AI 응용의 프로그래밍은 크게 programming large와 programming small로 나눌 수 있다.
