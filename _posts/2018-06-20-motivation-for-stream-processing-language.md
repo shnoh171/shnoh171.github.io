@@ -9,10 +9,16 @@ categories:
 
 자율주행자동차나 로봇 등의 임베디드 시스템에서 딥러닝 기반 AI 기술이 필수 요소로 자리잡았습니다. 특히 object detection이나 semantic segmentation과 같은 인지 분야에서는 AI 기술 없이 개발이 불가능할 정도로 이미 폭넓게 활용되고 있습니다.
 
-AI 응용의 개발 과정은 기존의 임베디드 시스템 상의 응용 개발 과정과는 매우 다르기 때문에 이에 대한 지원이 필수적입니다. 임베디드 AI 응용의 개발은 
+![placeholder](https://i.imgur.com/Gatb5Qo.png "Figure 1")
+*Figure 1. End-to-end Approach vs Modular Approach*
+
+임베디드 AI
 
 
- 이 지원은 크게 support for programming small과 support for programming large로 나뉩니다. Programming small
+
+
+AI 응용의 개발 과정은 기존의 임베디드 시스템 상의 응용 개발 과정과는 매우 다르기 때문에 이에 대한 지원이 필수적입니다. 임베디드 AI 응용의 개발은 크게 programming small과 programming large로 나뉩니다. Programming small은
+
 
 
 
