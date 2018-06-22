@@ -18,7 +18,6 @@ categories:
 
 하지만 이 두 가지 접근법에는 한계가 있습니다. 임베디드 AI의 핵심 요구사항인 real-time stream processing에 대한 고려가 되어 있지 않기 때문입니다. Real-time stream processing을 위해서는 임베디드 기기에 수많은 센서 데이터가 연속적으로 흘러 들어와서 처리되는 과정에서 timing constraints의 만족을 보장하여야 합니다. Real-time stream processing을 위한 개발 지원을 정리하면 아래와 같습니다.
 
-```
 1. Visual programming
     - 스트림 데이터의 처리 과정을 개발자에게 시각적으로 표현할 수 있어야 함
 2. Timing annotation
@@ -32,7 +31,9 @@ categories:
     - 조건에 따라 선택적으로 알고리즘을 수행하는 모드 선택 기능을 지원해야 함
 6. Integration support
     - Data-driven, time-driven, event-driven 등 서로 다른 프로그래밍 방식으로 개발하는 도메인 간의 integration을 지원해야 함
-```
+
+
+
 
 =====
 
