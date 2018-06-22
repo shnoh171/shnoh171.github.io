@@ -14,9 +14,11 @@ categories:
 
 임베디드 AI 응용의 개발 과정은 기존의 임베디드 시스템 상의 응용 개발 과정과는 매우 다르기 때문에 이에 대한 지원이 필수적입니다. Modular approach에 따른 임베디드 AI 응용 개발은 크게 (1) 각 모듈을 개발하는 programming small과 (2) 개발된 모듈들을 합치는 programming large로 나눌 수 있습니다. 우리가 잘 알고 있는 TensorFlow, Caffe, PyTorch 등의 deep learning framework는 programming small에서 딥러닝 기반 알고리즘의 효과적인 개발을 지원합니다. 하지만, 아직 programming large에 대한 지원은 충분히 고민되지 않고 있습니다.
 
-임베디드 AI 응용을 개발하는 회사들이 정보를 공개하지 않기 때문에 파악이 쉽지 않지만, 제한된 정보를 분석해본 결과 이들이 취하는 접근법은 크게 두 가지로 보입니다. 첫번째 접근법은 C/C++ 등의 기본 프로그래밍 언어를 사용하여 직접 각 모듈을 합치는 작업을 수행하는 것입니다. 이 과정에서 ROS(Robot Operating System)과 같은 publish-subscribe communication framework를 활용하는 경우도 많습니다. 두번째 접근법은 component-based development 툴을 사용하여 개발을 진행하는 것입니다. 이런 도구들은 매우 많이 존재하지만, 이중 현재 가장 주목받는 툴에는 Matlab의 Simulink, Intempora의 RTMaps, UC Berkely의 Ptolemy II가 있습니다.
+임베디드 AI 응용을 개발하는 회사들이 정보를 공개하지 않기 때문에 파악이 쉽지 않지만, 제한된 정보를 분석해본 결과 이들이 취하는 접근법은 크게 두 가지로 보입니다. 첫번째 접근법은 C/C++ 등 기본적인 프로그래밍 언어만을 사용하여 각 모듈을 합치는 작업을 직접 수행하는 것입니다. 이 과정에서 ROS(Robot Operating System)과 같은 publish-subscribe communication framework의 라이브러리를 사용하는 경우도 많습니다. 두번째 접근법은 component-based development 도구를 사용하여 개발을 진행하는 것입니다. 이런 도구들은 매우 많이 존재하지만, Matlab의 Simulink, Intempora의 RTMaps, UC Berkely의 Ptolemy II가 주목받고 있습니다.
 
-sss
+하지만 이 두 가지 접근법에는 한계가 있습니다.
+
+
 
 
 
