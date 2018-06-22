@@ -22,11 +22,15 @@ categories:
     - 스트림 데이터의 처리 과정을 개발자에게 시각적으로 표현할 수 있어야 함
 2. Timing annotation
     - Stream processing의 timing constraints를 개발자가 명시할 수 있어야 함
-    - Deadline/minimum rate constraint/freshness constraint/correlation constraint[^Noh18]
+    - 네 종류의 timing constraints가 존재[^Noh18]
+        1. Deadline
+        2. Minimum rate constraint
+        3. Freshness constraint
+        4. Correlation constraint
 3. Exception handling
     - 개발자가 예외상황을 정의하고 각각에 대한 처리를 명시할 수 있어야 함
 4. Support for sensor fusion
-    - 센서 퓨전의 복잡한 시간 동기화 이슈들을 간단하고 명확하게 기술할 수 있어야 함
+    - 센서 퓨전의 시간 동기화 이슈들을 간단하고 명확하게 기술할 수 있어야 함
 5. Support for multiple modes
     - 조건에 따라 선택적으로 알고리즘을 수행하는 모드 선택 기능을 지원해야 함
 6. Integration support
