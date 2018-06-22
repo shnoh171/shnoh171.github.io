@@ -16,25 +16,29 @@ categories:
 
 임베디드 AI 응용을 개발하는 회사들이 정보를 공개하지 않기 때문에 파악이 쉽지 않지만, 제한된 정보를 분석해본 결과 이들이 취하는 접근법은 크게 두 가지로 보입니다. 첫번째 접근법은 C/C++ 등 기본적인 프로그래밍 언어만을 사용하여 각 모듈을 합치는 작업을 직접 수행하는 것입니다. 이 과정에서 ROS(Robot Operating System)과 같은 publish-subscribe communication framework의 라이브러리를 사용하는 경우도 많습니다. 두번째 접근법은 component-based development 도구를 사용하여 개발을 진행하는 것입니다. 이런 도구들은 매우 많이 존재하지만, Matlab의 Simulink, Intempora의 RTMaps, UC Berkely의 Ptolemy II가 주목받고 있습니다.
 
-하지만 이 두 가지 접근법에는 한계가 있습니다.
+하지만 이 두 가지 접근법에는 한계가 있습니다. 임베디드 AI의 핵심 요구사항인 real-time stream processing에 대한 고려가 되어 있지 않기 때문입니다. Real-time stream processing을 위해서는 임베디드 기기에 수많은 센서 데이터가 연속적으로 흘러 들어와서 처리되는 과정에서 timing constraints의 만족을 보장하여야 합니다. Real-time stream processing을 위한 개발 지원을 정리하면 아래와 같습니다.
+
+1. Visual programming
+    - 스트림 데이터의 처리 과정을 개발자에게 시각적으로 표현할 수 있어야 함
+2. Timing annotation
+    - 스트림 처리 과정에서 발생하는 다양한 timing constraints를 개발자가 명시할 수 있어야 함
+    - Deadline, minimum rate constraint, freshness constraint, correlation constraint[^Noh18]
+3. Exception handling
+    - 개발자가 예외상황을 정의하고 각각의 예외상황에 대한 처리를 명시할 수 있어야 함
+4. Support for sensor fusion
+    - 센서 퓨전 알고리즘의 복잡한 시간 동기화 이슈들을 간단하고 명확하게 기술할 수 있어야 함
+5. Support for multiple modes
+    - 조건에 따라 선택적으로 알고리즘을 수행하는 모드 선택 기능을 지원해야 함
+6. Integration support
+    - Data-driven, time-driven, event-driven 등 서로 다른 프로그래밍 방식으로 개발하는 도메인 간의 integration을 지원해야 함
 
 
+=====
 
-
-
-
-- 하지만 이런 개발 방법론들은 embedded AI의 핵심 요구사항인 real-time stream processing을 거의 고려하지 못한다.
-- Real-time stream processing을 위해서는 다섯 가지 세부적인 요구사항들을 만족시켜야 한다.
-  1. Visual programming
-  2. Timing annotation
-  3. Exception handling
-  4. Support for sensor fusion
-  5. Support for multiple modes
-  6. Integration support
 - 기존에 stream processing을 위한 programming language나 library들이 많이 제안되었지만, 이들은 대부분 cloud computing의 분산 처리를 대상으로 설계되었기 때문에 적절하지 않다.
 
 
 
 
 
-[^BMW15]: <https://roscon.ros.org/2015/presentations/ROSCon-Automated-Driving.pdf>
+[^Noh18]: Soonhyun Noh and Seongsoo Hong, "Splash: Stream processing language for autonomous driving," 15th International Conference on Ubiquitous Robots, 2018.
