@@ -16,7 +16,7 @@ AI 응용의 개발 과정은 기존의 임베디드 시스템 상의 응용 개
 
 제한된 정보 속에서 분석해본 결과, 임베디드 시스템 상에서 AI 응용을 개발하는 회사들이 취하는 접근법은 크게 두가지입니다. 첫번째 접근법은 C/C++ 등의 기본 프로그래밍 언어를 사용하여 직접 각 모듈을 합치는 작업을 수행하는 것입니다. 이 과정에서 ROS(Robot Operating System)과 같은 publish-subscribe communication framework를 활용하는 경우도 많습니다. 두번째 접근법은 component-based development 툴을 사용하여 개발을 진행하는 것입니다. 이런 도구들은 매우 많이 존재하지만, 이중 현재 가장 주목받는 툴에는 Matlab의 Simulink, Intempora의 RTMaps, UC Berkely의 Ptolemy II가 있습니다.
 
-
+sss
 
 
 
