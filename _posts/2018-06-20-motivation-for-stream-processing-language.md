@@ -7,7 +7,7 @@ categories:
 
 **현재 작성 중인 포스트입니다.**
 
-자율주행자동차나 로봇 등의 임베디드 시스템에서 딥러닝 기반 AI 기술이 필수 요소로 자리잡았습니다. AI 응용의 개발은 아래 그림과 같이 end-to-end approach와 modular approach로 분류할 수 있습니다. End-to-end approach는 하나의 거대한 neural network를 사용하여 입력에 대한 출력을 바로 얻어내는 방법입니다. 반면 modular approach는 응용을 기능에 따라 여러 개의 module로 나누고, 각 module에 필요에 따라 AI 기술을 적용하는 방식입니다. 혹자는 end-to-end approach을 지향하여야 한다고 주장하지만, (1) 응용 내에 딥러닝이 효과적이지 않은 부분이 있을 수 있고 (2) 학습해야하는 파라미터의 수가 너무 방대해지며 (3) 예외 상황에 대한 대처가 쉽지 않다는 점에서 한계가 있습니다. 이에 따라 현재 대부분의 회사/연구소들은 modular approach를 채택하고 있고, 이 경향이 계속될 전망입니다.
+자율주행자동차나 로봇 등의 임베디드 시스템에서 딥러닝 기반 AI 기술이 필수 요소로 자리잡았습니다. 임베디드 AI 응용의 개발에는 두 가지 접근 방식이 있습니다. 첫 번째 방식은 end-to-end approach이고, 두 번째 방식은 modular approach입니다. End-to-end approach는 하나의 거대한 neural network를 사용하여 입력에 대한 출력을 바로 얻어내는 방법입니다. 반면 modular approach는 응용을 기능에 따라 여러 개의 module로 나누고, 각 module에 필요에 따라 AI 기술을 적용하는 방식입니다. 혹자는 end-to-end approach을 지향하여야 한다고 주장하지만, (1) 응용 내에 딥러닝이 효과적이지 않은 부분이 있을 수 있고 (2) 학습해야 하는 파라미터의 수가 너무 방대해지며 (3) 예외 상황에 대한 대처가 쉽지 않다는 점에서 한계가 있습니다. 이에 따라 현재 대부분의 회사/연구소들은 modular approach를 채택하고 있고, 이런 경향은 계속될 것 같습니다.
 
 ![placeholder](https://i.imgur.com/Gatb5Qo.png "Figure 1")
 *Figure 1. End-to-end Approach vs Modular Approach in Autonomous Driving*
