@@ -36,13 +36,24 @@ categories:
 6. Integration support
     - Data-driven, time-driven, event-driven 등 서로 다른 프로그래밍 방식으로 개발하는 도메인 간의 integration을 지원해야 함
 
-sdf
-=====
+*Table 1. Limitations of Existing Component-based Development Tools [^Exp1]*
+![placeholder](https://i.imgur.com/jtML0qV.png "Table 1")
 
-- Simulink/RTMaps/Ptolemy II 분석
-- 지원 안 할 경우 발생하는 문제 정리
+위의 표는 대표적인 component-based development 도구의 real-time stream processing 세부 요구사항 만족 여부를 분석한 결과입니다. 현재 이런 지원이 미비한 상태이기 때문에, 대부분의 기업과 연구소들은 real-time embedded AI 응용을 개발하는 과정에서 요구사항의 충족을 세부 알고리즘 개발자들에게 전적으로 맡기고 있습니다. 각 세부 알고리즘 개발자들은 도구/플랫폼 단의 지원 없이 반복적인 튜닝 과정을 통해 알고리즘을 수정해가며 요구사항들을 만족시킵니다. 하지만 이런 접근 방법은 매우
+
+
+
+이와 같이 요구사항 만족을 위한 지원을 플랫폼/도구 단에서 해주지 않으면,
+
+
+기
+
+
+
+
 - 기존에 stream processing을 위한 programming language나 library들이 많이 제안되었지만, 이들은 대부분 cloud computing의 분산 처리를 대상으로 설계되었기 때문에 적절하지 않다.
 - 기존 language 분석
 - 마무리
 
 [^Noh18]: Soonhyun Noh and Seongsoo Hong, "Splash: Stream processing language for autonomous driving," 15th International Conference on Ubiquitous Robots, 2018.
+[^Exp1]: RTMaps의 경우, 공개된 documentation이 부족하여 정확한 분석이 아직 되지 않음
