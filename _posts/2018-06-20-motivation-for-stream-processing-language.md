@@ -39,14 +39,10 @@ categories:
 *Table 1. Limitations of Existing Component-based Development Tools [^Exp1]*
 ![placeholder](https://i.imgur.com/jtML0qV.png "Table 1")
 
-위의 표는 대표적인 component-based development 도구의 real-time stream processing 세부 요구사항 만족 여부를 분석한 결과입니다. 현재 이런 지원이 미비한 상태이기 때문에, 대부분의 기업과 연구소들은 real-time embedded AI 응용을 개발하는 과정에서 요구사항의 충족을 세부 알고리즘 개발자들에게 전적으로 맡기고 있습니다. 각 세부 알고리즘 개발자들은 도구/플랫폼 단의 지원 없이 반복적인 튜닝 과정을 통해 알고리즘을 수정해가며 요구사항들을 만족시킵니다. 하지만 이런 접근 방법은 매우
+위의 표는 대표적인 component-based development 도구의 real-time stream processing 세부 요구사항 만족 여부를 분석한 결과입니다. 표에서 볼 수 있듯이, 이런 도구들도 real-time stream processing을 제대로 지원하지 못하고 있습니다. 이렇기 때문에 대부분의 기업과 연구소들은 real-time embedded AI 응용을 개발하는 과정에서 요구사항의 충족을 세부 알고리즘 개발자들에게 전적으로 맡기고 있습니다. 하지만 이는 개발자에게 반복적인 튜닝 작업과 알고리즘의 변경을 강요하기 때문에 효과적이지 못합니다.
 
 
 
-이와 같이 요구사항 만족을 위한 지원을 플랫폼/도구 단에서 해주지 않으면,
-
-
-기
 
 
 
