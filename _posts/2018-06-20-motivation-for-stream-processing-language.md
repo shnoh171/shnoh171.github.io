@@ -1,6 +1,6 @@
 ---
 layout: post
-title: RT Embedded AI를 위한 프로그래밍 언어
+title: Embedded AI를 위한 새로운 프로그래밍 언어의 필요성
 categories:
   - Development Supports for AI
 ---
