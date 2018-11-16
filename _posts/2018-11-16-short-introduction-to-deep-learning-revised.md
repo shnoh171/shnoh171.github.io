@@ -12,7 +12,7 @@ Yann Lecun, Yoshua Benghio, and Geoffrey Hinton published a paper in Nature that
 
 > Deep learning is a class of techniques that allows computational models that are composed of multiple processing layers to learn representations of data with multiple levels of abstraction.
 
-In the above sentence, representation (or feature) is measurable property of data. For example, a machine learning algorithm that looks for spam might use representations such as the number of times a particular word appears, the starting word of the title, and the written language. The performance of a machine learning algorithm is significantly affected by which representations are extracted from given input data.[^Bengio13] Usually, experts in the field choose which representation to extract based on their prior experiences. However, as the input data grows and problem becomes more complex, it becomes harder for humans to extract the appropriate representation.
+In the above sentence, representation (or feature) is measurable property of data. For example, a machine learning algorithm that looks for spam might use representations such as the number of times a particular word appears, the starting word of the title, and the written language. The performance of a machine learning algorithm is significantly affected by which representations are extracted from given input data.[^Bengio13] Usually, experts in the field choose representations based on their prior experiences. However, as the size of data grows and problem becomes more complex, it becomes harder for humans to extract the appropriate representations.
 
 /* Currently writing */
 
