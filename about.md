@@ -1,12 +1,10 @@
 ---
 layout: page
-title: About
+title: Soonhyun Noh
 sidebar_link: true
 ---
 
 ![placeholder](/assets/images/profile.png)
-
-Soonhyun Noh
 
 Ph.D. Candidate at Real-Time Operating Systems Laboratory, Department of Electrical and Computer Engineering, Seoul National University
 
