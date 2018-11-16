@@ -1,6 +1,6 @@
 ---
 layout: post
-title: A short introduction to deep learing
+title: A Short Introduction to Deep Learning
 categories:
   - Deep Learning
 ---
