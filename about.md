@@ -3,6 +3,9 @@ layout: page
 title: About
 sidebar_link: true
 ---
+
+![placeholder](https://github.com/shnoh171/shnoh171.github.io/_images/profile.png)
+
 Soonhyun Noh
 
 Ph.D. Candidate at Real-Time Operating Systems Laboratory, Department of Electrical and Computer Engineering, Seoul National University
