@@ -4,17 +4,13 @@ title: About
 sidebar_link: true
 ---
 
-# Soonhyun Noh
+## Soonhyun Noh
 
 ![placeholder](/assets/images/profile.png)
 
 System software engineer, with experience working on operating systems (Linux kernel and AUTOSAR), hypervisors (KVM and XenGT), communication middlewares (ROS and DDS), deep learning framework (TensorFlow) and Android framework. Currently interested in platform-level support for edge computing and deep learning (both training and inference)
 
-## Education
-
-Ph.D. Candidate at Real-Time Operating Systems Laboratory, Department of Electrical and Computer Engineering, Seoul National University
-
-**Publications**
+### Publications
 
 - Jungho Kim, Philkyue Shin, Soonhyun Noh, Daesik Ham and Seongsoo Hong, "[Reducing Memory Interference Latency of Safety-Critical Applications via Memory Request Throttling and Linux cgroup](http://redwood.snu.ac.kr/wordpress/wp-content/uploads/2018/08/18-07-30-SOCC_Memory-Request-Throttling_final.pdf)," The 31st IEEE International System-on Chip Conference (SOCC), 2018.
 
@@ -30,7 +26,7 @@ Ph.D. Candidate at Real-Time Operating Systems Laboratory, Department of Electri
 
 - Myungsun Kim, Soonhyun Noh, Sungju Huh and Seongsoo Hong, "[Fair-share scheduling for performance-asymmetric multicore architecture via scaled virtual runtime](https://ieeexplore.ieee.org/document/7299846/)," IEEE 21st International Conference on Embedded and Real-Time Computing Systems and Applications (RTCSA), 2015.
 
-**Projects**
+### Projects
 
 - Context-aware cross-layer protocol for 5G network, Samsung Electronics, 2012-2014.
 - Development of SW hotspot detection and SW simulation techiniques, Samsung Electronics, 2014.
@@ -38,3 +34,8 @@ Ph.D. Candidate at Real-Time Operating Systems Laboratory, Department of Electri
 - Development of techniques for next generation IVI software platform, LG Electronics, 2015-2017.
 - Development of wide area driving environment awareness and cooperative driving technology which are based on V2X wireless communication, Ministry of Science and ICT, Korea, 2016-2019.
 - Development of SW platform for smart driving systems, Samsung Electronics, 2016-2020.
+
+### Education
+
+- Ph.D. Candidate in Electrical and Computer Engineering, Seoul National University
+- B.S. in Electrical and Computer Engineering, Seoul National University
