@@ -4,7 +4,7 @@ title: A Short Introduction to Deep Learning
 categories:
   - Deep Learning
 ---
-This post is writtent to share the basic knowledge that students and researchers need to know. Most of the figures used in this post were taken from Stanford's CS231n course[^CS231n16_YouTube]. I recommand you take this class if you want to continue studying the deep learning.
+This post is written to share the basic knowledge that students and researchers need to know. Most of the figures used in the post were taken from Stanford's CS231n course[^CS231n16_YouTube]. I recommand you take this class if you want to continue studying the deep learning.
 
 ### What is Deep Learning? 
 
