@@ -4,15 +4,15 @@ title: A Short Introduction to Deep Learning
 categories:
   - Deep Learning
 ---
-This post is written to share the basic knowledge that students and researchers need to know. Most of the figures used in the post were taken from Stanford's CS231n course[^CS231n16_YouTube]. I recommand you take this class if you want to continue studying the deep learning.
+This post is written to share the basic knowledge that students and researchers need to know about deep learning. Most of the figures used in the post were taken from Stanford's CS231n course.[^CS231n16_YouTube] I recommand you take this class if you want to continue studying the deep learning.
 
 ### What is Deep Learning? 
 
-/* Currently writing */
-
-2015년, deep learning의 대가 세 사람(Yann Lecun, Yoshua Bengio, Geoffrey Hinton)이 Nature에 deep learning의 발전을 정리하는 논문을 게재하였습니다[^LeCun15]. 이 논문에서 정의하는 deep learning은 한 문장으로 요약할 수 있습니다.
+Yann Lecun, Yoshua Benghio, and Geoffrey Hinton published a paper in Nature that summarizes the development of Deep Learning in 2015.[^LeCun15] In this paper, they define deep learning as follows.
 
 > Deep learning is a class of techniques that allows computational models that are composed of multiple processing layers to learn representations of data with multiple levels of abstraction.
+
+/* Currently writing */
 
 위의 문장에서 이야기하는 representation(또는 feature)은 데이터의 측정 가능한 특성을 의미합니다. 예를 들어 스팸 메일을 찾는 machine learning 알고리즘에서는 특정 단어의 반복 횟수, 작성 언어, 문법의 정확도, 제목의 시작 단어 등이 feature가 될 수 있습니다. 머신 러닝 알고리즘의 성능은 일반적으로 주어진 입력 데이터에서 어떤 representation을 추출하는지에 크게 영향을 받습니다[^Bengio13]. 보통 해당 분야의 전문가들이 자신들의 경험에 기반하여 representation 추출 알고리즘을 개발하여 사용합니다. 하지만 입력 데이터의 차원이 커지고 풀어야 하는 문제가 복잡해질수록 인간이 적절한 representation을 추출하기 힘들어집니다.
 
