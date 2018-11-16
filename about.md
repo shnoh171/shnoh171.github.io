@@ -4,7 +4,7 @@ title: About
 sidebar_link: true
 ---
 
-![placeholder](/_images/profile.png)
+![placeholder](/assets/images/profile.png)
 
 Soonhyun Noh
 
