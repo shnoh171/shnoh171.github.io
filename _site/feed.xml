@@ -1,456 +1,356 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="https://nsh3389.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://nsh3389.github.io/" rel="alternate" type="text/html" /><updated>2018-11-16T12:36:50+09:00</updated><id>https://nsh3389.github.io/feed.xml</id><title type="html">Software Platform for AI</title><subtitle>Deep Learning 기반 AI 응용들을 지원하기 위한 SW 플랫폼을 다룹니다.</subtitle><author><name>Soonhyun Noh</name></author><entry><title type="html">임베디드 AI를 위한 새로운 프로그래밍 언어의 필요성</title><link href="https://nsh3389.github.io/development%20supports%20for%20ai/2018/06/24/motivation-for-stream-processing-language.html" rel="alternate" type="text/html" title="임베디드 AI를 위한 새로운 프로그래밍 언어의 필요성" /><published>2018-06-24T00:00:00+09:00</published><updated>2018-06-24T00:00:00+09:00</updated><id>https://nsh3389.github.io/development%20supports%20for%20ai/2018/06/24/motivation-for-stream-processing-language</id><content type="html" xml:base="https://nsh3389.github.io/development%20supports%20for%20ai/2018/06/24/motivation-for-stream-processing-language.html">&lt;p&gt;자율주행자동차나 로봇 등의 임베디드 시스템에서 딥러닝 기반 AI 기술이 필수 요소로 자리잡았습니다. 임베디드 AI 응용의 개발에는 두 가지 접근 방식이 있습니다. 첫 번째 방식은 end-to-end approach이고, 두 번째 방식은 modular approach입니다. End-to-end approach는 하나의 거대한 neural network를 사용하여 응용의 입력에 대한 출력을 바로 얻어내는 방법입니다. 반면 modular approach는 응용을 기능에 따라 여러 개의 module로 나누고, 각 module에 필요에 따라 AI 기술을 적용하는 방식입니다. 혹자는 end-to-end approach을 지향하여야 한다고 주장하지만, (1) 응용 내에 딥러닝이 효과적이지 않은 부분이 있을 수 있고 (2) 학습해야 하는 파라미터의 수가 너무 방대해지며 (3) 예외 상황에 대한 대처가 쉽지 않다는 점에서 한계가 있습니다. 이에 따라 현재 대부분의 회사/연구소들은 modular approach를 채택하고 있고, 이런 경향은 당분간 지속될 것 같습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/Gatb5Qo.png&quot; alt=&quot;placeholder&quot; title=&quot;Figure 1&quot; /&gt;
-&lt;em&gt;Figure 1. End-to-end Approach vs Modular Approach in Autonomous Driving&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;임베디드 AI 응용의 개발 과정은 기존의 임베디드 시스템 상의 응용 개발 과정과는 매우 다르기 때문에 이에 대한 지원이 필수적입니다. Modular approach에 따른 임베디드 AI 응용 개발은 크게 (1) 각 모듈을 개발하는 programming small과 (2) 개발된 모듈들을 합치는 programming large로 나눌 수 있습니다. 우리가 잘 알고 있는 TensorFlow, Caffe, PyTorch 등의 deep learning framework는 programming small에서 딥러닝 기반 알고리즘의 효과적인 개발을 지원합니다. 하지만, 아직 programming large에 대한 지원은 충분히 고민되지 않고 있습니다.&lt;/p&gt;
-
-&lt;p&gt;임베디드 AI 응용을 개발하는 회사들이 정보를 공개하지 않기 때문에 파악이 쉽지 않지만, 제한된 정보를 분석해본 결과 이들이 취하는 접근법은 크게 두 가지로 보입니다. 첫번째 접근법은 C/C++ 등 기본적인 프로그래밍 언어와 ROS(Robot Operating System) 등에서 제공하는 통신 라이브러리를 사용하여 각 모듈을 합치는 작업을 직접 수행하는 것입니다. 두번째 접근법은 component-based development 도구를 사용하여 개발을 진행하는 것입니다. 이런 도구들은 매우 많이 존재하지만, 임베디드 AI 응용 개발에는 Matlab의 Simulink, Intempora의 RTMaps, UC Berkely의 Ptolemy II가 많이 쓰이고 있습니다.&lt;/p&gt;
-
-&lt;p&gt;하지만 이런 접근에는 한계가 있습니다. 두 가지 접근법 모두 임베디드 AI의 핵심 요구사항인 real-time stream processing에 대한 고려가 되어 있지 않기 때문입니다. Real-time stream processing을 위해서는 임베디드 기기에 수많은 센서 데이터가 연속적으로 흘러 들어와서 처리되는 과정에서 timing constraints를 만족 시켜야 합니다. 이를 위해 개발 과정에서 지원해야 하는 요소들을 정리해보면 아래와 같습니다.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Visual programming
-    &lt;ul&gt;
-      &lt;li&gt;스트림 데이터의 처리 과정을 개발자에게 시각적으로 표현할 수 있어야 함&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Timing annotation
-    &lt;ul&gt;
-      &lt;li&gt;Stream processing의 timing constraints를 개발자가 명시할 수 있어야 함&lt;/li&gt;
-      &lt;li&gt;네 종류의 timing constraints가 존재&lt;sup id=&quot;fnref:Noh18&quot;&gt;&lt;a href=&quot;#fn:Noh18&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;
-        &lt;ol&gt;
-          &lt;li&gt;Deadline&lt;/li&gt;
-          &lt;li&gt;Minimum rate constraint&lt;/li&gt;
-          &lt;li&gt;Freshness constraint&lt;/li&gt;
-          &lt;li&gt;Correlation constraint&lt;/li&gt;
-        &lt;/ol&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Exception handling
-    &lt;ul&gt;
-      &lt;li&gt;개발자가 예외상황을 정의하고 각각에 대한 처리를 명시할 수 있어야 함&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Support for sensor fusion
-    &lt;ul&gt;
-      &lt;li&gt;센서 퓨전의 시간 동기화 이슈들을 간단하고 명확하게 기술할 수 있어야 함&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Support for multiple modes
-    &lt;ul&gt;
-      &lt;li&gt;조건에 따라 선택적으로 알고리즘을 수행하는 모드 선택 기능을 지원해야 함&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Integration support
-    &lt;ul&gt;
-      &lt;li&gt;Data-driven, time-driven, event-driven 등 서로 다른 프로그래밍 방식으로 개발하는 도메인 간의 integration을 지원해야 함&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="https://shnoh171.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://shnoh171.github.io/" rel="alternate" type="text/html" /><updated>2018-11-16T12:39:30+09:00</updated><id>https://shnoh171.github.io/feed.xml</id><title type="html">Software Platform for AI</title><subtitle>Deep Learning 기반 AI 응용들을 지원하기 위한 SW 플랫폼을 다룹니다.</subtitle><author><name>Soonhyun Noh</name></author><entry><title type="html">임베디드 AI를 위한 새로운 프로그래밍 언어의 필요성</title><link href="https://shnoh171.github.io/development%20supports%20for%20ai/2018/06/24/motivation-for-stream-processing-language.html" rel="alternate" type="text/html" title="임베디드 AI를 위한 새로운 프로그래밍 언어의 필요성" /><published>2018-06-24T00:00:00+09:00</published><updated>2018-06-24T00:00:00+09:00</updated><id>https://shnoh171.github.io/development%20supports%20for%20ai/2018/06/24/motivation-for-stream-processing-language</id><content type="html" xml:base="https://shnoh171.github.io/development%20supports%20for%20ai/2018/06/24/motivation-for-stream-processing-language.html">자율주행자동차나 로봇 등의 임베디드 시스템에서 딥러닝 기반 AI 기술이 필수 요소로 자리잡았습니다. 임베디드 AI 응용의 개발에는 두 가지 접근 방식이 있습니다. 첫 번째 방식은 end-to-end approach이고, 두 번째 방식은 modular approach입니다. End-to-end approach는 하나의 거대한 neural network를 사용하여 응용의 입력에 대한 출력을 바로 얻어내는 방법입니다. 반면 modular approach는 응용을 기능에 따라 여러 개의 module로 나누고, 각 module에 필요에 따라 AI 기술을 적용하는 방식입니다. 혹자는 end-to-end approach을 지향하여야 한다고 주장하지만, (1) 응용 내에 딥러닝이 효과적이지 않은 부분이 있을 수 있고 (2) 학습해야 하는 파라미터의 수가 너무 방대해지며 (3) 예외 상황에 대한 대처가 쉽지 않다는 점에서 한계가 있습니다. 이에 따라 현재 대부분의 회사/연구소들은 modular approach를 채택하고 있고, 이런 경향은 당분간 지속될 것 같습니다.
 
-&lt;p&gt;&lt;em&gt;Table 1. Limitations of Existing Component-based Development Tools &lt;sup id=&quot;fnref:Exp1&quot;&gt;&lt;a href=&quot;#fn:Exp1&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/em&gt;
-&lt;img src=&quot;https://i.imgur.com/jtML0qV.png&quot; alt=&quot;placeholder&quot; title=&quot;Table 1&quot; /&gt;&lt;/p&gt;
+![placeholder](https://i.imgur.com/Gatb5Qo.png &quot;Figure 1&quot;)
+*Figure 1. End-to-end Approach vs Modular Approach in Autonomous Driving*
 
-&lt;p&gt;위의 표는 대표적인 component-based development 도구들이 위에서 언급한 지원 요소들을 어느 정도 고려하는지를 분석한 결과입니다. 어떤 도구도 real-time stream processing을 위한 고려를 충분히 하고 있지 않습니다. 결과적으로 대부분의 기업과 연구소들은 요구사항 충족을 세부 알고리즘 개발자들에게 전적으로 맡기고 있습니다. 이렇게 될 경우 개발자는 과중한 부담으로 인해 개발 효율이 떨어지게 됩니다. 또한, 요구사항에 체계적으로 접근할 수 없기 때문에 제대로 요구사항을 만족시키기도 어렵습니다.&lt;/p&gt;
+임베디드 AI 응용의 개발 과정은 기존의 임베디드 시스템 상의 응용 개발 과정과는 매우 다르기 때문에 이에 대한 지원이 필수적입니다. Modular approach에 따른 임베디드 AI 응용 개발은 크게 (1) 각 모듈을 개발하는 programming small과 (2) 개발된 모듈들을 합치는 programming large로 나눌 수 있습니다. 우리가 잘 알고 있는 TensorFlow, Caffe, PyTorch 등의 deep learning framework는 programming small에서 딥러닝 기반 알고리즘의 효과적인 개발을 지원합니다. 하지만, 아직 programming large에 대한 지원은 충분히 고민되지 않고 있습니다.
 
-&lt;p&gt;결론적으로 임베디드 AI 응용을 제대로 개발하기 위해 필요한 것은 real-time stream processing을 지원할 수 있는 새로운 개발 방법론입니다. 현존하는 어떤 도구와 개발 방법론도 이를 충분히 고려하고 있지 않습니다. 가장 바람직한 방법은 위에서 정리한 real-time stream processing을 위한 세부 요소들을 모두 지원하는 새로운 프로그래밍 언어를 정의하고, 이에 기반한 개발 방법론을 만드는 것일 겁니다. 다음 포스트에서는 현존하는 stream processing을 위한 programming language들을 정리하고 이들을 활용할 수 있을지에 대해 고민해보도록 하겠습니다.&lt;/p&gt;
+임베디드 AI 응용을 개발하는 회사들이 정보를 공개하지 않기 때문에 파악이 쉽지 않지만, 제한된 정보를 분석해본 결과 이들이 취하는 접근법은 크게 두 가지로 보입니다. 첫번째 접근법은 C/C++ 등 기본적인 프로그래밍 언어와 ROS(Robot Operating System) 등에서 제공하는 통신 라이브러리를 사용하여 각 모듈을 합치는 작업을 직접 수행하는 것입니다. 두번째 접근법은 component-based development 도구를 사용하여 개발을 진행하는 것입니다. 이런 도구들은 매우 많이 존재하지만, 임베디드 AI 응용 개발에는 Matlab의 Simulink, Intempora의 RTMaps, UC Berkely의 Ptolemy II가 많이 쓰이고 있습니다.
 
-&lt;div class=&quot;footnotes&quot;&gt;
-  &lt;ol&gt;
-    &lt;li id=&quot;fn:Noh18&quot;&gt;
-      &lt;p&gt;Soonhyun Noh and Seongsoo Hong, “Splash: Stream processing language for autonomous driving,” 15th International Conference on Ubiquitous Robots, 2018. &lt;a href=&quot;#fnref:Noh18&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:Exp1&quot;&gt;
-      &lt;p&gt;RTMaps의 경우, 공개된 documentation이 부족하여 정확한 분석이 아직 되지 않음 &lt;a href=&quot;#fnref:Exp1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/div&gt;</content><author><name>Soonhyun Noh</name></author><summary type="html">자율주행자동차나 로봇 등의 임베디드 시스템에서 딥러닝 기반 AI 기술이 필수 요소로 자리잡았습니다. 임베디드 AI 응용의 개발에는 두 가지 접근 방식이 있습니다. 첫 번째 방식은 end-to-end approach이고, 두 번째 방식은 modular approach입니다. End-to-end approach는 하나의 거대한 neural network를 사용하여 응용의 입력에 대한 출력을 바로 얻어내는 방법입니다. 반면 modular approach는 응용을 기능에 따라 여러 개의 module로 나누고, 각 module에 필요에 따라 AI 기술을 적용하는 방식입니다. 혹자는 end-to-end approach을 지향하여야 한다고 주장하지만, (1) 응용 내에 딥러닝이 효과적이지 않은 부분이 있을 수 있고 (2) 학습해야 하는 파라미터의 수가 너무 방대해지며 (3) 예외 상황에 대한 대처가 쉽지 않다는 점에서 한계가 있습니다. 이에 따라 현재 대부분의 회사/연구소들은 modular approach를 채택하고 있고, 이런 경향은 당분간 지속될 것 같습니다.</summary></entry><entry><title type="html">TensorFlow 이해하기</title><link href="https://nsh3389.github.io/deep%20learning%20framework/2017/09/07/understanding-tensorflow.html" rel="alternate" type="text/html" title="TensorFlow 이해하기" /><published>2017-09-07T00:00:00+09:00</published><updated>2017-09-07T00:00:00+09:00</updated><id>https://nsh3389.github.io/deep%20learning%20framework/2017/09/07/understanding-tensorflow</id><content type="html" xml:base="https://nsh3389.github.io/deep%20learning%20framework/2017/09/07/understanding-tensorflow.html">&lt;p&gt;자율주행 자동차와 인공지능과 같은 deep learning을 사용하는 서비스들이 두각을 나타내면서 deep learning 플랫폼에 대한 경쟁도 심화되고 있습니다. 하드웨어 플랫폼의 경우 초창기부터 많은 투자를 한 NVIDIA가 많이 앞서 나가고 있습니다. 특히, NVIDIA의 병렬 컴퓨팅 아키텍처인 CUDA의 deep learning 라이브러리 지원(cuBLAS, cuDNN)과 개발자 커뮤니티 규모는 경쟁자들을 압도하고 있습니다&lt;sup id=&quot;fnref:Dettmers17&quot;&gt;&lt;a href=&quot;#fn:Dettmers17&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;. Google의 Tensor Processiong Unit(TPU)를 필두로 여러 회사들이 deep learning을 위한 프로세서를 제안하고 있지만 NVIDIA를 추월하는 것은 쉽지 않을 것으로 보입니다.&lt;/p&gt;
+하지만 이런 접근에는 한계가 있습니다. 두 가지 접근법 모두 임베디드 AI의 핵심 요구사항인 real-time stream processing에 대한 고려가 되어 있지 않기 때문입니다. Real-time stream processing을 위해서는 임베디드 기기에 수많은 센서 데이터가 연속적으로 흘러 들어와서 처리되는 과정에서 timing constraints를 만족 시켜야 합니다. 이를 위해 개발 과정에서 지원해야 하는 요소들을 정리해보면 아래와 같습니다.
 
-&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/6Ai3QMa.png&quot; alt=&quot;placeholder&quot; title=&quot;Figure 1&quot; /&gt;
-&lt;em&gt;Figure 1. 2016년 이후 폭발적으로 오른 NVIDIA 주가&lt;/em&gt;&lt;/p&gt;
+1. Visual programming
+    - 스트림 데이터의 처리 과정을 개발자에게 시각적으로 표현할 수 있어야 함
+2. Timing annotation
+    - Stream processing의 timing constraints를 개발자가 명시할 수 있어야 함
+    - 네 종류의 timing constraints가 존재[^Noh18]
+        1. Deadline
+        2. Minimum rate constraint
+        3. Freshness constraint
+        4. Correlation constraint
+3. Exception handling
+    - 개발자가 예외상황을 정의하고 각각에 대한 처리를 명시할 수 있어야 함
+4. Support for sensor fusion
+    - 센서 퓨전의 시간 동기화 이슈들을 간단하고 명확하게 기술할 수 있어야 함
+5. Support for multiple modes
+    - 조건에 따라 선택적으로 알고리즘을 수행하는 모드 선택 기능을 지원해야 함
+6. Integration support
+    - Data-driven, time-driven, event-driven 등 서로 다른 프로그래밍 방식으로 개발하는 도메인 간의 integration을 지원해야 함
 
-&lt;p&gt;반면 소프트웨어 플랫폼은 상대적으로 경쟁이 치열해 보입니다. Google의 TensorFlow가 플랫폼을 오픈 소스로 공개하고 양질의 튜토리얼과 문서들을 제공하며 선점 효과를 누리고 있지만&lt;sup id=&quot;fnref:Rubashkin17&quot;&gt;&lt;a href=&quot;#fn:Rubashkin17&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;, 후발 주자들(Microsoft CNTK, MXNet, PyTorch, …)이 향상된 성능과 편리한 기능들을 선보이고 있기 때문에 안심할 상황은 아닌 것 같습니다&lt;sup id=&quot;fnref:TensorFlowBlog&quot;&gt;&lt;a href=&quot;#fn:TensorFlowBlog&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+*Table 1. Limitations of Existing Component-based Development Tools [^Exp1]*
+![placeholder](https://i.imgur.com/jtML0qV.png &quot;Table 1&quot;)
 
-&lt;p&gt;TensorFlow는 천하의 Google이 야심 차게 진행하고 있는 프로젝트이기 때문에 미래가 밝아 보입니다. 하지만, 따라오는 후발 주자들의 기세를 볼 때 이 플랫폼을 state-of-the-art로 단정짓는 것은 성급한 생각인 것 같습니다. 이를 염두에 두고 지금부터 TensorFlow에 대해 알아보도록 하겠습니다.&lt;/p&gt;
+위의 표는 대표적인 component-based development 도구들이 위에서 언급한 지원 요소들을 어느 정도 고려하는지를 분석한 결과입니다. 어떤 도구도 real-time stream processing을 위한 고려를 충분히 하고 있지 않습니다. 결과적으로 대부분의 기업과 연구소들은 요구사항 충족을 세부 알고리즘 개발자들에게 전적으로 맡기고 있습니다. 이렇게 될 경우 개발자는 과중한 부담으로 인해 개발 효율이 떨어지게 됩니다. 또한, 요구사항에 체계적으로 접근할 수 없기 때문에 제대로 요구사항을 만족시키기도 어렵습니다.
 
-&lt;h3 id=&quot;google은-왜-tensorflow를-오픈-소스로-공개하였을까&quot;&gt;Google은 왜 TensorFlow를 오픈 소스로 공개하였을까?&lt;/h3&gt;
+결론적으로 임베디드 AI 응용을 제대로 개발하기 위해 필요한 것은 real-time stream processing을 지원할 수 있는 새로운 개발 방법론입니다. 현존하는 어떤 도구와 개발 방법론도 이를 충분히 고려하고 있지 않습니다. 가장 바람직한 방법은 위에서 정리한 real-time stream processing을 위한 세부 요소들을 모두 지원하는 새로운 프로그래밍 언어를 정의하고, 이에 기반한 개발 방법론을 만드는 것일 겁니다. 다음 포스트에서는 현존하는 stream processing을 위한 programming language들을 정리하고 이들을 활용할 수 있을지에 대해 고민해보도록 하겠습니다.
 
-&lt;p&gt;TensorFlow 개발의 책임자는 MapReduce 논문으로 유명한 Jeff Dean입니다&lt;sup id=&quot;fnref:Jeffrey14&quot;&gt;&lt;a href=&quot;#fn:Jeffrey14&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;. Jeff Dean은 구글이 TensorFlow를 만들고 오픈 소스로 공개한 이유에 대해 아래와 같이 설명합니다.&lt;/p&gt;
+[^Noh18]: Soonhyun Noh and Seongsoo Hong, &quot;Splash: Stream processing language for autonomous driving,&quot; 15th International Conference on Ubiquitous Robots, 2018.
+[^Exp1]: RTMaps의 경우, 공개된 documentation이 부족하여 정확한 분석이 아직 되지 않음</content><author><name>Soonhyun Noh</name></author><summary type="html">자율주행자동차나 로봇 등의 임베디드 시스템에서 딥러닝 기반 AI 기술이 필수 요소로 자리잡았습니다. 임베디드 AI 응용의 개발에는 두 가지 접근 방식이 있습니다. 첫 번째 방식은 end-to-end approach이고, 두 번째 방식은 modular approach입니다. End-to-end approach는 하나의 거대한 neural network를 사용하여 응용의 입력에 대한 출력을 바로 얻어내는 방법입니다. 반면 modular approach는 응용을 기능에 따라 여러 개의 module로 나누고, 각 module에 필요에 따라 AI 기술을 적용하는 방식입니다. 혹자는 end-to-end approach을 지향하여야 한다고 주장하지만, (1) 응용 내에 딥러닝이 효과적이지 않은 부분이 있을 수 있고 (2) 학습해야 하는 파라미터의 수가 너무 방대해지며 (3) 예외 상황에 대한 대처가 쉽지 않다는 점에서 한계가 있습니다. 이에 따라 현재 대부분의 회사/연구소들은 modular approach를 채택하고 있고, 이런 경향은 당분간 지속될 것 같습니다.</summary></entry><entry><title type="html">TensorFlow 이해하기</title><link href="https://shnoh171.github.io/deep%20learning%20framework/2017/09/07/understanding-tensorflow.html" rel="alternate" type="text/html" title="TensorFlow 이해하기" /><published>2017-09-07T00:00:00+09:00</published><updated>2017-09-07T00:00:00+09:00</updated><id>https://shnoh171.github.io/deep%20learning%20framework/2017/09/07/understanding-tensorflow</id><content type="html" xml:base="https://shnoh171.github.io/deep%20learning%20framework/2017/09/07/understanding-tensorflow.html">자율주행 자동차와 인공지능과 같은 deep learning을 사용하는 서비스들이 두각을 나타내면서 deep learning 플랫폼에 대한 경쟁도 심화되고 있습니다. 하드웨어 플랫폼의 경우 초창기부터 많은 투자를 한 NVIDIA가 많이 앞서 나가고 있습니다. 특히, NVIDIA의 병렬 컴퓨팅 아키텍처인 CUDA의 deep learning 라이브러리 지원(cuBLAS, cuDNN)과 개발자 커뮤니티 규모는 경쟁자들을 압도하고 있습니다[^Dettmers17]. Google의 Tensor Processiong Unit(TPU)를 필두로 여러 회사들이 deep learning을 위한 프로세서를 제안하고 있지만 NVIDIA를 추월하는 것은 쉽지 않을 것으로 보입니다.
 
-&lt;blockquote&gt;
-  &lt;p&gt;One of the reasons we built TensorFlow, our next-generation system, the system that we’ve actually open sourced for machine learning, is that we wanted to keep the scalable attributes and production readiness of our first system, but make it a much more flexible platform for doing all kinds of machine-learning research and product development &lt;sup id=&quot;fnref:Jeffrey17&quot;&gt;&lt;a href=&quot;#fn:Jeffrey17&quot; class=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+![placeholder](https://i.imgur.com/6Ai3QMa.png &quot;Figure 1&quot;)
+*Figure 1. 2016년 이후 폭발적으로 오른 NVIDIA 주가*
 
-&lt;p&gt;글에 따르면 TensorFlow를 오픈 소스로 공개하는 주 이유는 MapReduce나 BigTable, Borg와 같은 기술에서 Google이 겪었던 실패를 반복하지 않기 위해서 입니다. 당시 Google은 자체적으로 개발한 기술을 직접 공개하지 않고 whitepaper를 배포하였는데, 외부의 개발자들이 이를 구현한 Hadoop, HBase, Docker 등이 산업 표준이 되어 버리면서 Google이 이에 맞춰야 하는 우스꽝스러운 상황이 반복되었습니다&lt;sup id=&quot;fnref:Lee16&quot;&gt;&lt;a href=&quot;#fn:Lee16&quot; class=&quot;footnote&quot;&gt;6&lt;/a&gt;&lt;/sup&gt;. Jeff Dean이 주장하는 작전은 Google이 사용하는 기술을 오픈 소스로 공개하여 기술의 장점과 오픈 소스 커뮤니티의 힘을 동시에 취하는 것입니다.&lt;/p&gt;
+반면 소프트웨어 플랫폼은 상대적으로 경쟁이 치열해 보입니다. Google의 TensorFlow가 플랫폼을 오픈 소스로 공개하고 양질의 튜토리얼과 문서들을 제공하며 선점 효과를 누리고 있지만[^Rubashkin17], 후발 주자들(Microsoft CNTK, MXNet, PyTorch, ...)이 향상된 성능과 편리한 기능들을 선보이고 있기 때문에 안심할 상황은 아닌 것 같습니다[^TensorFlowBlog].
 
-&lt;p&gt;덧붙여, Amazon이 주도권을 쥐고 있는 클라우드 시장의 판도를 뒤집으려는 의도도 보입니다. Deep learning 서비스가 클라우드 시장의 킬러 앱이 되면 Google Cloud Platform과 TensorFlow의 연계는 매우 위력적일 것입니다&lt;sup id=&quot;fnref:GoogleCloud&quot;&gt;&lt;a href=&quot;#fn:GoogleCloud&quot; class=&quot;footnote&quot;&gt;7&lt;/a&gt;&lt;/sup&gt;. 최근 OpenAI가 Microsoft의 Azure를 deep learning 플랫폼을 선택한 것이 어쩌면 클라우드 시장 지각 변동의 서막일지도 모릅니다&lt;sup id=&quot;fnref:TensorFlowBlog2&quot;&gt;&lt;a href=&quot;#fn:TensorFlowBlog2&quot; class=&quot;footnote&quot;&gt;8&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+TensorFlow는 천하의 Google이 야심 차게 진행하고 있는 프로젝트이기 때문에 미래가 밝아 보입니다. 하지만, 따라오는 후발 주자들의 기세를 볼 때 이 플랫폼을 state-of-the-art로 단정짓는 것은 성급한 생각인 것 같습니다. 이를 염두에 두고 지금부터 TensorFlow에 대해 알아보도록 하겠습니다.
 
-&lt;h3 id=&quot;tensorflow-프레임워크의-구조&quot;&gt;TensorFlow 프레임워크의 구조&lt;/h3&gt;
+### Google은 왜 TensorFlow를 오픈 소스로 공개하였을까?
 
-&lt;p&gt;TensorFlow의 핵심 구성 요소는 개발자가 사용하는 언어 별로 구현되어 있는 client(front-end)와 실제 training과 inference를 수행하는 core execution system(back-end)입니다. 개발자는 client가 제공하는 API를 사용하여 프로그램을 작성할 수도 있고, 이를 기반으로 작성된 training libraries나 inference libraries를 사용할 수도 있습니다. Client와 core execution system 사이에는 이 C API가 존재하는데, client와 core execution system의 작성 언어가 다를 경우 이를 연결해주는 역할을 합니다.&lt;/p&gt;
+TensorFlow 개발의 책임자는 MapReduce 논문으로 유명한 Jeff Dean입니다[^Jeffrey14]. Jeff Dean은 구글이 TensorFlow를 만들고 오픈 소스로 공개한 이유에 대해 아래와 같이 설명합니다.
 
-&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/MUyr3eh.png&quot; alt=&quot;placeholder&quot; title=&quot;Figure 2&quot; /&gt;
-&lt;em&gt;Figure 2. TensorFlow Architecture &lt;sup id=&quot;fnref:TensorFlow&quot;&gt;&lt;a href=&quot;#fn:TensorFlow&quot; class=&quot;footnote&quot;&gt;9&lt;/a&gt;&lt;/sup&gt;&lt;/em&gt;&lt;/p&gt;
+&gt; One of the reasons we built TensorFlow, our next-generation system, the system that we’ve actually open sourced for machine learning, is that we wanted to keep the scalable attributes and production readiness of our first system, but make it a much more flexible platform for doing all kinds of machine-learning research and product development [^Jeffrey17]
 
-&lt;p&gt;TensorFlow는 기본적으로 Python, Java, C/C++, Go를 지원하고, 이를 위한 client들이 구현되어 있습니다. 또 추가 언어 지원을 위한 client를 작성할 수도 있습니다. 하지만 문서화나 API의 풍부함을 생각하면, 특별한 이유가 없다면 Python을 선택하는 것이 가장 합리적인 선택입니다&lt;sup id=&quot;fnref:TensorFlow2&quot;&gt;&lt;a href=&quot;#fn:TensorFlow2&quot; class=&quot;footnote&quot;&gt;10&lt;/a&gt;&lt;/sup&gt;. TensorFlow 뿐만이 아니라 많은 deep learning 소프트웨어 플랫폼들이 Python 지원에 주력하고 있는데, 이는 Python이 machine learning 개발자들이 가장 많이 사용하는 언어이기 때문입니다&lt;sup id=&quot;fnref:Puget16&quot;&gt;&lt;a href=&quot;#fn:Puget16&quot; class=&quot;footnote&quot;&gt;11&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+글에 따르면 TensorFlow를 오픈 소스로 공개하는 주 이유는 MapReduce나 BigTable, Borg와 같은 기술에서 Google이 겪었던 실패를 반복하지 않기 위해서 입니다. 당시 Google은 자체적으로 개발한 기술을 직접 공개하지 않고 whitepaper를 배포하였는데, 외부의 개발자들이 이를 구현한 Hadoop, HBase, Docker 등이 산업 표준이 되어 버리면서 Google이 이에 맞춰야 하는 우스꽝스러운 상황이 반복되었습니다[^Lee16]. Jeff Dean이 주장하는 작전은 Google이 사용하는 기술을 오픈 소스로 공개하여 기술의 장점과 오픈 소스 커뮤니티의 힘을 동시에 취하는 것입니다.
 
-&lt;p&gt;Client의 주요 역할은 TensorFlow 개발자가 작성한 프로그램을 dataflow graph(computational graph)의 형태로 저장하고 수행을 개시하는 것입니다. Dataflow graph의 node는 operation입니다. Operation은 사전에 정의된 작업을 수행하는 연산의 최소 단위입니다. 단순한 덧셈과 뺄셈부터 matrix multiplication, convolution까지 모두 operation으로 정의할 수 있습니다. 각 operation은 0개 이상의 tensor를 입력으로 받아 한 개의 tensor를 출력합니다. Tensor는 TensorFlow에서 데이터를 저장하기 위한 자료구조로, 다차원의 행렬을 저장할 수 있습니다. Operation들이 tensor를 통해 연결되어 있기 때문에 tensor를 dataflow graph의 edge라고 부릅니다. 아래의 figure 3는 TensorFlow 홈페이지에 나와 있는 dataflow graph의 예입니다.&lt;/p&gt;
+덧붙여, Amazon이 주도권을 쥐고 있는 클라우드 시장의 판도를 뒤집으려는 의도도 보입니다. Deep learning 서비스가 클라우드 시장의 킬러 앱이 되면 Google Cloud Platform과 TensorFlow의 연계는 매우 위력적일 것입니다[^GoogleCloud]. 최근 OpenAI가 Microsoft의 Azure를 deep learning 플랫폼을 선택한 것이 어쩌면 클라우드 시장 지각 변동의 서막일지도 모릅니다[^TensorFlowBlog2].
 
-&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/qvjrgd2.gif&quot; alt=&quot;placeholder&quot; title=&quot;Figure 3&quot; /&gt;
-&lt;em&gt;Figure 3. Example of Dataflow Graph in TensorFlow &lt;sup id=&quot;fnref:TensorFlow3&quot;&gt;&lt;a href=&quot;#fn:TensorFlow3&quot; class=&quot;footnote&quot;&gt;12&lt;/a&gt;&lt;/sup&gt;&lt;/em&gt;&lt;/p&gt;
+### TensorFlow 프레임워크의 구조
 
-&lt;p&gt;Core execution system은 client가 개시한 dataflow graph의 수행을 실제 처리합니다. 위의 figure 2를 다시 보겠습니다. Core execution system 안의 dataflow executor는 dataflow graph를 client로부터 전달 받은 후, CPU나 GPU 같은 device에게 dataflow 상의 각 operation의 kernel을 수행하라는 명령을 내립니다. 이때 kernel은 특정 device에서의 operation의 구현입니다. 예를 들어 TensorFlow에는 matrix multiplication operation에 대해 CPU kernel과 CUDA library를 사용하는 GPU kernel이 따로 구현되어 있습니다. 참고로, core execution system은 처리 성능을 높이기 위해 모두 C++로 구현되어 있습니다.&lt;/p&gt;
+TensorFlow의 핵심 구성 요소는 개발자가 사용하는 언어 별로 구현되어 있는 client(front-end)와 실제 training과 inference를 수행하는 core execution system(back-end)입니다. 개발자는 client가 제공하는 API를 사용하여 프로그램을 작성할 수도 있고, 이를 기반으로 작성된 training libraries나 inference libraries를 사용할 수도 있습니다. Client와 core execution system 사이에는 이 C API가 존재하는데, client와 core execution system의 작성 언어가 다를 경우 이를 연결해주는 역할을 합니다.
 
-&lt;p&gt;남은 부분인 distributed master와 networking layer는 TensorFlow의 분산 시스템 지원을 위한 부분입니다. 이 글의 목적은 기본적인 TensorFlow 동작을 이해하는 것이므로 설명하지 않고 넘어가도록 하겠습니다.&lt;/p&gt;
+![placeholder](https://i.imgur.com/MUyr3eh.png &quot;Figure 2&quot;)
+*Figure 2. TensorFlow Architecture [^TensorFlow]*
 
-&lt;h3 id=&quot;tensorflow-프로그램의-기본-구조&quot;&gt;TensorFlow 프로그램의 기본 구조&lt;/h3&gt;
+TensorFlow는 기본적으로 Python, Java, C/C++, Go를 지원하고, 이를 위한 client들이 구현되어 있습니다. 또 추가 언어 지원을 위한 client를 작성할 수도 있습니다. 하지만 문서화나 API의 풍부함을 생각하면, 특별한 이유가 없다면 Python을 선택하는 것이 가장 합리적인 선택입니다[^TensorFlow2]. TensorFlow 뿐만이 아니라 많은 deep learning 소프트웨어 플랫폼들이 Python 지원에 주력하고 있는데, 이는 Python이 machine learning 개발자들이 가장 많이 사용하는 언어이기 때문입니다[^Puget16].
 
-&lt;p&gt;간단한 예제를 통해 TensorFlow 프로그램 구조를 알아보겠습니다. 예제는 TensorFlow 홈페이지의 튜토리얼 문서에 나오는 MNIST dataset을 이용한 숫자 필기 인식 프로그램입니다&lt;sup id=&quot;fnref:TensorFlow4&quot;&gt;&lt;a href=&quot;#fn:TensorFlow4&quot; class=&quot;footnote&quot;&gt;13&lt;/a&gt;&lt;/sup&gt;. 아래 figure 4와 같은 가로 세로 28픽셀의 흑백 숫자 이미지 입력으로 받아 0~9 중 어떤 숫자인지를 판별합니다.&lt;/p&gt;
+Client의 주요 역할은 TensorFlow 개발자가 작성한 프로그램을 dataflow graph(computational graph)의 형태로 저장하고 수행을 개시하는 것입니다. Dataflow graph의 node는 operation입니다. Operation은 사전에 정의된 작업을 수행하는 연산의 최소 단위입니다. 단순한 덧셈과 뺄셈부터 matrix multiplication, convolution까지 모두 operation으로 정의할 수 있습니다. 각 operation은 0개 이상의 tensor를 입력으로 받아 한 개의 tensor를 출력합니다. Tensor는 TensorFlow에서 데이터를 저장하기 위한 자료구조로, 다차원의 행렬을 저장할 수 있습니다. Operation들이 tensor를 통해 연결되어 있기 때문에 tensor를 dataflow graph의 edge라고 부릅니다. 아래의 figure 3는 TensorFlow 홈페이지에 나와 있는 dataflow graph의 예입니다.
 
-&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/kpjwnOr.png&quot; alt=&quot;placeholder&quot; title=&quot;Figure 4&quot; /&gt;
-&lt;em&gt;Figure 4. MNIST dataset&lt;/em&gt;&lt;/p&gt;
+![placeholder](https://i.imgur.com/qvjrgd2.gif &quot;Figure 3&quot;)
+*Figure 3. Example of Dataflow Graph in TensorFlow [^TensorFlow3]*
 
-&lt;p&gt;작성할 neural network 구조는 figure 5에 표시하였습니다. Input layer는 각 이미지의 784개의 픽셀을 입력으로 받습니다. Output layer는 input layer의 각 neuron으로부터 픽셀 값을 전달 받아 weighted sum을 계산하여 bias를 더한 후 출력합니다. 이 예제는 매우 단순하기 때문에 어떤 neuron도 activation function을 가지지 않습니다. 최종 출력 값 10개는 각각 0~9의 숫자의 점수를 의미하고, 가장 높은 점수가 높은 숫자를 해당 입력 이미지의 숫자로 결정합니다.&lt;/p&gt;
+Core execution system은 client가 개시한 dataflow graph의 수행을 실제 처리합니다. 위의 figure 2를 다시 보겠습니다. Core execution system 안의 dataflow executor는 dataflow graph를 client로부터 전달 받은 후, CPU나 GPU 같은 device에게 dataflow 상의 각 operation의 kernel을 수행하라는 명령을 내립니다. 이때 kernel은 특정 device에서의 operation의 구현입니다. 예를 들어 TensorFlow에는 matrix multiplication operation에 대해 CPU kernel과 CUDA library를 사용하는 GPU kernel이 따로 구현되어 있습니다. 참고로, core execution system은 처리 성능을 높이기 위해 모두 C++로 구현되어 있습니다.
 
-&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/RkC4KVm.png&quot; alt=&quot;placeholder&quot; title=&quot;Figure 5&quot; /&gt;
-&lt;em&gt;Figure 5. Very Simple Neural Network&lt;/em&gt;&lt;/p&gt;
+남은 부분인 distributed master와 networking layer는 TensorFlow의 분산 시스템 지원을 위한 부분입니다. 이 글의 목적은 기본적인 TensorFlow 동작을 이해하는 것이므로 설명하지 않고 넘어가도록 하겠습니다.
 
-&lt;p&gt;이 네트워크의 입력과 출력을 각각 벡터 \(x\)와 \(y\)로 표시하면 둘 사이의 관계식은 아래와 같습니다.&lt;/p&gt;
+### TensorFlow 프로그램의 기본 구조
 
-&lt;p&gt;\[y = Wx + b\]&lt;/p&gt;
+간단한 예제를 통해 TensorFlow 프로그램 구조를 알아보겠습니다. 예제는 TensorFlow 홈페이지의 튜토리얼 문서에 나오는 MNIST dataset을 이용한 숫자 필기 인식 프로그램입니다[^TensorFlow4]. 아래 figure 4와 같은 가로 세로 28픽셀의 흑백 숫자 이미지 입력으로 받아 0~9 중 어떤 숫자인지를 판별합니다.
 
-&lt;p&gt;이 때, \(W\)는 output layer에서 각 neuron들의 weight를 저장하는 \(10 \times 284\) 행렬입니다. \(W\)의 \(i\)번째 행은 output layer의 \(i\)번째 neuron의 weight 값들을 저장합니다.&lt;/p&gt;
+![placeholder](https://i.imgur.com/kpjwnOr.png &quot;Figure 4&quot;)
+*Figure 4. MNIST dataset*
 
-&lt;p&gt;이제 프로그램을 단계별로 설명하겠습니다. 여기서는 프로그램의 구조를 파악하기 위한 최소한의 설명만 할 것입니다. 자세한 설명이 필요할 경우 TensorFlow 홈페이지를 참고하시면 됩니다&lt;sup id=&quot;fnref:TensorFlow4:1&quot;&gt;&lt;a href=&quot;#fn:TensorFlow4&quot; class=&quot;footnote&quot;&gt;13&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+작성할 neural network 구조는 figure 5에 표시하였습니다. Input layer는 각 이미지의 784개의 픽셀을 입력으로 받습니다. Output layer는 input layer의 각 neuron으로부터 픽셀 값을 전달 받아 weighted sum을 계산하여 bias를 더한 후 출력합니다. 이 예제는 매우 단순하기 때문에 어떤 neuron도 activation function을 가지지 않습니다. 최종 출력 값 10개는 각각 0~9의 숫자의 점수를 의미하고, 가장 높은 점수가 높은 숫자를 해당 입력 이미지의 숫자로 결정합니다.
 
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# mnist_softmax.py
-&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;__future__&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;absolute_import&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;__future__&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;division&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;__future__&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;print_function&lt;/span&gt;
+![placeholder](https://i.imgur.com/RkC4KVm.png &quot;Figure 5&quot;)
+*Figure 5. Very Simple Neural Network*
 
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;argparse&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sys&lt;/span&gt;
+이 네트워크의 입력과 출력을 각각 벡터 \\(x\\)와 \\(y\\)로 표시하면 둘 사이의 관계식은 아래와 같습니다.
 
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;tensorflow.examples.tutorials.mnist&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;input_data&lt;/span&gt;
+\\[y = Wx + b\\]
 
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;tensorflow&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;
+이 때, \\(W\\)는 output layer에서 각 neuron들의 weight를 저장하는 \\(10 \times 284\\) 행렬입니다. \\(W\\)의 \\(i\\)번째 행은 output layer의 \\(i\\)번째 neuron의 weight 값들을 저장합니다.
 
-&lt;span class=&quot;n&quot;&gt;FLAGS&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;
+이제 프로그램을 단계별로 설명하겠습니다. 여기서는 프로그램의 구조를 파악하기 위한 최소한의 설명만 할 것입니다. 자세한 설명이 필요할 경우 TensorFlow 홈페이지를 참고하시면 됩니다[^TensorFlow4].
 
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;# Import data
-&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;mnist&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;input_data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read_data_sets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FLAGS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data_dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;one_hot&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+```python
+# mnist_softmax.py
 
-  &lt;span class=&quot;c1&quot;&gt;# Create the model
-&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;placeholder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;float32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;784&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;W&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Variable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;784&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Variable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matmul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;W&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
 
-  &lt;span class=&quot;c1&quot;&gt;# Define loss and optimizer
-&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;y_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;placeholder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;float32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;cross_entropy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reduce_mean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;softmax_cross_entropy_with_logits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;logits&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;train_step&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;train&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GradientDescentOptimizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;minimize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cross_entropy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+import argparse
+import sys
 
-  &lt;span class=&quot;c1&quot;&gt;# Initialize
-&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;sess&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;InteractiveSession&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;global_variables_initializer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+from tensorflow.examples.tutorials.mnist import input_data
 
-  &lt;span class=&quot;c1&quot;&gt;# Train
-&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;batch_xs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;batch_ys&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mnist&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;train&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;next_batch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;sess&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;train_step&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;feed_dict&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;batch_xs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;batch_ys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+import tensorflow as tf
 
-  &lt;span class=&quot;c1&quot;&gt;# Test trained model
-&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;correct_prediction&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;equal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argmax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argmax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;accuracy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reduce_mean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cast&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;correct_prediction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;float32&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sess&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;accuracy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;feed_dict&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mnist&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;images&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                                      &lt;span class=&quot;n&quot;&gt;y_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mnist&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}))&lt;/span&gt;
+FLAGS = None
 
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'__main__'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;parser&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;argparse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ArgumentParser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;parser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_argument&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'--data_dir'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                      &lt;span class=&quot;n&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'/tmp/tensorflow/mnist/input_data'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                      &lt;span class=&quot;n&quot;&gt;help&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Directory for storing input data'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;FLAGS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;unparsed&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parse_known_args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;argv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sys&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;unparsed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+def main(_):
+  # Import data
+  mnist = input_data.read_data_sets(FLAGS.data_dir, one_hot=True)
 
-&lt;p&gt;TensorFlow 프로그램은 크게 (1) dataflow graph를 작성하여 원하는 computation을 표현하는 부분과 (2) dataflow graph를 수행하는 부분으로 나눌 수 있습니다. 위의 코드에서 create the model과 define loss and optimizer는 (1)에 해당하고, train과 test trained model은 (2)에 해당합니다.&lt;/p&gt;
+  # Create the model
+  x = tf.placeholder(tf.float32, [None, 784])
+  W = tf.Variable(tf.zeros([784, 10]))
+  b = tf.Variable(tf.zeros([10]))
+  y = tf.matmul(x, W) + b
 
-&lt;h4 id=&quot;import-data&quot;&gt;Import data&lt;/h4&gt;
+  # Define loss and optimizer
+  y_ = tf.placeholder(tf.float32, [None, 10])
+  cross_entropy = tf.reduce_mean(
+      tf.nn.softmax_cross_entropy_with_logits(labels=y_, logits=y))
+  train_step =
+      tf.train.GradientDescentOptimizer(0.5).minimize(cross_entropy)
 
-&lt;p&gt;서버에서 MNIST data set을 가져옵니다.&lt;/p&gt;
+  # Initialize
+  sess = tf.InteractiveSession()
+  tf.global_variables_initializer().run()
 
-&lt;h4 id=&quot;create-the-model&quot;&gt;Create the model&lt;/h4&gt;
+  # Train
+  for _ in range(1000):
+    batch_xs, batch_ys = mnist.train.next_batch(100)
+    sess.run(train_step, feed_dict={x: batch_xs, y_: batch_ys})
 
-&lt;p&gt;\(y = Wx + b\)를 계산할 수 있는 dataflow graph를 그립니다. Graph를 작성하는 과정은 매우 직관적입니다. 각 statement는 새로운 tensor를 선언하고 해당 tensor를 생성할 operation을 명시합니다. 즉, 프로그램의 x, W와 b는 tensor이고 placeholder, Variable, matmul와 더하기는 operation입니다. Tensor x를 정의할 때 쓰인 placeholder은 실제 dataflow graph를 수행할 때 입력되는 데이터를 전달하는 operation입니다. 최종적으로 \(y = Wx + b\)를 계산한 최종 결과가 tensor y에 저장되는 dataflow graph가 완성되었습니다.&lt;/p&gt;
+  # Test trained model
+  correct_prediction = tf.equal(tf.argmax(y, 1), tf.argmax(y_, 1))
+  accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
+  print(sess.run(accuracy, feed_dict={x: mnist.test.images,
+                                      y_: mnist.test.labels}))
 
-&lt;h4 id=&quot;define-loss-and-optimizer&quot;&gt;Define loss and optimizer&lt;/h4&gt;
+if __name__ == '__main__':
+  parser = argparse.ArgumentParser()
+  parser.add_argument('--data_dir', type=str,
+                      default='/tmp/tensorflow/mnist/input_data',
+                      help='Directory for storing input data')
+  FLAGS, unparsed = parser.parse_known_args()
+  tf.app.run(main=main, argv=[sys.argv[0]] + unparsed)
+```
 
-&lt;p&gt;W와 b를 training 시킬 수 있도록 dataflow graph를 확장합니다. y_는 입력으로 받는 각 이미지 데이터 x에 대한 label(정답)을 저장하는 tensor입니다. cross_entropy에는 이 neural network의 loss function을 계산한 결과를 저장합니다. Loss function을 계산하는 과정에서 neural network를 통과한 결과를 저장하는 y와 label이 저장된 y_를 입력으로 받습니다(이에 따라 dataflow graph가 연결됩니다). 참고로 여기서는 softmax regression을 사용하는데&lt;sup id=&quot;fnref:CrossEntropy&quot;&gt;&lt;a href=&quot;#fn:CrossEntropy&quot; class=&quot;footnote&quot;&gt;14&lt;/a&gt;&lt;/sup&gt;, 이에 대한 설명은 생략하도록 하겠습니다. 마지막으로 train_step이라는 tensor에 W와 b에 대해 gradient descent를 수행할 operation의 결과를 인가합니다. 아래의 figure 6는 완성된 dataflow graph를 TensorBoard라는 도구를 사용하여 출력한 결과입니다.&lt;/p&gt;
+TensorFlow 프로그램은 크게 (1) dataflow graph를 작성하여 원하는 computation을 표현하는 부분과 (2) dataflow graph를 수행하는 부분으로 나눌 수 있습니다. 위의 코드에서 create the model과 define loss and optimizer는 (1)에 해당하고, train과 test trained model은 (2)에 해당합니다.
 
-&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/J5UvFyv.png&quot; alt=&quot;placeholder&quot; title=&quot;Figure 6&quot; /&gt;
-&lt;em&gt;Figure 6. Dataflow Graph of MNIST Example&lt;/em&gt;&lt;/p&gt;
+#### Import data
 
-&lt;h4 id=&quot;initialize&quot;&gt;Initialize&lt;/h4&gt;
+서버에서 MNIST data set을 가져옵니다.
 
-&lt;p&gt;실제 dataflow graph를 돌리기 위해서는 session object를 하나 선언합니다. 그리고, 본격적으로 작성한 dataflow graph를 돌리기에 앞서 tensor들을 초기화 시킵니다. 초기화 시킬 변수는 W와 b입니다(앞에서 dataflow graph를 그리는 과정에서 이 두 변수를 0으로 초기화 시킬 것이라고 명시하였습니다).&lt;/p&gt;
+#### Create the model
 
-&lt;h4 id=&quot;train&quot;&gt;Train&lt;/h4&gt;
+\\(y = Wx + b\\)를 계산할 수 있는 dataflow graph를 그립니다. Graph를 작성하는 과정은 매우 직관적입니다. 각 statement는 새로운 tensor를 선언하고 해당 tensor를 생성할 operation을 명시합니다. 즉, 프로그램의 x, W와 b는 tensor이고 placeholder, Variable, matmul와 더하기는 operation입니다. Tensor x를 정의할 때 쓰인 placeholder은 실제 dataflow graph를 수행할 때 입력되는 데이터를 전달하는 operation입니다. 최종적으로 \\(y = Wx + b\\)를 계산한 최종 결과가 tensor y에 저장되는 dataflow graph가 완성되었습니다.
 
-&lt;p&gt;1000번에 걸쳐 training set에서 100개의 batch data를 사용하여 training을 수행합니다. Session의 run() method를 호출할 때 앞서 선언한 train_step이라는 tensor를 입력으로 받습니다. 이러면 train_step을 정의할 때 사용된 GradientDescentOptimizer를 사용하여 training을 실제로 진행합니다. 이때, 앞서 placeholder로 선언된 x와 y_에 들어갈 데이터를 feed_dict을 사용하여 인가해줘야 합니다.&lt;/p&gt;
+#### Define loss and optimizer
 
-&lt;h4 id=&quot;test-trained-model&quot;&gt;Test trained model&lt;/h4&gt;
+W와 b를 training 시킬 수 있도록 dataflow graph를 확장합니다. y_는 입력으로 받는 각 이미지 데이터 x에 대한 label(정답)을 저장하는 tensor입니다. cross_entropy에는 이 neural network의 loss function을 계산한 결과를 저장합니다. Loss function을 계산하는 과정에서 neural network를 통과한 결과를 저장하는 y와 label이 저장된 y_를 입력으로 받습니다(이에 따라 dataflow graph가 연결됩니다). 참고로 여기서는 softmax regression을 사용하는데[^CrossEntropy], 이에 대한 설명은 생략하도록 하겠습니다. 마지막으로 train_step이라는 tensor에 W와 b에 대해 gradient descent를 수행할 operation의 결과를 인가합니다. 아래의 figure 6는 완성된 dataflow graph를 TensorBoard라는 도구를 사용하여 출력한 결과입니다.
 
-&lt;p&gt;Training을 마친 모델에 대해 test set을 사용하여 정확도를 검증합니다. Tensor y와 y_로부터 다시 dataflow graph를 확장하여 정확도를 계산한 결과를 accuracy라는 tensor에 저장하게 하고, 마찬가지로 session의 run method를 사용하여 결과를 출력합니다.&lt;/p&gt;
+![placeholder](https://i.imgur.com/J5UvFyv.png &quot;Figure 6&quot;)
+*Figure 6. Dataflow Graph of MNIST Example*
 
-&lt;p&gt;여기까지 TensorFlow 프로그램의 구조에 대해 알아보았습니다. 앞서 이야기한 것처럼 TensorFlow의 프로그램은 (1) dataflow graph를 작성하여 원하는 computation을 표현하는 부분과 (2) dataflow graph를 수행하는 부분으로 나뉩니다. 마지막으로 각 부분이 실제 프레임워크 상에서 어떻게 동작하는지 조금 더 자세히 알아보겠습니다.&lt;/p&gt;
+#### Initialize
 
-&lt;h3 id=&quot;step-1-dataflow-graph-구축&quot;&gt;Step 1. Dataflow graph 구축&lt;/h3&gt;
+실제 dataflow graph를 돌리기 위해서는 session object를 하나 선언합니다. 그리고, 본격적으로 작성한 dataflow graph를 돌리기에 앞서 tensor들을 초기화 시킵니다. 초기화 시킬 변수는 W와 b입니다(앞에서 dataflow graph를 그리는 과정에서 이 두 변수를 0으로 초기화 시킬 것이라고 명시하였습니다).
 
-&lt;p&gt;Dataflow graph를 구축하는 작업은 전적으로 client 단에서 이루어집니다. 앞서 설명한 것처럼 TensorFlow는 지원하는 언어마다 각각 client가 구현되어 있는데, 이 중 가장 많이 쓰이는 Python client를 기준으로 설명하겠습니다.&lt;/p&gt;
+#### Train
 
-&lt;p&gt;Python client는 dataflow graph를 관리하기 위해 세 개의 object를 관리합니다. 각 object에 대한 설명은 아래와 같습니다.&lt;/p&gt;
+1000번에 걸쳐 training set에서 100개의 batch data를 사용하여 training을 수행합니다. Session의 run() method를 호출할 때 앞서 선언한 train_step이라는 tensor를 입력으로 받습니다. 이러면 train_step을 정의할 때 사용된 GradientDescentOptimizer를 사용하여 training을 실제로 진행합니다. 이때, 앞서 placeholder로 선언된 x와 y_에 들어갈 데이터를 feed_dict을 사용하여 인가해줘야 합니다.
 
-&lt;ul&gt;
-  &lt;li&gt;Graph
-    &lt;ul&gt;
-      &lt;li&gt;A TensorFlow computation, represented as a dataflow graph&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Operation
-    &lt;ul&gt;
-      &lt;li&gt;Represents unit of computation&lt;/li&gt;
-      &lt;li&gt;Node of Graph&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Tensor
-    &lt;ul&gt;
-      &lt;li&gt;Represents unit of data that flow between operations&lt;/li&gt;
-      &lt;li&gt;Edge of Graph&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Graph object는 자신이 소유하고 있는 Operation object들을 가리키기 위한 dictionary 자료 구조를 유지합니다. 이를 통한 Python client는 자신이 원하는 Operation object에 쉽게 접근할 수 있습니다. Operation object는 자신의 입력 Tensor object와 출력 Tensor object를 가리키고 있습니다. 마찬가지로, Tensor object는 자신을 출력하는 Operation object와 자신을 입력으로 받는 Operation object를 가리키고 있습니다.&lt;/p&gt;
-
-&lt;p&gt;프로그램에 따라 dataflow graph 구축을 마치면 Session의 run() method가 호출됩니다. 그러면 Python client는 C API로 구현된 wrapper function을 호출하여 core execution system이 dataflow graph 수행을 시작할 수 있게 해줍니다. 이 과정에서 Python client가 작성한 그래프 자료구조를 core execution system에게 넘겨주게 됩니다.&lt;/p&gt;
-
-&lt;h3 id=&quot;step-2-dataflow-graph-수행단일-머신의-경우&quot;&gt;Step 2. Dataflow graph 수행(단일 머신의 경우)&lt;/h3&gt;
-
-&lt;p&gt;TensorFlow의 core execution system은 두 종류의 Session object를 가지고 있습니다. 하나는 단일 머신에서 사용하는 DirectSession이고 다른 하나는 분산 시스템에서 사용하는 GrpcSession입니다. 여기서는 DirectSession에 대해서면 다루겠습니다.&lt;/p&gt;
-
-&lt;p&gt;DirectSession은 전달받은 dataflow graph의 수행을 관리합니다. Dataflow graph를 병렬적으로 수행할 수 있는 선에서 여러 개의 subgraph로 나눕니다. 그 후, subgraph의 개수만큼 Executor라는 object를 생성하고, 각 Executor에 subgraph를 전달하고 수행을 명령합니다. DirectSession는 barrier를 사용하여 모든 Executor가 맡은 일을 마무리할 때까지 대기합니다.&lt;/p&gt;
-
-&lt;p&gt;Executor는 subgraph 상의 각 operation의 수행을 Device에게 순차적으로 명령합니다. Device는 시스템 상의 processing unit(CPU나 GPU)마다 하나씩 선언되어 있습니다. Device는 Executor로부터 해당 operation을 수행하기 위한 입력과 kernel을 전달받아 실제 작업을 수행합니다. 특정 operation의 kernel은 해당 operation의 object의 Compute() method에 정의되어 있습니다.&lt;/p&gt;
-
-&lt;p&gt;아래의 코드는 matrix multiplication operator의 GPU에 대한 kernel의 예입니다. MatMulOp object의 Compute() method는 LaunchMatMul object의 launch() method를 호출합니다. 이는 TensorFlow의 GPU kernel의 전형적인 프로그래밍 패턴입니다. launch() method는 CUDA에서 지원하는 cuBLAS를 사용하여 matrix multiplication을 수행합니다.&lt;/p&gt;
-
-&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// tensorflow/core/kernels/matmul_op.cc&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;template&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typename&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;typename&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;USE_CUBLAS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MatMulOp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OpKernel&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Compute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OpKernelContext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// ...&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;LaunchMatMul&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Device&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;USE_CUBLAS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;launch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dim_pair&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+#### Test trained model
 
-&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// tensorflow/core/kernels/matmul_op.cc&lt;/span&gt;
+Training을 마친 모델에 대해 test set을 사용하여 정확도를 검증합니다. Tensor y와 y_로부터 다시 dataflow graph를 확장하여 정확도를 계산한 결과를 accuracy라는 tensor에 저장하게 하고, 마찬가지로 session의 run method를 사용하여 결과를 출력합니다.
 
-&lt;span class=&quot;k&quot;&gt;template&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typename&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LaunchMatMul&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GPUDevice&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/* USE_CUBLAS */&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;launch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;OpKernelContext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OpKernel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;kernel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Tensor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Tensor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Eigen&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Eigen&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IndexPair&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Eigen&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DenseIndex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dim_pair&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;Tensor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// ...&lt;/span&gt;
-  &lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;blas_launch_status&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;stream&lt;/span&gt;
-      &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ThenBlasGemm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;blas_transpose_b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;blas_transpose_a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.0&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                     &lt;span class=&quot;n&quot;&gt;b_ptr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;transpose_b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a_ptr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-                     &lt;span class=&quot;n&quot;&gt;transpose_a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c_ptr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ok&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// ...&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+여기까지 TensorFlow 프로그램의 구조에 대해 알아보았습니다. 앞서 이야기한 것처럼 TensorFlow의 프로그램은 (1) dataflow graph를 작성하여 원하는 computation을 표현하는 부분과 (2) dataflow graph를 수행하는 부분으로 나뉩니다. 마지막으로 각 부분이 실제 프레임워크 상에서 어떻게 동작하는지 조금 더 자세히 알아보겠습니다.
 
-&lt;h3 id=&quot;결론&quot;&gt;결론&lt;/h3&gt;
+### Step 1. Dataflow graph 구축
 
-&lt;p&gt;지금까지 TensorFlow의 배경, 철학, 구조와 동작 방식에 대해 간략하게 알아보았습니다. 향후에는 분산 시스템의 경우를 포함한 TensorFlow 내부 동작에 대한 자세한 분석을 다룰 예정입니다.&lt;/p&gt;
+Dataflow graph를 구축하는 작업은 전적으로 client 단에서 이루어집니다. 앞서 설명한 것처럼 TensorFlow는 지원하는 언어마다 각각 client가 구현되어 있는데, 이 중 가장 많이 쓰이는 Python client를 기준으로 설명하겠습니다.
 
-&lt;div class=&quot;footnotes&quot;&gt;
-  &lt;ol&gt;
-    &lt;li id=&quot;fn:Dettmers17&quot;&gt;
-      &lt;p&gt;&lt;a href=&quot;http://timdettmers.com/2017/04/09/which-gpu-for-deep-learning&quot;&gt;http://timdettmers.com/2017/04/09/which-gpu-for-deep-learning&lt;/a&gt; &lt;a href=&quot;#fnref:Dettmers17&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:Rubashkin17&quot;&gt;
-      &lt;p&gt;&lt;a href=&quot;https://www.svds.com/getting-started-deep-learning/?utm_campaign=Revue+newsletter&amp;amp;utm_medium=Newsletter&amp;amp;utm_source=revue&quot;&gt;https://www.svds.com/getting-started-deep-learning/?utm_campaign=Revue+newsletter&amp;amp;utm_medium=Newsletter&amp;amp;utm_source=revue&lt;/a&gt; &lt;a href=&quot;#fnref:Rubashkin17&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:TensorFlowBlog&quot;&gt;
-      &lt;p&gt;&lt;a href=&quot;https://tensorflow.blog/2017/02/13/chainer-mxnet-cntk-tf-benchmarking&quot;&gt;https://tensorflow.blog/2017/02/13/chainer-mxnet-cntk-tf-benchmarking&lt;/a&gt; &lt;a href=&quot;#fnref:TensorFlowBlog&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:Jeffrey14&quot;&gt;
-      &lt;p&gt;Jeffrey Dean and Sanjay Ghemawat, “MapReduce: simplified data processing on large clusters,” USENIX Symposium on Operating Systems Design and Implementation (OSDI), 2014. &lt;a href=&quot;#fnref:Jeffrey14&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:Jeffrey17&quot;&gt;
-      &lt;p&gt;&lt;a href=&quot;https://youtu.be/B0ZnbaOlNss&quot;&gt;https://youtu.be/B0ZnbaOlNss&lt;/a&gt; &lt;a href=&quot;#fnref:Jeffrey17&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:Lee16&quot;&gt;
-      &lt;p&gt;&lt;a href=&quot;https://si.mpli.st/dev/tensorflow-open-source.html&quot;&gt;https://si.mpli.st/dev/tensorflow-open-source.html&lt;/a&gt; &lt;a href=&quot;#fnref:Lee16&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:GoogleCloud&quot;&gt;
-      &lt;p&gt;&lt;a href=&quot;https://cloud.google.com/ml-engine&quot;&gt;https://cloud.google.com/ml-engine&lt;/a&gt; &lt;a href=&quot;#fnref:GoogleCloud&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:TensorFlowBlog2&quot;&gt;
-      &lt;p&gt;&lt;a href=&quot;https://tensorflow.blog/2016/11/16/openai-microsoft&quot;&gt;https://tensorflow.blog/2016/11/16/openai-microsoft&lt;/a&gt; &lt;a href=&quot;#fnref:TensorFlowBlog2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:TensorFlow&quot;&gt;
-      &lt;p&gt;&lt;a href=&quot;https://www.tensorflow.org/extend/architecture&quot;&gt;https://www.tensorflow.org/extend/architecture&lt;/a&gt; &lt;a href=&quot;#fnref:TensorFlow&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:TensorFlow2&quot;&gt;
-      &lt;p&gt;&lt;a href=&quot;https://www.tensorflow.org/extend/language_bindings&quot;&gt;https://www.tensorflow.org/extend/language_bindings&lt;/a&gt; &lt;a href=&quot;#fnref:TensorFlow2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:Puget16&quot;&gt;
-      &lt;p&gt;&lt;a href=&quot;https://www.ibm.com/developerworks/community/blogs/jfp/entry/What_Language_Is_Best_For_Machine_Learning_And_Data_Science?lang=en&quot;&gt;https://www.ibm.com/developerworks/community/blogs/jfp/entry/What_Language_Is_Best_For_Machine_Learning_And_Data_Science?lang=en&lt;/a&gt; &lt;a href=&quot;#fnref:Puget16&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:TensorFlow3&quot;&gt;
-      &lt;p&gt;&lt;a href=&quot;https://www.tensorflow.org/programmers_guide/graphs&quot;&gt;https://www.tensorflow.org/programmers_guide/graphs&lt;/a&gt; &lt;a href=&quot;#fnref:TensorFlow3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:TensorFlow4&quot;&gt;
-      &lt;p&gt;&lt;a href=&quot;https://www.tensorflow.org/get_started/mnist/beginners&quot;&gt;https://www.tensorflow.org/get_started/mnist/beginners&lt;/a&gt; &lt;a href=&quot;#fnref:TensorFlow4&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt; &lt;a href=&quot;#fnref:TensorFlow4:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:CrossEntropy&quot;&gt;
-      &lt;p&gt;&lt;a href=&quot;http://colah.github.io/posts/2015-09-Visual-Information/&quot;&gt;http://colah.github.io/posts/2015-09-Visual-Information/&lt;/a&gt; &lt;a href=&quot;#fnref:CrossEntropy&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/div&gt;</content><author><name>Soonhyun Noh</name></author><summary type="html">자율주행 자동차와 인공지능과 같은 deep learning을 사용하는 서비스들이 두각을 나타내면서 deep learning 플랫폼에 대한 경쟁도 심화되고 있습니다. 하드웨어 플랫폼의 경우 초창기부터 많은 투자를 한 NVIDIA가 많이 앞서 나가고 있습니다. 특히, NVIDIA의 병렬 컴퓨팅 아키텍처인 CUDA의 deep learning 라이브러리 지원(cuBLAS, cuDNN)과 개발자 커뮤니티 규모는 경쟁자들을 압도하고 있습니다1. Google의 Tensor Processiong Unit(TPU)를 필두로 여러 회사들이 deep learning을 위한 프로세서를 제안하고 있지만 NVIDIA를 추월하는 것은 쉽지 않을 것으로 보입니다. http://timdettmers.com/2017/04/09/which-gpu-for-deep-learning &amp;#8617;</summary></entry><entry><title type="html">Deep Learning에 대한 간단한 소개</title><link href="https://nsh3389.github.io/basic%20deep%20learning%20theory/2017/09/03/introduction-to-deep-learning.html" rel="alternate" type="text/html" title="Deep Learning에 대한 간단한 소개" /><published>2017-09-03T00:00:00+09:00</published><updated>2017-09-03T00:00:00+09:00</updated><id>https://nsh3389.github.io/basic%20deep%20learning%20theory/2017/09/03/introduction-to-deep-learning</id><content type="html" xml:base="https://nsh3389.github.io/basic%20deep%20learning%20theory/2017/09/03/introduction-to-deep-learning.html">&lt;p&gt;본 포스트는 deep learning을 처음 접하는 학생들과 연구원들이 알아야 하는 배경과 기초 지식들을 공유하기 위해 작성되었습니다. 이 글에서 사용하는 그림들은 대부분 Stanford의 CS231n 강좌에서 가져왔습니다. 글을 읽고 deep learning에 대해 계속 공부하시려면 이 강의를 들어 보시는 것을 추천합니다&lt;sup id=&quot;fnref:CS231n16_YouTube&quot;&gt;&lt;a href=&quot;#fn:CS231n16_YouTube&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+Python client는 dataflow graph를 관리하기 위해 세 개의 object를 관리합니다. 각 object에 대한 설명은 아래와 같습니다.
 
-&lt;h3 id=&quot;deep-learning이란-무엇인가&quot;&gt;Deep Learning이란 무엇인가&lt;/h3&gt;
-&lt;p&gt;2015년, deep learning의 대가 세 사람(Yann Lecun, Yoshua Bengio, Geoffrey Hinton)이 Nature에 deep learning의 발전을 정리하는 논문을 게재하였습니다&lt;sup id=&quot;fnref:LeCun15&quot;&gt;&lt;a href=&quot;#fn:LeCun15&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;. 이 논문에서 정의하는 deep learning은 한 문장으로 요약할 수 있습니다.&lt;/p&gt;
+* Graph
+  + A TensorFlow computation, represented as a dataflow graph
+* Operation
+  + Represents unit of computation
+  + Node of Graph
+* Tensor
+  + Represents unit of data that flow between operations
+  + Edge of Graph
 
-&lt;blockquote&gt;
-  &lt;p&gt;Deep learning is a class of techniques that allows computational models that are composed of multiple processing layers to learn representations of data with multiple levels of abstraction.&lt;/p&gt;
-&lt;/blockquote&gt;
+Graph object는 자신이 소유하고 있는 Operation object들을 가리키기 위한 dictionary 자료 구조를 유지합니다. 이를 통한 Python client는 자신이 원하는 Operation object에 쉽게 접근할 수 있습니다. Operation object는 자신의 입력 Tensor object와 출력 Tensor object를 가리키고 있습니다. 마찬가지로, Tensor object는 자신을 출력하는 Operation object와 자신을 입력으로 받는 Operation object를 가리키고 있습니다.
 
-&lt;p&gt;위의 문장에서 이야기하는 representation(또는 feature)은 데이터의 측정 가능한 특성을 의미합니다. 예를 들어 스팸 메일을 찾는 machine learning 알고리즘에서는 특정 단어의 반복 횟수, 작성 언어, 문법의 정확도, 제목의 시작 단어 등이 feature가 될 수 있습니다. 머신 러닝 알고리즘의 성능은 일반적으로 주어진 입력 데이터에서 어떤 representation을 추출하는지에 크게 영향을 받습니다&lt;sup id=&quot;fnref:Bengio13&quot;&gt;&lt;a href=&quot;#fn:Bengio13&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;. 보통 해당 분야의 전문가들이 자신들의 경험에 기반하여 representation 추출 알고리즘을 개발하여 사용합니다. 하지만 입력 데이터의 차원이 커지고 풀어야 하는 문제가 복잡해질수록 인간이 적절한 representation을 추출하기 힘들어집니다.&lt;/p&gt;
+프로그램에 따라 dataflow graph 구축을 마치면 Session의 run() method가 호출됩니다. 그러면 Python client는 C API로 구현된 wrapper function을 호출하여 core execution system이 dataflow graph 수행을 시작할 수 있게 해줍니다. 이 과정에서 Python client가 작성한 그래프 자료구조를 core execution system에게 넘겨주게 됩니다.
 
-&lt;p&gt;Deep learning은 이런 representation 추출 알고리즘을 스스로 학습할 수 있는 기술입니다. 이를 가능하게 하는 이유는 많은 layer를 사용하여 데이터를 여러 단계에 걸쳐 추상화시키기 때문입니다. 아래의 그림은 Stanford 대학의 CS231n 강좌에서 가져온 간단한 deep learning의 동작 그림입니다. 왼쪽에 사람이 말을 타고 있는 사진이 입력 데이터로 들어가고, 이 데이터가 오른쪽으로 layer를 거칠 때마다 점점 추상화된 형태로 가공됩니다. 마지막 layer를 지나고 오른쪽 끝에 도착했을 때, 말을 나타내는 8번째 representation이 가장 높은 값(흰색)을 가지게 되고, 이에 따라 이 사진을 말이라고 판별하게 됩니다.&lt;/p&gt;
+### Step 2. Dataflow graph 수행(단일 머신의 경우)
 
-&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/ahRk6zc.png&quot; alt=&quot;placeholder&quot; title=&quot;Figure 1&quot; /&gt;
-&lt;em&gt;Figure 1. Image Recognition with Deep Learning &lt;sup id=&quot;fnref:CS231n17&quot;&gt;&lt;a href=&quot;#fn:CS231n17&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;&lt;/em&gt;&lt;/p&gt;
+TensorFlow의 core execution system은 두 종류의 Session object를 가지고 있습니다. 하나는 단일 머신에서 사용하는 DirectSession이고 다른 하나는 분산 시스템에서 사용하는 GrpcSession입니다. 여기서는 DirectSession에 대해서면 다루겠습니다.
 
-&lt;p&gt;이렇게 여러 개의 layer로 구성된 학습 시스템을 일반적으로 artificial neural network(ANN)라고 부릅니다. Neural network라고 부르는 이유는 인간의 뇌의 동작에서 힌트를 얻어 만들어졌기 때문입니다. Deep learning은 한마디로 ANN을 사용하는 machine learning 기술의 집합입니다. 사실 ANN의 개념은 1940년대에 제안되었지만 오랜 기간 동안 주목 받지 못했었고, 2000년대 들어 이 분야가 다시 주목받기 시작하면서 관련 연구자들이 “Deep Learning”이라는 새로운 단어를 유행시켰습니다. 그 후 deep learning은 machine learning의 한 분류인 supervised learning에서 큰 성과를 거뒀고, 현재는 unsupervised learning과 reinforcement learning에서도 활발히 연구되고 있습니다.&lt;/p&gt;
+DirectSession은 전달받은 dataflow graph의 수행을 관리합니다. Dataflow graph를 병렬적으로 수행할 수 있는 선에서 여러 개의 subgraph로 나눕니다. 그 후, subgraph의 개수만큼 Executor라는 object를 생성하고, 각 Executor에 subgraph를 전달하고 수행을 명령합니다. DirectSession는 barrier를 사용하여 모든 Executor가 맡은 일을 마무리할 때까지 대기합니다.
 
-&lt;h3 id=&quot;artificial-neural-network의-기본-구조&quot;&gt;Artificial Neural Network의 기본 구조&lt;/h3&gt;
+Executor는 subgraph 상의 각 operation의 수행을 Device에게 순차적으로 명령합니다. Device는 시스템 상의 processing unit(CPU나 GPU)마다 하나씩 선언되어 있습니다. Device는 Executor로부터 해당 operation을 수행하기 위한 입력과 kernel을 전달받아 실제 작업을 수행합니다. 특정 operation의 kernel은 해당 operation의 object의 Compute() method에 정의되어 있습니다.
 
-&lt;p&gt;Neuron은 ANN의 가장 작은 연산 단위입니다. 한 neuron은 이전 neuron들로부터 값들을 전달받아 일련의 연산을 처리한 후 다음 neuron에게 결과를 전달합니다. 이 방식은 우리 뇌 속의 neuron의 동작을 매우 단순화시켜 흉내 내는 것입니다. 아래의 그림에서 보듯이, 이전 neuron으로 받은 값들은 각각 weight \(w_i\)를 곱한 후 bias \(b\)를 더하는 선형 결합으로 합쳐집니다. 이 값을 바로 다음 neuron에게 전달하는 것이 아니라, activation function이라고 불리는 함수 \(f\)를 거친 값을 전달합니다. Activation function이 필요한 이유는 nonlinear function을 사용하여 ANN이 표현할 수 있는 함수의 자유도를 높여주기 위해서인데, 이에 대해서는 조금 뒤에 더 설명하도록 하겠습니다.&lt;/p&gt;
+아래의 코드는 matrix multiplication operator의 GPU에 대한 kernel의 예입니다. MatMulOp object의 Compute() method는 LaunchMatMul object의 launch() method를 호출합니다. 이는 TensorFlow의 GPU kernel의 전형적인 프로그래밍 패턴입니다. launch() method는 CUDA에서 지원하는 cuBLAS를 사용하여 matrix multiplication을 수행합니다.
 
-&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/5H9IqY4.jpg&quot; alt=&quot;placeholder&quot; title=&quot;Figure 2&quot; /&gt;
-&lt;em&gt;Figure 2. Neuron &lt;sup id=&quot;fnref:CS231n17_2&quot;&gt;&lt;a href=&quot;#fn:CS231n17_2&quot; class=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;&lt;/em&gt;&lt;/p&gt;
+```c++
+// tensorflow/core/kernels/matmul_op.cc
 
-&lt;p&gt;Layer는 neuron들의 집합입니다. ANN은 아래의 그림과 같이 여러 개의 layer로 구성되며, 각 layer의 neuron은 직전 layer의 neuron들로부터 입력을 전달받아 계산을 수행하고 다음 layer의 neuron들에게 출력을 전달합니다. Raw data를 직접 입력으로 받는 첫번째 layer를 input layer라고 부르고, 최종 출력을 담당하는 마지막 layer를 output layer라고 부릅니다. 나머지 layer는 hidden layer입니다. 일반적으로 hidden layer가 하나 이상이면 deep learning이라고 부르는데, 어차피 deep learning이라는 단어가 광고성 단어이기 때문에 이런 구분이 크게 중요하지는 않습니다.&lt;/p&gt;
+template &lt;typename Device, typename T, bool USE_CUBLAS&gt;
+class MatMulOp : public OpKernel {
+  public:
+  void Compute(OpKernelContext* ctx) override {
+    // ...
+    LaunchMatMul&lt;Device, T, USE_CUBLAS&gt;::launch(
+      ctx, this, a, b, dim_pair, out);
+  }
+};
+```
 
-&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/WYV1zUu.jpg&quot; alt=&quot;placeholder&quot; title=&quot;Figure 3&quot; /&gt;
-&lt;em&gt;Figure 3. Neural Network &lt;sup id=&quot;fnref:CS231n17_2:1&quot;&gt;&lt;a href=&quot;#fn:CS231n17_2&quot; class=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;&lt;/em&gt;&lt;/p&gt;
+```c++
+// tensorflow/core/kernels/matmul_op.cc
 
-&lt;h3 id=&quot;그래서-artificial-neural-network가-왜-좋나요&quot;&gt;그래서 Artificial Neural Network가 왜 좋나요?&lt;/h3&gt;
+template &lt;typename T&gt;
+struct LaunchMatMul&lt;GPUDevice, T, true /* USE_CUBLAS */&gt; {
+  static void launch(
+    OpKernelContext* ctx, OpKernel* kernel, const Tensor&amp; a,
+    const Tensor&amp; b,
+    const Eigen::array&lt;Eigen::IndexPair&lt;Eigen::DenseIndex&gt;, 1&gt;&amp; dim_pair,
+    Tensor* out) {
+  // ...
+  bool blas_launch_status =
+  stream
+      -&gt;ThenBlasGemm(blas_transpose_b, blas_transpose_a, n, m, k, 1.0f,
+                     b_ptr, transpose_b ? k : n, a_ptr,
+                     transpose_a ? m : k, 0.0f, &amp;c_ptr, n)
+        .ok();
+  // ...
+  }
+}
+```
 
-&lt;p&gt;ANN이 왜 좋은지를 설명하기 위해서, supervised learning의 한 갈래인 classification 문제를 예로 들겠습니다. Classification은 주어진 입력 데이터가 주어진 class 중 어디에 속하는지를 판별하는 문제입니다. 사진이 개를 찍은 것인지, 고양이를 찍은 것인지 판단하는 것이 대표적인 classification 문제입니다. 아래 그림은 아주 단순한 classification의 예를 나타낸 것인데, 두 개의 입력 데이터(사람의 나이, 종양의 크기)를 사용하여 해당 종양이 악성인지 아닌지를 판단하는 문제입니다. 이 문제의 경우, 주어진 training data set을 보고 직선을 하나 그으면 종양의 악성 여부를 효과적으로 판별할 수 있습니다.&lt;/p&gt;
+### 결론
 
-&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/0uJ5UUD.png&quot; alt=&quot;placeholder&quot; title=&quot;Figure 4&quot; /&gt;
-&lt;em&gt;Figure 4. Simple Classification &lt;sup id=&quot;fnref:MongoDB&quot;&gt;&lt;a href=&quot;#fn:MongoDB&quot; class=&quot;footnote&quot;&gt;6&lt;/a&gt;&lt;/sup&gt;&lt;/em&gt;&lt;/p&gt;
+지금까지 TensorFlow의 배경, 철학, 구조와 동작 방식에 대해 간략하게 알아보았습니다. 향후에는 분산 시스템의 경우를 포함한 TensorFlow 내부 동작에 대한 자세한 분석을 다룰 예정입니다.
 
-&lt;p&gt;하지만 이미지를 보고 이미지에 찍힌 물체의 정체를 파악하는 image recognition의 경우 문제가 복잡해집니다. 우선 입력 데이터가 방대합니다. 가로 세로의 픽셀 수가 512인 저해상도 칼라 이미지만 하더라도 한 이미지의 입력 차원의 수는 \(512\times512\times3\)입니다(마지막 3을 곱하는 이유는 RGB 세 색상이 한 픽셀에 들어있기 때문입니다). 게다가 파악해야 하는 물체의 종류(class)가 많아질수록 \(512\times512\times3\) 차원 공간 속에 데이터의 분포가 매우 복잡해집니다. 이 공간 속에서 위의 간단한 예제에서 선을 그은 것과 같이 hyperplane을 결정해야 하는데, 이를 위해서는 매우 복잡한 함수를 사용하여야 합니다.&lt;/p&gt;
+[^Dettmers17]: &lt;http://timdettmers.com/2017/04/09/which-gpu-for-deep-learning&gt;
+[^Rubashkin17]: &lt;https://www.svds.com/getting-started-deep-learning/?utm_campaign=Revue+newsletter&amp;utm_medium=Newsletter&amp;utm_source=revue&gt;
+[^TensorFlowBlog]: &lt;https://tensorflow.blog/2017/02/13/chainer-mxnet-cntk-tf-benchmarking&gt;
+[^Jeffrey14]: Jeffrey Dean and Sanjay Ghemawat, &quot;MapReduce: simplified data processing on large clusters,&quot; USENIX Symposium on Operating Systems Design and Implementation (OSDI), 2014.
+[^Jeffrey17]: &lt;https://youtu.be/B0ZnbaOlNss&gt;
+[^Lee16]: &lt;https://si.mpli.st/dev/tensorflow-open-source.html&gt;
+[^GoogleCloud]: &lt;https://cloud.google.com/ml-engine&gt;
+[^TensorFlowBlog2]: &lt;https://tensorflow.blog/2016/11/16/openai-microsoft&gt;
+[^TensorFlow]: &lt;https://www.tensorflow.org/extend/architecture&gt;
+[^TensorFlow2]: &lt;https://www.tensorflow.org/extend/language_bindings&gt;
+[^Puget16]: &lt;https://www.ibm.com/developerworks/community/blogs/jfp/entry/What_Language_Is_Best_For_Machine_Learning_And_Data_Science?lang=en&gt;
+[^TensorFlow3]: &lt;https://www.tensorflow.org/programmers_guide/graphs&gt;
+[^TensorFlow4]: &lt;https://www.tensorflow.org/get_started/mnist/beginners&gt;
+[^CrossEntropy]: &lt;http://colah.github.io/posts/2015-09-Visual-Information/&gt;</content><author><name>Soonhyun Noh</name></author><summary type="html">자율주행 자동차와 인공지능과 같은 deep learning을 사용하는 서비스들이 두각을 나타내면서 deep learning 플랫폼에 대한 경쟁도 심화되고 있습니다. 하드웨어 플랫폼의 경우 초창기부터 많은 투자를 한 NVIDIA가 많이 앞서 나가고 있습니다. 특히, NVIDIA의 병렬 컴퓨팅 아키텍처인 CUDA의 deep learning 라이브러리 지원(cuBLAS, cuDNN)과 개발자 커뮤니티 규모는 경쟁자들을 압도하고 있습니다1. Google의 Tensor Processiong Unit(TPU)를 필두로 여러 회사들이 deep learning을 위한 프로세서를 제안하고 있지만 NVIDIA를 추월하는 것은 쉽지 않을 것으로 보입니다. http://timdettmers.com/2017/04/09/which-gpu-for-deep-learning &amp;#8617;</summary></entry><entry><title type="html">Deep Learning에 대한 간단한 소개</title><link href="https://shnoh171.github.io/basic%20deep%20learning%20theory/2017/09/03/introduction-to-deep-learning.html" rel="alternate" type="text/html" title="Deep Learning에 대한 간단한 소개" /><published>2017-09-03T00:00:00+09:00</published><updated>2017-09-03T00:00:00+09:00</updated><id>https://shnoh171.github.io/basic%20deep%20learning%20theory/2017/09/03/introduction-to-deep-learning</id><content type="html" xml:base="https://shnoh171.github.io/basic%20deep%20learning%20theory/2017/09/03/introduction-to-deep-learning.html">본 포스트는 deep learning을 처음 접하는 학생들과 연구원들이 알아야 하는 배경과 기초 지식들을 공유하기 위해 작성되었습니다. 이 글에서 사용하는 그림들은 대부분 Stanford의 CS231n 강좌에서 가져왔습니다. 글을 읽고 deep learning에 대해 계속 공부하시려면 이 강의를 들어 보시는 것을 추천합니다[^CS231n16_YouTube].
 
-&lt;p&gt;기존의 machine learning 기법들은 이런 접근 방식이 불가능했기 때문에, 해당 분야(여기서는 이미지 처리)의 전문가들이 적절한 representation을 추출하여 문제를 단순화시켰습니다. SIFT feature, HOG feature, SURF feature 등이 대표적인 예입니다. 하지만 ANN을 사용할 경우, 굳이 그런 번거로운 작업을 거칠 필요 없이 layer의 수와 layer 안의 neuron 수를 충분히 늘려서 복잡한 hyperplane을 정할 수 있습니다. 물론 정확한 hyperplane을 얻기 위해서는 각 neuron의 weight와 bias들을 잘 조절해야 합니다. 정답이 존재하는 학습 시스템은 구축했지만, 그 정답까지 어떻게 찾아갈 수 있을지는 또 다른 문제인 것이죠. 1940년 대에 제안되었던 ANN은 이에 대한 해답을 내놓지 못하였고 암흑기를 맞게 됩니다(AI 쪽 사람들은 이를 흔히 AI winter라고 부릅니다). 그 후 1970년대에 ANN의 weight와 bias들을 자동적으로 학습할 수 있는 backpropagation이라는 방법이 제안됩니다.&lt;/p&gt;
+### Deep Learning이란 무엇인가
+2015년, deep learning의 대가 세 사람(Yann Lecun, Yoshua Bengio, Geoffrey Hinton)이 Nature에 deep learning의 발전을 정리하는 논문을 게재하였습니다[^LeCun15]. 이 논문에서 정의하는 deep learning은 한 문장으로 요약할 수 있습니다.
 
-&lt;h3 id=&quot;backpropagation-설명에-앞서-gradient-descent-이해하기&quot;&gt;Backpropagation 설명에 앞서 Gradient Descent 이해하기&lt;/h3&gt;
+&gt; Deep learning is a class of techniques that allows computational models that are composed of multiple processing layers to learn representations of data with multiple levels of abstraction.
 
-&lt;p&gt;Backpropagation을 이해하기 위해서는 gradient descent를 이해하고 있어야 합니다. Gradient descent는 machine learning algorithm들이 training 단계에서 사용하는 가장 기본적인 파라미터 최적화 기법입니다. 주어진 training set과 파라미터에 대해 학습이 얼마나 잘 되었는지를 판단하기 위한 loss function(또는 cost function)을 정의하고, 이 함수가 충분히 줄어들 때까지 파라미터를 변경하고 loss function을 계산하는 과정을 반복합니다. Loss function을 어떻게 정할 지는 machine learning engineer의 몫인데, 원하는 값과 실제 값 사이에 얼마나 차이가 있는지를 수식으로 표현하여 사용합니다.&lt;/p&gt;
+위의 문장에서 이야기하는 representation(또는 feature)은 데이터의 측정 가능한 특성을 의미합니다. 예를 들어 스팸 메일을 찾는 machine learning 알고리즘에서는 특정 단어의 반복 횟수, 작성 언어, 문법의 정확도, 제목의 시작 단어 등이 feature가 될 수 있습니다. 머신 러닝 알고리즘의 성능은 일반적으로 주어진 입력 데이터에서 어떤 representation을 추출하는지에 크게 영향을 받습니다[^Bengio13]. 보통 해당 분야의 전문가들이 자신들의 경험에 기반하여 representation 추출 알고리즘을 개발하여 사용합니다. 하지만 입력 데이터의 차원이 커지고 풀어야 하는 문제가 복잡해질수록 인간이 적절한 representation을 추출하기 힘들어집니다.
 
-&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/hNpPZWv.png&quot; alt=&quot;placeholder&quot; title=&quot;Figure 5&quot; /&gt;
-&lt;em&gt;Figure 5. Gradient Descent &lt;sup id=&quot;fnref:AndrewNg&quot;&gt;&lt;a href=&quot;#fn:AndrewNg&quot; class=&quot;footnote&quot;&gt;7&lt;/a&gt;&lt;/sup&gt;&lt;/em&gt;&lt;/p&gt;
+Deep learning은 이런 representation 추출 알고리즘을 스스로 학습할 수 있는 기술입니다. 이를 가능하게 하는 이유는 많은 layer를 사용하여 데이터를 여러 단계에 걸쳐 추상화시키기 때문입니다. 아래의 그림은 Stanford 대학의 CS231n 강좌에서 가져온 간단한 deep learning의 동작 그림입니다. 왼쪽에 사람이 말을 타고 있는 사진이 입력 데이터로 들어가고, 이 데이터가 오른쪽으로 layer를 거칠 때마다 점점 추상화된 형태로 가공됩니다. 마지막 layer를 지나고 오른쪽 끝에 도착했을 때, 말을 나타내는 8번째 representation이 가장 높은 값(흰색)을 가지게 되고, 이에 따라 이 사진을 말이라고 판별하게 됩니다.
 
-&lt;p&gt;Gradient descent는 안개가 끼어있는 산에서 사람에 내려오는 방법에 비유할 수 있습니다. 지도나 스마트폰이 없다면 우리가 취할 수 있는 유일한 방법은 경사가 낮은 방향으로 한 걸음씩 반복적으로 움직이는 것입니다. 위의 그림은 두 개의 파라미터 \(\theta_0\)와 \(\theta_1\)에 대한 loss function \(J(\theta_0,\theta_1)\)의 값을 표시한 그래프입니다. 그래프 상의 검은 선을 보면 좌측 상단에서 우측 하단으로 loss function의 결과 값이 줄어드는 방향으로(기울기가 가장 가파른 방향으로) 한 걸음씩 내려오는 것을 확인할 수 있습니다.&lt;/p&gt;
+![placeholder](https://i.imgur.com/ahRk6zc.png &quot;Figure 1&quot;)
+*Figure 1. Image Recognition with Deep Learning [^CS231n17]*
 
-&lt;p&gt;즉, gradient descent는 주어진 파라미터 \(\theta_0\)과 \(\theta_1\)에 대해 gradient of \(J\), 즉 \(\nabla J(\theta_0,\theta_1)\)를 계산한 후 step size \(\gamma\)만큼씩 각 parameter를 변경하는 작업을 반복하는 것입니다. 이 작업을 수식으로 표현하면 다음과 같습니다.
-\[\theta_0 := \theta_0 - \gamma \frac{\partial}{\partial \theta_0} J(\theta_0,\theta_1)\]
-\[\theta_1 := \theta_1 - \gamma \frac{\partial}{\partial \theta_1} J(\theta_0,\theta_1)\]&lt;/p&gt;
+이렇게 여러 개의 layer로 구성된 학습 시스템을 일반적으로 artificial neural network(ANN)라고 부릅니다. Neural network라고 부르는 이유는 인간의 뇌의 동작에서 힌트를 얻어 만들어졌기 때문입니다. Deep learning은 한마디로 ANN을 사용하는 machine learning 기술의 집합입니다. 사실 ANN의 개념은 1940년대에 제안되었지만 오랜 기간 동안 주목 받지 못했었고, 2000년대 들어 이 분야가 다시 주목받기 시작하면서 관련 연구자들이 &quot;Deep Learning&quot;이라는 새로운 단어를 유행시켰습니다. 그 후 deep learning은 machine learning의 한 분류인 supervised learning에서 큰 성과를 거뒀고, 현재는 unsupervised learning과 reinforcement learning에서도 활발히 연구되고 있습니다.
 
-&lt;h3 id=&quot;backpropagation-deep-learning을-위한-gradient-descent-적용&quot;&gt;Backpropagation: Deep Learning을 위한 Gradient Descent 적용&lt;/h3&gt;
+### Artificial Neural Network의 기본 구조
 
-&lt;p&gt;ANN에 gradient descent를 적용하기 힘든 이유는 weight와 bias값이 너무 많기 때문입니다. Loss function을 \(J\)라고 하면 각 neuron의 모든 weight \(w\)와 bias \(b\)에 대해 \(\frac{\partial J}{\partial w}\)와 \(\frac{\partial J}{\partial b}\)를 계산해야 하는데 이것이 보통 일이 아닙니다. 아래 그림에 표시한 2014년 ILSVRC에서 우승한 GoogleNet만 봐도 굉장히 복잡하게 layer를 구성했다는 것을 알 수 있습니다. 각 layer마다 존재하는 다수의 neuron들의 파라미터들에 대해 모두 gradient를 계산할 수 있어야 gradient descent를 적용할 수 있습니다.&lt;/p&gt;
+Neuron은 ANN의 가장 작은 연산 단위입니다. 한 neuron은 이전 neuron들로부터 값들을 전달받아 일련의 연산을 처리한 후 다음 neuron에게 결과를 전달합니다. 이 방식은 우리 뇌 속의 neuron의 동작을 매우 단순화시켜 흉내 내는 것입니다. 아래의 그림에서 보듯이, 이전 neuron으로 받은 값들은 각각 weight \\(w_i\\)를 곱한 후 bias \\(b\\)를 더하는 선형 결합으로 합쳐집니다. 이 값을 바로 다음 neuron에게 전달하는 것이 아니라, activation function이라고 불리는 함수 \\(f\\)를 거친 값을 전달합니다. Activation function이 필요한 이유는 nonlinear function을 사용하여 ANN이 표현할 수 있는 함수의 자유도를 높여주기 위해서인데, 이에 대해서는 조금 뒤에 더 설명하도록 하겠습니다.
 
-&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/K7QjClh.png&quot; alt=&quot;placeholder&quot; title=&quot;Figure 6&quot; /&gt;
-&lt;em&gt;Figure 6. GoogleNet’s Architecture &lt;sup id=&quot;fnref:Deshpande16&quot;&gt;&lt;a href=&quot;#fn:Deshpande16&quot; class=&quot;footnote&quot;&gt;8&lt;/a&gt;&lt;/sup&gt;&lt;/em&gt;&lt;/p&gt;
+![placeholder](https://i.imgur.com/5H9IqY4.jpg &quot;Figure 2&quot;)
+*Figure 2. Neuron [^CS231n17_2]*
 
-&lt;p&gt;Backpropagation은 이런 복잡한 neural network에 대해 gradient를 빠르게 계산할 수 있는 기법입니다. 아래의 그림은 CS231n 강좌에 나와 있는 간단한 backpropagation 예제입니다. \(w_0\), \(x_0\), \(w_1\), \(x_1\), \(w_2\)의 초기값을 정하면 네트워크의 왼쪽으로부터 오른쪽으로 연산이 진행되어 최종 결과값인 0.73이 출력됩니다. 이때 각 neuron의 중간 계산값을 위에 초록색 숫자로 표시하였습니다. Backpropagation은 제일 오른쪽 neuron의 출력에서 시작하여, 역으로 왼쪽으로 진행하며, 각 중간 결과값의 최종 출력값에 대한 변화율(gradient)를 계산합니다. 네트워크를 거꾸로 흐르며 각 중간 결과값의 gradient를 계산하기 때문에 이 기법을 backpropagation이라고 부릅니다.&lt;/p&gt;
+Layer는 neuron들의 집합입니다. ANN은 아래의 그림과 같이 여러 개의 layer로 구성되며, 각 layer의 neuron은 직전 layer의 neuron들로부터 입력을 전달받아 계산을 수행하고 다음 layer의 neuron들에게 출력을 전달합니다. Raw data를 직접 입력으로 받는 첫번째 layer를 input layer라고 부르고, 최종 출력을 담당하는 마지막 layer를 output layer라고 부릅니다. 나머지 layer는 hidden layer입니다. 일반적으로 hidden layer가 하나 이상이면 deep learning이라고 부르는데, 어차피 deep learning이라는 단어가 광고성 단어이기 때문에 이런 구분이 크게 중요하지는 않습니다.
 
-&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/2UZZH3C.png&quot; alt=&quot;placeholder&quot; title=&quot;Figure 7&quot; /&gt;
-&lt;em&gt;Figure 7. Backpropagation Example &lt;sup id=&quot;fnref:CS231n17_3&quot;&gt;&lt;a href=&quot;#fn:CS231n17_3&quot; class=&quot;footnote&quot;&gt;9&lt;/a&gt;&lt;/sup&gt;&lt;/em&gt;&lt;/p&gt;
+![placeholder](https://i.imgur.com/WYV1zUu.jpg &quot;Figure 3&quot;)
+*Figure 3. Neural Network [^CS231n17_2]*
 
-&lt;p&gt;아래의 그림은 하나의 neuron에 대해 backpropagation이 어떻게 진행되는지를 좀 더 자세히 설명하는 그림입니다. Backpropagation algorithm은 출력 \(y\)의 최종값 \(L\)에 대한 gradient \(\frac{\partial L}{\partial y}\)를 알고 있다는 가정 하에 입력 \(x\)의 최종값 \(L\)에 대한 gradient \(\frac{\partial L}{\partial x}\)를 빠르게 계산해줍니다. 이는 \(y\)에 대한 \(x\)의 gradient를 구해서 \(\frac{\partial L}{\partial y}\)에 곱한 값입니다. 기본적인 미적분학의 chain rule을 이해하고 있으면 쉽게 이 방법을 증명할 수 있습니다.&lt;/p&gt;
+### 그래서 Artificial Neural Network가 왜 좋나요?
 
-&lt;p&gt;&lt;img src=&quot;https://i.imgur.com/RXDNy7J.png&quot; alt=&quot;placeholder&quot; title=&quot;Figure 8&quot; /&gt;
-&lt;em&gt;Figure 8. Backpropagation of a Neuron&lt;/em&gt;&lt;/p&gt;
+ANN이 왜 좋은지를 설명하기 위해서, supervised learning의 한 갈래인 classification 문제를 예로 들겠습니다. Classification은 주어진 입력 데이터가 주어진 class 중 어디에 속하는지를 판별하는 문제입니다. 사진이 개를 찍은 것인지, 고양이를 찍은 것인지 판단하는 것이 대표적인 classification 문제입니다. 아래 그림은 아주 단순한 classification의 예를 나타낸 것인데, 두 개의 입력 데이터(사람의 나이, 종양의 크기)를 사용하여 해당 종양이 악성인지 아닌지를 판단하는 문제입니다. 이 문제의 경우, 주어진 training data set을 보고 직선을 하나 그으면 종양의 악성 여부를 효과적으로 판별할 수 있습니다.
 
-&lt;h3 id=&quot;결론&quot;&gt;결론&lt;/h3&gt;
+![placeholder](https://i.imgur.com/0uJ5UUD.png &quot;Figure 4&quot;)
+*Figure 4. Simple Classification [^MongoDB]*
 
-&lt;p&gt;지금까지 기본적인 neural network의 구조와 이 네트워크를 학습시킬 수 있는 기본적인 기법인 backpropagation에 대해 알아보았습니다. 하지만 1970년대에 backpropagation이 제안된 이후에도 deep learning의 침체기는 끝나지 않았습니다. 그 이유는 아래와 같습니다.&lt;/p&gt;
+하지만 이미지를 보고 이미지에 찍힌 물체의 정체를 파악하는 image recognition의 경우 문제가 복잡해집니다. 우선 입력 데이터가 방대합니다. 가로 세로의 픽셀 수가 512인 저해상도 칼라 이미지만 하더라도 한 이미지의 입력 차원의 수는 \\(512\times512\times3\\)입니다(마지막 3을 곱하는 이유는 RGB 세 색상이 한 픽셀에 들어있기 때문입니다). 게다가 파악해야 하는 물체의 종류(class)가 많아질수록 \\(512\times512\times3\\) 차원 공간 속에 데이터의 분포가 매우 복잡해집니다. 이 공간 속에서 위의 간단한 예제에서 선을 그은 것과 같이 hyperplane을 결정해야 하는데, 이를 위해서는 매우 복잡한 함수를 사용하여야 합니다.
 
-&lt;ol&gt;
-  &lt;li&gt;학습에 필요한 연산량이 여전히 너무 많았습니다. 이는 이후 연산량을 줄일 수 있는 여러 기법들의 제안과 컴퓨터 하드웨어의 발전에 따라 해결됩니다.&lt;/li&gt;
-  &lt;li&gt;데이터의 양이 적었습니다. 이 역시 인터넷과 전자기기들이 발전되며 해결됩니다.&lt;/li&gt;
-  &lt;li&gt;마지막으로 여러 이론적 한계 때문에 학습이 여전히 잘 이루어지지 않았습니다. 대표적인 예는 vanishing gradient라는 문제였는데, backpropagation을 진행함에 따라 전달되는 gradient 값이 거의 0이 되어버려 파라미터 갱신이 되지 않는 문제였습니다. 이런 문제들 역시 deep learning 계의 학자들에 의해 차근차근 극복되었습니다.&lt;/li&gt;
-&lt;/ol&gt;
+기존의 machine learning 기법들은 이런 접근 방식이 불가능했기 때문에, 해당 분야(여기서는 이미지 처리)의 전문가들이 적절한 representation을 추출하여 문제를 단순화시켰습니다. SIFT feature, HOG feature, SURF feature 등이 대표적인 예입니다. 하지만 ANN을 사용할 경우, 굳이 그런 번거로운 작업을 거칠 필요 없이 layer의 수와 layer 안의 neuron 수를 충분히 늘려서 복잡한 hyperplane을 정할 수 있습니다. 물론 정확한 hyperplane을 얻기 위해서는 각 neuron의 weight와 bias들을 잘 조절해야 합니다. 정답이 존재하는 학습 시스템은 구축했지만, 그 정답까지 어떻게 찾아갈 수 있을지는 또 다른 문제인 것이죠. 1940년 대에 제안되었던 ANN은 이에 대한 해답을 내놓지 못하였고 암흑기를 맞게 됩니다(AI 쪽 사람들은 이를 흔히 AI winter라고 부릅니다). 그 후 1970년대에 ANN의 weight와 bias들을 자동적으로 학습할 수 있는 backpropagation이라는 방법이 제안됩니다.
 
-&lt;p&gt;Deep learning이 성과를 보인 대표적인 사건은 ILSVRC 2012에서의 AlexNet의 우승입니다&lt;sup id=&quot;fnref:Krizhevsky12&quot;&gt;&lt;a href=&quot;#fn:Krizhevsky12&quot; class=&quot;footnote&quot;&gt;10&lt;/a&gt;&lt;/sup&gt;. Geoffrey Hinton 교수의 제자였던 Alex Krizhevsky는 convolutional neural network(CNN)라는 특수한 neural network 구조를 사용하여 image recognition 대회에서 오차율 15.4%를 기록하며 오차율 26.2%인 2등을 찍어 누르며 우승합니다. 그 이후 ILSVRC 대회의 우승자들은 모두 CNN을 사용한 모델을 사용하고 있습니다.&lt;/p&gt;
+### Backpropagation 설명에 앞서 Gradient Descent 이해하기
 
-&lt;p&gt;지금까지 가장 기본적인 deep learning 이론에 대해 알아보았습니다. 다음 포스트에서는 CNN에 대한 설명과 함께 image recognition 분야에서 deep learning의 발전에 어떻게 이루어졌는지에 대한 글을 적어보려 합니다.&lt;/p&gt;
+Backpropagation을 이해하기 위해서는 gradient descent를 이해하고 있어야 합니다. Gradient descent는 machine learning algorithm들이 training 단계에서 사용하는 가장 기본적인 파라미터 최적화 기법입니다. 주어진 training set과 파라미터에 대해 학습이 얼마나 잘 되었는지를 판단하기 위한 loss function(또는 cost function)을 정의하고, 이 함수가 충분히 줄어들 때까지 파라미터를 변경하고 loss function을 계산하는 과정을 반복합니다. Loss function을 어떻게 정할 지는 machine learning engineer의 몫인데, 원하는 값과 실제 값 사이에 얼마나 차이가 있는지를 수식으로 표현하여 사용합니다.
 
-&lt;div class=&quot;footnotes&quot;&gt;
-  &lt;ol&gt;
-    &lt;li id=&quot;fn:CS231n16_YouTube&quot;&gt;
-      &lt;p&gt;&lt;a href=&quot;https://www.youtube.com/playlist?list=PLkt2uSq6rBVctENoVBg1TpCC7OQi31AlC&quot;&gt;https://www.youtube.com/playlist?list=PLkt2uSq6rBVctENoVBg1TpCC7OQi31AlC&lt;/a&gt; &lt;a href=&quot;#fnref:CS231n16_YouTube&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:LeCun15&quot;&gt;
-      &lt;p&gt;Y. Lecun, Y. Bengio, and G. Hinton, “Deep learning,” Nature, 2015. &lt;a href=&quot;#fnref:LeCun15&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:Bengio13&quot;&gt;
-      &lt;p&gt;Y. Bengio, A. Courville, and P. Vincent, “Representation learning: A review and new perspectives,” IEEE Transactions on Pattern Analysis and Machine Intelligence, 2013. &lt;a href=&quot;#fnref:Bengio13&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:CS231n17&quot;&gt;
-      &lt;p&gt;&lt;a href=&quot;http://cs231n.stanford.edu&quot;&gt;http://cs231n.stanford.edu&lt;/a&gt; &lt;a href=&quot;#fnref:CS231n17&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:CS231n17_2&quot;&gt;
-      &lt;p&gt;&lt;a href=&quot;http://cs231n.github.io/neural-networks-1&quot;&gt;http://cs231n.github.io/neural-networks-1&lt;/a&gt; &lt;a href=&quot;#fnref:CS231n17_2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt; &lt;a href=&quot;#fnref:CS231n17_2:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:MongoDB&quot;&gt;
-      &lt;p&gt;&lt;a href=&quot;https://www.mongodb.com/blog/post/deep-learning-and-the-artificial-intelligence-revolution-part-2&quot;&gt;https://www.mongodb.com/blog/post/deep-learning-and-the-artificial-intelligence-revolution-part-2&lt;/a&gt; &lt;a href=&quot;#fnref:MongoDB&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:AndrewNg&quot;&gt;
-      &lt;p&gt;Andrew Ng, “Machine learning,” Coursera. &lt;a href=&quot;#fnref:AndrewNg&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:Deshpande16&quot;&gt;
-      &lt;p&gt;&lt;a href=&quot;https://adeshpande3.github.io/adeshpande3.github.io/The-9-Deep-Learning-Papers-You-Need-To-Know-About.html&quot;&gt;https://adeshpande3.github.io/adeshpande3.github.io/The-9-Deep-Learning-Papers-You-Need-To-Know-About.html&lt;/a&gt; &lt;a href=&quot;#fnref:Deshpande16&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:CS231n17_3&quot;&gt;
-      &lt;p&gt;&lt;a href=&quot;http://cs231n.github.io/optimization-2&quot;&gt;http://cs231n.github.io/optimization-2&lt;/a&gt; &lt;a href=&quot;#fnref:CS231n17_3&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li id=&quot;fn:Krizhevsky12&quot;&gt;
-      &lt;p&gt;A. Krizhevsky, I. Sutskever, and G. E. Hinton, “ImageNet Classification with Deep Convolutional Neural Networks,” Advances in Neural Information Processing Systems(NIPS), 2012. &lt;a href=&quot;#fnref:Krizhevsky12&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/div&gt;</content><author><name>Soonhyun Noh</name></author><summary type="html">본 포스트는 deep learning을 처음 접하는 학생들과 연구원들이 알아야 하는 배경과 기초 지식들을 공유하기 위해 작성되었습니다. 이 글에서 사용하는 그림들은 대부분 Stanford의 CS231n 강좌에서 가져왔습니다. 글을 읽고 deep learning에 대해 계속 공부하시려면 이 강의를 들어 보시는 것을 추천합니다1. https://www.youtube.com/playlist?list=PLkt2uSq6rBVctENoVBg1TpCC7OQi31AlC &amp;#8617;</summary></entry></feed>
+![placeholder](https://i.imgur.com/hNpPZWv.png &quot;Figure 5&quot;)
+*Figure 5. Gradient Descent [^AndrewNg]*
+
+Gradient descent는 안개가 끼어있는 산에서 사람에 내려오는 방법에 비유할 수 있습니다. 지도나 스마트폰이 없다면 우리가 취할 수 있는 유일한 방법은 경사가 낮은 방향으로 한 걸음씩 반복적으로 움직이는 것입니다. 위의 그림은 두 개의 파라미터 \\(\theta_0\\)와 \\(\theta_1\\)에 대한 loss function \\(J(\theta_0,\theta_1)\\)의 값을 표시한 그래프입니다. 그래프 상의 검은 선을 보면 좌측 상단에서 우측 하단으로 loss function의 결과 값이 줄어드는 방향으로(기울기가 가장 가파른 방향으로) 한 걸음씩 내려오는 것을 확인할 수 있습니다.
+
+즉, gradient descent는 주어진 파라미터 \\(\theta_0\\)과 \\(\theta_1\\)에 대해 gradient of \\(J\\), 즉 \\(\nabla J(\theta_0,\theta_1)\\)를 계산한 후 step size \\(\gamma\\)만큼씩 각 parameter를 변경하는 작업을 반복하는 것입니다. 이 작업을 수식으로 표현하면 다음과 같습니다.
+\\[\theta_0 := \theta_0 - \gamma \frac{\partial}{\partial \theta_0} J(\theta_0,\theta_1)\\]
+\\[\theta_1 := \theta_1 - \gamma \frac{\partial}{\partial \theta_1} J(\theta_0,\theta_1)\\]
+
+### Backpropagation: Deep Learning을 위한 Gradient Descent 적용
+
+ANN에 gradient descent를 적용하기 힘든 이유는 weight와 bias값이 너무 많기 때문입니다. Loss function을 \\(J\\)라고 하면 각 neuron의 모든 weight \\(w\\)와 bias \\(b\\)에 대해 \\(\frac{\partial J}{\partial w}\\)와 \\(\frac{\partial J}{\partial b}\\)를 계산해야 하는데 이것이 보통 일이 아닙니다. 아래 그림에 표시한 2014년 ILSVRC에서 우승한 GoogleNet만 봐도 굉장히 복잡하게 layer를 구성했다는 것을 알 수 있습니다. 각 layer마다 존재하는 다수의 neuron들의 파라미터들에 대해 모두 gradient를 계산할 수 있어야 gradient descent를 적용할 수 있습니다.
+
+![placeholder](https://i.imgur.com/K7QjClh.png &quot;Figure 6&quot;)
+*Figure 6. GoogleNet's Architecture [^Deshpande16]*
+
+Backpropagation은 이런 복잡한 neural network에 대해 gradient를 빠르게 계산할 수 있는 기법입니다. 아래의 그림은 CS231n 강좌에 나와 있는 간단한 backpropagation 예제입니다. \\(w_0\\), \\(x_0\\), \\(w_1\\), \\(x_1\\), \\(w_2\\)의 초기값을 정하면 네트워크의 왼쪽으로부터 오른쪽으로 연산이 진행되어 최종 결과값인 0.73이 출력됩니다. 이때 각 neuron의 중간 계산값을 위에 초록색 숫자로 표시하였습니다. Backpropagation은 제일 오른쪽 neuron의 출력에서 시작하여, 역으로 왼쪽으로 진행하며, 각 중간 결과값의 최종 출력값에 대한 변화율(gradient)를 계산합니다. 네트워크를 거꾸로 흐르며 각 중간 결과값의 gradient를 계산하기 때문에 이 기법을 backpropagation이라고 부릅니다.
+
+![placeholder](https://i.imgur.com/2UZZH3C.png &quot;Figure 7&quot;)
+*Figure 7. Backpropagation Example [^CS231n17_3]*
+
+아래의 그림은 하나의 neuron에 대해 backpropagation이 어떻게 진행되는지를 좀 더 자세히 설명하는 그림입니다. Backpropagation algorithm은 출력 \\(y\\)의 최종값 \\(L\\)에 대한 gradient \\(\frac{\partial L}{\partial y}\\)를 알고 있다는 가정 하에 입력 \\(x\\)의 최종값 \\(L\\)에 대한 gradient \\(\frac{\partial L}{\partial x}\\)를 빠르게 계산해줍니다. 이는 \\(y\\)에 대한 \\(x\\)의 gradient를 구해서 \\(\frac{\partial L}{\partial y}\\)에 곱한 값입니다. 기본적인 미적분학의 chain rule을 이해하고 있으면 쉽게 이 방법을 증명할 수 있습니다.
+
+![placeholder](https://i.imgur.com/RXDNy7J.png &quot;Figure 8&quot;)
+*Figure 8. Backpropagation of a Neuron*
+
+### 결론
+
+지금까지 기본적인 neural network의 구조와 이 네트워크를 학습시킬 수 있는 기본적인 기법인 backpropagation에 대해 알아보았습니다. 하지만 1970년대에 backpropagation이 제안된 이후에도 deep learning의 침체기는 끝나지 않았습니다. 그 이유는 아래와 같습니다.
+
+1. 학습에 필요한 연산량이 여전히 너무 많았습니다. 이는 이후 연산량을 줄일 수 있는 여러 기법들의 제안과 컴퓨터 하드웨어의 발전에 따라 해결됩니다.
+2. 데이터의 양이 적었습니다. 이 역시 인터넷과 전자기기들이 발전되며 해결됩니다.
+3. 마지막으로 여러 이론적 한계 때문에 학습이 여전히 잘 이루어지지 않았습니다. 대표적인 예는 vanishing gradient라는 문제였는데, backpropagation을 진행함에 따라 전달되는 gradient 값이 거의 0이 되어버려 파라미터 갱신이 되지 않는 문제였습니다. 이런 문제들 역시 deep learning 계의 학자들에 의해 차근차근 극복되었습니다.
+
+Deep learning이 성과를 보인 대표적인 사건은 ILSVRC 2012에서의 AlexNet의 우승입니다[^Krizhevsky12]. Geoffrey Hinton 교수의 제자였던 Alex Krizhevsky는 convolutional neural network(CNN)라는 특수한 neural network 구조를 사용하여 image recognition 대회에서 오차율 15.4%를 기록하며 오차율 26.2%인 2등을 찍어 누르며 우승합니다. 그 이후 ILSVRC 대회의 우승자들은 모두 CNN을 사용한 모델을 사용하고 있습니다.
+
+지금까지 가장 기본적인 deep learning 이론에 대해 알아보았습니다. 다음 포스트에서는 CNN에 대한 설명과 함께 image recognition 분야에서 deep learning의 발전에 어떻게 이루어졌는지에 대한 글을 적어보려 합니다.
+
+[^CS231n16_YouTube]: &lt;https://www.youtube.com/playlist?list=PLkt2uSq6rBVctENoVBg1TpCC7OQi31AlC&gt;
+[^LeCun15]: Y. Lecun, Y. Bengio, and G. Hinton, &quot;Deep learning,&quot; Nature, 2015.
+[^Bengio13]: Y. Bengio, A. Courville, and P. Vincent, &quot;Representation learning: A review and new perspectives,&quot; IEEE Transactions on Pattern Analysis and Machine Intelligence, 2013.
+[^CS231n17]: &lt;http://cs231n.stanford.edu&gt;
+[^CS231n17_2]: &lt;http://cs231n.github.io/neural-networks-1&gt;
+[^MongoDB]: &lt;https://www.mongodb.com/blog/post/deep-learning-and-the-artificial-intelligence-revolution-part-2&gt;
+[^AndrewNg]: Andrew Ng, &quot;Machine learning,&quot; Coursera.
+[^Deshpande16]: &lt;https://adeshpande3.github.io/adeshpande3.github.io/The-9-Deep-Learning-Papers-You-Need-To-Know-About.html&gt;
+[^CS231n17_3]: &lt;http://cs231n.github.io/optimization-2&gt;
+[^LeCun98]: Y. Lecun, L. Bottou, Y. Bengio, and P. Haffner, &quot;Gradient-based learning applied to document recognition,&quot;  Proceedings of the IEEE, 1998.
+[^Krizhevsky12]: A. Krizhevsky, I. Sutskever, and G. E. Hinton, &quot;ImageNet Classification with Deep Convolutional Neural Networks,&quot; Advances in Neural Information Processing Systems(NIPS), 2012.</content><author><name>Soonhyun Noh</name></author><summary type="html">본 포스트는 deep learning을 처음 접하는 학생들과 연구원들이 알아야 하는 배경과 기초 지식들을 공유하기 위해 작성되었습니다. 이 글에서 사용하는 그림들은 대부분 Stanford의 CS231n 강좌에서 가져왔습니다. 글을 읽고 deep learning에 대해 계속 공부하시려면 이 강의를 들어 보시는 것을 추천합니다1. https://www.youtube.com/playlist?list=PLkt2uSq6rBVctENoVBg1TpCC7OQi31AlC &amp;#8617;</summary></entry></feed>
