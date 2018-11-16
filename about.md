@@ -4,7 +4,7 @@ title: About
 sidebar_link: true
 ---
 
-![placeholder](https://github.com/shnoh171/shnoh171.github.io/_images/profile.png)
+![placeholder](https://github.com/shnoh171/shnoh171.github.io/blob/master/_images/profile.png)
 
 Soonhyun Noh
 
