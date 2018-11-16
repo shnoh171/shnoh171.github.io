@@ -1,13 +1,16 @@
 ---
 layout: page
-title: Profile
+title: About
 sidebar_link: true
 ---
 
+# Soonhyun Noh
 
 ![placeholder](/assets/images/profile.png)
 
-Soonhyun Noh
+System software engineer, with experience working on operating systems (Linux kernel and AUTOSAR), hypervisors (KVM and XenGT), communication middlewares (ROS and DDS), deep learning framework (TensorFlow) and Android framework. Currently interested in platform-level support for edge computing and deep learning (both training and inference)
+
+## Education
 
 Ph.D. Candidate at Real-Time Operating Systems Laboratory, Department of Electrical and Computer Engineering, Seoul National University
 
