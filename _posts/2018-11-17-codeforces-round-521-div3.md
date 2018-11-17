@@ -47,6 +47,38 @@ Simple addition problem. The only thing to be careful about is that using int ty
 
 ### B. Disturbed People
 
+Problem: <http://codeforces.com/contest/1077/problem/B>
+
+My code:
+
+```c++
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	ios_base::sync_with_stdio(false);
+
+	int n;
+	cin >> n;
+	int a[n];
+	for (int i = 0; i < n; ++i) cin >> a[i];
+
+	int cnt = 0;
+	for (int i = 2; i < n; ++i) {
+		if (a[i-2] == 1 && a[i-1] == 0 && a[i] == 1) {
+			a[i] = 0;
+			++cnt;
+		}
+	}
+
+	cout << cnt << "\n";
+
+	return 0;
+}
+```
+
+
 ### C. Good Array
 
 ### D. Cutting Out
