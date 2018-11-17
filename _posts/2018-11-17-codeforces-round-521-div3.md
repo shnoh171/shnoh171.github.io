@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Codeforces Round #521 (Div.3)
+title: Codeforces Round \#521 (Div.3)
 categories:
   - Competitive Programming
 ---
