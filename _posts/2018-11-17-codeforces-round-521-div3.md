@@ -78,7 +78,9 @@ int main()
 }
 ```
 
-Let us denote a set of flats that turn off the light as \\( \\{ x_1, x_2, ..., x_k \\} \\). Assume without loss of generality that \\(x_1 \le x_2 \le ... \le x_k\\).
+Let us denote a set of flats that turn off the light as \\( X = \\{ x_1, x_2, ..., x_k \\} \\). Assume without loss of generality that \\(x_1 \le x_2 \le ... \le x_k\\). The proposed algorithm finds this set \\(X\\) from \\(x_1\\) to \\(x_k\\).
+
+We start from \\(i = 3\\). We do nothing and just increase \\(i\\) if the following condition is not satisfied: \\(a_{i-2} = 1, a_{i-1} = 2, a_{i} = 1\\)
 
 
 ### C. Good Array
