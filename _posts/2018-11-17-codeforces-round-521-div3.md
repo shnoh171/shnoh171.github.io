@@ -16,6 +16,33 @@ My thoughts to the problems up to D are as follows.
 
 ### A. Frog Jumping
 
+Problem: <http://codeforces.com/contest/1077/problem/A>
+
+My code:
+
+```c++
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	ios_base::sync_with_stdio(false);
+
+	int t;
+	cin >> t;
+
+	for (int i = 0; i < t; ++i) {
+		long long a, b, k;
+		cin >> a >> b >> k;
+		cout << ((k+1)/2)*a - (k/2)*b << "\n";
+	}
+
+	return 0;
+}
+```
+
+Simple addition problem. The only thing to be careful about is that using int type variable for \\(x\\) can cause overflow. Note that the result can be up to about \\(5\mul10^17\\) in the worst case.
+
 ### B. Disturbed People
 
 ### C. Good Array
