@@ -78,7 +78,7 @@ int main()
 }
 ```
 
-Let us denote a set of flats that turn off the light as \\(x_1, x_2, ..., x_k\\). Assume without loss of generality that \\(x_1{\le}x_2{\le}...{\le}x_k\\)
+Let us denote a set of flats that turn off the light as \\({x_1, x_2, ..., x_k}\\). Assume without loss of generality that \\(x_1\le;x_2$\le$...{\le}x_k\\)
 
 
 ### C. Good Array
