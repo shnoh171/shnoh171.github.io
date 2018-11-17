@@ -1,11 +1,11 @@
 ---
 layout: post
-title: Codeforces Round \#521 (Div.3)
+title: Codeforces Round &#521 (Div.3)
 categories:
   - Competitive Programming
 ---
 
-Rating: 1517 -> 1451
+Rating: 1517 &rarr; 1451
 
 I solved three of the seven questions, and one of them was hacked. So my final standing is 2/7.
 
