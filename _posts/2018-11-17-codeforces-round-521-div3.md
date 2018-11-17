@@ -41,7 +41,7 @@ int main()
 }
 ```
 
-Simple addition problem. The only thing to be careful about is that using int type variable for \\(x\\) can cause overflow. Note that the result can be up to about \\(5\times10^17\\) in the worst case.
+Simple addition problem. The only thing to be careful about is that using int type variable for \\(x\\) can cause overflow. Note that the result can be up to about \\(5\times10^(17)\\) in the worst case.
 
 ### B. Disturbed People
 
