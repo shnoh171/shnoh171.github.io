@@ -86,7 +86,7 @@ I made three assumptions to solve the problem.
 
 The first assumption is a common mathematical technique. The second assumption is also obvious since we do not have to turn off the light unless there is a person who is "disturbed and cannot sleep".
 
-The third assumption might be tricky in the first place, but it is also obvious. There is a chance to make two people not "disturbed and cannot sleep" at the same time only when \\(a_i\\) is turned off. This case happens when \\(a_{i+1} = 0\\} and \\{a_{i+2} = 1\\}.
+The third assumption might be tricky in the first place, but it is also obvious. There is a chance to make two people not "disturbed and cannot sleep" at the same time only when \\(a_i\\) is turned off. This case happens when \\(a_{i+1} = 0\\) and \\(a_{i+2} = 1\\).
 
 ### C. Good Array
 
