@@ -86,7 +86,9 @@ I made three assumptions to solve the problem.
 
 The first assumption is a common mathematical technique to simplify the problem. The second assumption is also obvious since we do not have to turn off the light unless there is a person who is "disturbed and cannot sleep".
 
-The third assumption might be tricky in the first place, but it is also obviou. There is a chance to change two people from "disturbed and cannot sleep" to not "disturbed and cannot sleep" at the same time only when \\(a_i\\) is turned off. This case happens when \\(a_{i+1} = 0\\) and \\(a_{i+2} = 1\\).
+The third assumption might be tricky in the first place, but it is also obvious. Among three options, there is a chance to change two people from "disturbed and cannot sleep" to not "disturbed and cannot sleep" at the same time only when \\(a_i\\) is turned off. This case happens when \\(a_{i+1} = 0\\) and \\(a_{i+2} = 1\\).
+
+Now we just traverse the list from left to right and turn off the right based on the assumption 3.
 
 ### C. Good Array
 
