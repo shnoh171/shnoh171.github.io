@@ -88,7 +88,7 @@ The first assumption is a common mathematical technique to simplify the problem.
 
 The third assumption might be tricky in the first place, but it is also obvious. Among three options, there is a chance to change two people from "disturbed and cannot sleep" to not "disturbed and cannot sleep" at the same time only when \\(a_i\\) is turned off. This case happens when \\(a_{i+1} = 0\\) and \\(a_{i+2} = 1\\).
 
-Now we just traverse the list from left to right and turn off the right based on the assumption 3.
+Now we just traverse the list from left to right and turn off the light based on the assumption 3.
 
 ### C. Good Array
 
