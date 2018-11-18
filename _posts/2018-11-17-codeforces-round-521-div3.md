@@ -82,7 +82,7 @@ I made three assumptions to solve the problem.
 
 1. Without loss of generality, I can turn off the light of flats from left to right. I denote a set of these flats by \\( X = \\{ x_1, x_2, ..., x_k \\} \\) where \\(x_1 \le x_2 \le ... \le x_k\\).
 2. There exists an optimal solution \\(X\\) even if I never turn off the light until I find a flat \\(a_i\\) such that \\(a_{i-2} = 1\\), \\(a_{i-1} = 0\\), and \\(a_i = 1\\). I will turn off the light of one flat among these three flats.
-3. If \\(a_i\\) is the first flat from the left such that \\(a_{i-2} = 1, a_{i-1} = 0, a_i = 1\\), turning off the light of \\(a_i\\) always yields the optimal solution.
+3. If \\(a_i\\) is the first flat from the left such that \\(a_{i-2} = 1, a_{i-1} = 0, a_i = 1\\), turning off the light of \\(a_i\\) always yield the optimal solution.
 
 The first assumption is a common mathematical technique to simplify the problem. The second assumption is also obvious since we do not have to turn off the light unless there is a person who is "disturbed and cannot sleep".
 
