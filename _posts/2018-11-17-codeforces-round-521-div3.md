@@ -5,7 +5,7 @@ categories:
   - Competitive Programming
 ---
 
-Rating: 1517 &rarr; 1451
+Rating: **1517** &rarr; **1451**
 
 I solved three of the seven questions, and one of them was hacked. So my final standing is 2/7.
 
@@ -78,9 +78,10 @@ int main()
 }
 ```
 
-Let us denote a set of flats that turn off the light as \\( X = \\{ x_1, x_2, ..., x_k \\} \\). Assume without loss of generality that \\(x_1 \le x_2 \le ... \le x_k\\). The proposed algorithm finds this set \\(X\\) from \\(x_1\\) to \\(x_k\\).
+I made three assumptions to solve the problem.
 
-We start from \\(i = 3\\). We do nothing and just increase \\(i\\) if the following condition is not satisfied: \\(a_{i-2} = 1, a_{i-1} = 2, a_{i} = 1\\)
+1. Without loss of generality, I can turn off the light of flats from left to right. I denote a set of these flats by \\( X = \\{ x_1, x_2, ..., x_k \\} \\) where \\(x_1 \le x_2 \le ... \le x_k\\).
+2. There exists an optimal solution \\(X\\) even if I never turn off the light until I find \\(a_i\\) such that \\(a_{i-2} = 1, a_{i-1} = 0, a_i = 1\\). I will select a flat to turn off the light among three of them.
 
 
 ### C. Good Array
