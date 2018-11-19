@@ -144,6 +144,10 @@ int main()
 }
 ```
 
+A simple problem but I was hacked. The algorithm increases \\(i\\) and checks whether removing \\(a_i\\) from the array \\(a\\) results a good array. Each check is \\(O(1)\\), so the whole algorithm runs in \\(O(n)\\).
+
+I was hacked since I did not take into account the overflow of summation. Note that the upper bound for the sum of all \\(a_i\\) can be up to \\(2 \mul 10^{11}\\).
+
 ### D. Cutting Out
 
 ### E. Thematic Contest
