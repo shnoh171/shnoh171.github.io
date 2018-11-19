@@ -16,15 +16,17 @@ In the above sentence, representation (or feature) is measurable property of dat
 
 /* Currently writing */
 
+### So Why Do People Prefer the Neural Network in Many Cases?
+
 ### Goal of Neural Network
 
 ### Basic Structure of the Artificial Neural Network
 
-### So Why Do People Prefer the Neural Network in Many Cases?
+### Training: Understanding the Gradient Descent Before Backpropagation
 
-### Understanding the Gradient Descent Before Backpropagation
+### Training: Backpropagation, the Application of Gradient Descent for Deep Learning
 
-### Backpropagation: Application of Gradient Descent for Deep Learning
+### Inference
 
 ### Conclusions
 
