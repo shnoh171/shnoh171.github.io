@@ -94,7 +94,7 @@ Now we just traverse the list from left to right and turn off the light based on
 
 Problem: <http://codeforces.com/contest/1077/problem/C>
 
-My code:
+My code (corrected):
 
 ```c++
 #include <iostream>
