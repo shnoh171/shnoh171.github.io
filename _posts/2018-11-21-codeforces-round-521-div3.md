@@ -240,4 +240,3 @@ bool check(int num, int k, vector<pair<int, int> > counts) {
 }
 ```
 
-### E. Thematic Contest
