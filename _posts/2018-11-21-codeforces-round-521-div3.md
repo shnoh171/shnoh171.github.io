@@ -240,3 +240,5 @@ bool check(int num, int k, vector<pair<int, int> > counts) {
 }
 ```
 
+My algorithm first builds 'counts' array that stores the frequency of each integer in the string \\(s\\). It can be done in \\(O(n)\\) if I use hash table, but instead I used binary search tree so it is done in \\(O(n \log n)\\).
+
