@@ -240,5 +240,10 @@ bool check(int num, int k, vector<pair<int, int> > counts) {
 }
 ```
 
-My algorithm first builds 'counts' array that stores the frequency of each integer in the string \\(s\\). It can be done in \\(O(n)\\) if I use hash table, but instead I used binary search tree so it is done in \\(O(n \log n)\\).
+My algorithm first builds 'counts' array that stores the frequency of each integer in the string \\(s\\). It can be done in \\(O(n)\\) if I use hash table, but instead I used binary search tree so it is done in \\(O(n \log n)\\). Then the algorithm sorts 'counts' and it also takes \\(O(n \log n)\\).
 
+The final task is to run find() function that performs a sort of binary search on the number of copies of array \\(t\\) from array \\(s\\). This function is called \\(O(\log (n/k))\\) times, and each call takes \\(O(n)\\) since it goes through the array 'counts'.
+
+As a result, the time complexity of my algorithm is \\(O(n \log n)\\). Different approach is demonstrated on the following link.
+
+<http://codeforces.com/blog/entry/63274>
