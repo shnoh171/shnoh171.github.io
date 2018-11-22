@@ -78,6 +78,208 @@ The above code is an implementation of a simple recursive function that solves t
 
 <https://www.geeksforgeeks.org/boggle-find-possible-words-board-characters/>
 
-/* Writing */
+However, this code is not easy to read (due to various reasons). From now on, I will try to simplify the code.
 
+```c++
+struct Delta {
+	int dy;
+	int dx;
+};
 
+const Delta deltas[8] = {
+	{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0,1}, {1,-1}, {1,0}, {1,1}
+};
+
+/* skip main() function */
+
+bool hasWord(int y, int x, string word, char board[5][5]) {
+	if (word.empty()) return true;
+
+	if (word[0] == board[y][x]) {
+		bool ret = false;
+
+		for (int i = 0; i < 8; ++i) {
+			int dy = deltas[i].dy;
+			int dx = deltas[i].dx;
+
+			if (y+dy < 0 || y+dy >= 5 || x+dx < 0 || x+dx >= 5) continue;
+			ret = hasWord(y+dy, x+dx, word.substr(1, word.size()-1), board);
+			if (ret) break;
+		}
+		return ret;
+	} else {
+		return false;
+	}
+}
+```
+
+First, I removed nested loop in `hasWord()` by expressing the direction of movement in an array of `struct Delta`. This simple decision reduces the amount of code for `hasWord()` function a lot.
+
+```c++
+bool isRange(int y, int x) { return  x < 0 || x >= 5 || y < 0 || y >= 5; }
+
+/* skip */
+
+bool hasWord(int y, int x, string word, char board[5][5]) {
+	if (word.empty()) return true;
+
+	if (word[0] == board[y][x]) {
+		bool ret = false;
+
+		for (int i = 0; i < 8; ++i) {
+			int dy = deltas[i].dy;
+			int dx = deltas[i].dx;
+
+			if (isRange(y+dy, x+dx)) continue;
+			ret = hasWord(y+dy, x+dx, word.substr(1, word.size()-1), board);
+			if (ret) break;
+		}
+		return ret;
+	} else {
+		return false;
+	}
+}
+```
+
+Now I introduced a simple function named `isRange()`. By doing so, complex contional statement in `hasWord()` is removed.
+
+```c++
+bool hasWord(int y, int x, string word, char board[5][5]) {
+	if (isRange(y, x)) return false;
+	if (word.empty()) return true;
+	if (word[0] != board[y][x]) return false;
+
+	bool ret = false;
+
+	for (int i = 0; i < 8; ++i) {
+		int dy = deltas[i].dy;
+		int dx = deltas[i].dx;
+
+		ret = hasWord(y+dy, x+dx, word.substr(1, word.size()-1), board);
+		if (ret) break;
+	}
+	return ret;
+}
+```
+
+Now I modifed the base cases of `hasWord()`. Since the checking range is now done while treating base cases at the beginning of the function, all conditional statements after base cases are removed.
+
+```c++
+bool hasWord(int y, int x, string word, char board[5][5]) {
+	if (isRange(y, x)) return false;
+	if (word.empty()) return true;
+	if (word[0] != board[y][x]) return false;
+
+	bool ret = false;
+
+	for (int i = 0; i < 8; ++i) {
+		int dy = deltas[i].dy;
+		int dx = deltas[i].dx;
+
+		if (hasWord(y+dy, x+dx, word.substr(1), board))
+			return true;
+	}
+
+	return false;
+}
+```
+
+Now the code is simplified enough for me to notice that `break` statement is used in a strange manner. It is much more intuitive to return `true` immediately when we find the target word.
+
+```c++
+bool hasWord(int y, int x, string word, char board[5][5]) {
+	if (isRange(y, x)) return false;
+	if (word[0] != board[y][x]) return false;
+	if (word.size() == 1) return true;
+
+	for (int i = 0; i < 8; ++i) {
+		int dy = deltas[i].dy;
+		int dx = deltas[i].dx;
+
+		if (hasWord(y+dy, x+dx, word.substr(1), board))
+			return true;
+	}
+
+	return false;
+}
+```
+
+Two more modification and the code is complete.
+
+- I reduced the number of function call by returning `true` when the size of word is one and it is correct.
+- I used `substr()` method of `word` more neatly.
+
+The whole result is as follows.
+
+```c++
+#include <iostream>
+using namespace std;
+
+struct Delta {
+	int dy;
+	int dx;
+};
+
+const Delta deltas[8] = {
+	{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0,1}, {1,-1}, {1,0}, {1,1}
+};
+
+bool hasWord(int y, int x, string word, char board[5][5]);
+bool isRange(int y, int x) { return  x < 0 || x >= 5 || y < 0 || y >= 5; }
+
+int main()
+{
+	ios_base::sync_with_stdio(false);
+
+	int c;
+	cin >> c;
+
+	for (int i = 0; i < c; ++i) {
+		char board[5][5];
+		for (int j = 0; j < 5; ++j) {
+			string s;
+			cin >> s;
+			for (int k = 0; k < 5; ++k)
+				board[j][k] = s[k];
+		}
+
+		int n;
+		cin >> n;
+
+		for (int j = 0; j < n; ++j) {
+			string word;
+			bool exist = false;
+			cin >> word;
+
+			for (int k = 0; k < 5; ++k) {
+				for (int l = 0; l < 5; ++l) {
+					exist = hasWord(k, l, word, board);
+					if (exist) break;
+				}
+				if (exist) break;
+			}
+
+			cout << word << " ";
+			cout << ((exist) ? "YES" : "NO") << "\n";
+		}
+	}
+
+	return 0;
+}
+
+bool hasWord(int y, int x, string word, char board[5][5]) {
+	if (isRange(y, x)) return false;
+	if (word[0] != board[y][x]) return false;
+	if (word.size() == 1) return true;
+
+	for (int i = 0; i < 8; ++i) {
+		int dy = deltas[i].dy;
+		int dx = deltas[i].dx;
+
+		if (hasWord(y+dy, x+dx, word.substr(1), board))
+			return true;
+	}
+
+	return false;
+}
+```
