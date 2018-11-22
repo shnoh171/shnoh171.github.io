@@ -206,7 +206,7 @@ bool hasWord(int y, int x, string word, char board[5][5]) {
 
 Two more modification and the code is complete.
 
-- I reduced the number of function call by returning `true` when the size of word is one and it is correct.
+- I reduced the number of function calls by returning `true` when `word.size() == 1` and it has a correct letter.
 - I used `substr()` method of `word` more neatly.
 
 The whole result is as follows.
