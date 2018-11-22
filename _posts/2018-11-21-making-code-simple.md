@@ -176,7 +176,7 @@ bool hasWord(int y, int x, string word, char board[5][5]) {
 		int dy = deltas[i].dy;
 		int dx = deltas[i].dx;
 
-		if (hasWord(y+dy, x+dx, word.substr(1), board))
+		if (hasWord(y+dy, x+dx, word.substr(1, word.size()-1), board))
 			return true;
 	}
 
