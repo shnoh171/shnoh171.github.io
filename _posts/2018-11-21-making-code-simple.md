@@ -113,7 +113,7 @@ bool hasWord(int y, int x, string word, char board[5][5]) {
 }
 ```
 
-First, I removed nested loop in `hasWord()` by expressing the direction of movement in an array of `struct Delta`. This simple decision reduces the amount of code for `hasWord()` function a lot.
+First, I removed nested loop in `hasWord()` by expressing the direction of movement in an array of `struct Delta`. This improves the readability of the function `hasWord()`.
 
 ```c++
 bool isRange(int y, int x) { return  x < 0 || x >= 5 || y < 0 || y >= 5; }
@@ -141,7 +141,7 @@ bool hasWord(int y, int x, string word, char board[5][5]) {
 }
 ```
 
-Now I introduced a simple function named `isRange()`. By doing so, complex contional statement in `hasWord()` is removed.
+Second, I introduced a simple function named `isRange()`. By doing so, complex contional statement in `hasWord()` is removed.
 
 ```c++
 bool hasWord(int y, int x, string word, char board[5][5]) {
@@ -162,7 +162,7 @@ bool hasWord(int y, int x, string word, char board[5][5]) {
 }
 ```
 
-Now I modifed the base cases of `hasWord()`. Since the checking range is now done while treating base cases at the beginning of the function, all conditional statements after base cases are removed.
+Third I modifed the base cases of `hasWord()`. Since the checking range is now done in the beginning of the function, all the conditional statements after base cases are removed.
 
 ```c++
 bool hasWord(int y, int x, string word, char board[5][5]) {
