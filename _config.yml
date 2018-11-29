@@ -1,12 +1,6 @@
 # Dependencies
 markdown:         kramdown
-#
-kramdown:
-	highlighter: rouge
-	syntax_highlighter_opts:
-		block:
-			line_numbers: true
-#highlighter:      rouge
+highlighter:      rouge
 
 # Setup
 title:            Soonhyun Noh
