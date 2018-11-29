@@ -16,7 +16,7 @@ My code:
 #include <vector>
 using namespace std;
 
-bool IsRange(int i, int n) { return i >= 0 && i < n; }
+bool IsRange(int i, int n); 
 bool IsAhead(int front, int back, vector<vector<int> >& cow_position);
 
 int main()
@@ -28,13 +28,11 @@ int main()
 	int n;
 	cin >> n;
 
-	int cow_sequence[5][n];
+	vector<vector<int> > cow_sequence(5, vector<int>(n));
 	vector<vector<int> > cow_position(5, vector<int>(n+1));
-
 	for (int i = 0; i < 5; ++i) {
 		for (int j = 0; j < n; ++j) {
-			int cow;
-			cin >> cow;
+			int cow; cin >> cow;
 			cow_sequence[i][j] = cow;
 			cow_position[i][cow] = j;
 		}
@@ -56,7 +54,8 @@ int main()
 		}
 
 		vector<int> candidates;
-		for (map<int, int>::const_iterator k = counts.begin(); k != counts.end(); ++k) 
+		for (map<int, int>::const_iterator k = counts.begin();
+				k != counts.end(); ++k) 
 			if (k->second >= 4) candidates.push_back(k->first);
 
 		int idx = 0;
@@ -75,6 +74,11 @@ int main()
 	return 0;
 }
 
+bool IsRange(int i, int n) 
+{ 
+	return i >= 0 && i < n; 
+}
+
 bool IsAhead(int front, int back, vector<vector<int> >& cow_position)
 {
 	int count = 0;
@@ -86,5 +90,7 @@ bool IsAhead(int front, int back, vector<vector<int> >& cow_position)
 }
 ```
 
-Let \\( a^1_1,   \\)
+Before starting coding, I should (1) logically explain that the proposed algorithm satisfies the output properties of given problem, and (2) make it clear how to code it.
+
+Let the five list \\( (a^1_1, a^1_2, ..., a^1_n) \\)
 
