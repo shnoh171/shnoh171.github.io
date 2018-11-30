@@ -104,7 +104,7 @@ Now I design an \\(O(n)\\) algorithm that finds \\(X\\) based on derived propert
 
 - Find candidates of \\(x_i\\) using the property 2. (Each of these candidates are one of \\(x_{i-2}\\), \\(x_{i-1}\\), \\(x_i\\), \\(x_{i+1}\\) and \\(x_{i+2}\\))
 - Get rid of \\(x_{i-2}\\) and \\(x_{i-1}\\) from the candidates. (We already know the value of these two elements)
-- Get rid of \\(x_{i+1}\\) and \\(x_{i+2}\\)). This is done by using the property 1.
+- Get rid of \\(x_{i+1}\\) and \\(x_{i+2}\\). This is done by using the property 1.
 - Return \\(x_i\\).
 
 Clearly, each step takes \\(O(1)\\).
