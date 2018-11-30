@@ -49,7 +49,7 @@ int main()
 			for (int k = 0; k < 5; ++k) {
 				int cow = cow_sequence[k][j];
 				if (cow != prev_cow && 
-						cow != preprev_cow)
+				    cow != preprev_cow)
 					++counts[cow];
 			}
 		}
@@ -63,7 +63,7 @@ int main()
 		int idx = 0;
 		for (int j = 1; j < candidates.size(); ++j) 
 			if (IsAhead(candidates[j],
-						candidates[idx], cow_position)) 
+				candidates[idx], cow_position)) 
 				idx = j;
 
 		res[i] = candidates[idx];
