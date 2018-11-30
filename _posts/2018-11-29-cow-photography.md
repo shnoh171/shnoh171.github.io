@@ -63,7 +63,7 @@ int main()
 		int idx = 0;
 		for (int j = 1; j < candidates.size(); ++j) 
 			if (IsAhead(candidates[j],
-				candidates[idx], cow_position)) 
+			    candidates[idx], cow_position)) 
 				idx = j;
 
 		res[i] = candidates[idx];
@@ -97,7 +97,10 @@ Before starting coding, the one should (1) logically explain that the proposed a
 
 Let us denote the desired order of cows as a list \\( X = (x_1, x_2, ..., x_n) \\) where \\(n\\) is the number of cows. Also, let us represent the order of cows in five photographs as lists \\( A^i = (a^i_1, a^i_2, ..., a^i_n) \\) where \\( 1 \le i \le 5 \\). From the conditions given in the problem, these lists satisfy the following two properties.
 
-- For any two cows \\(x_i\\) and \\(x_j\\) where \\(x_i\\) is in the front of \\(x_j\\) in \\(X\\), the number of the lists \\(A^k\\) where \\(x_i\\) is also in the front of \\(x_j\\) is larger than or equal to three.
-- For a cow \\(x_i\\), the number of cows \\(a^j_k\\) where \\( 1 \le j \le 5 \\), \\( i-1 \le k \le i+1 \\), and \\(a^j_k = x_i\\) is larger than or equal to four.
+1. For any two cows \\(x_i\\) and \\(x_j\\) where \\(x_i\\) is in the front of \\(x_j\\) in \\(X\\), the number of the lists \\(A^k\\) where \\(x_i\\) is also in the front of \\(x_j\\) is larger than or equal to three.
+2. For a cow \\(x_i\\), the number of cows \\(a^j_k\\) where \\( 1 \le j \le 5 \\), \\( i-1 \le k \le i+1 \\), and \\(a^j_k = x_i\\) is larger than or equal to four.
 
+Now I design an \\(O(n)\\) algorithm that finds \\(X\\). It iterates from \\(i=0\\) to \\(i=n\\) finds \\(x_i\\).
 
+- First, find candidates of \\(x_i\\) using the property 2. (Each of these candidates are one of \\(x_{i-2}\\), \\(x_{i-1}\\), \\(x_i\\), \\(x_{i+1}\\), and \\(x+{i+2}\\).)
+- test
