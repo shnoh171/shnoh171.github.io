@@ -93,7 +93,11 @@ bool IsAhead(int front, int back, vector<vector<int> >& cow_position)
 }
 ```
 
-Before starting coding, I should (1) logically explain that the proposed algorithm satisfies the output properties of given problem, and (2) make it clear how to code it.
+Before starting coding, the one should (1) logically explain that the proposed algorithm satisfies the output properties of given problem, and (2) make it clear how to code it.
 
-Let the five list \\( (a^1_1, a^1_2, ..., a^1_n) \\)
+Let us denote the desired order of cows as a list \\( X = (x^1, x^2, ..., x^n) \\) where \\(n\\) is the number of cows. Also, let us represent the order of cows in five photographs as lists \\( A_i = (a^1_i, a^2_i, ..., a^b_i) \\) where \\( 1 \le i \le 5 \\). From the conditions given in the problem, these lists satisfy the following two properties.
+
+- For any two cows \\(x^i\\) and \\(x^j\\) where \\(x^i\\) is in the front of \\(x^j\\), the number of the lists \\(A_k\\) where \\(x^i\\) is also in the front of \\(x^j\\) is larger than or equal to three.
+- \\(a^j_i\\),  
+
 
