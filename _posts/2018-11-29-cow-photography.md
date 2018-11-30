@@ -100,7 +100,7 @@ Let us denote the desired order of cows as a list \\( X = (x_1, x_2, ..., x_n) \
 1. For any two cows \\(x_i\\) and \\(x_j\\) where \\(x_i\\) is in the front of \\(x_j\\) in \\(X\\), the number of the lists \\(A^k\\) where \\(x_i\\) is also in the front of \\(x_j\\) is larger than or equal to three.
 2. For a cow \\(x_i\\), the number of cows \\(a^j_k\\) where \\( 1 \le j \le 5 \\), \\( i-1 \le k \le i+1 \\), and \\(a^j_k = x_i\\) is larger than or equal to four.
 
-Now I design an \\(O(n)\\) algorithm that finds \\(X\\) based on derived properties. It iterates from \\(i=0\\) to \\(i=n\\) finds \\(x_i\\).
+Now I design an \\(O(n)\\) algorithm that finds \\(X\\) based on derived properties. It iterates from \\(i=1\\) to \\(i=n\\) finds \\(x_i\\).
 
 - Find candidates of \\(x_i\\) using the property 2. (Each of these candidates are one of \\(x_{i-2}\\), \\(x_{i-1}\\), \\(x_i\\), \\(x_{i+1}\\) and \\(x_{i+2}\\))
 - Get rid of \\(x_{i-2}\\) and \\(x_{i-1}\\) from the candidates. (We already know the value of these two elements)
