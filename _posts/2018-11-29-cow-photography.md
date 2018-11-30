@@ -48,7 +48,8 @@ int main()
 			if (!IsRange(j, n)) continue;
 			for (int k = 0; k < 5; ++k) {
 				int cow = cow_sequence[k][j];
-				if (cow != prev_cow && cow != preprev_cow)
+				if (cow != prev_cow &&
+					cow != preprev_cow)
 					++counts[cow];
 			}
 		}
@@ -56,11 +57,13 @@ int main()
 		vector<int> candidates;
 		for (map<int, int>::const_iterator k = counts.begin();
 				k != counts.end(); ++k) 
-			if (k->second >= 4) candidates.push_back(k->first);
+			if (k->second >= 4) 
+				candidates.push_back(k->first);
 
 		int idx = 0;
 		for (int j = 1; j < candidates.size(); ++j) 
-			if (IsAhead(candidates[j], candidates[idx], cow_position)) 
+			if (IsAhead(candidates[j],
+				candidates[idx], cow_position)) 
 				idx = j;
 
 		res[i] = candidates[idx];
