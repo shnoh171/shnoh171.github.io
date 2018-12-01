@@ -64,6 +64,10 @@ If not, I should find out whether \\( \lvert y-1 \rvert \\) or \\( \lvert \(n-1\
 
 ### B. Vova and Trophies
 
+Problem: <https://codeforces.com/contest/1082/problem/B>
+
+My code:
+
 ```c++
 #include <iostream>
 #include <vector>
