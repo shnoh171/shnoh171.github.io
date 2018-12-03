@@ -19,7 +19,7 @@ Problem: <https://codeforces.com/contest/1082/problem/A>
 
 If \\( \lvert y-x \rvert \\) is divided by \\(d\\), the optimal solution is to go directly from \\(x\\) to \\(y\\).
 
-If not, I should find out whether \\( \lvert y-1 \rvert \\) or \\( \lvert \(n-1\)-y \rvert \\) is divided by \\(d\\). If so, the solution is to go to the page \\(1\\) or \\(n-1\\), respectively, then go to \\(y\\). If both conditions hold, we choose shorter path.
+If not, I should find out whether \\( \lvert y-1 \rvert \\) or \\( \lvert \(n-1\)-y \rvert \\) is divided by \\(d\\). If so, the solution is to go to the page \\(1\\) or \\(n-1\\), respectively, then go to \\(y\\). If both conditions hold, we choose the shorter path.
 
 ```c++
 #include <iostream>
@@ -64,7 +64,7 @@ int main()
 
 Problem: <https://codeforces.com/contest/1082/problem/B>
 
-Let us divide cases based on the number \\(m\\) of golden trophies subsegment.
+Let us divide the cases based on the number \\(m\\) of golden trophies subsegment.
 
 If \\(m=0\\), the answer is \\(0\\).
 
@@ -160,14 +160,19 @@ int main()
 }
 ```
 
-However, I found a solution that is much easier to implement: <https://codeforces.com/blog/entry/63544>
+However, I found a solution that is much easier to implement:
 
-### C.
+<https://codeforces.com/blog/entry/63544>
+
+### C. Multi-Subject Competition
 
 Problem: <https://codeforces.com/contest/1082/problem/C>
 
 ### D. Maximum Diameter Graph
 
 Problem: <https://codeforces.com/contest/1082/problem/D>
+
+
+
 
 
