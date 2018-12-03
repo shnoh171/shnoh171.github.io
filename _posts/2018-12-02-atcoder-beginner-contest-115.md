@@ -7,7 +7,9 @@ categories:
 
 Rating: **0** &rarr; **46**
 
-I solved two out of the four problems. Also solved one more problem after the contest. The result is as follows.
+I solved two out of the four problems. Almost solved the third problem too, could not finish it.
+
+I finished rest problems and the results are as follows.
 
 ### A. 753
 
