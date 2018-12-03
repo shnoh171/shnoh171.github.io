@@ -78,7 +78,9 @@ int main()
 }
 ```
 
-Simple linear search problem. I also skip the description for this problem.
+Simple linear search problem.
+
+In the code above, it is not necessary to insert the characters of string `s` into the integer array `digits`. The linear search can be done directly in `s`. This will result more efficient and shorter code.
 
 ### C. 755
 
