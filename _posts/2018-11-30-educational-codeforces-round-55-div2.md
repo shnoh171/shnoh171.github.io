@@ -17,7 +17,9 @@ After the contest, I solved the problems up to D. I post the results below.
 
 Problem: <https://codeforces.com/contest/1082/problem/A>
 
-My code:
+If \\( \lvert y-x \rvert \\) is divided by \\(d\\), the optimal solution is to go directly from \\(x\\) to \\(y\\).
+
+If not, I should find out whether \\( \lvert y-1 \rvert \\) or \\( \lvert \(n-1\)-y \rvert \\) is divided by \\(d\\). If so, the solution is to go to the page \\(1\\) or \\(n-1\\), respectively, then go to \\(y\\). If both conditions hold, we choose shorter path.
 
 ```c++
 #include <iostream>
@@ -58,15 +60,19 @@ int main()
 }
 ```
 
-If \\( \lvert y-x \rvert \\) is divided by \\(d\\), the optimal solution is to go directly from \\(x\\) to \\(y\\).
-
-If not, I should find out whether \\( \lvert y-1 \rvert \\) or \\( \lvert \(n-1\)-y \rvert \\) is divided by \\(d\\). If so, the solution is to go to the page \\(1\\) or \\(n-1\\), respectively, then go to \\(y\\). If both conditions hold, we choose shorter path.
-
 ### B. Vova and Trophies
 
 Problem: <https://codeforces.com/contest/1082/problem/B>
 
-My code:
+Let us divide cases based on the number \\(m\\) of golden trophies subsegment.
+
+If \\(m=0\\), the answer is \\(0\\).
+
+If \\(m=1\\), the answer is equal to the length of the unique golden trophies subsegment.
+
+If \\(m=2\\), count the number of silver trophies between two golden trophies subsegments. If it is \\(1\\), the answer is sum of the lengths of two golden trophies subsegments. If it is larger than \\(1\\), the answer is the length of the larger golden trophies subsegment plus one.
+
+If \\(m>2\\), the algorithm should go through all trophies, and find the longest possible answer. The logic of each check is similar to the \\(m=2\\) case.
 
 ```c++
 #include <iostream>
@@ -153,3 +159,15 @@ int main()
 	return 0;
 }
 ```
+
+However, I found a solution that is much easier to implement: <https://codeforces.com/blog/entry/63544>
+
+### C.
+
+Problem: <https://codeforces.com/contest/1082/problem/C>
+
+### D. Maximum Diameter Graph
+
+Problem: <https://codeforces.com/contest/1082/problem/D>
+
+
