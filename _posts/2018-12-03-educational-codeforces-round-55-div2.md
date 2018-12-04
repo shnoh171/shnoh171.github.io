@@ -168,11 +168,11 @@ However, I found a solution that is much easier to implement:
 
 Problem: <https://codeforces.com/contest/1082/problem/C>
 
-Let us denote \\(m\\) subjects by \\(x_1, x_2, ..., x_m\\).
+Let us denote \\(m\\) subjects by \\(x_1, x_2, ..., x_m\\). Let us also denote the sum of the skill levels of top \\(l\\) candidates of \\(x_i\\) by \\(s_i(l)\\). The value of \\(s_i(l)\\) is valid only if the number of candidates specialized in \\(x_i\\) is equal to or greater than \\(l\\).
 
-Let us also denote the sum of the skill level of top \\(l\\) candidates of the subject \\(x_i\\) by \\(s_i(l)\\). The value of \\(s_i(l)\\) is valid only if the number of candidates specialized in \\(x_i\\) is equal to or greater than \\(l\\).
+For a given team size \\(l\\), the maximized total sum can be derived by adding up \\( \max (0, s_i(l)) \\) for \\( 1 \le i \le m \\).
 
-For a given team size \\(l\\), the maximized total sum can be derived by adding up \\( \max (0, s_i(l) \\) for \\( 1 \le i \le m \\).
+We increase \\(l\\) from 1 until the all \\(s_i(l)\\) are invalid or negative.
 
 ```c++
 #include <iostream>
