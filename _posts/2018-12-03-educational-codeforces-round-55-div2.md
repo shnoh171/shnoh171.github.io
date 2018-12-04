@@ -172,7 +172,7 @@ Problem: <https://codeforces.com/contest/1082/problem/C>
 
 Problem: <https://codeforces.com/contest/1082/problem/D>
 
-In order to construct a connected graph with maximum diameter, I must connects nodes in sequence as much as possible. To do so, the algorithm first connects all the nodes with the maximum degree larger than one in sequence. The algorithm then places two nodes with the maximum degree one in the front and the end (if they exist). If there are extra nodes that are not connected, we are free to connect them to each node in the sequence until the node's degree does not exceed its maximum degree.
+In order to construct a connected graph with maximum diameter, I must connects nodes in sequence as much as possible. To do so, the algorithm first connects all the nodes with the maximum degree larger than one in sequence. The algorithm then places two nodes with degree one in the front and the end (if they exist), increasing the graph's diameter. If there are extra nodes that are not connected, we are free to connect them to the nodes in sequence in any order while the degree constraints are met.
 
 ```c++
 #include <iostream>
