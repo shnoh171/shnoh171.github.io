@@ -172,7 +172,7 @@ Let us denote \\(m\\) subjects by \\(x_1, x_2, ..., x_m\\). Let us also denote t
 
 For a given team size \\(l\\), the maximized total sum can be derived by adding up \\( \max (0, s_i(l)) \\) for \\( 1 \le i \le m \\).
 
-We increase \\(l\\) from 1 until the all \\(s_i(l)\\) are invalid or negative, and take the \\(s_i(l)\\) with the maximum value as the answer.
+We increase \\(l\\) from 1 until the all \\(s_i(l)\\) are invalid or negative, and take the sum of \\(s_i(l)\\) in \\( 1 \le i \le m \\) with \\(l\\) that maximize \\(s_i(l)\\) as the answer.
 
 ```c++
 #include <iostream>
