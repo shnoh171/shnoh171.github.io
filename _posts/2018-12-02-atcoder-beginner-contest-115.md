@@ -9,8 +9,6 @@ Rating: **0** &rarr; **46**
 
 I solved two out of the four problems. Almost solved the third problem too, could not finish it.
 
-I finished rest problems and the results are as follows.
-
 ### A. 753
 
 Problem: <https://abc114.contest.atcoder.jp/tasks/abc114_a>
@@ -81,16 +79,3 @@ int main()
 Simple linear search problem.
 
 In the code above, it is not necessary to insert the characters of string `s` into the integer array `digits`. The linear search can be done directly in `s`. This will result more efficient and shorter code.
-
-### C. 755
-
-Problem: <https://abc114.contest.atcoder.jp/tasks/abc114_c>
-
-My code:
-
-### D. 756
-
-Problem: <https://abc114.contest.atcoder.jp/tasks/abc114_d>
-
-My code:
-
