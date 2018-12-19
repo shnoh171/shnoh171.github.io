@@ -16,7 +16,8 @@ $$c_w^{'} = \min_{w \le i \le m} (c_{w})$$
 
 $$d_1$$ is obtained by taking the minimum value of $$C_w$$ where $$1 \le i \le m$$. Remaining $$d_i$$s is calculated by the following formula.
 
-$$d_{i}= \min (d_{i-1}, C^'_i)$$
+d_{i}= \min (d_{i-1}, C^'_i)
 
-where $$2 \le i \le m$$ and $$C^'_i$$ is the minimum value of $$C_k$$ where $$1 \le k \le m$$
+where 2 \le i \le m and C^'_i is the minimum value of C_k where 1 \le k \le m
 
+wefwe
