@@ -7,4 +7,4 @@ categories:
 
 Problem: <http://www.usaco.org/index.php?page=viewproblem2&cpid=99>
 
-We define $a$ .. $$a$$ .. 
+We define $$d_i$$ as the minimum cost it takes to protect all the cows numbered from $$1$$ to $$i$$.
