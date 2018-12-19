@@ -9,25 +9,21 @@ Problem: <http://www.usaco.org/index.php?page=viewproblem2&cpid=99>
 
 This is a dynamic programming problem. I define \\(d_{i}\\) as the minimum cost it takes to protect all cows numbered from \\(1\\) to \\(i\\). The proposed algorithm computes \\(d_i\\) from \\(i=1\\) to \\(n\\). The final solution is \\(d_n\\).
 
-The most import observation to solve this problem is that the larger umbrella can be cheaper than the smaller umbrella. Using the cost \\(c_w\\) to buy an umbrella of width \\(w\\), I additionally define \\(c^\prime_w\\) that is the cost to buy the cheapest umbrella that can protects the area with width \\(w\\). It is computed using the formula below.
+The most import observation to solve this problem is that the larger umbrella can be cheaper than the smaller umbrella. Using the cost \\(c_w\\) to buy an umbrella of width \\(w\\), I define a function \\(h(w)\\) that is the cost to buy the cheapest umbrella that can protects the area with width \\(w\\). It is computed using the formula below.
 
-\\[c_w^{\prime} = \min_{w \le i \le m} (c_{w})\\]
+\\[h(w) = \min_{w \le i \le m} (c_i)\\]
 
 where \\(m\\) is the length of the stall.
 
-Now let us start computing \\(d_{i}\\) using \\(c^\prime_w\\). \\(d_1\\) is equal to \\(c^\prime_1\\) by definition. Remaining \\(d_{i}\\)s are calculated as follows.
+The proposed algorithm first calculates \\(h(w)\\) for all \\(w\\). It then computes \\(d_{i}\\) using \\(c^\prime_w\\).
 
-\\[d_{i}= \min (d_{i-1}, c^\prime_w\\]
+We set \\(d_0\\) to \\(0\\). \\(d_1\\) is equal to \\(c^\prime_1\\) by definition. Remaining \\(d_{i}\\)s are calculated as follows.
 
-...
+\\[d_{i}= \min_{0 \le j \le i-1} (d_j + h(x_{i} - x_{j+1} + 1)\\]
 
+where \\(x_i\\) is the position of the cow \\(i\\). Note that \\(h(x_{i} - x_{j+1} + 1)\\) is the cheapest umbrella that can protect both cow \\(i\\) and cow \\(j+1\\).
 
-
-
-where 2 \le i \le m and C^'_i is the minimum value of C_k where 1 \le k \le m
-
-wefwe
-
+The code is as below.
 
 ```c++
 #include <iostream>
