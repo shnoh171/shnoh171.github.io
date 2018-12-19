@@ -9,7 +9,7 @@ Problem: <http://www.usaco.org/index.php?page=viewproblem2&cpid=99>
 
 This is a dynamic programming problem. We define $$d_i$$ as the minimum cost it takes to protect all cows numbered from $$1$$ to $$i$$. We compute $$d_i$$ from $$i=1$$ to $$n$$.
 
-Note that the larger umbrella can be cheaper than the smaller umbrella. We denote the cost of the cheapest umbrella that can protects the area with width $$w$$ as $$c_w^{'}$$. It is obtained by the following formula.
+Note that the larger umbrella can be cheaper than the smaller umbrella. We denote the cost of the cheapest umbrella that can protects the area with width $$w$$ as $$c\prime_w$$. It is obtained by the following formula.
 
 $$c_w^{'} = \min_{w \le i \le m} (c_{w})$$
 
