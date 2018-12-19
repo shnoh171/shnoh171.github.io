@@ -9,19 +9,19 @@ Problem: <http://www.usaco.org/index.php?page=viewproblem2&cpid=99>
 
 This is a dynamic programming problem. I define \\(d_{i}\\) as the minimum cost it takes to protect all cows numbered from \\(1\\) to \\(i\\). The proposed algorithm computes \\(d_i\\) from \\(i=1\\) to \\(n\\). The final solution is \\(d_n\\).
 
-The most import observation to solve this problem is that the larger umbrella can be cheaper than the smaller umbrella. Using the cost \\(c_w\\) to buy an umbrella of width \\(w\\), I define a function \\(h(w)\\) that is the cost to buy the cheapest umbrella that can protects the area with width \\(w\\). It is computed using the formula below.
+The most import observation to solve this problem is that the larger umbrella can be cheaper than the smaller umbrella. Using the cost \\(c_w\\) to buy an umbrella of width \\(w\\), I define a function \\(h(w)\\) that is the cost to buy the cheapest umbrella that can protects the area of width \\(w\\). It is computed using the formula below.
 
 \\[h(w) = \min_{w \le i \le m} (c_i)\\]
 
 where \\(m\\) is the length of the stall.
 
-The proposed algorithm first calculates \\(h(w)\\) for all \\(w\\). It then computes \\(d_{i}\\) using \\(c^\prime_w\\).
+The proposed algorithm first calculates \\(h(w)\\) for all \\(w\\). It then computes \\(d_{i}\\) using \\(h(w)\\).
 
-We set \\(d_0\\) to \\(0\\). \\(d_1\\) is equal to \\(c^\prime_1\\) by definition. Remaining \\(d_{i}\\)s are calculated as follows.
+We set \\(d_0\\) to \\(0\\). \\(d_1\\) is equal to \\(h(1)\\) by definition. Remaining \\(d_{i}\\)s are calculated as follows.
 
 \\[d_{i}= \min_{0 \le j \le i-1} (d_j + h(x_{i} - x_{j+1} + 1)\\]
 
-where \\(x_i\\) is the position of the cow \\(i\\). Note that \\(h(x_{i} - x_{j+1} + 1)\\) is the cheapest umbrella that can protect both cow \\(i\\) and cow \\(j+1\\).
+where \\(x_i\\) is the position of the \\(i\\)th cow from the front. Note that \\(h(x_{i} - x_{j+1} + 1)\\) is the cheapest umbrella that can protect both cow \\(i\\) and cow \\(j+1\\).
 
 The code is as below.
 
