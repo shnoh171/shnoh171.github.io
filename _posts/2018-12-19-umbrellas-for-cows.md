@@ -7,4 +7,4 @@ categories:
 
 Problem: <http://www.usaco.org/index.php?page=viewproblem2&cpid=99>
 
-We define \(a\)
+We define $a$ .. $$a$$ .. 
