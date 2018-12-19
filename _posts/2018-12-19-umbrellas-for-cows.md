@@ -19,7 +19,7 @@ The proposed algorithm first calculates \\(h(w)\\) for all \\(w\\). It then comp
 
 We set \\(d_0\\) to \\(0\\). \\(d_1\\) is equal to \\(h(1)\\) by definition. Remaining \\(d_{i}\\)s are calculated as follows.
 
-\\[d_{i}= \min_{0 \le j \le i-1} (d_j + h(x_{i} - x_{j+1} + 1)\\]
+\\[d_{i}= \min_{0 \le j \le i-1} (d_j + h(x_{i} - x_{j+1} + 1))\\]
 
 where \\(x_i\\) is the position of the \\(i\\)th cow from the front. Note that \\(h(x_{i} - x_{j+1} + 1)\\) is the cost of the cheapest umbrella that can protect both \\(i\\)th and \\((j+1)\\)th cows.
 
