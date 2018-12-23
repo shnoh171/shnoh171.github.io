@@ -9,11 +9,10 @@ Problem: <http://acmicpc-pacnw.org/ProblemSet/2014/div2.pdf>
 
 I define \\(d_{i, j}\\) as the number of ramp numbers that is smaller than the number consists of the most significant \\(i\\) digits of the input. The \\(d_{i, j}\\) is computed as below.
 
-The initialization \\(i=1\\):
+The initialization \\((i=1)\\):
 
-\\(d_{1, j} = 1\\) if \\(j\\) is smaller than the most significant digit of the input.
-
-\\(d_{1, j} = 0\\) otherwise.
+- \\(d_{1, j} = 1\\) if \\(j\\) is smaller than the most significant digit of the input.
+- \\(d_{1, j} = 0\\) otherwise.
 
 For \\(i \ge 2 \\), if \\(l_{i-1} \le j \lt l_{i} \\) where \\(l_i\\) is \\(i\\)th significant digit of the input,
 
