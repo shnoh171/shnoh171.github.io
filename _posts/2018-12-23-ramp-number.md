@@ -6,3 +6,4 @@ categories:
 ---
 
 Problem: <http://acmicpc-pacnw.org/ProblemSet/2014/div2.pdf>
+s
