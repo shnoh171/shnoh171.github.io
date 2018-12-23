@@ -17,13 +17,15 @@ The initialization \\(i=1\\):
 
 For \\(i \ge 2 \\), if \\(l_{i-1} \le j \lt l_{i} \\) where \\(l_i\\) is \\(i\\)th significant digit of the input,
 
-\\[d_{i, j} = \sum_{k=1}^{j} d[i-1][k] + 1\\]
+\\[d_{i, j} = \sum_{k=1}^{j} d_{i-1, k} + 1\\]
 
 If not,
 
-\\[d_{i, j} = \sum_{k=1}^{j} d[i-1][k]\\]
+\\[d_{i, j} = \sum_{k=1}^{j} d_{i-1, k}\\]
 
 After computing all \\(d_{i, j}\\), the answer is sum of \\(d_{i, j}\\) for \\(1 \le i \le 9\\) and \\(j=m\\) where \\(m\\) is the number of digits of the input.
+
+The code is as follows.
 
 ```c++
 #include <iostream>
