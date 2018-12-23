@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Ramp Number (ACM-ICPC Pacific NW Regional Div. 2)
+title: Ramp Number (ACM-ICPC 2014 Pacific NW Regional Div. 2)
 categories:
   - Competitive Programming
 ---
