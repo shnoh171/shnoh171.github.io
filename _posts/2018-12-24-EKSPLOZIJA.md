@@ -1,6 +1,6 @@
 ---
 layout: post
-title: EKSPLOZIJA (COCI 2013/2014 Contest #5)
+title: EKSPLOZIJA (COCI 2013/2014 Contest \\#5)
 categories:
   - Competitive Programming
 ---
