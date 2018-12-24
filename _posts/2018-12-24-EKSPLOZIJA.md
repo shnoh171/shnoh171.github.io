@@ -1,10 +1,10 @@
 ---
 layout: post
-title: EKSPLOZIJA (COCI 2013/2014 Contest \#5)
+title: EKSPLOZIJA (COCI 2013/2014 Contest 5)
 categories:
   - Competitive Programming
 ---
-\#
+
 Problem: <http://hsin.hr/coci/archive/2013_2014/contest5_tasks.pdf>
 
 Online Judge: <https://www.acmicpc.net/problem/9935> (Select English from the right)
