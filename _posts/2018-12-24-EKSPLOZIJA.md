@@ -1,13 +1,13 @@
 ---
 layout: post
-title: Ramp Number (ACM-ICPC Pacific NW Regional 2014 Div. 2)
+title: EKSPLOZIJA (COCI 2013/2014 Contest \#5)
 categories:
   - Competitive Programming
 ---
 
 Problem: <http://hsin.hr/coci/archive/2013_2014/contest5_tasks.pdf>
 
-Online Judge: <https://www.acmicpc.net/problem/9935> (Select English)
+Online Judge: <https://www.acmicpc.net/problem/9935> (Select English from the right)
 
 The most important thing to notice is that the order of explosion never change the result, since the explosion does not contain any two equal chracters. Let Mirko's string \\(S\\) and \\(s_i\\) denotes the \\(i\\)th character of of \\(S\\). Also, let the explosion string \\(E\\) and \\(e_i\\) denotes the \\(i\\)th character of of \\(E\\).
 
