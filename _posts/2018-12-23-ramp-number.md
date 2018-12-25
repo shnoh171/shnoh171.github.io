@@ -22,7 +22,7 @@ If not,
 
 \\[d_{i, j} = \sum_{k=1}^{j} d_{i-1, k}\\]
 
-After computing all \\(d_{i, j}\\), the answer is sum of \\(d_{i, j}\\) for \\(1 \le i \le 9\\) and \\(j=m\\) where \\(m\\) is the number of digits of the input.
+After computing all \\(d_{i, j}\\), the answer is sum of \\(d_{i, j}\\) for \\(0 \le j \le 9\\) and \\(i=m\\) where \\(m\\) is the number of digits of the input.
 
 The code is as follows.
 
