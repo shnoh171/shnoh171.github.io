@@ -7,7 +7,7 @@ categories:
 
 Problem: <http://acmicpc-pacnw.org/ProblemSet/2014/div2.pdf>
 
-I define \\(d_{i, j}\\) as the number of ramp numbers that is smaller than the number consists of the most significant \\(i\\) digits of the input. The \\(d_{i, j}\\) is computed as below.
+I define \\(d_{i, j}\\) as the number of ramp numbers that is smaller than the number consists of the most significant \\(i\\) digits of the input, and the \\(i\\)th digit is \\(j\\). The \\(d_{i, j}\\) is computed as below.
 
 The initialization \\((i=1)\\):
 
