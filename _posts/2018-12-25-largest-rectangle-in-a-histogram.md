@@ -6,11 +6,11 @@ categories:
 ---
 Let us denote the width of histogram as \\(n\\), and the height of the \\(i\\)th rectangle as \\(h_i\\).
 
-For each \\(i\\)th rectangle, the area \\(a_i\\) of the largest rectangle that includes the \\(i\\)th rectangle is computed by \\(h_i \times (r_i - l_i + 1) \\). \\(l_i\\) is the smallest index where \\(l_i\\)th rectangle through the \\(i\\)th rectangle have height greater than or equal to \\(h_i\\). \\(r_i\\) is the largest index where \\(i\\)th rectangle through the \\(r_i\\)th rectangle have height greater than or equal to \\(h_i\\).
+For each \\(i\\)th rectangle, the area \\(a_i\\) of the largest rectangle that includes the \\(i\\)th rectangle is computed by \\(h_i \times (r_i - l_i + 1) \\). The \\(l_i\\) is the smallest index where \\(l_i\\)th rectangle through the \\(i\\)th rectangle have height greater than or equal to \\(h_i\\). The \\(r_i\\) is the largest index where \\(i\\)th rectangle through the \\(r_i\\)th rectangle have height greater than or equal to \\(h_i\\).
 
 The final answer is the maximum value of \\(a_i\\) where \\(1 \le i \le n\\).
 
-Now all I have to do is to compute each \\(a_i\\) in \\(O(1)\\). It can be done by using stack. For each \\(i\\) we push the attributes of \\(i\\)th rectangle into the stack and compute \\(l_i\\). These attributes of the \\(i\\)th rectangle pop out from the stack when we can compute \\(r_i\\) in a constant time.
+Now all I have to do is to compute each \\(a_i\\) in \\(O(1)\\). It can be done by using a stack. For each \\(i\\), I push the attributes of \\(i\\)th rectangle into the stack and compute \\(l_i\\). These attributes of the \\(i\\)th rectangle pop out from the stack when I can compute \\(r_i\\) in a constant time.
 
 The detailed code is as follows.
 
