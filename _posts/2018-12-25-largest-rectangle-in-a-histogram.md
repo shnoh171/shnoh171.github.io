@@ -4,6 +4,8 @@ title: Largest Rectangle in a Histogram (University of Ulm Local Contest 2003)
 categories:
   - Competitive Programming
 ---
+OJ: <https://www.spoj.com/BYUP4/problems/HISTOGRA/>
+
 Let us denote the width of histogram as \\(n\\), and the height of the \\(i\\)th rectangle as \\(h_i\\).
 
 For each \\(i\\)th rectangle, the area \\(a_i\\) of the largest rectangle that includes the \\(i\\)th rectangle is computed by \\(h_i \times (r_i - l_i + 1) \\). The \\(l_i\\) is the smallest index where \\(l_i\\)th rectangle through the \\(i\\)th rectangle have height greater than or equal to \\(h_i\\). The \\(r_i\\) is the largest index where \\(i\\)th rectangle through the \\(r_i\\)th rectangle have height greater than or equal to \\(h_i\\).
