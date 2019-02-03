@@ -12,9 +12,11 @@ System software engineer, with experience working on operating systems (Linux ke
 
 ### Publications
 
+- Soonhyun Noh and Seongsoo Hong, "Splash: A graphical programming framework for an autonomous machine," Submitted to the 16th International Conference on Ubiquitous Robots, 2019.
+
 - Jungho Kim, Philkyue Shin, Soonhyun Noh, Daesik Ham and Seongsoo Hong, "[Reducing Memory Interference Latency of Safety-Critical Applications via Memory Request Throttling and Linux cgroup](http://redwood.snu.ac.kr/wordpress/wp-content/uploads/2018/08/18-07-30-SOCC_Memory-Request-Throttling_final.pdf)," The 31st IEEE International System-on Chip Conference (SOCC), 2018.
 
-- Soonhyun Noh and Seongsoo Hong, "Splash: Stream processing language for autonomous driving," 15th International Conference on Ubiquitous Robots, 2018.
+- Soonhyun Noh and Seongsoo Hong, "Splash: Stream processing language for autonomous driving," The Workshop on Real-Time and Embedded AI for Autonomous Vehicles (WREAV), 2018.
 
 - Myungsun Kim, Soonhyun Noh, Jinhwa Hyeon and Seongsoo Hong, "[Fair-share scheduling in single-ISA asymmetric multicore architecture via scaled virtual runtime and load redistribution](https://www.sciencedirect.com/science/article/pii/S0743731517302423)," Journal of Parallel and Distributed Computing (JPDC), 2018.
 
