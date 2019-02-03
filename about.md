@@ -48,9 +48,13 @@ To be filled.
 
 #### Application context-aware selective packet transmission mechanisms on Android smartphones
 
+![placeholder](/assets/images/selective_packet_transmission.png)
+
 ### Software Platform for Real-Time and Embedded AI
 
 #### Splash: A graphical programming framework for an autonomous machine
+
+![placeholder](/assets/images/splash_program.png)
 
 ## Education
 
