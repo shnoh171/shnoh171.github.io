@@ -38,13 +38,13 @@ To be filled.
 
 #### Dynamic memory resource control for mixed-criticality systems
 
-![placeholder](/assets/images/dynamic_memory_request_throttling.png){: width="400px"}
+![placeholder](/assets/images/dynamic_memory_request_throttling.png){: width="600px"}
 
 ### In-Depth Kernel Optimization Techniques
 
 #### Predictive on-demand CPU frequency governor on Android smartphones
 
-![placeholder](/assets/images/predictive_on_demand_governor.png)
+![placeholder](/assets/images/predictive_on_demand_governor.png){: width="400px"}
 
 #### Application context-aware selective packet transmission mechanisms on Android smartphones
 
