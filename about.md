@@ -44,7 +44,7 @@ To be filled.
 
 #### Predictive on-demand CPU frequency governor on Android smartphones
 
-![placeholder](/assets/images/predictive_on_demand_governor.png){: width="400px"}
+![placeholder](/assets/images/predictive_on_demand_governor.png){: width="500px"}
 
 #### Application context-aware selective packet transmission mechanisms on Android smartphones
 
