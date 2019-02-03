@@ -14,13 +14,13 @@ System software engineer, with experience working on operating systems (Linux ke
 
 - Soonhyun Noh and Seongsoo Hong, "Splash: A graphical programming framework for an autonomous machine," Submitted to the 16th International Conference on Ubiquitous Robots, 2019.
 
-- Jungho Kim, Philkyue Shin, Soonhyun Noh, Daesik Ham and Seongsoo Hong, "[Reducing Memory Interference Latency of Safety-Critical Applications via Memory Request Throttling and Linux cgroup](http://redwood.snu.ac.kr/wordpress/wp-content/uploads/2018/08/18-07-30-SOCC_Memory-Request-Throttling_final.pdf)," The 31st IEEE International System-on Chip Conference (SOCC), 2018.
+- Jungho Kim, Philkyue Shin, Soonhyun Noh, Daesik Ham and Seongsoo Hong, "[Reducing memory interference latency of safety-critical applications via memory request throttling and Linux cgroup](http://redwood.snu.ac.kr/wordpress/wp-content/uploads/2018/08/18-07-30-SOCC_Memory-Request-Throttling_final.pdf)," The 31st IEEE International System-on Chip Conference (SOCC), 2018.
 
 - Soonhyun Noh and Seongsoo Hong, "Splash: Stream processing language for autonomous driving," The Workshop on Real-Time and Embedded AI for Autonomous Vehicles (WREAV), 2018.
 
 - Myungsun Kim, Soonhyun Noh, Jinhwa Hyeon and Seongsoo Hong, "[Fair-share scheduling in single-ISA asymmetric multicore architecture via scaled virtual runtime and load redistribution](https://www.sciencedirect.com/science/article/pii/S0743731517302423)," Journal of Parallel and Distributed Computing (JPDC), 2018.
 
-- J. Jose Gonzales E., Chen Luo, Anshumali Shrivastava, Krishna Palem, Yongshik Moon, Soonhyun Noh, Daedong Park and Seongsoo Hong, "[Location Detection for Navigation Using IMUs with a Map Through Coarse-Grained Machine Learning](http://ieeexplore.ieee.org/document/7927040/)," Design, Automation and Test in Europe (DATE), 2017.
+- J. Jose Gonzales E., Chen Luo, Anshumali Shrivastava, Krishna Palem, Yongshik Moon, Soonhyun Noh, Daedong Park and Seongsoo Hong, "[Location detection for navigation using IMUs with a map through coarse-grained machine learning](http://ieeexplore.ieee.org/document/7927040/)," Design, Automation and Test in Europe (DATE), 2017.
 
 - Soonhyun Noh, Myungsun Kim and Seongsoo Hong, "[Enhancing AUTOSAR safety mechanisms for ISO 26262 functional safety requirements](http://redwood.snu.ac.kr/wordpress/paper_server.php?file=eGx4cERzMWVHWUIvSVBKeXUzOG1hWFAyTUZQZ2ZUZVJ3emx4TGJaeWNOWEFCbFRVMnVqbnJyZHVmZ3hVYW40OExSY0lrc1lNS0drQXZXVlJiek5OWWc9PQ==)," FISITA World Automotive Congress, 2016.
 
