@@ -38,7 +38,7 @@ To be filled.
 
 #### Dynamic memory resource control for mixed-criticality systems
 
-![placeholder](/assets/images/dynamic_memory_request_throttling.png)
+![placeholder](/assets/images/dynamic_memory_request_throttling.png){: width="400px"}
 
 ### In-Depth Kernel Optimization Techniques
 
