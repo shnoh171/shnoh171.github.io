@@ -24,7 +24,7 @@ System software engineer, with experience working on operating systems (Linux ke
 
 - J. Jose Gonzales E., Chen Luo, Anshumali Shrivastava, Krishna Palem, Yongshik Moon, Soonhyun Noh, Daedong Park and Seongsoo Hong, "[Location detection for navigation using IMUs with a map through coarse-grained machine learning](http://ieeexplore.ieee.org/document/7927040/)," Design, Automation and Test in Europe (DATE), 2017.
 
-- Soonhyun Noh, Myungsun Kim and Seongsoo Hong, "[Enhancing AUTOSAR safety mechanisms for ISO 26262 functional safety requirements](./assets/pdf/16-07-31 Safety-enhanced AUTOSAR)," FISITA World Automotive Congress, 2016.
+- Soonhyun Noh, Myungsun Kim and Seongsoo Hong, "[Enhancing AUTOSAR safety mechanisms for ISO 26262 functional safety requirements]({{ "/assets/pdf/16-07-31 Safety-enhanced AUTOSAR"}})," FISITA World Automotive Congress, 2016.
 
 - Yongshik Moon\*, Soonhyun Noh\*, Daedong Park\*, Chen Luo\*, Anshumail Shirivastava, Seongsoo Hong and Krishna Palem, "[CaPSuLe: A camera-based positioning system using learning](https://ieeexplore.ieee.org/document/7905476/)," 29th IEEE International System-on Chip Conference (SOCC), 2016. (\* indicates equal contribution)
 
@@ -32,7 +32,7 @@ System software engineer, with experience working on operating systems (Linux ke
 
 ## Projects
 
-TODO: To be filled.
+TODO: To be filled..
 
 ### Linux Kernel Techniques for Resource Management
 
