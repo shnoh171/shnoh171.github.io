@@ -12,9 +12,7 @@ System software engineer, with experience working on operating systems (Linux ke
 
 ## Publications
 
-- Soonhyun Noh, Jaeho Ahn and Seongsoo Hong, "[Rate-Controlled Data-Driven Real-Time Stream Processing for an Autonomous Machine](http://redwood.snu.ac.kr/wordpress/wp-content/uploads/2019/03/19-03-05-IROS-Splash.pdf)," Submitted to the 2019 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2019.
-
-- Soonhyun Noh and Seongsoo Hong, "[Splash: A graphical programming framework for an autonomous machine](http://redwood.snu.ac.kr/wordpress/wp-content/uploads/2019/01/19-03-02-UR-Splash.pdf)," Submitted to the 16th International Conference on Ubiquitous Robots (UR), 2019.
+- Soonhyun Noh and Seongsoo Hong, "[Splash: A graphical programming framework for an autonomous machine](http://redwood.snu.ac.kr/wordpress/wp-content/uploads/2019/01/19-03-02-UR-Splash.pdf)," The 16th International Conference on Ubiquitous Robots (UR), 2019.
 
 - Jungho Kim, Philkyue Shin, Soonhyun Noh, Daesik Ham and Seongsoo Hong, "[Reducing memory interference latency of safety-critical applications via memory request throttling and Linux cgroup](http://redwood.snu.ac.kr/wordpress/wp-content/uploads/2018/08/18-07-30-SOCC_Memory-Request-Throttling_final.pdf)," The 31st IEEE International System-on Chip Conference (SOCC), 2018.
 
