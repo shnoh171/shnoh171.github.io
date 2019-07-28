@@ -28,6 +28,8 @@ System software engineer, with experience working on operating systems (Linux ke
 
 - Myungsun Kim, Soonhyun Noh, Sungju Huh and Seongsoo Hong, "[Fair-share scheduling for performance-asymmetric multicore architecture via scaled virtual runtime](https://ieeexplore.ieee.org/document/7299846/)," IEEE 21st International Conference on Embedded and Real-Time Computing Systems and Applications (RTCSA), 2015.
 
+<!--
+
 ## Projects
 
 TODO: To be filled.
@@ -55,7 +57,7 @@ TODO: To be filled.
 #### Splash: A graphical programming framework for an autonomous machine
 
 ![placeholder](/assets/images/splash_program.png)
-
+-->
 ## Education
 
 - Ph.D. Candidate in Electrical and Computer Engineering, Seoul National University
