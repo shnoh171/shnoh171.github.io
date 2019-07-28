@@ -2,7 +2,7 @@
 layout: post
 title: AtCoder Beginner Contest 114
 categories:
-  - Competitive Programming
+  - Problem Solving
 ---
 
 Rating: **0** &rarr; **46**

@@ -2,7 +2,7 @@
 layout: post
 title: Educational Codeforces Round 55 (Div.2)
 categories:
-  - Competitive Programming
+  - Problem Solving
 ---
 
 Rating: **1451** &rarr; **1498**
@@ -331,5 +331,3 @@ int main()
 	return 0;
 }
 ```
-
-

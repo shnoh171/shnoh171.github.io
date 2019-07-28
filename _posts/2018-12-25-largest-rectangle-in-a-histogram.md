@@ -2,7 +2,7 @@
 layout: post
 title: Largest Rectangle in a Histogram (University of Ulm Local Contest 2003)
 categories:
-  - Competitive Programming
+  - Problem Solving
 ---
 OJ: <https://www.spoj.com/BYUP4/problems/HISTOGRA/>
 

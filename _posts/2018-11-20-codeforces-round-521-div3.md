@@ -2,7 +2,7 @@
 layout: post
 title: Codeforces Round 521 (Div.3)
 categories:
-  - Competitive Programming
+  - Problem Solving
 ---
 
 Rating: **1517** &rarr; **1451**
@@ -203,11 +203,11 @@ void find(int lower, int upper, int k, vector<pair<int, int> > counts) {
 		while (k > 0) {
 			int repeat = counts[i].first/upper;
 
-			if (k - repeat < 0) 
-				for (int j = 0; j < k; ++j) 
+			if (k - repeat < 0)
+				for (int j = 0; j < k; ++j)
 					cout << counts[i].second << " ";
 			else
-				for (int j = 0; j < repeat; ++j) 
+				for (int j = 0; j < repeat; ++j)
 					cout << counts[i].second << " ";
 
 			k -= repeat;

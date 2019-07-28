@@ -2,7 +2,7 @@
 layout: post
 title: Umbrellas for Cows (USACO December 2012 Silver Div.)
 categories:
-  - Competitive Programming
+  - Problem Solving
 ---
 
 Problem: <http://www.usaco.org/index.php?page=viewproblem2&cpid=99>

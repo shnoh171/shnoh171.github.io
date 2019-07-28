@@ -2,7 +2,7 @@
 layout: post
 title: Cow Photography (USACO December 2012 Bronze Div.)
 categories:
-  - Competitive Programming
+  - Problem Solving
 ---
 
 Problem: <http://www.usaco.org/index.php?page=viewproblem2&cpid=95>
@@ -16,7 +16,7 @@ My code:
 #include <vector>
 using namespace std;
 
-bool IsRange(int i, int n); 
+bool IsRange(int i, int n);
 bool IsAhead(int front, int back, vector<vector<int> >& cow_position);
 
 int main()
@@ -48,7 +48,7 @@ int main()
 			if (!IsRange(j, n)) continue;
 			for (int k = 0; k < 5; ++k) {
 				int cow = cow_sequence[k][j];
-				if (cow != prev_cow && 
+				if (cow != prev_cow &&
 				    cow != preprev_cow)
 					++counts[cow];
 			}
@@ -56,14 +56,14 @@ int main()
 
 		vector<int> candidates;
 		for (map<int, int>::const_iterator k = counts.begin();
-				k != counts.end(); ++k) 
-			if (k->second >= 4) 
+				k != counts.end(); ++k)
+			if (k->second >= 4)
 				candidates.push_back(k->first);
 
 		int idx = 0;
-		for (int j = 1; j < candidates.size(); ++j) 
+		for (int j = 1; j < candidates.size(); ++j)
 			if (IsAhead(candidates[j],
-			    candidates[idx], cow_position)) 
+			    candidates[idx], cow_position))
 				idx = j;
 
 		res[i] = candidates[idx];
@@ -77,9 +77,9 @@ int main()
 	return 0;
 }
 
-bool IsRange(int i, int n) 
-{ 
-	return i >= 0 && i < n; 
+bool IsRange(int i, int n)
+{
+	return i >= 0 && i < n;
 }
 
 bool IsAhead(int front, int back, vector<vector<int> >& cow_position)

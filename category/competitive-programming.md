@@ -1,6 +1,6 @@
 ---
 layout: category
-title: Competitive Programming
+title: Problem Solving
 ---
 
 Posts about problem solving and competitive programming.

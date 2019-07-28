@@ -2,7 +2,7 @@
 layout: post
 title: EKSPLOZIJA (COCI 2013/2014 Contest 5)
 categories:
-  - Competitive Programming
+  - Problem Solving
 ---
 
 Problem: <http://hsin.hr/coci/archive/2013_2014/contest5_tasks.pdf>

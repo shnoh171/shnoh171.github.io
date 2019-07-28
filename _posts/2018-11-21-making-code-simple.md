@@ -2,7 +2,7 @@
 layout: post
 title: Making Code Simple
 categories:
-  - Competitive Programming
+  - Problem Solving
 ---
 
 After participating in the coding contest for two weeks, I realized that the one of the best ways to increase the speed and accuracy of implementation is to simplify the code. In many cases, my code was longer and more complex compared to top competitors even the same algorithm was implemented.

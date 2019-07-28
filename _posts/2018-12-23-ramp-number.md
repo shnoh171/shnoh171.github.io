@@ -2,7 +2,7 @@
 layout: post
 title: Ramp Number (ACM-ICPC Pacific NW Regional 2014 Div. 2)
 categories:
-  - Competitive Programming
+  - Problem Solving
 ---
 
 Problem: <http://acmicpc-pacnw.org/ProblemSet/2014/div2.pdf>
