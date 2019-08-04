@@ -18,7 +18,7 @@ void quicksort(int arr[], int left, int right) {
 
     if (left >= right) return;
 
-    // If there exist a pivot selection policy,
+    // If there exists a pivot selection policy,
     // do it in this place.
 
     last = left;
