@@ -101,6 +101,26 @@ if __name__ == '__main__':
     l.extend([3, 2])        # [4, 3, 2]
     l += [1, 0]             # [4, 3, 2, 1, 0]
 ```
+### Tuple type
+```python
+if __name__ == '__main__':
+    t = ()
+    t = (1,)                # when only one element
+    t = ('a', 2, (1, 2))
+
+    # del t[0]              # error
+    # t[0] = 'b'            # error
+
+    t = (1, 2, 3, 4)
+    print(t[2])             # 3
+    print(t[1:])            # (2, 3, 4)
+    t = t + (5, 6)          # (1, 2, 3, 4, 5, 6)
+
+    t = (1, 2)
+    t = t * 2               # (1, 2, 1, 2)
+
+    print(len(t))           # 4
+```
 ### If Statement
 ```python
 if __name__ == '__main__':
