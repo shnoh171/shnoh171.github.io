@@ -308,3 +308,26 @@ if __name__ == '__main__':
         print(i)
         i = i + 1
 ```
+### For Statement
+```python
+if __name__ == '__main__':
+    l = [1, 2, 3]
+    for i in l:
+        print(i)
+
+    l = [(1, 2), (3, 4)]
+    for (first, last) in l:
+        print (first + last)
+
+    sum = 0
+    for i in range(11):     # range(0, 11) also works
+        sum += i
+    print(sum)              # 55 (0 + ... + 10)
+
+    l1 = [1, 2, 3, 4]
+    l2 = [num * 3 for num in l1]          # [3, 6, 9, 12]
+    l2 = [num * 3 for num in l1 if num % 2 == 0] # [3, 9]
+
+    l = [x * y for x in range(2, 10)
+               for y in range(1, 10)]
+```
