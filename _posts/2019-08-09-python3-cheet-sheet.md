@@ -31,7 +31,7 @@ if __name__ == '__main__':
     s = "I'm shnoh"
     s = 'He said "Hello"'
     s = "He said \"Hello\""
-    s = "How are you?\tI'm fine\n"  # \t also works
+    s = "How are you?\tI'm fine\n"
 
     s = "test"
     print(len(s))      # 4
@@ -189,6 +189,39 @@ if __name__ == '__main__':
     s.update([3, 4])            # {1, 2, 3, 4, 'a'}
     s.remove(1)                 # {2, 3, 4, 'a'}
     # s.remove(5)               # KeyError: 5
+```
+### Bool Type
+```python
+if __name__ == '__main__':
+    b = True
+    b = False
+
+    b = 1 < 2           # True
+    b = 1 == 2          # False
+
+    # False: "", [], (), {}, 0, None
+
+    print(bool([]))     # False
+
+    l = [1, 2, 3]
+    while l:
+        print(l.pop())  # 3  2  1
+```
+### Bitwise Operator
+```python
+if __name__ == '__main__':
+    a = 0b10101010
+    b = 0b11110000
+
+    c = a & b
+    c = a | b
+    c = a ^ b
+    c = ~a
+
+    c = a << 2
+    c = a >> 2
+
+    print(bin(c))       # int(c), oct(c), hex(c)
 ```
 ### If Statement
 ```python
