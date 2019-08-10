@@ -331,3 +331,45 @@ if __name__ == '__main__':
     l = [x * y for x in range(2, 10)
                for y in range(1, 10)]
 ```
+### Function
+```python
+def add(a, b):
+    return a + b
+
+def add_many(*args):    # args is a tuple
+    result = 0
+    for i in args:
+        result = result + i
+    return result
+
+def build(**kwargs):    # kwargs is a dictionary
+    return kwargs
+
+def add_and_mul(a, b):
+    return a+b, a*b
+
+def test(a, b=1):       # non-default - default
+    if (b == 1):
+        return          # stop
+    a = a + 1
+
+d = 1
+def test_global():
+    global d
+    d = d + 1
+
+if __name__ == '__main__':
+    print(add(1,2))             # 3
+    print(add(b=2, a=1))        # 3
+
+    print(add_many(1, 2, 3))    # 6
+    print(build(b=2, c=3))      # {'b': 2, 'c': 3}
+    print(add_and_mul(1, 2))    # (3, 2)
+
+    print(d)            # 1
+    test_global()
+    print(d)            # 2
+
+    add = lambda a, b: a + b
+    print(add(1, 2))    # 3
+```
