@@ -373,3 +373,18 @@ if __name__ == '__main__':
     add = lambda a, b: a + b
     print(add(1, 2))    # 3
 ```
+### Class
+```python
+class Calculator:
+    def __init__(self):
+        self.result = 0
+
+    def add(self, num):
+        self.result += num
+        return self.result
+
+cal = Calculator()
+
+print(cal.add(1))
+print(cal.add(2))
+```
