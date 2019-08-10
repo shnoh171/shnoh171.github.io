@@ -167,6 +167,29 @@ if __name__ == '__main__':
     print(1 in d)       # True
     print(4 in d)       # False
 ```
+### Set Type
+```python
+if __name__ == '__main__':
+    s = set([1, 2, 3])          # {1, 2, 3}
+    s = set("Hello")            # {'H', 'l', 'o', 'e'}
+
+    l = list(s)                 # ['e', 'o', 'H', 'l']
+    t = tuple(s)                # ('H', 'l', 'o', 'e')
+
+    s1 = set([1, 2, 3])
+    s2 = set([3, 4, 5])
+    s = s1 & s2                 # {3}
+    s = s1.intersection(s2)     # {3}
+    s = s1 | s2                 # {1, 2, 3, 4, 5}
+    s = s1.union(s2)            # {1, 2, 3, 4, 5}
+    s = s1 - s2                 # {1, 2}
+    s = s1.difference(s2)       # {1, 2}
+
+    s.add('a')                  # {1, 2, 'a'}
+    s.update([3, 4])            # {1, 2, 3, 4, 'a'}
+    s.remove(1)                 # {2, 3, 4, 'a'}
+    # s.remove(5)               # KeyError: 5
+```
 ### If Statement
 ```python
 if __name__ == '__main__':
