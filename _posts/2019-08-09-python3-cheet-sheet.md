@@ -223,6 +223,41 @@ if __name__ == '__main__':
 
     print(bin(c))       # int(c), oct(c), hex(c)
 ```
+### Variable
+```python
+from copy import copy
+
+if __name__ == '__main__':
+    a = [1, 2, 3]
+    b = a
+
+    print(id(a))
+    print(id(b))                # same
+    print(a is b)               # True
+    a[1] = 3
+    print(b)                    # [1, 3, 3]
+
+    a = [1, 2, 3]
+    b = copy(a)                 # after importing copy
+                                # b = a[:] also works
+    print(id(a))
+    print(id(b))                # different
+    print(a is b)               # False
+    a[1] = 3
+    print(b)                    # [1, 2, 3]
+
+    a, b = ('hello', 'world')   # a: hello
+                                # b: world
+    a, b = ['hello', 'world']   # a: hello
+                                # b: world
+
+    a, b = b, a                 # a: world
+                                # b: hello
+
+    a = b = "hello"             # a: hello
+                                # b: hello
+```
+###
 ### If Statement
 ```python
 if __name__ == '__main__':
