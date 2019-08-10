@@ -285,3 +285,26 @@ if __name__ == '__main__':
     grade = 'A' if score >= 90 else 'F'
     print(grade)
 ```
+### While Statement
+```python
+if __name__ == '__main__':
+    i = 0
+    while i < 5:
+        print(i)
+        i = i + 1
+
+    i = 0
+    while i < 10:
+        if i == 5:
+            break
+        print(i)
+        i = i + 1
+
+    i = 0
+    while i < 10:
+        if i % 2 == 0:
+            i = i + 1
+            continue
+        print(i)
+        i = i + 1
+```
