@@ -101,7 +101,7 @@ if __name__ == '__main__':
     l.extend([3, 2])        # [4, 3, 2]
     l += [1, 0]             # [4, 3, 2, 1, 0]
 ```
-### Tuple type
+### Tuple Type
 ```python
 if __name__ == '__main__':
     t = ()
@@ -120,6 +120,52 @@ if __name__ == '__main__':
     t = t * 2               # (1, 2, 1, 2)
 
     print(len(t))           # 4
+```
+### Dictionary Type
+```python
+if __name__ == '__main__':
+    d = {1: 'hello'}
+    d[2] = 'world'
+    d['reverse'] = 3
+    del d['reverse']
+
+    print(d[2])
+
+    d[2] = 'shnoh'      # overwrite (not desired)
+                        # {1: 'hello', 2: 'shnoh'}
+    d[(1, 2)] = 'okay'
+    # d[[1, 1]] = 'no'  # TypeError (list cannot be a key)
+
+    d = {1: 'hello', 2: 'world', 3: '!'}
+
+    print(d.keys())     # dict_keys([1, 2, 3])
+    for k in d.keys():
+        print(k)        # 1
+                        # 2
+                        # 3
+
+    l = list(d.keys())  # [1, 2, 3]
+                        # should convert to list to use
+                        # append, insert, pop, remove, sort
+
+    print(d.values())    # dict_values(['hello', 'world', '!'])
+    l = list(d.values()) # ['hello', 'world', '!']
+
+    print(d.items())    # dict_items([(1, 'hello'),
+                        # (2, 'world'), (3, '!')])
+    l = list(d.items()) # [(1, 'hello'), (2, 'world'), (3, '!')]
+
+    d.clear()           # {}
+
+    d = {1: 'hello', 2: 'world', 3: '!'}
+
+    print(d[1])         # hello
+    # print(d[4])       # KeyError: 4
+    print(d.get(1))     # hello
+    print(d.get(4))     # None
+
+    print(1 in d)       # True
+    print(4 in d)       # False
 ```
 ### If Statement
 ```python
