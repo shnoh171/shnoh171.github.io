@@ -257,15 +257,31 @@ if __name__ == '__main__':
     a = b = "hello"             # a: hello
                                 # b: hello
 ```
-###
 ### If Statement
 ```python
 if __name__ == '__main__':
     left = right = 10
     if left < right:
-        print("left < right")
+        print("left is smaller then right")
     elif left == right:
-        print("left = right")
+        print("left is equal to right")
     else:
-        print("left > right")
+        print("left is larger then right")
+
+    if left == right and not left == 5:
+        print ("left is not 5 and equal to right")
+
+    wallet = ['money', 'card', 'coupon']
+    if 'money' in wallet:
+        print ("pay in cash")
+
+    wallet.remove('money')
+    if 'money' in wallet:
+        pass
+    else:
+        print("beg for money")
+
+    score = 89
+    grade = 'A' if score >= 90 else 'F'
+    print(grade)
 ```
