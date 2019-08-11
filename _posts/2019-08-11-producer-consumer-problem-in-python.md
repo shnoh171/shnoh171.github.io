@@ -47,3 +47,4 @@ consumerThread = threading.Thread(target=consumer)
 producerThread.start()
 consumerThread.start()
 ```
+When buffer size is greater than one, this solution will not work since there is a race condition (Multiple processes accessing the buffer (queue) at the same time).
