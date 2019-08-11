@@ -35,7 +35,7 @@ def consumer():
     while True:
         dataIsAvailable.acquire()
 
-        num = queue.pop()
+        num = queue.pop(0)
         print("Consumed", num, queue)
 
         queueIsAvailable.release()
@@ -87,7 +87,7 @@ def consumer():
 
         mutex.acquire()         # added
 
-        num = queue.pop()
+        num = queue.pop(0)
         print("Consumed", num, queue)
 
         mutex.release()         # added
@@ -136,7 +136,7 @@ def consumer():
         while len(queue) < 1:
             cv.wait()
 
-        num = queue.pop()
+        num = queue.pop(0)
         print("Consumed", num, queue)
 
         cv.release()
