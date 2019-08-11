@@ -68,12 +68,12 @@ def producer():
 
         queueIsAvailable.acquire()
 
-        mutex.acquire()
+        mutex.acquire()         # added
 
         queue.append(num)
         print("Produced", num, queue)
 
-        mutex.release()
+        mutex.release()         # added
 
         dataIsAvailable.release()
 
@@ -84,12 +84,12 @@ def consumer():
     while True:
         dataIsAvailable.acquire()
 
-        mutex.acquire()
+        mutex.acquire()         # added
 
         num = queue.pop()
         print("Consumed", num, queue)
 
-        mutex.release()
+        mutex.release()         # added
 
         queueIsAvailable.release()
 
