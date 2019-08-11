@@ -102,7 +102,7 @@ consumerThread = threading.Thread(target=consumer)
 producerThread.start()
 consumerThread.start()
 ```
-### Using condition
+### Using Condition
 ```python
 import threading
 import random
