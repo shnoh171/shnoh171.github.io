@@ -390,7 +390,8 @@ print(cal.add(2))
 ```
 ### Thread and Lock
 ```python
-import threading
+from threading import Thread
+from threading import Lock
 
 def myThread(id):
     for i in range(5):
@@ -400,10 +401,10 @@ def myThread(id):
 
 
 if __name__ == '__main__':
-    lock = threading.Lock()
+    lock = Lock()
     threads = []
     for i in range(4):
-        thread = threading.Thread(target=myThread, args=(i,))
+        thread = Thread(target=myThread, args=(i,))
         thread.start()
         threads.append(thread)
 
