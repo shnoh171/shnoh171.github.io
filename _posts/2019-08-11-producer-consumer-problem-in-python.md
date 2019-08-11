@@ -4,7 +4,8 @@ title: Producer-Consumer Problems in Python
 categories:
   - Problem Solving
 ---
-### Using Semaphore (Buffer Size is one)
+### Using Semaphore
+When the buffer size is one, two semaphores will solve the problem.
 ```python
 import threading
 import random
@@ -47,7 +48,7 @@ consumerThread = threading.Thread(target=consumer)
 producerThread.start()
 consumerThread.start()
 ```
-When buffer size is greater than one, this solution will not work since there is a race condition (Multiple processes accessing the buffer (queue) at the same time).
+When the buffer size is greater than one, this solution will not work since there is a race condition (Multiple processes accessing the buffer (queue) at the same time).
 
 Adding a mutex (we used Python's Lock primitive) will solve the problem.
 ```python
