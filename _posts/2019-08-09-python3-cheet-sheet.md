@@ -388,3 +388,27 @@ cal = Calculator()
 print(cal.add(1))
 print(cal.add(2))
 ```
+### Thread and Lock
+```python
+import threading
+
+def myThread(id):
+    for i in range(5):
+        lock.acquire()
+        print('ID: %s cnt: %d' % (id, i))
+        lock.release()
+
+
+if __name__ == '__main__':
+    lock = threading.Lock()
+    threads = []
+    for i in range(4):
+        thread = threading.Thread(target=myThread, args=(i,))
+        thread.start()
+        threads.append(thread)
+
+    for thread in threads:
+        thread.join()
+
+    print("Finished all threads")
+```
