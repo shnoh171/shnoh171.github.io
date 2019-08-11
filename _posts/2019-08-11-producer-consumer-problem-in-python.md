@@ -109,7 +109,6 @@ import random
 import time
 
 queue = []
-MAX_SIZE = 5
 cv = threading.Condition()
 
 def producer():
