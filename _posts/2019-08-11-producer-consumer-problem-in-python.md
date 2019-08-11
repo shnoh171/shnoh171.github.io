@@ -50,7 +50,7 @@ consumerThread.start()
 ```
 When the buffer size is greater than one, this solution will not work since there is a race condition (Multiple processes accessing the buffer (queue) at the same time).
 
-Adding a mutex (we used Python's Lock primitive) will solve the problem.
+Adding a mutex (I used Python's Lock primitive) will solve the problem.
 ```python
 import threading
 import random
@@ -93,6 +93,53 @@ def consumer():
         mutex.release()         # added
 
         queueIsAvailable.release()
+
+        time.sleep(random.randrange(0, 3))
+
+producerThread = threading.Thread(target=producer)
+consumerThread = threading.Thread(target=consumer)
+
+producerThread.start()
+consumerThread.start()
+```
+### Using condition
+```python
+import threading
+import random
+import time
+
+queue = []
+MAX_SIZE = 5
+cv = threading.Condition()
+
+def producer():
+    nums = range(5)
+    global queue
+    while True:
+        num = random.choice(nums)
+
+        cv.acquire()
+
+        queue.append(num)
+        print("Produced", num, queue)
+        cv.notify()
+
+        cv.release()
+
+        time.sleep(random.randrange(0, 3))
+
+def consumer():
+    global queue
+    while True:
+        cv.acquire()
+
+        while len(queue) < 1:
+            cv.wait()
+
+        num = queue.pop()
+        print("Consumed", num, queue)
+
+        cv.release()
 
         time.sleep(random.randrange(0, 3))
 
