@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Producer-Consumer Problems in Python
+title: Producer-Consumer Problem in Python
 categories:
   - Problem Solving
 ---
@@ -103,7 +103,7 @@ producerThread.start()
 consumerThread.start()
 ```
 ### Using Condition
-We can use a condtion variable supported by Python to solve the problem. Note that we used a condition variable to suspend both producer thread and consumer thread.
+We can use a condtion variable supported by Python to solve the problem. Note that we used the condition variable to suspend both producer thread and consumer thread.
 ```python
 import threading
 import random
