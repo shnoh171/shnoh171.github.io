@@ -103,12 +103,14 @@ producerThread.start()
 consumerThread.start()
 ```
 ### Using Condition
+We can use a condtion variable supported by Python to solve the problem. Note that we used a condition variable to suspend both producer thread and consumer thread.
 ```python
 import threading
 import random
 import time
 
 queue = []
+MAX_SIZE = 5
 cv = threading.Condition()
 
 def producer():
@@ -119,8 +121,12 @@ def producer():
 
         cv.acquire()
 
+        while len(queue) >= MAX_SIZE:
+                cv.wait()
+
         queue.append(num)
         print("Produced", num, queue)
+
         cv.notify()
 
         cv.release()
@@ -130,13 +136,16 @@ def producer():
 def consumer():
     global queue
     while True:
+
         cv.acquire()
 
         while len(queue) < 1:
-            cv.wait()
+                cv.wait()
 
         num = queue.pop(0)
         print("Consumed", num, queue)
+
+        cv.notify()
 
         cv.release()
 
