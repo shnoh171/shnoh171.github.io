@@ -4,7 +4,7 @@ title: Producer-Consumer Problem in C++
 categories:
   - Problem Solving
 ---
-Used `mutex` and `condition_variable`. `unique_lock` class is a flexible way to lock/unlock a mutex, but a bit dangerous.
+Used `mutex` and `condition_variable`. While using them, I utilized `unique_lock` class that provides a flexible way to lock/unlock mutexes and control condition variables.
 ```c++
 #include <iostream>
 #include <queue>
@@ -68,4 +68,4 @@ int main() {
     consumer_thread.join();
 }
 ```
-FYI, there exist `lock_guard` class that is less flexible but provides more structured and safer way to lock/unlock a mutex. It locks the mutex on construction and unlocks it on destruction. 
+You might want to use `lock_guard` class that is less flexible but provides more structured and safer way to lock/unlock a mutex. It locks the mutex on construction and unlocks it on destruction.
