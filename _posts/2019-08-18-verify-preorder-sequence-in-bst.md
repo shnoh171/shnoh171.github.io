@@ -52,6 +52,8 @@ Note that the next node \\(s_{i+1}\\) should always be larger than (2) since thi
 
 We now iteratively visit input sequence and update (1), (2) and (3). While doing so, we check whether \\(s_{i+1}\\) is larger than (2). I will use a single integer variable to get the maximum value in (2), and a single stack to maintain (3).
 
+The time complexity is \\(O(n)\\).
+
 ```c++
 bool verifyPreorder(vector<int>& preorder) {
     stack<int> s;
