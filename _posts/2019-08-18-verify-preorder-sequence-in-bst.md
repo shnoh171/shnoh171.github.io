@@ -46,4 +46,4 @@ However, this algorithm's time complexity becomes \\(O(n^2)\\) when the BST is n
 
 **Can we do better? Of course!**
 
-Let us assume that we are building BST by iteratively visiting the input sequence \\(S=(s_1, s_2, ..., s_n)\\). After finishing \\(i\\)th iteration, a set of visited nodes \\(\{s_1, s_2, ..., s_i\}\\) can be classified into three groups: (1) current node \\(\{s_i\}\\), (2) a set of nodes that will not have \\(\{s_{i+1}, s_{i+2}, ..., s_n\}\\) as their child, and (3) a set of nodes that can have \\(\{s_{i+1}, s_{i+2}, ..., s_n\}\\) as their child.
+Let us assume that we are building BST by iteratively visiting the input sequence \\(S=(s_1, s_2, ..., s_n)\\). After finishing \\(i\\)th iteration, a set of visited nodes \\(\\{s_1, s_2, ..., s_i\\}\\) can be classified into three groups: (1) current node \\(\\{s_i\\}\\), (2) a set of nodes that will not have \\(\\{s_{i+1}, s_{i+2}, ..., s_n\\}\\) as their child, and (3) a set of nodes that can have \\(\\{s_{i+1}, s_{i+2}, ..., s_n\\}\\) as their child.
