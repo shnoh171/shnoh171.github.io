@@ -46,4 +46,11 @@ However, this algorithm's time complexity becomes \\(O(n^2)\\) when the BST is n
 
 **Can we do better? Of course!**
 
-Let us assume that we are building BST by iteratively visiting the input sequence \\(S=(s_1, s_2, ..., s_n)\\). After finishing \\(i\\)th iteration, a set of visited nodes \\(\\{s_1, s_2, ..., s_i\\}\\) can be classified into three groups: (1) current node \\(\\{s_i\\}\\), (2) a set of nodes that will not have \\(\\{s_{i+1}, s_{i+2}, ..., s_n\\}\\) as their child, and (3) a set of nodes that can have \\(\\{s_{i+1}, s_{i+2}, ..., s_n\\}\\) as their child.
+Let us assume that we are building BST by iteratively visiting the input sequence \\(S=(s_1, s_2, ..., s_n)\\). After finishing \\(i\\)th iteration, a set of visited nodes \\(\\{s_1, s_2, ..., s_i\\}\\) can be classified into three groups: (1) current node \\(\\{s_i\\}\\), (2) a set of nodes in \\(\\{s_1, s_2, ..., s_{i-1}\\}\\) that will not have \\(\\{s_{i+1}, s_{i+2}, ..., s_n\\}\\) as their child, and (3) a set of nodes in \\(\\{s_1, s_2, ..., s_{i-1}\\}\\) that can have \\(\\{s_{i+1}, s_{i+2}, ..., s_n\\}\\) as their child.
+
+Note that the next node \\(s_{i+1}\\) should always be larger than (2) since this is BST.
+
+We now iteratively visit input sequence and update (1), (2) and (3). While doing so, we check whether \\(s_{i+1}\\) is larger than (2). I will use a single integer variable to get the maximum value in (2), and a single stack to maintain (3).
+
+```c++
+```
