@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Implementing User-Level Spinlock on C++
+title: Implementing User-Level Spinlock in C++
 categories:
   - Concurrency
 ---
@@ -39,3 +39,7 @@ int main() {
     t2.join();
 }
 ```
+
+### Reference
+- Rainer Grimm, Concurrency with Modern C++, 2017.
+- https://github.com/Jpub/RainerGrimm
