@@ -2,7 +2,7 @@
 layout: post
 title: Producer-Consumer Problem in C++
 categories:
-  - Problem Solving
+  - Concurrency 
 ---
 Used `mutex` and `condition_variable`. While using them, I utilized `unique_lock` class that provides a flexible way to lock/unlock mutexes and control condition variables.
 ```c++

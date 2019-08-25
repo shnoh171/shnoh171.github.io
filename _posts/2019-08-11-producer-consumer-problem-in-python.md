@@ -2,7 +2,7 @@
 layout: post
 title: Producer-Consumer Problem in Python
 categories:
-  - Problem Solving
+  - Concurrency
 ---
 ### Using Semaphore
 When the buffer size is one, two semaphores will solve the problem.
