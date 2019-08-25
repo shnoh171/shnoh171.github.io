@@ -39,7 +39,14 @@ int main() {
     t2.join();
 }
 ```
+When the `lock()` method is called by a thread, the thread keeps spinning until it acquires the spinlock: when `flag.test_and_set()` returns true.
+
+Note that there might be starvation if many threads are competing for a single `Spinlock`.
+
+Things to remember when using `atomic_flag`:
+- `atomic_flag` should always be initialize to false using `ATOMIC_FLAG_INIT`.
+- `atomic_flag` provides two methods: `test_and_set()` and `clear()`.
 
 ### Reference
 - Rainer Grimm, Concurrency with Modern C++, 2017.
-- https://github.com/Jpub/RainerGrimm
+- <https://github.com/Jpub/RainerGrimm>
