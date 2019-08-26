@@ -17,7 +17,8 @@ A Linux kernel module is a piece of compiled binary code that is inserted direct
 Now let's start playing with some kernel modules!
 
 ```c
-include <linux/module.h> // for kernel module
+// m_hello_1.c
+#include <linux/module.h> // for kernel module
 #include <linux/kernel.h> // for KERN_INFO
 
 int init_module(void) {
@@ -54,6 +55,28 @@ shnoh@shnoh-p6-2270kr:~/kmod$ dmesg | grep Goodbye
 [6000365.592283] Goodbye world 1
 ```
 
+We can rename  `init_module()` and `cleanup_module()` using `__init` and `__exit` macros, respectively. The code is shown in `m_hello_2.c`.
+
+```c
+#include <linux/module.h> // for kernel module
+#include <linux/kernel.h> // for KERN_INFO
+#include <linux/init.h> // for macros
+
+static int __init hello_2_init(void)
+{
+	printk(KERN_INFO "Hello world 2\n");
+	return 0;
+}
+
+static void __exit hello_2_exit(void)
+{
+	printk(KERN_INFO "Goodbye world 2\n");
+}
+
+module_init(hello_2_init);
+module_exit(hello_2_exit)
+```
+I can build, install and remove the module `m_hello_2` as same as `m_hello_1`.
 
 [^Salzman]: Peter Jay Salzman, Micheal Burian and Ori Pomerantz, "The Linux Kernel Module Programming Guide," 2001.
-[^Robert]: https://blog.sourcerer.io/writing-a-simple-linux-kernel-module-d9dc3762c234
+[^Robert]: <https://blog.sourcerer.io/writing-a-simple-linux-kernel-module-d9dc3762c234>
