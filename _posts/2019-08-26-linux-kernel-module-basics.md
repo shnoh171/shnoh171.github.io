@@ -9,11 +9,50 @@ The codes on the post are from the Linux kernel module programming guide [^Salzm
 A Linux kernel module is a piece of compiled binary code that is inserted directly into the Linux kernel [^Robert]. The important kernel module commands are as follows:
 
 - `insmod`: Install a module
-- `rmmod`: Delete a module
-- `lsmod`: Get information of loaded modules by reading `/proc/modules`
-- `modprobe`: 'Intelligently' add and remove modules from the kernel
+- `rmmod`: Remove a module
+- `lsmod`: Show status of loaded modules by reading `/proc/modules`
+- `modprobe`: Add/remove modules from the kernel (consider dependency)
+- `depmod`: Generate `modules.dep` and `map` files
 
+Now let's start playing with some kernel modules!
 
+```c
+include <linux/module.h> // for kernel module
+#include <linux/kernel.h> // for KERN_INFO
+
+int init_module(void) {
+	printk(KERN_INFO "Hello world 1\n");
+	return 0; // init_module module succeeded
+}
+
+void cleanup_module(void) {
+	printk(KERN_INFO "Goodbye world 1\n");
+}
+```
+
+This is old style kernel module. `init_module()` is called when the module is loaded (by executing `insmod`), and `cleanup_module()` is called when the module is removed (by executing `rmmod`). A Makefile for the source code is as follows.
+
+```Makefile
+obj-m += m_hello_1.o
+all:
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
+clean:
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
+```
+
+After writing Makefile, I can generate `m_hello_1.ko` by running `make` (run `make clean` to remove it).
+
+Installing and removing `m_hello_1` module is done by running `insmod` and `rmmod`.
+
+```bash
+shnoh@shnoh-p6-2270kr:~/kmod$ sudo insmod m_hello_1.ko
+shnoh@shnoh-p6-2270kr:~/kmod$ dmesg | grep Hello
+[6000342.646421] Hello world 1
+
+shnoh@shnoh-p6-2270kr:~/kmod$ sudo rmmod m_hello_1
+shnoh@shnoh-p6-2270kr:~/kmod$ dmesg | grep Goodbye
+[6000365.592283] Goodbye world 1
+```
 
 
 [^Salzman]: Peter Jay Salzman, Micheal Burian and Ori Pomerantz, "The Linux Kernel Module Programming Guide," 2001.
