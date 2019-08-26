@@ -32,7 +32,7 @@ void cleanup_module(void) {
 
 This is old style kernel module. `init_module()` is called when the module is loaded (by executing `insmod`), and `cleanup_module()` is called when the module is removed (by executing `rmmod`). A Makefile for the source code is as follows.
 
-```
+```basemake
 obj-m += m_hello_1.o
 all:
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
