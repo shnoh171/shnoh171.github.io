@@ -5,7 +5,7 @@ highlighter:      rouge
 # Setup
 title:            Soonhyun Noh
 tagline:          'A Jekyll theme'
-description:      'Interested in SW platform for AI, and competitive programming'
+description:      'Interested in SW platform for AI'
 url:              https://shnoh171.github.io
 baseurl:          # the optional subpath of your site, e.g. "/blog"
 
