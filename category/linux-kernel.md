@@ -1,6 +1,6 @@
 ---
 layout: category
-title: Concurrency
+title: Linux Kernel
 ---
 
 Posts about general Linux kernel internals.
