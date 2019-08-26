@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Forcing Order between Threads: Condtion Variable and Atomics
+title: Forcing Order between Threads
 categories:
   - Concurrency
 ---
