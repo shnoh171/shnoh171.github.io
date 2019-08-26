@@ -76,7 +76,7 @@ static void __exit hello_2_exit(void)
 module_init(hello_2_init);
 module_exit(hello_2_exit)
 ```
-I can build, install and remove the module `m_hello_2` as same as `m_hello_1`.
+Building, installing and removing the module `m_hello_2` are as same as `m_hello_1`.
 
 [^Salzman]: Peter Jay Salzman, Micheal Burian and Ori Pomerantz, "The Linux Kernel Module Programming Guide," 2001.
 [^Robert]: <https://blog.sourcerer.io/writing-a-simple-linux-kernel-module-d9dc3762c234>
