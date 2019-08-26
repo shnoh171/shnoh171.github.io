@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Linux Kernel Module Basic
+title: Linux Kernel Module Basics
 categories:
   - Linux Kernel
 ---
