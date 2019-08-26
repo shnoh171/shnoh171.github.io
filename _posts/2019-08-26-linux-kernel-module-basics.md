@@ -32,7 +32,7 @@ void cleanup_module(void) {
 
 This is old style kernel module. `init_module()` is called when the module is loaded (by executing `insmod`), and `cleanup_module()` is called when the module is removed (by executing `rmmod`). A Makefile for the source code is as follows.
 
-```basemake
+```
 obj-m += m_hello_1.o
 all:
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
@@ -44,7 +44,7 @@ After writing Makefile, I can generate `m_hello_1.ko` by running `make` (run `ma
 
 Installing and removing `m_hello_1` module is done by running `insmod` and `rmmod`.
 
-```
+```shell
 shnoh@shnoh-p6-2270kr:~/kmod$ sudo insmod m_hello_1.ko
 shnoh@shnoh-p6-2270kr:~/kmod$ dmesg | grep Hello
 [6000342.646421] Hello world 1
