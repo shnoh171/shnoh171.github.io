@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Installing GLFW on Ubuntu
+title: Installing GLFW on Ubuntu (+ GLAD)
 categories:
   - GPU and GPU Programming
 ---
@@ -56,4 +56,13 @@ int main(void)
 ```shell
 g++ -pthread -o test test.c -lglfw -lGLU -lGL -lXrandr -lXxf86vm -lXi -lXinerama -lX11 -lrt -ldl
 ./test
+```
+
+Addition: GLAD can be installed with the following commands.
+```shell
+git clone https://github.com/Dav1dde/glad.git
+cd glad
+cmake ./
+make
+sudo cp -a include /usr/local/
 ```
