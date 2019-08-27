@@ -5,7 +5,7 @@ categories:
   - GPU and GPU Programming
 ---
 
-This is a full code from the tutorial "Learn OpenGL" [^LOGL].
+This is a full code of Hello Window from the tutorial "Learn OpenGL" [^LOGL].
 
 ```c++
 #include <iostream>
