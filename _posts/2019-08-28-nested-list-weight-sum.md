@@ -56,7 +56,7 @@ int depthSum(vector<NestedInteger>& nestedList) {
 
 <https://leetcode.com/problems/nested-list-weight-sum-ii/>
 
-Now the problem is slighlty changed, and weight is increasing from root to leaf. One idea might be compute the depth of the tree first, than use that information to weight of each node.
+Now the problem is slightly changed, and weight is increasing from root to leaf. One idea might be compute the depth of the tree first, than use that information to weight of each node.
 
 ```c++
 int computeDepth(const NestedInteger& nestedInteger) {
