@@ -78,5 +78,37 @@ module_exit(hello_2_exit)
 ```
 Building, installing and removing the module `m_hello_2` are as same as `m_hello_1`.
 
+In `m_hello_3`, I added `__initdata` which is only used in the initialization process. Also, I added license and driver information.
+
+```c
+#include <linux/module.h> // for kernel module
+#include <linux/kernel.h> // for KERN_INFO
+#include <linux/init.h> // for macros
+
+#define DRIVER_AUTHOR "Soonhyun Noh <xxxxx@redwood.snu.ac.kr>"
+#define DRIVER_DESC "Sample driver"
+
+static int hello3_data __initdata = 3;
+
+static int __init hello_3_init(void)
+{
+	printk(KERN_INFO "Hello world %d\n", hello3_data);
+	return 0;
+}
+
+static void __exit hello_3_exit(void)
+{
+	printk(KERN_INFO "Goodbye world 3\n");
+}
+
+MODULE_LICENSE("GPL");
+
+MODULE_AUTHOR(DRIVER_AUTHOR);
+MODULE_DESCRIPTION(DRIVER_DESC);
+
+module_init(hello_3_init);
+module_exit(hello_3_exit);
+```
+
 [^Salzman]: Peter Jay Salzman, Micheal Burian and Ori Pomerantz, "The Linux Kernel Module Programming Guide," 2001.
 [^Robert]: <https://blog.sourcerer.io/writing-a-simple-linux-kernel-module-d9dc3762c234>
