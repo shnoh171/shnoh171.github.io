@@ -22,19 +22,19 @@ char infoLog[512];
 
 // Basic vertex shader in GLSL (OpenGL Shading Language)
 const char *vertexShaderSource =
-	"#version 330 core\n"
-	"layout (location = 0) in vec3 aPos;\n"
-	"void main() {\n"
-	"	gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
-	"}\0";
+"#version 330 core\n"
+"layout (location = 0) in vec3 aPos;\n"
+"void main() {\n"
+"	gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
+"}\0";
 
 // Basic fragment shader
 const char *fragmentShaderSource =
-	"#version 330 core\n"
-	"out vec4 FragColor;\n"
-	"void main() {\n"
-	"	FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
-	"}\0";
+"#version 330 core\n"
+"out vec4 FragColor;\n"
+"void main() {\n"
+"	FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
+"}\0";
 
 int main() {
 	glfwInit();
@@ -140,26 +140,25 @@ int main() {
 	// Set attributes that describe how OpenGL should interpret the vertex data
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
-	
+
 
 	// Unbind so other calls won't modify VBO and VAO
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
 
-	while (!glfwWindowShouldClose(window))
-    {
-        processInput(window);
+	while (!glfwWindowShouldClose(window)) {
+		processInput(window);
 
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
+		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
 
-        glUseProgram(shaderProgram);
-        glBindVertexArray(VAO);
-        glDrawArrays(GL_TRIANGLES, 0, 3);
- 
-        glfwSwapBuffers(window);
-        glfwPollEvents();
-    }
+		glUseProgram(shaderProgram);
+		glBindVertexArray(VAO);
+		glDrawArrays(GL_TRIANGLES, 0, 3);
+
+		glfwSwapBuffers(window);
+		glfwPollEvents();
+	}
 
 	glfwTerminate();
 
@@ -176,4 +175,4 @@ void processInput(GLFWwindow *window) {
 }
 ```
 
-[^LOGL]: <https://learnopengl.com/Getting-started/Hello-Window>
+[^LOGL]: <https://learnopengl.com/Getting-started/Hello-Triangle>
