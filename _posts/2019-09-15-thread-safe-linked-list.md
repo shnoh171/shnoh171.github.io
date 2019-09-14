@@ -24,7 +24,7 @@ public:
 };
 ```
 
-At this moment, let's assume that we only have to support `insert_n()` (forget about the deletion). `insert_n()` inserts a node with `value` after the `n`th index. To make things simple, I assume that `n` is always smaller than equal to the size of the linked list.
+At this moment, let's assume that we only have to support `insert_n()` (forget about the deletion). `insert_n()` inserts a node with `value` in the `n`th index. To make things simple, I assume that `n` is always smaller than equal to the size of the linked list.
 
 ```c++
 void LinkedList::insert_n(int value, int n) {
