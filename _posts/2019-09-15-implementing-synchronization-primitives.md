@@ -4,7 +4,7 @@ title: Implementing Synchronization Primitives
 categories:
   - Concurrency
 ---
-In this post, we will conceptually implement four basic synchronization primitives in C: (1) spinlock, (2) mutex, (3) semaphore and (4) condition variables. The codes are somewhat like pseudo code, and I will not actually run it.
+In this post, we will conceptually implement four basic synchronization primitives in C: (1) spinlock, (2) semaphore and (3) condition variables. The codes are somewhat like pseudo code, and I will not actually run it.
 
 ### Spinlock
 
@@ -53,10 +53,6 @@ void spin_unlock(struct spinlock* lock) {
 }
 ```
 
-// TODO: Ticket Spinlock
-
-// TODO: Mutex
-
 ### Semaphore
 
 ```c++
@@ -90,4 +86,27 @@ void signal(struct semaphore* sem) {
     spin_unlock(&(sem->lock));
 }
 ```
+
 In order for this functions to work correctly, there is an implementation issues in `sleep_current_thread()` and `dequeue_and_wake_up()` functions. Basically I tried to make all the codes of `wait()` and `signal()` to be critical sections, but there is one exception: `sleep_current_thread()`. I have to release the `spinlock` before blocking the current thread! As consequence, there might be a condition where a thread calls `wait()` is about to call `sleep_current_thread()`, and another thread calls `signal()` and `dequeue_and_wake_up()`. If the `wait_queue` has only one thread, it has to defer `dequeue_and_wake_up()` until `sleep_current_thread()` is called.
+
+### Condition Variable
+
+```c++
+struct condition_variable {
+    struct mutex* mtx;
+    struct semaphore sem;
+};
+
+void wait(struct condition_variable* cv, bool (*check)()) {
+    while (!check()) {
+        mutex_unlock(cv->mtx);
+        wait(&(cv->sem));
+        mutex_lock(cv->mtx);
+    }
+}
+
+void notify_one(struct condition_variable* cv) {
+    signal(&(cv->sem));
+}
+```
+The code of condition variable should be verified.
