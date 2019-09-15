@@ -90,3 +90,4 @@ void signal(struct semaphore* sem) {
     spin_unlock(&(sem->lock));
 }
 ```
+In order for this functions to work correctly, there is an implementation issues in `sleep_current_thread()` and `dequeue_and_wake_up()` functions. Basically I tried to make all the codes of `wait()` and `signal()` to be critical sections, but there is one exception: `sleep_current_thread()`. I have to release the `spinlock` before blocking the current thread! As consequence, there might be a condition where a thread calls `wait()` is about to call `sleep_current_thread()`, and another thread calls `signal()` and `dequeue_and_wake_up()`. If the `wait_queue` has only one thread, it has to defer `dequeue_and_wake_up()` until `sleep_current_thread()` is called.
