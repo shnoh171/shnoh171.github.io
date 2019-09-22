@@ -4,6 +4,8 @@ title: Thread-safe List-based Set
 categories:
   - Concurrency
 ---
+Implementing a find-grained locking mechanism is a bit hard in data structures such as linked list and tree. The main reason is dynamic allocation of nodes. We can utilize a locking technique called hand-over-hand locking. The main idea is to lock two mutexes simultaneously.
+
 ```c++
 #include <iostream>
 #include <thread>
@@ -191,8 +193,6 @@ int main() {
     thread insertThread1(insertFunction);
     thread insertThread2(insertFunction);
 
-
-
     thread deleteThread1(deleteFunction);
     thread deleteThread2(deleteFunction);
 
@@ -200,7 +200,6 @@ int main() {
     insertThread2.join();
     deleteThread1.join();
     deleteThread2.join();
-
 
     set.print();
 }
