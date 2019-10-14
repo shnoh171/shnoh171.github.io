@@ -86,4 +86,4 @@ int main()
 }
 ```
 
-The time complexity is \\(O(n log n)\\) (sorting).
+The time complexity is \\(O(n \log n)\\) (sorting).
