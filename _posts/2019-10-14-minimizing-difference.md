@@ -85,3 +85,5 @@ int main()
 	return 0;
 }
 ```
+
+The time complexity is \\(O(\log n)\\) (sorting).
