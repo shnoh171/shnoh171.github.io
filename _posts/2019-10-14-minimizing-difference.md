@@ -9,7 +9,7 @@ categories:
 
 Fresh problem from the Codeforces contest held yesterday!
 
-First of all, I will sort the sequence of integers. Let us denote the sorted sequence of integers as \\(b_1,b_2,...,b_n\\) where \\(b_1 \le b_2 \le ... \le b_n\\).
+First of all, I will sort the sequence of integers.
 
 Now I will introduce an iterative algorithm. For each iteration, the algorithm tries to reduce the difference between the maximum and minimum elements in the sequence. There are two possible operations.
 
